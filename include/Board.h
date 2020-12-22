@@ -1,9 +1,10 @@
 #pragma once
 #include <vector>
-#include "GameObjects.h"
-#include "MovingObjects.h"
+#include "GameObject.h"
+#include "MovingObject.h"
 #include "DataReader.h"
 #include "EffectsHolder.h"
+#include "Coin.h"
 #include <SFML/Graphics.hpp>
 
 using std::vector;
@@ -11,12 +12,13 @@ class Board
 {
 public:
 	Board();
+	~Board();
 
 	void draw(const EffectsHolder&)    const;
 	vector<MovingObjects*> resetLevel()const;
 	vector<GameObjects*> loadLevel();
 	bool is_lvl_over()                 const;
-	GameObjects* getContent()          const;
+	char getContent(const sf::Vector2f& location)const;
 
 private:
 	vector<vector<GameObjects*>> m_map;

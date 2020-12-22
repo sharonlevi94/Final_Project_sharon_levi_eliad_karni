@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "StaticObjects.h"
+#include "CollectableObject.h"
 using std::vector;
 
-class Coin: public StaticObjects
+class Coin: public CollectableObject
 {
 public:
 	Coin();
@@ -14,7 +14,7 @@ public:
 	virtual void reset();
 	bool is_collected()const;
 	virtual char identify()const;
-	void collect();
+	virtual void collect();
 
 private:
 	int m_state;
@@ -22,11 +22,3 @@ private:
 	const sf::Vector2f m_Loc;
 	const sf::Vector2f m_size;
 };
-
-Coin::Coin()
-{
-}
-
-Coin::~Coin()
-{
-}

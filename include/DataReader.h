@@ -1,18 +1,23 @@
 #pragma once
-class DataReader
-{
+#include "GameObject.h"
+#include <fstream>
+class DataReader{
 public:
+	//------------------------- constractors section -------------------------
+
 	DataReader();
-	~DataReader();
 
+	//------------------------- method section -------------------------------
+
+	bool isThereNextLevel()const;
+	vector<vector<GameObjects*>> readNextLevel();
 private:
+	//--------------------- privete methods section --------------------------
 
+	int receiveMapSize();
+
+	//------------------------ members section -------------------------------
+
+	std::ifstream m_boardReader;
+	int m_fileSize;
 };
-
-DataReader::DataReader()
-{
-}
-
-DataReader::~DataReader()
-{
-}
