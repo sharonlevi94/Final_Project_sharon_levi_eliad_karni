@@ -1,0 +1,18 @@
+﻿target_include_directories (Final_Project_sharon_levi_eliad_karni PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+target_sources (Final_Project_sharon_levi_eliad_karni PRIVATE 
+ "Board.h"
+ "Coin.h"
+ "Controller.h"
+ "Enemy.h"
+ "DataReader.h"
+ "EffectsHolder.h"
+ "GameObjects.h"
+ "MovingObjects.h"
+ "StaticObjects.h"
+"GameState.h"
+ "SmartEnemy.h"
+ "RandEnemy.h"
+ "FoolEnemy.h"
+ "Gift.h"
+ "Menu.h"
+ "Player.h")
