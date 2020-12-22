@@ -18,11 +18,3 @@ private:
 	EffectsHolder m_effects;
 	vector<MovingObjects*> m_movingObjects;
 };
-
-Controller::Controller()
-{
-}
-
-Controller::~Controller()
-{
-}
