@@ -3,9 +3,8 @@
 	{
 		"generator" : 
 		{
-			"multiConfig" : true,
-			"name" : "Visual Studio 16 2019",
-			"platform" : "x64"
+			"multiConfig" : false,
+			"name" : "Ninja"
 		},
 		"paths" : 
 		{
@@ -27,7 +26,7 @@
 	"objects" : 
 	[
 		{
-			"jsonFile" : "codemodel-v2-d63f7ddb97da28112f2a.json",
+			"jsonFile" : "codemodel-v2-ab8ba1becc833e9ae931.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
@@ -36,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-7109bc10f3ab9b4df51d.json",
+			"jsonFile" : "cache-v2-76e9c2a3f8b60c128ca9.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -45,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-03ddb7e644db6b309661.json",
+			"jsonFile" : "cmakeFiles-v1-242c45a9ac34f067c8d2.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -78,7 +77,7 @@
 				"responses" : 
 				[
 					{
-						"jsonFile" : "cache-v2-7109bc10f3ab9b4df51d.json",
+						"jsonFile" : "cache-v2-76e9c2a3f8b60c128ca9.json",
 						"kind" : "cache",
 						"version" : 
 						{
@@ -87,7 +86,7 @@
 						}
 					},
 					{
-						"jsonFile" : "cmakeFiles-v1-03ddb7e644db6b309661.json",
+						"jsonFile" : "cmakeFiles-v1-242c45a9ac34f067c8d2.json",
 						"kind" : "cmakeFiles",
 						"version" : 
 						{
@@ -96,7 +95,7 @@
 						}
 					},
 					{
-						"jsonFile" : "codemodel-v2-d63f7ddb97da28112f2a.json",
+						"jsonFile" : "codemodel-v2-ab8ba1becc833e9ae931.json",
 						"kind" : "codemodel",
 						"version" : 
 						{

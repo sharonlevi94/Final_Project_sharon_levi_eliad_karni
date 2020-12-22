@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Debug/Final_Project_sharon_levi_eliad_karni.exe"
+			"path" : "Final_Project_sharon_levi_eliad_karni.exe"
 		},
 		{
-			"path" : "Debug/Final_Project_sharon_levi_eliad_karni.pdb"
+			"path" : "Final_Project_sharon_levi_eliad_karni.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -97,7 +97,7 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/include"
+					"path" : "D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/include"
 				},
 				{
 					"backtrace" : 2,
@@ -110,12 +110,6 @@
 			[
 				16
 			]
-		}
-	],
-	"dependencies" : 
-	[
-		{
-			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "Final_Project_sharon_levi_eliad_karni::@6890427a1f51a3e7e1df",
