@@ -1,11 +1,10 @@
 #pragma once
-#include "StaticObject.h"
 
-class Wall : public StaticObject
+class Ladder
 {
 public:
-	Wall();
-	virtual void draw() const;
+	Ladder();
+	virtual void draw();
 	virtual char identify()const;
 	virtual void playTurn(char (*)(const sf::Vector2f&));
 	virtual void reset(const sf::Vector2f&);
@@ -15,3 +14,5 @@ private:
 	virtual void setState(const int);
 	virtual void setSprite(const sf::Sprite&);
 };
+{
+}

@@ -4,6 +4,6 @@
 int main()
 {
 	Controller controller;
-	controller.runGame();
+	controller.run();
 	return EXIT_SUCCESS;
 }

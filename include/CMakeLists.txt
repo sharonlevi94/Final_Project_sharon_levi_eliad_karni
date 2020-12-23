@@ -18,4 +18,5 @@ target_sources (Final_Project_sharon_levi_eliad_karni PRIVATE
  "Player.h"
  "CollectableObject.h"
  "Wall.h"
- "Rod.h")
+ "Rod.h"
+ "Ladder.h")

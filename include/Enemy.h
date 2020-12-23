@@ -12,8 +12,5 @@ public:
 	virtual void fall();
 
 private:
-	sf::Vector2f m_location;
-	sf::Vector2f m_size;
-	int state;
-	std::vector<sf::Sprite*> m_sprites;
+	 
 };

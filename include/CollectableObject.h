@@ -15,8 +15,5 @@ public:
 	virtual void collect();
 
 private:
-	int m_state;
-	const vector<sf::Sprite*> m_sprites;
-	const sf::Vector2f m_Loc;
-	const sf::Vector2f m_size;
+	
 };

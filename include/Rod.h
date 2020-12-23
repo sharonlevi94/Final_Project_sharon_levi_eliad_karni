@@ -12,8 +12,6 @@ public:
 	virtual int getState()const;
 
 private:
-	sf::Vector2f m_location;
-	sf::Vector2f m_size;
-	int m_state;
-	std::vector<sf::Sprite*> m_sprites;
+	virtual void setState(const int);
+	virtual void setSprite(const sf::Sprite&);
 };

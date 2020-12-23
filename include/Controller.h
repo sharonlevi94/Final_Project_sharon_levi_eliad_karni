@@ -4,17 +4,26 @@
 #include "GameState.h"
 #include "EffectsHolder.h"
 #include "MovingObject.h"
+#include "Enemy.h"
+#include "Player.h"
+#include "Coin.h"
 #include <SFML/Graphics.hpp>
 class Controller
 {
 public:
 	Controller();
+	void run();
 	void runGame();
+	void runMenu();
+	void resetLevel() const;
+	void play_turns();
+
 private:
 	sf::RenderWindow m_window;
 	Board m_board;
 	Menu m_menu;
 	GameState m_gameState;
 	EffectsHolder m_effects;
-	vector<MovingObject*> m_movingObjects;
+	vector <GameObject*> m_gameobjects;
+	Player* m_player;
 };
