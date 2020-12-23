@@ -8,8 +8,8 @@ public:
 		const sf::Vector2f size = sf::Vector2f(0, 0),
 		int state = 0,
 		const sf::Sprite& (*)(char) = nullptr);
-	virtual void fall();
-
+	void fall(int);
+	bool isMovePossible()const;
 private:
 	
 };

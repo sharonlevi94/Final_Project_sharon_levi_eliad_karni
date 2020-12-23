@@ -16,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-Debug (default)/CMakeFiles/3.18.20081302-MSVC_2/CMakeSystem.cmake"
+			"path" : "out/build/UML/CMakeFiles/3.18.20081302-MSVC_2/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -226,6 +226,11 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CompilerId/VS-10.vcxproj.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
 			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeFindBinUtils.cmake"
 		},
 		{
@@ -235,7 +240,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-Debug (default)/CMakeFiles/3.18.20081302-MSVC_2/CMakeCCompiler.cmake"
+			"path" : "out/build/UML/CMakeFiles/3.18.20081302-MSVC_2/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -435,6 +440,11 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CompilerId/VS-10.vcxproj.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
 			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeFindBinUtils.cmake"
 		},
 		{
@@ -444,7 +454,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-Debug (default)/CMakeFiles/3.18.20081302-MSVC_2/CMakeCXXCompiler.cmake"
+			"path" : "out/build/UML/CMakeFiles/3.18.20081302-MSVC_2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -508,7 +518,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-Debug (default)/CMakeFiles/3.18.20081302-MSVC_2/CMakeRCCompiler.cmake"
+			"path" : "out/build/UML/CMakeFiles/3.18.20081302-MSVC_2/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -577,7 +587,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-Debug (default)/CMakeFiles/3.18.20081302-MSVC_2/CMakeCCompiler.cmake"
+			"path" : "out/build/UML/CMakeFiles/3.18.20081302-MSVC_2/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -666,7 +676,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "out/build/x64-Debug (default)/CMakeFiles/3.18.20081302-MSVC_2/CMakeCXXCompiler.cmake"
+			"path" : "out/build/UML/CMakeFiles/3.18.20081302-MSVC_2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isExternal" : true,
@@ -702,7 +712,7 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/out/build/x64-Debug (default)",
+		"build" : "D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/out/build/UML",
 		"source" : "D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject"
 	},
 	"version" : 
