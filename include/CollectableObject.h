@@ -5,15 +5,15 @@
 class CollectableObject : public StaticObject
 {
 public:
-	CollectableObject();
+	CollectableObject(const sf::Vector2f location = sf::Vector2f(0, 0),
+		const sf::Vector2f size = sf::Vector2f(0, 0),
+		int state = 0,
+		const sf::Sprite& (*)(char) = nullptr);
 
-	virtual void draw()const;
-	virtual void playTurn();
-	virtual void reset();
 	bool is_collected()const;
-	virtual char identify()const;
-	virtual void collect();
 
 private:
 	bool m_is_collected;
+
+	virtual void collect();
 };

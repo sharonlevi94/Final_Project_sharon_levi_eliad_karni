@@ -6,13 +6,14 @@ using std::vector;
 class EffectsHolder
 {
 public:
-	EffectsHolder();
+	EffectsHolder(const sf::Vector2f& Size = sf::Vector2f(0,0));
 
 	void loadEffects();
 	const sf::Sound& getSound(int) const;
-	const sf::Texture& getTexture(char)const;
+	const sf::Sprite& getTexture(char)const;
 
 private:
-	vector<sf::Texture> m_textures;
+	vector<sf::Sprite*> m_textures;
 	vector<sf::Sound> m_sounds;
+	sf::Vector2f size;
 };

@@ -1,19 +1,25 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "EffectsHolder.h"
 #include <vector>
 using std::vector;
 class GameObject
 {
 public:
-	GameObject(const sf::Vector2f location, const sf::Vector2f size, int state);
+	GameObject(
+		const sf::Vector2f location = sf::Vector2f(0,0), 
+		const sf::Vector2f size = sf::Vector2f(0, 0), 
+		int state = 0,
+		const sf::Sprite& (*)(char) = nullptr);
+
 	virtual void draw() const;
 	virtual char identify()const;
-	virtual void playTurn(char (*)(const sf::Vector2f&));
+	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
 	virtual void reset(const sf::Vector2f&);
 
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize()const;
-	const int getState()const;
+	int getState()const;
 	const sf::Sprite* getSprite()const;
 
 private:

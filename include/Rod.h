@@ -7,7 +7,7 @@ public:
 	Rod();
 	virtual void draw();
 	virtual char identify()const;
-	virtual void playTurn(char (*)(const sf::Vector2f&));
+	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
 	virtual void reset(const sf::Vector2f&);
 	virtual int getState()const;
 
