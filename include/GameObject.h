@@ -1,19 +1,18 @@
 #pragma once
-#include "MovingObject.h"
 #include <SFML/Graphics.hpp>
-class Enemy: public MovingObjects
+#include <vector>
+class GameObjects
 {
 public:
-	Enemy();
-	virtual void draw() const;
+	GameObjects(const sf::Vector2f location, const sf::Vector2f size, int state);
+	virtual void draw() const = 0;
 	virtual char identify()const;
-	virtual void reset(const sf::Vector2f&);
 	virtual void playTurn(char (*)(const sf::Vector2f&));
-	virtual void fall();
+	virtual void reset(const sf::Vector2f&);
 
 private:
 	sf::Vector2f m_location;
 	sf::Vector2f m_size;
-	int state;
+	int m_state;
 	std::vector<sf::Sprite*> m_sprites;
 };

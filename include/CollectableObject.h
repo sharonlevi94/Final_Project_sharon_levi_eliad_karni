@@ -1,9 +1,11 @@
 #pragma once
-#include "CollectableObject.h"
-class Gift :public CollectableObject
+
+#include "StaticObject.h"
+
+class CollectableObject : public StaticObject
 {
 public:
-	Gift();
+	CollectableObject();
 
 	virtual void draw()const;
 	virtual void playTurn();

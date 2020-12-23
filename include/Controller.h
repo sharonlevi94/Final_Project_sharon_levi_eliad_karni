@@ -3,7 +3,7 @@
 #include "Menu.h"
 #include "GameState.h"
 #include "EffectsHolder.h"
-#include "MovingObjects.h"
+#include "MovingObject.h"
 #include <SFML/Graphics.hpp>
 class Controller
 {
@@ -18,11 +18,3 @@ private:
 	EffectsHolder m_effects;
 	vector<MovingObjects*> m_movingObjects;
 };
-
-Controller::Controller()
-{
-}
-
-Controller::~Controller()
-{
-}

@@ -19,11 +19,3 @@ private:
 	int m_score;
 	int m_lifes;
 };
-
-GameState::GameState()
-{
-}
-
-GameState::~GameState()
-{
-}

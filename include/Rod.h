@@ -1,18 +1,19 @@
 #pragma once
-#include "Enemy.h"
-class FoolEnemy: public Enemy
+#include "StaticObject.h"
+
+class Rod : public GameObjects
 {
 public:
-	FoolEnemy();
-	virtual void draw() const;
+	Rod();
+	virtual void draw();
 	virtual char identify()const;
-	virtual void reset(const sf::Vector2f&);
 	virtual void playTurn(char (*)(const sf::Vector2f&));
-	virtual void fall();
+	virtual void reset(const sf::Vector2f&);
+	virtual int getState()const;
 
 private:
 	sf::Vector2f m_location;
 	sf::Vector2f m_size;
-	int state;
+	int m_state;
 	std::vector<sf::Sprite*> m_sprites;
 };

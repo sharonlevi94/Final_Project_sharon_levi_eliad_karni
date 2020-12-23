@@ -1,9 +1,9 @@
 #pragma once
-#include "Enemy.h"
-class FoolEnemy: public Enemy
+#include "GameObject.h"
+class MovingObjects : public  GameObjects
 {
 public:
-	FoolEnemy();
+	MovingObjects();
 	virtual void draw() const;
 	virtual char identify()const;
 	virtual void reset(const sf::Vector2f&);
