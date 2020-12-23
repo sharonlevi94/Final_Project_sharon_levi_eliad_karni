@@ -3,19 +3,18 @@
 class GameState
 {
 public:
-	GameState();
-	~GameState();
+	GameState          ();
 
-	void draw();
-	void levelup();
-	void collectedCoin();
-	void died();
+	void draw          ();
+	void levelup       ();
+	void collectedCoin ();
+	void died          ();
 
 private:
-	sf::Vector2f m_size;
+	sf::Vector2f     m_size;
 	sf::Vector2f m_location;
-	sf::Time m_clock;
-	int m_level;
-	int m_score;
-	int m_lifes;
+	sf::Time        m_clock;
+	int             m_level;
+	int             m_score;
+	int             m_lifes;
 };
