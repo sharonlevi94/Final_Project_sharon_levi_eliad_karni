@@ -1,6 +1,6 @@
 #pragma once
-
-class Ladder
+#include "StaticObject.h"
+class Ladder: public StaticObject
 {
 public:
 	Ladder();

@@ -57,6 +57,15 @@
     <ClInclude Include="C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\CollectableObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Wall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Rod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Ladder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\CMakeLists.txt" />
@@ -68,8 +77,5 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{04AA4433-2903-3E84-B128-546E8AE3E4FE}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

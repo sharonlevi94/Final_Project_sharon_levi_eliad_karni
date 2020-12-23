@@ -15,5 +15,5 @@ public:
 	virtual void collect();
 
 private:
-	
+	bool m_is_collected;
 };

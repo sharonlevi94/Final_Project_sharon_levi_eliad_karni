@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Board" Collapsed="true">
+    <Position X="1.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAYIAAAAAAAAAAAAAFBAACIgAAA=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Board.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coin">
+    <Position X="9.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQAAAGAAAAAAAAAQIABAAAACAAAAAAAAAAAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Coin.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller" Collapsed="true">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAAAAgCAEUAAAQAAAAQEAAAAAAAACAAIAAQAAAAAAAA=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Controller.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy">
+    <Position X="5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAgAEAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Enemy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataReader" Collapsed="true">
+    <Position X="4.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAAAAAAABAAIAAAAAAAAAAAAAACEAAAAAAA=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\DataReader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EffectsHolder" Collapsed="true">
+    <Position X="1.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAEAAAAAgAAEAAAAAAAAAAAAAAAAAACAAAAAAg=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\EffectsHolder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQIAAAAEAIABAAAAARIIAAAgACAAAAAAAAAAAAoAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovingObject">
+    <Position X="3.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAAAAAAAAAAIAAAAAABAIAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\MovingObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticObject">
+    <Position X="12.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAAAAAAAIAQIAAAAAACAAAAAAAAAAAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\StaticObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameState" Collapsed="true">
+    <Position X="3" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgIAAAABAAAAAAAAAAIIAAAQAAgAAQAAAAAAAAoAIAA=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\GameState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SmartEnemy">
+    <Position X="2.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAAAAAAAAAQIAAAAAACAIAAAAAAABAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\SmartEnemy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RandEnemy">
+    <Position X="5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAAAAAAAAAQIAAABAACAIAAAAAAAAAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\RandEnemy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FoolEnemy">
+    <Position X="7.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAAAAAAAAAQIAAAAQACAIAAAAAAAAAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\FoolEnemy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gift">
+    <Position X="11.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQAAAGAAAAAAAAAQIAAAAAACAAAAAAAAAEAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Gift.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAIIAAAACAAAIAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Menu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAAAAAEAAAAAAAAAQIAAAAAACAIAAAAAAAAAQgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollectableObject">
+    <Position X="10.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQAAAGAAAAAAAAEAIAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\CollectableObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wall">
+    <Position X="14" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAAEAAAAAAAAAQIAAAAAAAAAAAQAAAAAAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Wall.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rod">
+    <Position X="16.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAAEAAAAAAAAAQIAAAAAAAAAAgAAAAAAAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Rod.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ladder" Collapsed="true">
+    <Position X="4.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAAEAAAAAAAAAQIAAABAAAAAAAAAAAAAAAgAAAQ=</HashCode>
+      <FileName>C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\include\Ladder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

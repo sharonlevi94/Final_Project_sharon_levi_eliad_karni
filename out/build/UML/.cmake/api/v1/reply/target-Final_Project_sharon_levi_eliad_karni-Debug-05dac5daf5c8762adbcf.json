@@ -108,7 +108,7 @@
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				17
+				20
 			]
 		}
 	],
@@ -201,14 +201,17 @@
 				13,
 				14,
 				15,
-				16
+				16,
+				17,
+				18,
+				19
 			]
 		},
 		{
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				17
+				20
 			]
 		}
 	],
@@ -297,6 +300,21 @@
 		{
 			"backtrace" : 6,
 			"path" : "include/CollectableObject.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "include/Wall.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "include/Rod.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "include/Ladder.h",
 			"sourceGroupIndex" : 0
 		},
 		{
