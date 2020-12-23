@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include <SFML/Graphics.hpp>
-class StaticObject : public GameObjects
+class StaticObject : public GameObject
 {
 public:
 	StaticObject();

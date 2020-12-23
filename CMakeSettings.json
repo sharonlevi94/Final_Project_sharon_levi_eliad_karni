@@ -13,7 +13,7 @@
       "variables": []
     },
     {
-      "name": "For UML",
+      "name": "UML",
       "generator": "Visual Studio 16 2019 Win64",
       "configurationType": "Debug",
       "buildRoot": "${projectDir}\\out\\build\\${name}",

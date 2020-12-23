@@ -1,7 +1,7 @@
 #pragma once
 #include "MovingObject.h"
 #include <SFML/Graphics.hpp>
-class Enemy: public MovingObjects
+class Enemy: public MovingObject
 {
 public:
 	Enemy();

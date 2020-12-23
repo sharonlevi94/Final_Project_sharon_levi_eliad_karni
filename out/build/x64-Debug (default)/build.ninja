@@ -39,7 +39,7 @@ include CMakeFiles\rules.ninja
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -63,15 +63,6 @@ build CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\src\Final_Project_sha
   TARGET_COMPILE_PDB = CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\
   TARGET_PDB = Final_Project_sharon_levi_eliad_karni.pdb
 
-build CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\src\MovingObject.cpp.obj: CXX_COMPILER__Final_Project_sharon_levi_eliad_karni_Debug ..\..\..\src\MovingObject.cpp || cmake_object_order_depends_target_Final_Project_sharon_levi_eliad_karni
-  DEFINES = -DSFML_STATIC
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /permissive- -std:c++17
-  INCLUDES = -I..\..\..\include -IC:\SFML\SFML-2.5.1\include
-  OBJECT_DIR = CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir
-  OBJECT_FILE_DIR = CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\
-  TARGET_PDB = Final_Project_sharon_levi_eliad_karni.pdb
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Final_Project_sharon_levi_eliad_karni
@@ -80,7 +71,7 @@ build CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\src\MovingObject.cpp.
 #############################################
 # Link the executable Final_Project_sharon_levi_eliad_karni.exe
 
-build Final_Project_sharon_levi_eliad_karni.exe: CXX_EXECUTABLE_LINKER__Final_Project_sharon_levi_eliad_karni_Debug CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\src\Final_Project_sharon_levi_eliad_karni.cpp.obj CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\src\MovingObject.cpp.obj | C$:\SFML\SFML-2.5.1\lib\sfml-graphics-s-d.lib C$:\SFML\SFML-2.5.1\lib\sfml-main-d.lib C$:\SFML\SFML-2.5.1\lib\sfml-window-s-d.lib C$:\SFML\SFML-2.5.1\lib\sfml-system-s-d.lib C$:\SFML\SFML-2.5.1\lib\freetype.lib
+build Final_Project_sharon_levi_eliad_karni.exe: CXX_EXECUTABLE_LINKER__Final_Project_sharon_levi_eliad_karni_Debug CMakeFiles\Final_Project_sharon_levi_eliad_karni.dir\src\Final_Project_sharon_levi_eliad_karni.cpp.obj | C$:\SFML\SFML-2.5.1\lib\sfml-graphics-s-d.lib C$:\SFML\SFML-2.5.1\lib\sfml-main-d.lib C$:\SFML\SFML-2.5.1\lib\sfml-window-s-d.lib C$:\SFML\SFML-2.5.1\lib\sfml-system-s-d.lib C$:\SFML\SFML-2.5.1\lib\freetype.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = C:\SFML\SFML-2.5.1\lib\sfml-graphics-s-d.lib  C:\SFML\SFML-2.5.1\lib\sfml-main-d.lib  C:\SFML\SFML-2.5.1\lib\sfml-window-s-d.lib  C:\SFML\SFML-2.5.1\lib\sfml-system-s-d.lib  winmm.lib  gdi32.lib  OpenGL32.lib  C:\SFML\SFML-2.5.1\lib\freetype.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -97,7 +88,7 @@ build Final_Project_sharon_levi_eliad_karni.exe: CXX_EXECUTABLE_LINKER__Final_Pr
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject" -B"D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni -B"C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -106,7 +97,7 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/CMakeLists.txt
+# C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/CMakeLists.txt
 # =============================================================================
 
 
@@ -114,7 +105,7 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 # Utility command for edit_cache
 
 build include\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)\include" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\include" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -125,7 +116,7 @@ build include\edit_cache: phony include\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build include\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)\include" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject" -B"D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\include" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni -B"C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -134,7 +125,7 @@ build include\rebuild_cache: phony include\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/CMakeLists.txt
+# C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/CMakeLists.txt
 # =============================================================================
 
 
@@ -142,7 +133,7 @@ build include\rebuild_cache: phony include\CMakeFiles\rebuild_cache.util
 # Utility command for edit_cache
 
 build src\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)\src" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\src" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -153,7 +144,7 @@ build src\edit_cache: phony src\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build src\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)\src" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject" -B"D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\x64-Debug (default)""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\src" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni -B"C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -171,21 +162,21 @@ build Final_Project_sharon_levi_eliad_karni: phony Final_Project_sharon_levi_eli
 # =============================================================================
 
 #############################################
-# Folder: D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/out/build/x64-Debug (default)
+# Folder: C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)
 
 build all: phony Final_Project_sharon_levi_eliad_karni.exe include\all src\all
 
 # =============================================================================
 
 #############################################
-# Folder: D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/out/build/x64-Debug (default)/include
+# Folder: C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/include
 
 build include\all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/out/build/x64-Debug (default)/src
+# Folder: C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/src
 
 build src\all: phony
 

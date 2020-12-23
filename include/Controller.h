@@ -16,5 +16,5 @@ private:
 	Menu m_menu;
 	GameState m_gameState;
 	EffectsHolder m_effects;
-	vector<MovingObjects*> m_movingObjects;
+	vector<MovingObject*> m_movingObjects;
 };

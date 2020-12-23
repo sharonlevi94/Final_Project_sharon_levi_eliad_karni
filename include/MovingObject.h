@@ -1,9 +1,9 @@
 #pragma once
 #include "GameObject.h"
-class MovingObjects : public  GameObjects
+class MovingObject : public GameObject
 {
 public:
-	MovingObjects();
+	MovingObject();
 	virtual void draw() const;
 	virtual char identify()const;
 	virtual void reset(const sf::Vector2f&);

@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
-class GameObjects
+class GameObject
 {
 public:
-	GameObjects(const sf::Vector2f location, const sf::Vector2f size, int state);
-	virtual void draw() const = 0;
+	GameObject(const sf::Vector2f location, const sf::Vector2f size, int state);
+	virtual void draw() const;
 	virtual char identify()const;
 	virtual void playTurn(char (*)(const sf::Vector2f&));
 	virtual void reset(const sf::Vector2f&);

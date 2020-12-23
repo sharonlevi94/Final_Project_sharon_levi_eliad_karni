@@ -1,7 +1,7 @@
 #pragma once
 #include "StaticObject.h"
 
-class Wall : public GameObjects
+class Wall : public StaticObject
 {
 public:
 	Wall();

@@ -10,7 +10,7 @@ public:
 	//------------------------- method section -------------------------------
 
 	bool isThereNextLevel()const;
-	vector<vector<GameObjects*>> readNextLevel();
+	vector<vector<GameObject*>> readNextLevel();
 private:
 	//--------------------- privete methods section --------------------------
 

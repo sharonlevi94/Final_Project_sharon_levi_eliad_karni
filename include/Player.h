@@ -1,6 +1,6 @@
 #pragma once
 #include "MovingObject.h"
-class Player : public MovingObjects
+class Player : public MovingObject
 {
 public:
 	Player();
