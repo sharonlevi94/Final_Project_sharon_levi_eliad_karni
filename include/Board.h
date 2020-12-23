@@ -16,11 +16,12 @@ public:
 	void draw(const EffectsHolder&)              const;
 	vector<GameObject*> loadLevel();
 	bool is_next_lvl_exist()                  const;
-	char getContent(const sf::Vector2f& location)const;
+	const GameObject* getContent(const sf::Vector2f& location)const;
 
 	int getLevelTime()const;
 
 private:
+	vector<vector<GameObject*>> m_map;
 	sf::Vector2f m_size;
 	sf::Vector2f m_location;
 	DataReader m_levelReader;
