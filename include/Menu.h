@@ -12,4 +12,6 @@ public:
 private:
 	sf::Vector2f m_size;
 	sf::Vector2f m_location;
+	//add music
+
 };

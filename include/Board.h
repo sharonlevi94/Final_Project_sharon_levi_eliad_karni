@@ -6,8 +6,8 @@
 #include "EffectsHolder.h"
 #include "Coin.h"
 #include <SFML/Graphics.hpp>
-
 using std::vector;
+
 class Board
 {
 public:
