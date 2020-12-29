@@ -1,3 +1,0 @@
-D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/out/build/UML/CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir
-D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/out/build/UML/CMakeFiles/ALL_BUILD.dir
-D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/out/build/UML/CMakeFiles/ZERO_CHECK.dir

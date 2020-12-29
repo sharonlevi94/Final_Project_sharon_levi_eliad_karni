@@ -13,9 +13,9 @@ class Board
 public:
 	Board();
 
-	void draw(const EffectsHolder&)              const;
+	void draw(sf::RenderWindow& window)const;
 	vector<GameObject*> loadLevel();
-	bool is_next_lvl_exist()                  const;
+	bool is_next_lvl_exist()const;
 	const GameObject* getContent(const sf::Vector2f& location)const;
 
 	int getLevelTime()const;
@@ -26,4 +26,6 @@ private:
 	sf::Vector2f m_location;
 	DataReader m_levelReader;
 	int m_levelTime;
+	bool m_timeLimit;
+	sf::RectangleShape m_background;
 };

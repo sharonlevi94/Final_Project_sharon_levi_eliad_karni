@@ -13,7 +13,7 @@ public:
 	const sf::Sprite& getTexture(char)const;
 
 private:
-	vector<sf::Sprite*> m_textures;
+	vector<sf::Sprite*> m_sprites;
 	vector<sf::Sound> m_sounds;
 	sf::Vector2f size;
 };

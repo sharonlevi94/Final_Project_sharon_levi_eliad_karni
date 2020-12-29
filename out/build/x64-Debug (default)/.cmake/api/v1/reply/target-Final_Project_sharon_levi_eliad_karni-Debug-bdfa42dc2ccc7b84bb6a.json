@@ -59,12 +59,6 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 16,
-				"parent" : 0
-			},
-			{
-				"command" : 4,
-				"file" : 0,
 				"line" : 17,
 				"parent" : 0
 			}
@@ -97,7 +91,7 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "D:/Projects/Visual Studio Projects/gitHub/semester1_oop_finalProject/include"
+					"path" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/include"
 				},
 				{
 					"backtrace" : 2,
@@ -108,7 +102,10 @@
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				20
+				0,
+				1,
+				2,
+				3
 			]
 		}
 	],
@@ -176,36 +173,13 @@
 	"sourceGroups" : 
 	[
 		{
-			"name" : "Header Files",
+			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
 				0,
 				1,
 				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12,
-				13,
-				14,
-				15,
-				16,
-				17,
-				18,
-				19
-			]
-		},
-		{
-			"name" : "Source Files",
-			"sourceIndexes" : 
-			[
-				20
+				3
 			]
 		}
 	],
@@ -213,109 +187,27 @@
 	[
 		{
 			"backtrace" : 6,
-			"path" : "include/Board.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Coin.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Controller.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Enemy.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/DataReader.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/EffectsHolder.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/GameObject.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/MovingObject.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/StaticObject.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/GameState.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/SmartEnemy.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/RandEnemy.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/FoolEnemy.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Gift.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Menu.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Player.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/CollectableObject.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Wall.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Rod.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"path" : "include/Ladder.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 7,
 			"compileGroupIndex" : 0,
 			"path" : "src/Final_Project_sharon_levi_eliad_karni.cpp",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/Board.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/DataReader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/Utilities.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"
