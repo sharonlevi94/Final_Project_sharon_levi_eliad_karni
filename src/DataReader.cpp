@@ -22,8 +22,8 @@ DataReader::~DataReader() {
 }
 //========================================================================
 void DataReader::receiveLevelParameters(){
-	m_boardReader >> m_fileSize.x >> m_fileSize.y;
-	m_boardReader >> m_timeLevel;
+	m_boardReader >> m_levelSize.x >> m_levelSize.y;
+	m_boardReader >> m_levelTime;
 	char eat_space;
 	m_boardReader >> eat_space;
 }
@@ -32,7 +32,7 @@ void DataReader::receiveLevelParameters(){
   This function return true if a new level is exist in the inputed file
   or false if all the levels is over.
 */
-bool DataReader::isThereNextLevel() {
+bool DataReader::isThereNextLevel()const {
 	return (!this->m_boardReader.eof());
 }
 //========================================================================
@@ -41,9 +41,9 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 	if (this->isThereNextLevel()) {
 		char input;
 		this->receiveLevelParameters();
-		for (int i = 0; i < m_fileSize.x; i++) {
+		for (int i = 0; i < m_levelSize.x; i++) {
 			std::vector<GameObject*> row = {};
-			for (int j = 0; j < m_fileSize.y; j++) {
+			for (int j = 0; j < m_levelSize.y; j++) {
 				m_boardReader >> input;
 				switch (input)
 				{
@@ -83,3 +83,6 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 	}
 	return newLevel;
 }
+//========================================================================
+sf::Vector2f DataReader::getLevelSize()const { return this->m_levelSize; }
+int DataReader::getLevelTime()const { return this->m_levelTime; }

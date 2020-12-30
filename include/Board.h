@@ -12,12 +12,13 @@ class Board
 {
 public:
 	Board();
+	~Board();
 
 	void draw(sf::RenderWindow& window)const;
-	vector<GameObject*> loadLevel();
+	void loadLevel();
 	bool is_next_lvl_exist()const;
-	const GameObject* getContent(const sf::Vector2f& location)const;
 
+	const GameObject* getContent(const sf::Vector2f& location)const;
 	int getLevelTime()const;
 
 private:

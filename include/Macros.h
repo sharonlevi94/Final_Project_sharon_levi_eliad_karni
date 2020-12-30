@@ -3,6 +3,8 @@
   This file contains :
   #1. Symbols of the game objects.
   #2. macros of the paths to the sprites & sounds of game
+  #3. macros of windows sizes.
+  #4. states of the game objects.
 */
 //========================== game objects symbols ============================
 

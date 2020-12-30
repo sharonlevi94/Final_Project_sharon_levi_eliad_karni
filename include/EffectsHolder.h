@@ -10,10 +10,12 @@ public:
 
 	void loadEffects();
 	const sf::Sound& getSound(int) const;
-	const sf::Sprite& getTexture(char)const;
+	const sf::Sprite& getsprite(char)const;
+	const sf::Sprite& getlevelSprite(int)const;
 
 private:
-	vector<sf::Sprite*> m_sprites;
+	vector<sf::Sprite*> m_levelSprites;
+	vector<sf::Sprite*> m_objectSprites;
 	vector<sf::Sound> m_sounds;
 	sf::Vector2f size;
 };

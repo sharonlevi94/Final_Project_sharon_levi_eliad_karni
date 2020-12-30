@@ -12,6 +12,7 @@ public:
 		int state = 0,
 		const sf::Sprite& (*)(char) = nullptr,
 		char type = '\0');
+	~GameObject();
 
 
 	virtual void draw     ()const;
