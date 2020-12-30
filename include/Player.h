@@ -6,9 +6,10 @@ class Player : public MovingObject
 public:
 	Player();
 
-	virtual void draw() const;
-	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
-	virtual void reset(const sf::Vector2f&);
+	virtual char identify() const override;
+	virtual void draw() const override;
+	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
+	virtual void reset(const sf::Vector2f&) override;
 	void dig(Wall&);
 
 private:

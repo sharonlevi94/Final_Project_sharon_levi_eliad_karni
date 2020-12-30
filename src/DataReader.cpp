@@ -3,7 +3,7 @@
 #include "Utilities.h"
 #include <vector>
 #include "Player.h"
-#include "Enemy.h"
+#include "SmartEnemy.h"
 #include "Coin.h"
 #include "Ladder.h"
 #include "Wall.h"
@@ -52,7 +52,7 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 					break;
 				}
 				case ENEMY: {
-					row.push_back(new Enemy);
+					row.push_back(new SmartEnemy);
 					break;
 				}
 				case COIN: {

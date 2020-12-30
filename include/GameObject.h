@@ -18,21 +18,19 @@ public:
 	virtual char identify ()const=0;
 	virtual void playTurn (const GameObject* (*)(const sf::Vector2f&));
 	virtual void reset    (const sf::Vector2f&);
+	void addSprite(const sf::Sprite& (*)(char));
 
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize    ()const;
 	int                 getState   ()const;
 	const sf::Sprite*   getSprite  ()const;
-	char identify()const;
-	void addSprite(const sf::Sprite& (*)(char));
-
+	
 private:
 	char m_type;
 	sf::Vector2f       m_location;
 	sf::Vector2f           m_size;
 	int                   m_state;
 	vector<sf::Sprite*> m_sprites;
-	
 
 	virtual void setState              (const int);
 	virtual void setLocation (const sf::Vector2f&);

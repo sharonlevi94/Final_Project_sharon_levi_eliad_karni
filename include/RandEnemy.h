@@ -6,6 +6,7 @@ public:
 	RandEnemy();
 
 	virtual void draw() const;
+	virtual char identify() const override;
 	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
 	virtual void reset(const sf::Vector2f&);
 

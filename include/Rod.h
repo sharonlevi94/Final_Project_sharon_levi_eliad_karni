@@ -5,10 +5,11 @@ class Rod : public StaticObject
 {
 public:
 	Rod();
-	virtual void draw();
-	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
-	virtual void reset(const sf::Vector2f&);
-	virtual int getState()const;
+	virtual void draw() const override;
+	virtual char identify() const override;
+	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
+	virtual void reset(const sf::Vector2f&) override;
+	virtual int getState()const ;
 
 private:
 	virtual void setState(const int);
