@@ -9,7 +9,8 @@
 #include "Wall.h"
 #include "Rod.h"
 using std::endl;
-//========================================================================
+//=============================== Constructor ================================
+\
 DataReader::DataReader(){
 	this->m_boardReader.open(BOARD_PATH);
 	if(!this->m_boardReader.is_open())

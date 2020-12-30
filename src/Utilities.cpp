@@ -1,6 +1,9 @@
+//============================= include section ==============================
 #include "Utilities.h"
 #include <stdlib.h>
 #include <iostream>
+//============================ functions section ==============================
+
 //========================================================================
 /* The function print the received error message and close the program
  * with -1 return value.
