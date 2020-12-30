@@ -6,10 +6,13 @@
 //============================== main section ================================
 int main()
 {
-	sf::RenderWindow window = sf::RenderWindow(sf::VideoMode::getDesktopMode(),"Rod Runner", sf::Style::Fullscreen);
+	sf::RenderWindow window = 
+		sf::RenderWindow(sf::VideoMode::getDesktopMode(),
+			"Rod Runner", sf::Style::Fullscreen);
+	
 	GameState gamestate;
 	window.draw(sf::RectangleShape());
-	gamestate(window.draw);
+	gamestate(window.sf::RenderTarget::draw);
 	//gamestate.draw(window);
 	Sleep(10000);
 	//gamestate.draw(&window.draw);

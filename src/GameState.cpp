@@ -11,7 +11,7 @@ GameState::GameState(const sf::Vector2f& location, const sf::Vector2f& size,
 	m_fontPtr(fontPtr){}
 //============================ methods section ===============================
 //============================================================================
-void GameState::draw (void (*drawFunc)(const sf::Drawable&)) {
+void GameState::draw (void (*drawFunc)(const sf::Drawable&, const sf::RenderStates&)) {
 	sf::Text text;
 	text.setFont(*this->m_fontPtr);
 	text.setString("level: " + this->m_level);
@@ -22,8 +22,8 @@ void GameState::draw (void (*drawFunc)(const sf::Drawable&)) {
 	sss.setPosition(this->m_location);
 	sss.setFillColor(sf::Color::Black);
 
-	drawFunc(text);
-	drawFunc(sss);
+	drawFunc(text, sf::RenderStates::Default);
+	drawFunc(sss, sf::RenderStates::Default);
 
 }
 //============================================================================
@@ -34,5 +34,6 @@ void GameState::collectedCoin() {
 }
 //============================================================================
 void GameState::died() {
-
+	--this->m_lifes;
+	this->m_clock.restart();
 }
