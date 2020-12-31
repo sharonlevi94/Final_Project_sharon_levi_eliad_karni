@@ -8,7 +8,7 @@
 #include "Ladder.h"
 #include "Wall.h"
 #include "Rod.h"
-using std::endl;
+using std::endl; 
 //========================================================================
 DataReader::DataReader(){
 	this->m_boardReader.open(BOARD_PATH);
