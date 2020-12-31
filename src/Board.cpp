@@ -3,12 +3,18 @@
 */
 #include <SFML/Graphics.hpp>
 #include "Board.h"
+#include "Macros.h"
 //==================== Constructors & distructors section ====================
 Board::Board()
 	: m_levelReader(DataReader()),
 	  m_background(sf::RectangleShape()),
-	  m_location(sf::Vector2f{ 0,0 }) {
-	
+	  m_location(sf::Vector2f{ 0,0 }){
+	this->m_size = m_levelReader.getLevelSize();
+	this->m_levelTime = m_levelReader.getLevelTime();
+	if (m_levelTime == NO_LEVEL_TIME)
+		this->m_timeLimit = false;
+	else
+		this->m_timeLimit = true;
 }
 
 //========================================================================

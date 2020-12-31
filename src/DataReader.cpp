@@ -10,11 +10,14 @@
 #include "Rod.h"
 using std::endl;
 //========================================================================
-DataReader::DataReader(){
+DataReader::DataReader() 
+	: m_levelSize({}),m_levelTime(NO_LEVEL_TIME){
 	this->m_boardReader.open(BOARD_PATH);
 	if(!this->m_boardReader.is_open())
 		terminate
 		("Cannot open the levels file, pls make sure the file is exist");
+
+	this->readNextLevel(); //read the first level
 }
 //========================================================================
 DataReader::~DataReader() {

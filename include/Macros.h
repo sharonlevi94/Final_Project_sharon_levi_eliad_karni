@@ -42,6 +42,7 @@ constexpr auto MESSAGE_HEIGHT = 400;
 //=============================== game rules =================================
 
 constexpr auto NUM_OF_LIFE = 3;
+constexpr auto NO_LEVEL_TIME = -1;
 
 //============================  map's file path ==============================
 constexpr auto BOARD_PATH = "Levels.txt";
