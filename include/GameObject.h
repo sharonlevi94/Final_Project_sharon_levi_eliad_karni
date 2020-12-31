@@ -14,7 +14,7 @@ public:
 		char type = '\0');
 	virtual ~GameObject();
 
-	virtual void draw     ()const=0;
+	virtual void draw     (void (*drawFunc)(const sf::Drawable&))const=0;
 	virtual char identify ()const=0;
 	virtual void playTurn (const GameObject* (*)(const sf::Vector2f&));
 	virtual void reset    (const sf::Vector2f&);
@@ -35,6 +35,4 @@ private:
 	virtual void setState              (const int);
 	virtual void setLocation (const sf::Vector2f&);
 	virtual void setSprite     (const sf::Sprite&);
-	virtual void setState(const int);
-	virtual void setLocation(const sf::Vector2f&);
 };

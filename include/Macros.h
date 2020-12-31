@@ -36,16 +36,12 @@ constexpr auto NOT_CLIMBED = 11;
 
 //=========================== Window's parameters ============================
 
-constexpr auto WINDOW_HEIGHT = 1000;
-constexpr auto WINDOW_WIDTH = 1800;
 constexpr auto MESSAGE_WIDTH = 600;
 constexpr auto MESSAGE_HEIGHT = 400;
-constexpr auto MESSAGE_LOC_HEIGHT = WINDOW_HEIGHT / 2 - MESSAGE_HEIGHT;
-constexpr auto MESSAGE_LOC_WIDTH = WINDOW_WIDTH / 2 - MESSAGE_WIDTH;
-constexpr auto MENU_HEIGHT = WINDOW_HEIGHT;
-constexpr auto MENU_WIDTH = WINDOW_WIDTH / 10;
-constexpr auto BOARD_HEIGHT = WINDOW_HEIGHT;
-constexpr auto BOARD_WIDTH = WINDOW_WIDTH - MENU_WIDTH;
 
-//========================== saving map's file path ===========================
+//=============================== game rules =================================
+
+constexpr auto NUM_OF_LIFE = 3;
+
+//============================  map's file path ==============================
 constexpr auto BOARD_PATH = "Levels.txt";

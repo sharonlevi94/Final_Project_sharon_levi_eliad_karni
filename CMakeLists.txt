@@ -15,6 +15,7 @@ endif ()
 add_executable (Final_Project_sharon_levi_eliad_karni "")
 add_subdirectory (include)
 add_subdirectory (src)
+add_subdirectory (resources)
 #//add_subdirectory (resources)
 # TODO: Add tests and install targets if needed.
 

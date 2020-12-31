@@ -3,13 +3,14 @@
 */
 #include <SFML/Graphics.hpp>
 #include "Board.h"
-//========================================================================
+//==================== Constructors & distructors section ====================
 Board::Board()
 	: m_levelReader(DataReader()),
 	  m_background(sf::RectangleShape()),
 	  m_location(sf::Vector2f{ 0,0 }) {
 	
 }
+
 //========================================================================
 Board::~Board() {
 	for (int i = 0; i < m_size.x; i++)

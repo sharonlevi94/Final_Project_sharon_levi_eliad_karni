@@ -12,7 +12,7 @@ public:
 		int state = 0,
 		const sf::Sprite& (*)(char) = nullptr);
 	
-	virtual void        draw                                          ()const;
+	virtual void        draw     (void (*drawFunc)(const sf::Drawable&))const;
 	virtual char        identify                                      ()const;
 	virtual void        playTurn (const GameObject* (*)(const sf::Vector2f&));
 	virtual void        reset                           (const sf::Vector2f&);
@@ -30,14 +30,4 @@ private:
 	virtual void        setState                                  (const int);
 	virtual void        setLocation                     (const sf::Vector2f&);
 	virtual void        setSprite                         (const sf::Sprite&);
-
-	virtual void draw() const;
-	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
-	virtual void reset(const sf::Vector2f&);
-
-private:
-
-	virtual void collect();
-	virtual void setState(const int);
-
 };
