@@ -17,7 +17,8 @@ public:
 		sf::Font* = nullptr);
 	//=========================== method section =============================
 
-	void draw(void(*)(const sf::Drawable&, const sf::RenderStates&));
+	void draw(sf::RenderWindow&);
+	//(void(*)(const sf::Drawable&, const sf::RenderStates&));
 	void levelup       ();
 	void collectedCoin ();
 	void died          ();

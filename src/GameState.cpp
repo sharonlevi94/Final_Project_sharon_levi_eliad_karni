@@ -11,20 +11,22 @@ GameState::GameState(const sf::Vector2f& location, const sf::Vector2f& size,
 	m_fontPtr(fontPtr){}
 //============================ methods section ===============================
 //============================================================================
-void GameState::draw (void (*drawFunc)(const sf::Drawable&, const sf::RenderStates&)) {
+void GameState::draw (sf::RenderWindow& window){
+//(void (*drawFunc)(const sf::Drawable&, const sf::RenderStates&)) {
+	sf::Font font;
+	font.loadFromFile("ARIALBD.TTF");
 	sf::Text text;
-	text.setFont(*this->m_fontPtr);
-	text.setString("level: " + this->m_level);
+	text.setFont(font);
+	//text.setFont(*this->m_fontPtr);
+	text.setString("level: ");
 	text.setFillColor(sf::Color::White);
-	text.setCharacterSize(20);
 	text.setPosition(this->m_location);
-	sf::RectangleShape sss(this->m_size);
+	sf::RectangleShape sss(sf::Vector2f(300,300));
 	sss.setPosition(this->m_location);
-	sss.setFillColor(sf::Color::Black);
+	sss.setFillColor(sf::Color::Green);
 
-	drawFunc(text, sf::RenderStates::Default);
-	drawFunc(sss, sf::RenderStates::Default);
-
+	window.draw(sss);
+	window.draw(text);
 }
 //============================================================================
 void GameState::levelup() { ++this->m_level; }

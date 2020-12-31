@@ -149,6 +149,42 @@
 		},
 		{
 			"path" : "src/CMakeLists.txt"
+		},
+		{
+			"path" : "resources/CMakeLists.txt"
+		},
+		{
+			"path" : "resources/player.png"
+		},
+		{
+			"path" : "resources/coin.png"
+		},
+		{
+			"path" : "resources/enemy.png"
+		},
+		{
+			"path" : "resources/eraser.png"
+		},
+		{
+			"path" : "resources/ladder.png"
+		},
+		{
+			"path" : "resources/menu.png"
+		},
+		{
+			"path" : "resources/rod.png"
+		},
+		{
+			"path" : "resources/save.png"
+		},
+		{
+			"path" : "resources/trash.png"
+		},
+		{
+			"path" : "resources/wall.png"
+		},
+		{
+			"path" : "resources/ARIALBD.TTF"
 		}
 	],
 	"kind" : "cmakeFiles",
