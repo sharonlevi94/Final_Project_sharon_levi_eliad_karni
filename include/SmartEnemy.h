@@ -20,6 +20,7 @@ public:
 
 private:
 
-	virtual void setState(const int);
-	virtual void setLocation(const sf::Vector2f&);
+	virtual void setState(const int) override;
+	virtual void setLocation(const sf::Vector2f&) override;
+	virtual void setSprite(const sf::Sprite&) override;
 };
