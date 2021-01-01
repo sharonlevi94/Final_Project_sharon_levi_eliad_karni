@@ -17,11 +17,12 @@ public:
 		sf::Font* = nullptr);
 	//=========================== method section =============================
 
-	void draw(sf::RenderWindow&);
-	//(void(*)(const sf::Drawable&, const sf::RenderStates&));
+	void draw//(sf::RenderWindow&);
+	(void(*)(const sf::Drawable&, const sf::RenderStates&));
 	void levelup       ();
 	void collectedCoin ();
 	void died          ();
+	void test(void (GameState::* aaa)());
 
 private:
 	//======================== members section ===============================

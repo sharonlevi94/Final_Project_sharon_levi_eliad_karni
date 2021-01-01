@@ -5,7 +5,8 @@
 Controller::Controller() :m_board(Board()), m_effects(EffectsHolder()),
 m_gameobjects({}), m_gameState(GameState()), m_menu(Menu()),
 m_player(nullptr),
-m_window(sf::RenderWindow(sf::VideoMode(800, 600), "Lode Runner")) {}
+m_window(sf::RenderWindow(sf::VideoMode::getDesktopMode(), 
+	"Rod Runner", sf::Style::Fullscreen)) {}
 
 //============================== gets section ================================
 //============================ methods section ===============================

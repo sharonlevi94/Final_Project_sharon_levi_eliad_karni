@@ -11,9 +11,9 @@ GameState::GameState(const sf::Vector2f& location, const sf::Vector2f& size,
 	m_fontPtr(fontPtr){}
 //============================ methods section ===============================
 //============================================================================
-void GameState::draw (sf::RenderWindow& window){
-//(void (*drawFunc)(const sf::Drawable&, const sf::RenderStates&)) {
-	sf::Font font;
+void GameState::draw //(sf::RenderWindow& window){
+  (void (*drawFunc)(const sf::Drawable&, const sf::RenderStates&)) {
+		sf::Font font;
 	font.loadFromFile("ARIALBD.TTF");
 	sf::Text text;
 	text.setFont(font);
@@ -25,8 +25,9 @@ void GameState::draw (sf::RenderWindow& window){
 	sss.setPosition(this->m_location);
 	sss.setFillColor(sf::Color::Green);
 
-	window.draw(sss);
-	window.draw(text);
+	drawFunc(sss, sf::RenderStates());
+	//window.draw(sss);
+	//window.draw(text);
 }
 //============================================================================
 void GameState::levelup() { ++this->m_level; }
@@ -38,4 +39,8 @@ void GameState::collectedCoin() {
 void GameState::died() {
 	--this->m_lifes;
 	this->m_clock.restart();
+}
+
+void GameState::test(void (GameState::*died)()) {
+	std::cout << "yey!!!!";
 }
