@@ -22,6 +22,6 @@ int main()
 	//gamestate.test(gamestate.died);
 	//gamestate.draw(window);
 	window.display();
-	Sleep(1000);
+	Sleep(5000);
 	return EXIT_SUCCESS;
 }
