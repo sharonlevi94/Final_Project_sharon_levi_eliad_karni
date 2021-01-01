@@ -13,8 +13,9 @@ int main()
 	sf::RenderWindow window(sf::VideoMode::getDesktopMode(),"Lode Runner", sf::Style::Fullscreen);
 		//(sf::VideoMode(800,600),"Rod Runner");
 	GameState gamestate;
+	
 	sf::Texture tex;
-	tex.loadFromFile("MenuBackground.jpg");
+	tex.loadFromFile("level1.jpeg");
 	sf::Sprite sp;
 	sp.setTexture(tex);
 	window.draw(sp);

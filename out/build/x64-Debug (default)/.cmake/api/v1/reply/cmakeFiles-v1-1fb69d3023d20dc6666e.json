@@ -188,6 +188,9 @@
 		},
 		{
 			"path" : "resources/MenuBackground.jpg"
+		},
+		{
+			"path" : "resources/level1.jpeg"
 		}
 	],
 	"kind" : "cmakeFiles",
