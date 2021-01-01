@@ -17,7 +17,12 @@ constexpr auto LADDER = 'H';
 constexpr auto ROD = '-';
 constexpr auto PLAYER_ON_LADDER = 'S';
 
+//obj size:
+constexpr auto OBJ_HEIGHT = 30; //y
+constexpr auto OBJ_WIDTH = 30; //x
+
 //========================== game objects states ============================
+
 //player/enemy
 constexpr auto STAND = 1;
 constexpr auto WALK_LEFT = 2;
@@ -45,4 +50,5 @@ constexpr auto NUM_OF_LIFE = 3;
 constexpr auto NO_LEVEL_TIME = -1;
 
 //============================  map's file path ==============================
+
 constexpr auto BOARD_PATH = "Levels.txt";

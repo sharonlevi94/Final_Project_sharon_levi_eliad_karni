@@ -1,0 +1,11 @@
+# ninja log v5
+1	1144	631195145	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Board.cpp.obj	3737d27e9dfc8b5e
+4	1498	631195146	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	35a342789a58928a
+6	52	631195803	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/GameObject.cpp.obj	2ab631939605602d
+7	901	631195852	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/MovingObject.cpp.obj	7f0e5e2801e6bf03
+1	1246	631197987	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Board.cpp.obj	3737d27e9dfc8b5e
+2	1187	631198180	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Board.cpp.obj	3737d27e9dfc8b5e
+4	1043	631198338	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/MovingObject.cpp.obj	7f0e5e2801e6bf03
+7	1070	631198338	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Player.cpp.obj	8d028d2145e71ac
+4	917	631198821	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Enemy.cpp.obj	6ae6a28db60eb7c9
+7	934	631198821	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/SmartEnemy.cpp.obj	3f17e2435ae84c2

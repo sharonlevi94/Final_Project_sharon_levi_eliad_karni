@@ -51,11 +51,15 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 				switch (input)
 				{
 				case PLAYER: {
-					row.push_back(new Player);
+					row.push_back(new Player(sf::Vector2f((float)i,(float)j),
+						sf::Vector2f((float)OBJ_WIDTH,(float)OBJ_HEIGHT),
+						STAND,nullptr,PLAYER));
 					break;
 				}
 				case ENEMY: {
-					row.push_back(new SmartEnemy);
+					row.push_back(new SmartEnemy(sf::Vector2f((float)i, (float)j),
+						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
+						STAND, nullptr, ENEMY));
 					break;
 				}
 				case COIN: {
