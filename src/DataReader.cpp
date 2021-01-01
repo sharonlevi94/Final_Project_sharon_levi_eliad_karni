@@ -54,6 +54,7 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 				m_boardReader >> input;
 				switch (input)
 				{
+				/*
 				case PLAYER: {
 					row.push_back(new Player(sf::Vector2f((float)i,(float)j),
 						sf::Vector2f((float)OBJ_WIDTH,(float)OBJ_HEIGHT),
@@ -67,21 +68,30 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 					break;
 				}
 				case COIN: {
-					row.push_back(new Coin);
+					row.push_back(new Coin(sf::Vector2f((float)i, (float)j),
+						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
+						STAND, nullptr, COIN));
 					break;
 				}
 				case WALL: {
-					row.push_back(new Wall);
+					row.push_back(new Wall(sf::Vector2f((float)i, (float)j),
+						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
+						STAND, nullptr, WALL));
 					break;
 				}
 				case LADDER: {
-					row.push_back(new Ladder);
+					row.push_back(new Ladder(sf::Vector2f((float)i, (float)j),
+						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
+						STAND, nullptr, LADDER));
 					break;
 				}
 				case ROD: {
-					row.push_back(new Rod);
+					row.push_back(new Rod(sf::Vector2f((float)i, (float)j),
+						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
+						STAND, nullptr, ROD));
 					break;
 				}
+				*/
 				default: {
 					row.push_back(NULL); // inputed ' '
 					break;

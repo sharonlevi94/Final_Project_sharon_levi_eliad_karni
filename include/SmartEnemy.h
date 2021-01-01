@@ -10,10 +10,11 @@ public:
 		const sf::Sprite& (*)(char),
 		char type);
 
-	virtual void draw(void (*drawFunc)(const sf::Drawable&)) const override;
+	virtual sf::Drawable draw() const override;
 	virtual char identify() const override;
 	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
 	virtual void reset(const sf::Vector2f&) override;
+	virtual void addSprite(const sf::Sprite&)override;
 
 	virtual void fall(int) override;
 	virtual bool isMovePossible()const  override;

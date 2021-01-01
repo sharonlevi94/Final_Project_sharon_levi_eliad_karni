@@ -44,7 +44,7 @@ bool Board::is_next_lvl_exist()const {
 }
 //========================================================================
 const GameObject* Board::getContent(const sf::Vector2f& location)const{
-	return m_map[location.x][location.y];
+	return m_map[(unsigned)location.x][(unsigned)location.y];
 }
 //========================================================================
 int Board::getLevelTime()const {

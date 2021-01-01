@@ -13,5 +13,5 @@ public:
 	virtual bool isMovePossible()const=0;
 
 private:
-	
+	virtual void setLocation (const sf::Vector2f&)=0;
 };
