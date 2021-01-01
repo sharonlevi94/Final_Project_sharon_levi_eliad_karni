@@ -15,6 +15,9 @@ public:
 	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
 	virtual void reset(const sf::Vector2f&) override;
 
+	virtual void fall(int) override;
+	virtual bool isMovePossible()const  override;
+
 private:
 
 	virtual void setState(const int);

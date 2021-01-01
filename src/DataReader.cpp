@@ -40,10 +40,14 @@ bool DataReader::isThereNextLevel()const {
 }
 //========================================================================
 vector<vector<GameObject*>> DataReader::readNextLevel() {
+	//1. allocate 2D vector of game objs
 	vector<vector<GameObject*>> newLevel = {};
+	//2. check first if there is more level in the file
 	if (this->isThereNextLevel()) {
 		char input;
+		//3. receive size & time of the level
 		this->receiveLevelParameters();
+	    //4. read the level itself from the file
 		for (int i = 0; i < m_levelSize.x; i++) {
 			std::vector<GameObject*> row = {};
 			for (int j = 0; j < m_levelSize.y; j++) {
