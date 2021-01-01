@@ -19,4 +19,5 @@
                                      #"Menu.cpp"
                                      "GameState.cpp"
                                      #"StaticObject.cpp"
-                                     "main.cpp")
+                                     "main.cpp"
+                                     "MenuBackground.jpg")

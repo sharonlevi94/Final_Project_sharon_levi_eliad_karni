@@ -14,11 +14,11 @@ public:
 		char type = '\0');
 	virtual ~GameObject();
 
-	virtual void draw     (void (*drawFunc)(const sf::Drawable&))const=0;
-	virtual char identify ()const=0;
-	virtual void playTurn (const GameObject* (*)(const sf::Vector2f&));
-	virtual void reset    (const sf::Vector2f&);
-	void addSprite(const sf::Sprite& (*)(char));
+	virtual sf::Drawable draw()const = 0;
+	virtual char identify ()const = 0;
+	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) = 0;
+	virtual void reset(const sf::Vector2f&) = 0;
+	void addSprite(const sf::Sprite& (*)(char)) = 0;
 
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize    ()const;

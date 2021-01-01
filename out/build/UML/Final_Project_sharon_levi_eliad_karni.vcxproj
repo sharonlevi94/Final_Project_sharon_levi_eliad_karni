@@ -105,6 +105,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\src\GameState.cpp" />
     <ClCompile Include="D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\src\main.cpp" />
+    <Image Include="D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\src\MenuBackground.jpg">
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\out\build\UML\ZERO_CHECK.vcxproj">

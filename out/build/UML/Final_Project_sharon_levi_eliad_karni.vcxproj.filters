@@ -12,6 +12,14 @@
     <CustomBuild Include="D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="D:\Projects\Visual Studio Projects\gitHub\semester1_oop_finalProject\src\MenuBackground.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{148598F0-A20E-3620-BAF1-9A035BCC1C4A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{033594E2-228E-3006-A1A5-49FB91A36031}</UniqueIdentifier>
     </Filter>
