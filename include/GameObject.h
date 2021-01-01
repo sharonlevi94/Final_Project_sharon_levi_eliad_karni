@@ -2,16 +2,18 @@
 #include <SFML/Graphics.hpp>
 #include "EffectsHolder.h"
 #include <vector>
+#include "Macros.h"
 using std::vector;
 class GameObject
 {
 public:
 	GameObject(
 		const sf::Vector2f location = sf::Vector2f(0,0), 
-		const sf::Vector2f size = sf::Vector2f(0, 0), 
-		int state = 0,
+		const sf::Vector2f size = sf::Vector2f(OBJ_WIDTH, OBJ_HEIGHT), 
+		int state = STAND,
 		const sf::Sprite& (*)(char) = nullptr,
 		char type = '\0');
+
 	virtual ~GameObject();
 
 	virtual sf::Drawable draw()const = 0;
@@ -32,7 +34,7 @@ private:
 	int                   m_state;
 	vector<sf::Sprite*> m_sprites;
 
-	virtual void setState              (const int);
-	virtual void setLocation (const sf::Vector2f&);
-	virtual void setSprite     (const sf::Sprite&);
+	virtual void setState              (const int)=0;
+	virtual void setLocation (const sf::Vector2f&)=0;
+	virtual void setSprite     (const sf::Sprite&)=0;
 };

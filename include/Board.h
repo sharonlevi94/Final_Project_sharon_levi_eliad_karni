@@ -29,4 +29,5 @@ private:
 	int m_levelTime;
 	bool m_timeLimit;
 	sf::RectangleShape m_background;
+	vector<sf::Sprite*> m_levelSprites;
 };

@@ -9,13 +9,15 @@
 #include "Wall.h"
 #include "Rod.h"
 using std::endl;
-//=============================== Constructor ================================
-\
-DataReader::DataReader(){
+//========================================================================
+DataReader::DataReader() 
+	: m_levelSize({}),m_levelTime(NO_LEVEL_TIME){
 	this->m_boardReader.open(BOARD_PATH);
 	if(!this->m_boardReader.is_open())
 		terminate
 		("Cannot open the levels file, pls make sure the file is exist");
+
+	this->readNextLevel(); //read the first level
 }
 //========================================================================
 DataReader::~DataReader() {
@@ -38,10 +40,14 @@ bool DataReader::isThereNextLevel()const {
 }
 //========================================================================
 vector<vector<GameObject*>> DataReader::readNextLevel() {
+	//1. allocate 2D vector of game objs
 	vector<vector<GameObject*>> newLevel = {};
+	//2. check first if there is more level in the file
 	if (this->isThereNextLevel()) {
 		char input;
+		//3. receive size & time of the level
 		this->receiveLevelParameters();
+	    //4. read the level itself from the file
 		for (int i = 0; i < m_levelSize.x; i++) {
 			std::vector<GameObject*> row = {};
 			for (int j = 0; j < m_levelSize.y; j++) {
@@ -49,11 +55,15 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 				switch (input)
 				{
 				case PLAYER: {
-					row.push_back(new Player);
+					row.push_back(new Player(sf::Vector2f((float)i,(float)j),
+						sf::Vector2f((float)OBJ_WIDTH,(float)OBJ_HEIGHT),
+						STAND,nullptr,PLAYER));
 					break;
 				}
 				case ENEMY: {
-					row.push_back(new SmartEnemy);
+					row.push_back(new SmartEnemy(sf::Vector2f((float)i, (float)j),
+						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
+						STAND, nullptr, ENEMY));
 					break;
 				}
 				case COIN: {
