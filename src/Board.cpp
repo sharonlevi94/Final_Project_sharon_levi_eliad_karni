@@ -16,8 +16,9 @@ Board::Board()
 		this->m_timeLimit = false;
 	else
 		this->m_timeLimit = true;
-
+	this->m_levelNumber = 1;
 	this->m_background.setSize(m_size);
+	
 	
 	m_levelReader.readNextLevel();
 }

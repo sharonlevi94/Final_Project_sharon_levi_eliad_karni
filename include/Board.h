@@ -27,7 +27,8 @@ private:
 	sf::Vector2f m_location;
 	DataReader m_levelReader;
 	int m_levelTime;
+	int m_levelNumber;
 	bool m_timeLimit;
 	sf::RectangleShape m_background;
-	vector<sf::Sprite*> m_levelSprites;
+	//sf::Sprite m_levelSprites;
 };
