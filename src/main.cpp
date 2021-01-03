@@ -3,8 +3,6 @@
 #include "SFML/Graphics.hpp"
 #include <Windows.h>
 #include <stdlib.h>
-#include <inttypes.h>
-#include <functional>
 //============================== main section ================================
 int main()
 {
@@ -15,14 +13,22 @@ int main()
 	GameState gamestate;
 	
 	sf::Texture tex;
-	tex.loadFromFile("level1.jpeg");
+	tex.loadFromFile("MenuBackground.jpg");
 	sf::Sprite sp;
+	
 	sp.setTexture(tex);
 	window.draw(sp);
 	
 	//gamestate.test(gamestate.died);
 	//gamestate.draw(window);
 	window.display();
-	Sleep(5000);
+	sf::Event event{};
+	while (window.waitEvent(event)) {
+		switch (event.type) {
+		case sf::Event::KeyPressed:
+			window.close();
+			break;
+		}
+	}
 	return EXIT_SUCCESS;
 }
