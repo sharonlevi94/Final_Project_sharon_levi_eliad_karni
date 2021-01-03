@@ -18,6 +18,7 @@ EffectsHolder::EffectsHolder() {
 sf::Texture* EffectsHolder::getTexture(int textureKey) const{
 	return(this->m_texture[textureKey]);
 }
+//============================================================================
 sf::Sound* EffectsHolder::getSound(int soundKey) const{
 	return(this->m_sound[soundKey]);
 }
