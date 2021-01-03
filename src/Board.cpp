@@ -5,22 +5,24 @@
 #include "Board.h"
 #include "Macros.h"
 #include "EffectsHolder.h"
+#include <vector>
+using std::vector;
 //==================== Constructors & distructors section ====================
-Board::Board()
+Board::Board(vector<sf::Sprite> levelsprites)
 	: m_levelReader(DataReader()),
-	  m_background(sf::RectangleShape()),
-	  m_location(sf::Vector2f{ 0,0 }){
+	m_background(sf::RectangleShape()),
+	m_location(sf::Vector2f{ 0,0 }),
+	m_levelSprites(levelsprites)
+{
+	this->m_levelNumber = 0;
 	this->m_size = m_levelReader.getLevelSize();
 	this->m_levelTime = m_levelReader.getLevelTime();
 	if (m_levelTime == NO_LEVEL_TIME)
 		this->m_timeLimit = false;
 	else
 		this->m_timeLimit = true;
-	this->m_levelNumber = 1;
-	this->m_background.setSize(m_size);
-	
-	
-	m_levelReader.readNextLevel();
+
+	this->loadLevel();
 }
 
 //========================================================================
@@ -35,9 +37,12 @@ void Board::draw(sf::RenderWindow& window)const{
 }
 //========================================================================
 void Board::loadLevel(){
+	
 	this->m_map = m_levelReader.readNextLevel(); //read the 1st lvl 
 	m_size = m_levelReader.getLevelSize();
 	m_background.setSize(m_size);
+	
+	this->m_levelNumber++;
 }
 //========================================================================
 bool Board::is_next_lvl_exist()const {
@@ -51,3 +56,8 @@ const GameObject* Board::getContent(const sf::Vector2f& location)const{
 int Board::getLevelTime()const {
 		return m_levelTime;
 }
+//========================================================================
+bool Board::is_time_lvl_exist()const {
+	return this->m_timeLimit;
+}
+//========================================================================

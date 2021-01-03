@@ -12,7 +12,7 @@ public:
 	sf::Texture* getTexture(int)const;
 
 private:
-	vector<sf::Sprite*> m_levelSprites;
+	vector<sf::Texture> m_levels;
 	vector<sf::Sprite*> m_objectSprites;
 	vector<sf::Sound> m_sounds;
 	sf::Vector2f size;
