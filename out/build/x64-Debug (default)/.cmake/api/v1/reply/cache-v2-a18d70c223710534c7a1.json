@@ -35,7 +35,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)"
+			"value" : "c:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -511,7 +511,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni"
+			"value" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -523,7 +523,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/install/x64-Debug (default)"
+			"value" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/install/x64-Debug (default)"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -551,7 +551,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/PROGRA~2/MICROS~4/2019/COMMUN~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe"
+			"value" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1047,7 +1047,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)"
+			"value" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)"
 		},
 		{
 			"name" : "Final_Project_sharon_levi_eliad_karni_SOURCE_DIR",
@@ -1059,7 +1059,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni"
+			"value" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni"
 		},
 		{
 			"name" : "FreeType_LIB",

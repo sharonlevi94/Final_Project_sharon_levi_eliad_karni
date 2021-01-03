@@ -12,6 +12,10 @@ EffectsHolder::EffectsHolder() {
 	this->m_texture.insert(std::pair<int, sf::Texture*>
 		(MENU_BACKGROUND, new sf::Texture));
 	this->m_texture[MENU_BACKGROUND]->loadFromFile(MENU_BACKGROUND_PATH);
+
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(LEVEL1, new sf::Texture));
+	this->m_texture[LEVEL1]->loadFromFile(LEVEL1_BACKGROUND_PATH);
 }
 
 //============================== gets section ================================

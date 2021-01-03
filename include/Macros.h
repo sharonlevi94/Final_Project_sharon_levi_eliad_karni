@@ -55,7 +55,14 @@ constexpr auto BOARD_PATH = "Levels.txt";
 
 //---------------------------- picture section -------------------------------
 constexpr auto MENU_BACKGROUND_PATH = "MenuBackground.jpg";
+constexpr auto LEVEL1_BACKGROUND_PATH = "level1.jpeg";
 
 //============================ game files consts =============================
 
-constexpr auto MENU_BACKGROUND = 1
+constexpr auto MENU_BACKGROUND = 1;
+
+//============================ levels consts =============================
+constexpr auto LEVEL1 = 1;
+constexpr auto LEVEL2 = 2;
+constexpr auto LEVEL3 = 3;
+constexpr auto LEVEL4 = 4;
