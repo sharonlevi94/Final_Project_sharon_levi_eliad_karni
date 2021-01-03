@@ -1,10 +1,13 @@
 # ninja log v5
-26	1016	631205360	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Utilities.cpp.obj	9e1c228abca08263
-20	1214	631205360	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/GameState.cpp.obj	ff88f6157f0ae8b8
-1	1317	631205360	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Board.cpp.obj	af961521a1ad30c4
-12	1412	631205360	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/DataReader.cpp.obj	56dfa804af8a2e56
-6	2761	631205361	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	8d31597f6f8951de
-2762	3650	631205362	Final_Project_sharon_levi_eliad_karni.exe	944db02568656e6
-1	451	631223274	Final_Project_sharon_levi_eliad_karni.exe	e5f99e9bcac4342f
-1	1652	631223849	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	8d31597f6f8951de
-1652	2160	631223849	Final_Project_sharon_levi_eliad_karni.exe	e5f99e9bcac4342f
+10	1083	631208235	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Utilities.cpp.obj	3c143e5bd0d92eba
+13	1536	631208235	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/GameState.cpp.obj	6aad8f938b5d55db
+0	1610	631208235	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Board.cpp.obj	3737d27e9dfc8b5e
+7	1757	631208235	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/DataReader.cpp.obj	be13a64cca29fb
+3	2207	631208236	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	35a342789a58928a
+2208	2842	631208236	Final_Project_sharon_levi_eliad_karni.exe	a03908987d2808e5
+1	1187	631208537	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	35a342789a58928a
+1187	1359	631208537	Final_Project_sharon_levi_eliad_karni.exe	a03908987d2808e5
+1	1217	631208694	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	35a342789a58928a
+1217	1382	631208694	Final_Project_sharon_levi_eliad_karni.exe	a03908987d2808e5
+2	1192	631208904	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	35a342789a58928a
+1193	1360	631208904	Final_Project_sharon_levi_eliad_karni.exe	a03908987d2808e5
