@@ -8,7 +8,7 @@ if (MSVC)
     add_compile_options (/permissive-)
 endif ()
 
-add_executable (Final_Project_sharon_levi_eliad_karni WIN32 "")
+add_executable (Final_Project_sharon_levi_eliad_karni "")
 
 add_subdirectory (include)
 add_subdirectory (src)

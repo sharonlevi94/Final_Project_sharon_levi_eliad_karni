@@ -3,8 +3,6 @@
 #include "SFML/Graphics.hpp"
 #include <Windows.h>
 #include <stdlib.h>
-#include <inttypes.h>
-#include <functional>
 //============================== main section ================================
 int main()
 {
@@ -16,6 +14,7 @@ int main()
 	sf::Texture tex;
 	tex.loadFromFile("MenuBackground.jpg");
 	sf::Sprite sp;
+	
 	sp.setTexture(tex);
 	window.draw(sp);
 	
