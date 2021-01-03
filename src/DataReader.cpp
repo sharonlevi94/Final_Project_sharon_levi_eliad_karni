@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "SmartEnemy.h"
 #include "Coin.h"
-#include "Ladder.h"
+#include "Ladder.h" 
 #include "Wall.h"
 #include "Rod.h"
 using std::endl;
