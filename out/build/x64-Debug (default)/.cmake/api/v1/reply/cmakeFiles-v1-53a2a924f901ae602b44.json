@@ -190,7 +190,7 @@
 			"path" : "resources/MenuBackground.jpg"
 		},
 		{
-			"path" : "resources/Logo.png"
+			"path" : "resources/level1.jpeg"
 		}
 	],
 	"kind" : "cmakeFiles",

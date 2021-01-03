@@ -50,5 +50,12 @@ constexpr auto NUM_OF_LIFE = 3;
 constexpr auto NO_LEVEL_TIME = -1;
 
 //============================  map's file path ==============================
-
+//-------------------------- data files section ------------------------------
 constexpr auto BOARD_PATH = "Levels.txt";
+
+//---------------------------- picture section -------------------------------
+constexpr auto MENU_BACKGROUND_PATH = "MenuBackground.jpg";
+
+//============================ game files consts =============================
+
+constexpr auto MENU_BACKGROUND = 1

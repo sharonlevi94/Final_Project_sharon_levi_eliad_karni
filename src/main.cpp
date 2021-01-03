@@ -13,7 +13,7 @@ int main()
 	GameState gamestate;
 	
 	sf::Texture tex;
-	tex.loadFromFile("level1.jpeg");
+	tex.loadFromFile("MenuBackground.jpg");
 	sf::Sprite sp;
 	
 	sp.setTexture(tex);
@@ -22,6 +22,13 @@ int main()
 	//gamestate.test(gamestate.died);
 	//gamestate.draw(window);
 	window.display();
-	Sleep(5000);
+	sf::Event event{};
+	while (window.waitEvent(event)) {
+		switch (event.type) {
+		case sf::Event::KeyPressed:
+			window.close();
+			break;
+		}
+	}
 	return EXIT_SUCCESS;
 }
