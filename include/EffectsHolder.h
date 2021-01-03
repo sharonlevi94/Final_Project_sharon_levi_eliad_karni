@@ -11,9 +11,9 @@ public:
 	sf::Sound* getSound(int) const;
 	sf::Texture* getTexture(int)const;
 
-private:
 	vector<sf::Texture> m_levels;
 	vector<sf::Sprite*> m_objectSprites;
 	vector<sf::Sound> m_sounds;
 	sf::Vector2f size;
+private:
 };
