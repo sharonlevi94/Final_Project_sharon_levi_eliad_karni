@@ -10,7 +10,7 @@ public:
 		const sf::Sprite& (*)(char) = nullptr,
 		char type = '\0');
 
-	virtual sf::Drawable draw()const override;
+	virtual void draw(sf::RenderWindow&, const sf::Texture&)const override;
 	//virtual char identify() const override;
 	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
 	virtual void reset(const sf::Vector2f& )override;

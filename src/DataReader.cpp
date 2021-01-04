@@ -58,38 +58,38 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 				case PLAYER: {
 					row.push_back(new Player(sf::Vector2f((float)i,(float)j),
 						sf::Vector2f((float)OBJ_WIDTH,(float)OBJ_HEIGHT),
-						STAND,nullptr,PLAYER));
+						STAND,PLAYER));
 					break;
 				}
 						   /*
 				case ENEMY: {
 					row.push_back(new SmartEnemy(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND, nullptr, ENEMY));
+						STAND, ENEMY));
 					break;
 				}
 				case COIN: {
 					row.push_back(new Coin(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND, nullptr, COIN));
+						STAND, COIN));
 					break;
 				}
 				case WALL: {
 					row.push_back(new Wall(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND, nullptr, WALL));
+						STAND, WALL));
 					break;
 				}
 				case LADDER: {
 					row.push_back(new Ladder(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND, nullptr, LADDER));
+						STAND,  LADDER));
 					break;
 				}
 				case ROD: {
 					row.push_back(new Rod(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND, nullptr, ROD));
+						STAND,  ROD));
 					break;
 				}
 				*/
