@@ -13,7 +13,7 @@ public:
 		int state = STAND,
 		char type = NULL);
 
-	virtual ~GameObject();
+	//virtual ~GameObject();
 	                                      
 	virtual void draw(sf::RenderWindow& ,const sf::Texture&)const = 0;
 	char identify ()const;
