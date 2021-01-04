@@ -6,7 +6,7 @@
                                      #"MovingObject.cpp"
                                      #"Coin.cpp"
                                      #"CollectableObject.cpp"
-                                     #"Controller.cpp"
+                                     "Controller.cpp"
                                      "EffectsHolder.cpp"
                                      #"Enemy.cpp"
                                      #"FoolEnemy.cpp"

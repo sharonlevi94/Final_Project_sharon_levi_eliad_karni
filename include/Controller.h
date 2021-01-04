@@ -14,7 +14,7 @@ public:
 	Controller();
 	void run();
 	void runGame();
-	void runMenu();
+	char runMenu();
 	void resetLevel() const;
 	void play_turns();
 
