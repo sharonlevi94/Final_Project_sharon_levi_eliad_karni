@@ -1,6 +1,6 @@
 ﻿target_sources (Final_Project_sharon_levi_eliad_karni PRIVATE 
                                      "Board.cpp"
-                                     "DataReader.cpp"
+                                     #"DataReader.cpp"
                                      "Utilities.cpp"
                                      #"Player.cpp"
                                      #"MovingObject.cpp"
@@ -17,7 +17,7 @@
                                      #"Rod.cpp"
                                      #"Wall.cpp"
                                      "Menu.cpp"
-                                     "GameState.cpp"
+                                     #"GameState.cpp"
                                      #"GameObject.cpp"
                                      #"StaticObject.cpp"
                                      "main.cpp")

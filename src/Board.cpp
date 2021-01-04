@@ -8,28 +8,30 @@
 #include <vector>
 using std::vector;
 //==================== Constructors & distructors section ====================
-Board::Board()
-	: m_levelReader(DataReader()),
+Board::Board(sf::Vector2u size)
+	: /*m_levelReader(DataReader()),*/
 	m_background(sf::RectangleShape()),
 	m_location(sf::Vector2f{ 0,0 }),
 	m_effectsHolder(EffectsHolder()),
-	m_levelNumber(0)
+	m_levelNumber(1),
+	m_size((sf::Vector2f)size)
 {
 	this->loadNewLevel();
 }
 //========================================================================
-Board::~Board() {
+/*Board::~Board() {
 	for (int i = 0; i < m_size.x; i++)
 		for (int j = 0; j < m_size.y; j++)
 			m_map[i][j]->~GameObject();
-}
+}*/
 //========================================================================
 void Board::draw(sf::RenderWindow& window)const{
 	window.draw(m_background);
 }
 //========================================================================
-void Board::loadNewLevel(){
+void Board::loadNewLevel(/* sf::Texture *texturelevel */){
 	this->m_levelNumber++;
+	/*
 	//read new level & size from the dataReader:
 	this->m_map = m_levelReader.readNextLevel();  
 	m_size = m_levelReader.getLevelSize();
@@ -38,21 +40,21 @@ void Board::loadNewLevel(){
 	if (m_levelTime == NO_LEVEL_TIME)
 		this->m_timeLimit = false;
 	else
-		this->m_timeLimit = true;
+		this->m_timeLimit = true;*/
 	//set background of the level:
 	m_background.setSize(m_size);
 	m_background.setPosition(m_location);
-	m_background.setTexture(m_effectsHolder.getTexture(m_levelNumber));
+	m_background.setTexture(&m_effectsHolder.getTexture(m_levelNumber));
 	//m_background.setTexture(*textureLevel);
 }
 //========================================================================
-bool Board::is_next_lvl_exist()const {
+/*bool Board::is_next_lvl_exist()const {
 	return m_levelReader.isThereNextLevel();
-}
+}*/
 //========================================================================
-const GameObject* Board::getContent(const sf::Vector2f& location)const{
+/*const GameObject* Board::getContent(const sf::Vector2f& location)const{
 	return m_map[(unsigned)location.x][(unsigned)location.y];
-}
+}*/
 //========================================================================
 int Board::getLevelTime()const {
 		return m_levelTime;
