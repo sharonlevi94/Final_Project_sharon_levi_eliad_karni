@@ -17,7 +17,7 @@ int main()
 	{
 		window.clear();
 		menu.draw(window);
-		//board.draw(window);
+		//board.draw(window);     
 		window.display();
 		sf::Event event{};
 		while (window.waitEvent(event)) {

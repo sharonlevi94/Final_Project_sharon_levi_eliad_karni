@@ -1,5 +1,6 @@
 //============================= include section ==============================
 #include "Utilities.h"
+#include <SFML/Graphics.hpp>
 #include <stdlib.h>
 #include <iostream>
 //============================ functions section ==============================
