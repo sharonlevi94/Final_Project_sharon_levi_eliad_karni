@@ -16,8 +16,13 @@ int main()
 	while (window.isOpen())
 	{
 		window.clear();
+<<<<<<< HEAD
 		//menu.draw(window);
 		board.draw(window);
+=======
+		menu.draw(window);
+		//board.draw(window);     
+>>>>>>> 97644c149c3d175cd5c84664ed1eda893b8fe68a
 		window.display();
 		sf::Event event{};
 		while (window.waitEvent(event)) {
