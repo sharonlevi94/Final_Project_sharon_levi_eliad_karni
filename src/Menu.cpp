@@ -38,24 +38,28 @@ char Menu::handleClick(const sf::Vector2f& location) const{
 bool Menu::pointingHundle(const sf::Vector2f& location) {
 	bool changed = false;
 	if (this->m_startGameButton.getGlobalBounds().contains(location)) {
-		if (this->m_startGameButton.getColor() != sf::Color::Blue) {
-			this->m_startGameButton.setColor(sf::Color::Blue);
+		if (this->m_startGameButton.getFillColor() != sf::Color::Yellow) {
+			this->m_startGameButton.setFillColor(sf::Color::Yellow);
+			this->m_startGameButton.setOutlineThickness(2);
 			changed = true;
 		}
 	}
-	else if (this->m_startGameButton.getColor() != sf::Color::White) {
-		this->m_startGameButton.setColor(sf::Color::White);
+	else if (this->m_startGameButton.getFillColor() != sf::Color::White) {
+		this->m_startGameButton.setFillColor(sf::Color::White);
+		this->m_startGameButton.setOutlineThickness(0);
 		changed = true;
 	}
 	
 	if (this->m_quitGameButton.getGlobalBounds().contains(location)) {
-		if (this->m_quitGameButton.getColor() != sf::Color::Blue) {
-			this->m_quitGameButton.setColor(sf::Color::Blue);
+		if (this->m_quitGameButton.getFillColor() != sf::Color::Yellow) {
+			this->m_quitGameButton.setFillColor(sf::Color::Yellow);
+			this->m_quitGameButton.setOutlineThickness(2);
 			changed = true;
 		}
 	}
-	else if (this->m_quitGameButton.getColor() != sf::Color::White) {
-		this->m_quitGameButton.setColor(sf::Color::White);
+	else if (this->m_quitGameButton.getFillColor() != sf::Color::White) {
+		this->m_quitGameButton.setFillColor(sf::Color::White);
+		this->m_quitGameButton.setOutlineThickness(0);
 		changed = true;
 	}
 	return(changed);
@@ -82,6 +86,7 @@ void Menu::calcStartButton(const EffectsHolder& effects) {
 	this->m_startGameButton.setString("START GAME!");
 	this->m_startGameButton.setFont(effects.getFont(ARIRL_FONT));
 	this->m_startGameButton.setFillColor(sf::Color::White);
+	this->m_startGameButton.setOutlineColor(sf::Color::Black);
 
 	this->m_startGameButton.setScale((float)(this->m_size.x / 2) /
 		this->m_GameLogo.getTexture()->getSize().x,
@@ -101,6 +106,7 @@ void Menu::calcQuitButton(const EffectsHolder& effects){
 	this->m_quitGameButton.setString("QUIT GAME");
 	this->m_quitGameButton.setFont(effects.getFont(ARIRL_FONT));
 	this->m_quitGameButton.setFillColor(sf::Color::White);
+	this->m_quitGameButton.setOutlineColor(sf::Color::Black);
 
 	this->m_quitGameButton.setScale((float)(this->m_size.x / 2) /
 		this->m_GameLogo.getTexture()->getSize().x,
