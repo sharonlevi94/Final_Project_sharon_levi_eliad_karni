@@ -70,5 +70,31 @@ void EffectsHolder::setFonts(){
 }
 //----------------------------------------------------------------------------
 void EffectsHolder::setObjects() {
-
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(PLAYER_T, new sf::Texture));
+	this->m_texture[PLAYER_T]->loadFromFile(PLAYER_PATH);
+	/*-------------------------------------------------*/
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(ENEMY_T, new sf::Texture));
+	this->m_texture[ENEMY_T]->loadFromFile(ENEMY_PATH);
+	/*-------------------------------------------------*/
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(COIN_T, new sf::Texture));
+	this->m_texture[COIN_T]->loadFromFile(COIN_PATH);
+	/*-------------------------------------------------*/
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(WALL_T, new sf::Texture));
+	this->m_texture[WALL_T]->loadFromFile(WALL_PATH);
+	/*-------------------------------------------------*/
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(LADDER_T, new sf::Texture));
+	this->m_texture[LADDER_T]->loadFromFile(LADDER_PATH);
+	/*-------------------------------------------------*/
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(ROD_T, new sf::Texture));
+	this->m_texture[ROD_T]->loadFromFile(ROD_PATH);
+	/*-------------------------------------------------*/
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(GIFT_T, new sf::Texture));
+	this->m_texture[GIFT_T]->loadFromFile(GIFT_PATH);
 }
