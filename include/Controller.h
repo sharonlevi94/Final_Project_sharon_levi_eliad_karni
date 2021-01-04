@@ -22,7 +22,7 @@ private:
 	sf::RenderWindow m_window;
 	//Board m_board;
 	Menu m_menu;
-	//GameState m_gameState;
+	GameState m_gameState;
 	EffectsHolder m_effects;
 	//vector <GameObject*> m_gameobjects;
 	//Player* m_player;

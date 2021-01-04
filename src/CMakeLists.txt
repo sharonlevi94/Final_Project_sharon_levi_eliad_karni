@@ -17,7 +17,7 @@
                                      #"Rod.cpp"
                                      #"Wall.cpp"
                                      "Menu.cpp"
-                                     #"GameState.cpp"
+                                     "GameState.cpp"
                                      #"GameObject.cpp"
                                      #"StaticObject.cpp"
                                      "main.cpp")

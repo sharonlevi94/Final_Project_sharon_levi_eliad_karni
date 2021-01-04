@@ -1,6 +1,7 @@
 //============================= include section ==============================
 #include "Controller.h"
 #include "Menu.h"
+#include "GameState.h"
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
@@ -8,13 +9,14 @@ Controller::Controller() :
 	m_window(sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Rod Runner", 
 		sf::Style::Fullscreen)),
 	/*m_board(Board()),
-	m_gameobjects({}), m_gameState(GameState()),
+	m_gameobjects({}),,
 	m_player(nullptr),*/
 	m_effects(EffectsHolder()),
-	m_menu() {
-	// because the 
+	m_menu(),
+	m_gameState() {
 	this->m_menu = Menu(Menu(this->m_effects, 
 		(sf::Vector2f)this->m_window.getSize(), sf::Vector2f(0, 0)));
+	this->m_gameState = GameState(this->m_effects, sf::Vector2f(500,1900));
 }
 
 //============================== gets section ================================
@@ -28,6 +30,8 @@ void Controller::run() {
 			break;
 		if (choose == 's')
 			this->runGame();
+		if (!this->m_window.isOpen())
+			break;
 	}
 }
 //============================================================================
@@ -68,7 +72,19 @@ char Controller::runMenu() {
 	return 'q';
 }
 //============================================================================
-void Controller::runGame() {}
+void Controller::runGame() {
+	while (this->m_window.isOpen()){
+		this->m_window.clear();
+		//boardreader
+		this->m_gameState.levelup(150);
+		while (true){
+			if (this->m_gameState.nextTurn()) {
+				this->m_gameState.draw(this->m_window);
+				this->m_window.display();
+			}
+		}
+	}
+}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

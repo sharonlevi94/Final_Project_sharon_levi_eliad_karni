@@ -65,8 +65,8 @@ void EffectsHolder::setLogos() {
 //============================================================================
 void EffectsHolder::setFonts(){
 	this->m_font.insert(std::pair<int, sf::Font*>
-		(ARIRL_FONT, new sf::Font));
-	this->m_font[ARIRL_FONT]->loadFromFile(ARIEL_FONT_PATH);
+		(ARIEL_FONT, new sf::Font));
+	this->m_font[ARIEL_FONT]->loadFromFile(ARIEL_FONT_PATH);
 }
 //----------------------------------------------------------------------------
 void EffectsHolder::setObjects() {

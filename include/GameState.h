@@ -1,6 +1,7 @@
 #pragma once
 //============================= include section ==============================
 #include <SFML/graphics.hpp>
+#include "EffectsHolder.h"
 #include <iostream>
 /*============================================================================
 * GameState
@@ -12,26 +13,27 @@ class GameState
 public:
 	//============== constructors and destructors section ====================
 
-	GameState          (const sf::Vector2f& location = sf::Vector2f(0,0),
-		const sf::Vector2f& size = sf::Vector2f(0,0), int levelTime = 0,
-		sf::Font* = nullptr);
+	GameState(const EffectsHolder& effects = EffectsHolder(),
+		const sf::Vector2f& location = sf::Vector2f(0,0),
+		int levelTime = 0, const sf::Vector2f& size = sf::Vector2f(0, 0));
 	//=========================== method section =============================
 
-	void draw//(sf::RenderWindow&);
-	(void(*)(const sf::Drawable&, const sf::RenderStates&));
-	void levelup       ();
+	void draw(sf::RenderWindow& window);
+	void levelup       (int);
 	void collectedCoin ();
 	void died          ();
-	void test(void (GameState::* aaa)());
+	bool nextTurn	   ();
 
 private:
 	//======================== members section ===============================
 	sf::Vector2f     m_size;
 	sf::Vector2f m_location;
 	sf::Clock       m_clock;
-	sf::Font*     m_fontPtr;
+	//recommanded to save Text as parameter thoe its heavy creating.
+	sf::Text	m_stateText;
 	int         m_levelTime;
 	int             m_level;
 	int             m_score;
 	int             m_lifes;
+	float		 m_turnTime;
 };
