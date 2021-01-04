@@ -21,4 +21,5 @@ private:
 
 	void setBackgrounds();
 	void setFonts();
+	void setObjects();
 };

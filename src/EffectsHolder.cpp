@@ -10,8 +10,9 @@ EffectsHolder::EffectsHolder() {
 	this->m_texture = {};
 	this->setBackgrounds();
 	this->setFonts();
+	this->setObjects();
 }
-
+//----------------------------------------------------------------------------
 EffectsHolder::~EffectsHolder(){
 	//delete textures allocations
 	for (auto iterator = this->m_texture.begin(); 
@@ -30,18 +31,18 @@ EffectsHolder::~EffectsHolder(){
 const sf::Texture& EffectsHolder::getTexture(int textureKey)const{
 	return (*this->m_texture.find(textureKey)->second);
 }
-//============================================================================
+//----------------------------------------------------------------------------
 const sf::Sound& EffectsHolder::getSound(int soundKey) const{
 	return(*this->m_sound.find(soundKey)->second);
 }
-//============================================================================
+//----------------------------------------------------------------------------
 const sf::Font& EffectsHolder::getFont(int fontKey) const{
 	return(*this->m_font.find(fontKey)->second);
 }
 //============================ methods section ===============================
 
 //============================ private section ===============================
-//============================== gets section ================================
+//============================== sets section ================================
 //============================ methods section ===============================
 void EffectsHolder::setBackgrounds(){
 	//adding menu background path
@@ -53,8 +54,13 @@ void EffectsHolder::setBackgrounds(){
 		(LEVEL1, new sf::Texture));
 	this->m_texture[LEVEL1]->loadFromFile(LEVEL1_BACKGROUND_PATH);
 }
+//----------------------------------------------------------------------------
 void EffectsHolder::setFonts(){
 	this->m_font.insert(std::pair<int, sf::Font*>
 		(ARIRL_FONT, new sf::Font));
 	this->m_font[ARIRL_FONT]->loadFromFile(ARIEL_FONT_PATH);
+}
+//----------------------------------------------------------------------------
+void EffectsHolder::setObjects() {
+
 }
