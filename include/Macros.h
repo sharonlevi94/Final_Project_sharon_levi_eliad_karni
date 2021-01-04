@@ -34,7 +34,7 @@ constexpr auto COLLECTED = 7;
 //wall
 constexpr auto EXIST = 8;
 constexpr auto DIGGED = 9;
-//ladder
+//ladder/rod
 constexpr auto CLIMBED = 10;
 constexpr auto NOT_CLIMBED = 11;
 //=========================== Window's parameters ============================

@@ -4,11 +4,7 @@
 class Enemy: public MovingObject
 {
 public:
-	Enemy(const sf::Vector2f location,
-		const sf::Vector2f size,
-		int state,
-		const sf::Sprite& (*)(char),
-		char type);
+	using MovingObject::MovingObject;
 
 	bool isCatchedPlayer(const sf::Vector2f&);
 private:

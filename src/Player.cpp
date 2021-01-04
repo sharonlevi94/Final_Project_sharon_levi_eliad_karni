@@ -8,10 +8,11 @@
 
 //============================ methods section ===============================
 void Player::draw(sf::RenderWindow& window,const sf::Texture& texture) const {
-	sf::Sprite sp;
-	sp.setTexture(texture);
-	window.draw(sp);
+	sf::Sprite player;
+	player.setTexture(texture);
+	window.draw(player);
 }
+
 
 
 //============================ private section ===============================
