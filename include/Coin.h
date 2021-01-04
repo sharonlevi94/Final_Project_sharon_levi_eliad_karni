@@ -14,7 +14,7 @@ public:
 		char type = '\0');
 	
 	virtual  sf::Drawable draw     ()const  override;
-	virtual char          identify ()const  override;
+	//virtual char          identify ()const  override;
 	virtual void          playTurn (const GameObject* (*)(const sf::Vector2f&))  override;
 	virtual void          reset    (const sf::Vector2f&)  override;
 	virtual void addSprite(const sf::Sprite&) override;
@@ -30,6 +30,6 @@ private:
 
 	virtual void        collect () override;
 	virtual void        setState (const int)  override;
-	virtual void        setLocation (const sf::Vector2f&) override;
+	//virtual void        setLocation (const sf::Vector2f&) override;
 	virtual void        setSprite  (const sf::Sprite&) override;
 };

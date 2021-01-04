@@ -11,7 +11,7 @@ public:
 		const sf::Sprite& (*)(char) = nullptr,
 		char type = '\0');
 
-	virtual char identify() const override;
+	//virtual char identify() const override;
 	virtual sf::Drawable draw() const override;
 	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
 	virtual void reset(const sf::Vector2f&) override;
@@ -23,7 +23,6 @@ public:
 	void dig(Wall&);
 
 private:
-
 	virtual void setState(const int) override;
 	virtual void setLocation(const sf::Vector2f&) override;
 	virtual void setSprite(const sf::Sprite&) override;

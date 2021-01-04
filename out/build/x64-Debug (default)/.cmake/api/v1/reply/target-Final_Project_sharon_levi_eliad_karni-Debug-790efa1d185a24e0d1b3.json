@@ -91,7 +91,7 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/include"
+					"path" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/include"
 				},
 				{
 					"backtrace" : 2,
@@ -106,9 +106,7 @@
 				1,
 				2,
 				3,
-				4,
-				5,
-				6
+				4
 			]
 		}
 	],
@@ -183,9 +181,7 @@
 				1,
 				2,
 				3,
-				4,
-				5,
-				6
+				4
 			]
 		}
 	],
@@ -195,12 +191,6 @@
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
 			"path" : "src/Board.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"compileGroupIndex" : 0,
-			"path" : "src/DataReader.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -219,12 +209,6 @@
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
 			"path" : "src/Menu.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"compileGroupIndex" : 0,
-			"path" : "src/GameState.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

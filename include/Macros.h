@@ -53,9 +53,21 @@ constexpr auto NO_LEVEL_TIME = -1;
 //-------------------------- data files section ------------------------------
 constexpr auto BOARD_PATH = "Levels.txt";
 
+//---------------------------------- fonts -----------------------------------
+constexpr auto ARIEL_FONT_PATH = "ARIALBD.TTF";
+
 //---------------------------- picture section -------------------------------
 constexpr auto MENU_BACKGROUND_PATH = "MenuBackground.jpg";
+constexpr auto LEVEL1_BACKGROUND_PATH = "level1.jpeg";
 
 //============================ game files consts =============================
+//------------------------------- backgrounds --------------------------------
+constexpr auto MENU_BACKGROUND = 1;
+constexpr auto LEVEL1 = 2;
+constexpr auto LEVEL2 = 3;
+constexpr auto LEVEL3 = 4;
+constexpr auto LEVEL4 = 5;
 
-constexpr auto MENU_BACKGROUND = 1
+//--------------------------------- sounds -----------------------------------
+//---------------------------------- fonst -----------------------------------
+constexpr auto ARIRL_FONT = 1;

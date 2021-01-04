@@ -1,34 +1,36 @@
 //============================= include section ==============================
-#include "GameState.h"
+#include "Menu.h"
+#include "Board.h"
 #include "SFML/Graphics.hpp"
 #include <Windows.h>
 #include <stdlib.h>
 //============================== main section ================================
 int main()
 {
-	//const sf::Drawable&, const sf::RenderStates&
-
 	sf::RenderWindow window(sf::VideoMode::getDesktopMode(),"Lode Runner", sf::Style::Fullscreen);
-		//(sf::VideoMode(800,600),"Rod Runner");
-	GameState gamestate;
+
+	//GameState gamestate;
+    //Menu menu;
+	Board board(window.getSize());
 	
-	sf::Texture tex;
-	tex.loadFromFile("MenuBackground.jpg");
-	sf::Sprite sp;
-	
-	sp.setTexture(tex);
-	window.draw(sp);
-	
-	//gamestate.test(gamestate.died);
-	//gamestate.draw(window);
-	window.display();
-	sf::Event event{};
-	while (window.waitEvent(event)) {
-		switch (event.type) {
-		case sf::Event::KeyPressed:
-			window.close();
-			break;
+	while (window.isOpen())
+	{
+		window.clear();
+		board.draw(window);
+		window.display();
+		sf::Event event{};
+		while (window.waitEvent(event)) {
+			switch (event.type) {
+			case sf::Event::KeyPressed:
+				window.close();
+				break;
+			case sf::Event::Closed:
+				window.close();
+				break;
+			}
 		}
 	}
+	//gamestate.test(gamestate.died);
+	//gamestate.draw(window);
 	return EXIT_SUCCESS;
 }

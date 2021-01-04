@@ -11,26 +11,25 @@ using std::vector;
 class Board
 {
 public:
-	Board(vector<sf::Sprite>);
-	~Board();
+	Board(sf::Vector2u);
+	//~Board();
 
 	void draw(sf::RenderWindow& window)const;
-	void loadLevel();
-	bool is_next_lvl_exist()const;
+	void loadNewLevel(/* sf::Texture* */);
+	//bool is_next_lvl_exist()const;
 	bool is_time_lvl_exist()const;
-	const GameObject* getContent(const sf::Vector2f& location)const;
+	//const GameObject* getContent(const sf::Vector2f& location)const;
 	int getLevelTime()const;
 	
 
 private:
-
-	vector<vector<GameObject*>> m_map;
+	//vector<vector<GameObject*>> m_map;
 	sf::Vector2f m_size;
 	sf::Vector2f m_location;
-	DataReader m_levelReader;
+	//DataReader m_levelReader;
 	int m_levelTime;
-	int m_levelNumber;
 	bool m_timeLimit;
 	sf::RectangleShape m_background;
-	vector<sf::Sprite> m_levelSprites;
+	EffectsHolder m_effectsHolder;
+	int m_levelNumber;
 };

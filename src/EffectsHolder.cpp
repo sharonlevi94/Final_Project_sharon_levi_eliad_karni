@@ -8,23 +8,53 @@
 //==================== Constructors & distructors section ====================
 EffectsHolder::EffectsHolder() {
 	this->m_texture = {};
-	//adding menu background path
-	this->m_texture[MENU_BACKGROUND] = new sf::Texture;
-	this->m_texture[MENU_BACKGROUND]->loadFromFile(MENU_BACKGROUND_PATH);
+	this->setBackgrounds();
+	this->setFonts();
 }
 
+EffectsHolder::~EffectsHolder(){
+	//delete textures allocations
+	for (auto iterator = this->m_texture.begin(); 
+		iterator != this->m_texture.end(); ++iterator)
+		delete(iterator->second);
+	//delete sounds allocations
+	for (auto iterator = this->m_sound.begin(); 
+		iterator != this->m_sound.end(); ++iterator)
+		delete(iterator->second);
+	//delete fonts allocations
+	for (auto iterator = this->m_font.begin(); 
+		iterator != this->m_font.end(); ++iterator)
+		delete(iterator->second);
+}
 //============================== gets section ================================
-sf::Texture* EffectsHolder::getTexture(int textureKey) const{
-	if (this->m_texture.find(textureKey) == this->m_texture.end())
-		return nullptr;
-	return(this->m_texture[textureKey]);
+const sf::Texture& EffectsHolder::getTexture(int textureKey)const{
+	return (*this->m_texture.find(textureKey)->second);
 }
 //============================================================================
-sf::Sound* EffectsHolder::getSound(int soundKey) const{
-	return(this->m_sound.find(soundKey));
+const sf::Sound& EffectsHolder::getSound(int soundKey) const{
+	return(*this->m_sound.find(soundKey)->second);
+}
+//============================================================================
+const sf::Font& EffectsHolder::getFont(int fontKey) const{
+	return(*this->m_font.find(fontKey)->second);
 }
 //============================ methods section ===============================
 
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================
+void EffectsHolder::setBackgrounds(){
+	//adding menu background path
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(MENU_BACKGROUND, new sf::Texture));
+	this->m_texture[MENU_BACKGROUND]->loadFromFile(MENU_BACKGROUND_PATH);
+	//adding level1 background path
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(LEVEL1, new sf::Texture));
+	this->m_texture[LEVEL1]->loadFromFile(LEVEL1_BACKGROUND_PATH);
+}
+void EffectsHolder::setFonts(){
+	this->m_font.insert(std::pair<int, sf::Font*>
+		(ARIRL_FONT, new sf::Font));
+	this->m_font[ARIRL_FONT]->loadFromFile(ARIEL_FONT_PATH);
+}
