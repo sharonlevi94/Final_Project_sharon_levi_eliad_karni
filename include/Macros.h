@@ -86,7 +86,7 @@ constexpr auto LADDER_T = 14;
 constexpr auto ROD_T = 15;
 constexpr auto GIFT_T = 16;
 //--------------------------------- logos ------------------------------------
-constexpr auto GAME_LOGO = 6;
+constexpr auto GAME_LOGO = 26;
 //--------------------------------- sounds -----------------------------------
 //---------------------------------- fonst -----------------------------------
 constexpr auto ARIRL_FONT = 1;
