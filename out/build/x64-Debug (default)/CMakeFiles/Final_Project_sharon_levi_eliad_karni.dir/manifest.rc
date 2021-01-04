@@ -1,6 +1,0 @@
-#pragma code_page(65001)
-<<<<<<< HEAD
-1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/embed.manifest"
-=======
-1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/embed.manifest"
->>>>>>> 97644c149c3d175cd5c84664ed1eda893b8fe68a

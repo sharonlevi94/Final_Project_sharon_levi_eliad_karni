@@ -3,12 +3,8 @@
 class SmartEnemy: public Enemy
 {
 public:
-	//using MovingObject::GameObject;
-	SmartEnemy(const sf::Vector2f location,
-		const sf::Vector2f size,
-		int state,
-		const sf::Sprite& (*)(char),
-		char type);
+	using Enemy::Enemy;
+	
 
 	virtual void draw(sf::RenderWindow&, const sf::Texture&) const override;
 //	virtual char identify() const override;

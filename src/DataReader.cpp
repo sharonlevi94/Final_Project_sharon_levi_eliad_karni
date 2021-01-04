@@ -61,7 +61,7 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 						STAND,PLAYER));
 					break;
 				}
-						   /*
+						   
 				case ENEMY: {
 					row.push_back(new SmartEnemy(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
@@ -71,28 +71,28 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 				case COIN: {
 					row.push_back(new Coin(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND, COIN));
+						NOT_COLLECTED, COIN));
 					break;
 				}
 				case WALL: {
 					row.push_back(new Wall(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND, WALL));
+						EXIST, WALL));
 					break;
 				}
 				case LADDER: {
 					row.push_back(new Ladder(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND,  LADDER));
+						NOT_CLIMBED,  LADDER));
 					break;
 				}
 				case ROD: {
 					row.push_back(new Rod(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
-						STAND,  ROD));
+						NOT_CLIMBED,  ROD));
 					break;
 				}
-				*/
+				
 				default: {
 					row.push_back(NULL); // inputed ' '
 					break;
