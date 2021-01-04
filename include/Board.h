@@ -1,10 +1,8 @@
 #pragma once
 #include <vector>
 #include "GameObject.h"
-#include "MovingObject.h"
 #include "DataReader.h"
 #include "EffectsHolder.h"
-#include "Coin.h"
 #include <SFML/Graphics.hpp>
 using std::vector;
 
@@ -12,7 +10,7 @@ class Board
 {
 public:
 	Board(sf::Vector2u);
-	//~Board();
+	~Board();
 
 	void draw(sf::RenderWindow& window)const;
 	void loadNewLevel(/* sf::Texture* */);
@@ -23,10 +21,10 @@ public:
 	
 
 private:
-	//vector<vector<GameObject*>> m_map;
+	vector<vector<GameObject*>> m_map;
 	sf::Vector2f m_size;
 	sf::Vector2f m_location;
-	//DataReader m_levelReader;
+	DataReader m_levelReader;
 	int m_levelTime;
 	bool m_timeLimit;
 	sf::RectangleShape m_background;

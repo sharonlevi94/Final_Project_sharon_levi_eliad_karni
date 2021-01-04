@@ -14,6 +14,7 @@ void Player::draw(sf::RenderWindow& window,const sf::Texture& texture) const {
 }
 
 
+
 //============================ private section ===============================
 //============================== sets section ================================
 //============================ methods section ===============================
