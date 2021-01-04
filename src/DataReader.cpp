@@ -54,13 +54,14 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 				m_boardReader >> input;
 				switch (input)
 				{
-				/*
+				
 				case PLAYER: {
 					row.push_back(new Player(sf::Vector2f((float)i,(float)j),
 						sf::Vector2f((float)OBJ_WIDTH,(float)OBJ_HEIGHT),
 						STAND,nullptr,PLAYER));
 					break;
 				}
+						   /*
 				case ENEMY: {
 					row.push_back(new SmartEnemy(sf::Vector2f((float)i, (float)j),
 						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),

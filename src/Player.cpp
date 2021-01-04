@@ -7,8 +7,8 @@ Player::Player(const sf::Vector2f location ,
 	int state,
 	const sf::Sprite& (*)(char) ,
 	char type )
-	: MovingObject(location, size, state, nullptr, type)
-{}
+	: MovingObject(location, size, state, nullptr, type){
+}
 //============================== gets section ================================
 
 //============================ methods section ===============================
