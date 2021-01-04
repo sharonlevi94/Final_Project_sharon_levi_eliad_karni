@@ -9,18 +9,19 @@
 EffectsHolder::EffectsHolder() {
 	this->m_texture = {};
 	//adding menu background path
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(MENU_BACKGROUND, new sf::Texture));
+	this->m_texture[MENU_BACKGROUND] = new sf::Texture;
 	this->m_texture[MENU_BACKGROUND]->loadFromFile(MENU_BACKGROUND_PATH);
 }
 
 //============================== gets section ================================
 sf::Texture* EffectsHolder::getTexture(int textureKey) const{
+	if (this->m_texture.find(textureKey) == this->m_texture.end())
+		return nullptr;
 	return(this->m_texture[textureKey]);
 }
 //============================================================================
 sf::Sound* EffectsHolder::getSound(int soundKey) const{
-	return(this->m_sound[soundKey]);
+	return(this->m_sound.find(soundKey));
 }
 //============================ methods section ===============================
 
