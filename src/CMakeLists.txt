@@ -2,11 +2,19 @@
                                      "Board.cpp"
                                      "DataReader.cpp"
                                      "Utilities.cpp"
+<<<<<<< HEAD
                                      "Player.cpp"
                                      "MovingObject.cpp"
                                      "Coin.cpp"
                                      "CollectableObject.cpp"
                                      #"Controller.cpp"
+=======
+                                     #"Player.cpp"
+                                     #"MovingObject.cpp"
+                                     #"Coin.cpp"
+                                     #"CollectableObject.cpp"
+                                     "Controller.cpp"
+>>>>>>> 39b3668305aeedb950c97089f8dc9e9fe8b71363
                                      "EffectsHolder.cpp"
                                      "Enemy.cpp"
                                      #"FoolEnemy.cpp"
