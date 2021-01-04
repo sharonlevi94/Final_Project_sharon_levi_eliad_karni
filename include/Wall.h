@@ -7,7 +7,7 @@ public:
 	using StaticObject::StaticObject;
 
 	virtual void draw(sf::RenderWindow&, const sf::Texture&)const override;
-	//virtual char identify() const override;
+	//virtual int identify() const override;
 	// void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
 //	virtual void reset(const sf::Vector2f& )override;
 	//virtual void addSprite(const sf::Sprite&)override;

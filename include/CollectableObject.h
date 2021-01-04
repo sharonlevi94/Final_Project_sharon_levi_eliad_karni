@@ -11,7 +11,7 @@ public:
 	//virtual bool is_collected()const =0;
 
 private:
-	bool m_is_collected;
+	bool m_is_collected=false;
 
 //	virtual void collect()=0;
 };

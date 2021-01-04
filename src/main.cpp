@@ -1,12 +1,7 @@
 //============================= include section ==============================
-<<<<<<< HEAD
 //#include "Menu.h"
 #include "Board.h"
-=======
-#include "Menu.h"
-//#include "Board.h"
 #include "EffectsHolder.h"
->>>>>>> 39b3668305aeedb950c97089f8dc9e9fe8b71363
 #include "SFML/Graphics.hpp"
 #include <Windows.h>
 #include <stdlib.h>
@@ -15,24 +10,18 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode::getDesktopMode(),"Lode Runner", sf::Style::Fullscreen);
-	EffectsHolder effects;
+	//EffectsHolder effects;
 	//GameState gamestate;
-<<<<<<< HEAD
-    //Menu menu;
 	Board board(window.getSize());
-=======
-    Menu menu(effects, (sf::Vector2f)window.getSize(), sf::Vector2f(0,0));
-	//Board board(window.getSize());
->>>>>>> 39b3668305aeedb950c97089f8dc9e9fe8b71363
-	
+    //Menu menu(effects, (sf::Vector2f)window.getSize(), sf::Vector2f(0,0));
+
 	while (window.isOpen())
 	{
 		window.clear();
 		board.draw(window);
 		//menu.draw(window);
-		//board.draw(window);     
-
 		window.display();
+		/*
 		sf::Event event{};
 		while (window.waitEvent(event)) {
 			switch (event.type) {
@@ -60,6 +49,7 @@ int main()
 			}
 			
 		}
+		*/
 	}
 	//gamestate.test(gamestate.died);
 	//gamestate.draw(window);

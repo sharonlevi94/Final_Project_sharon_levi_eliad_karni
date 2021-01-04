@@ -9,7 +9,7 @@
 using std::vector;
 //==================== Constructors & distructors section ====================
 Board::Board(sf::Vector2u size)
-	: /*m_levelReader(DataReader()),*/
+	: m_levelReader(DataReader()),
 	m_background(sf::RectangleShape()),
 	m_location(sf::Vector2f{ 0,0 }),
 	m_effectsHolder(EffectsHolder()),
@@ -27,6 +27,10 @@ Board::~Board() {
 //========================================================================
 void Board::draw(sf::RenderWindow& window)const{
 	window.draw(m_background);
+	for (int i = 0; i < m_size.x; i++)
+		for (int j = 0; j < m_size.y; j++)
+			m_map[i][j]->draw(window,
+				m_effectsHolder.getTexture(m_map[i][j]->identify()));
 }
 //========================================================================
 void Board::loadNewLevel(/* sf::Texture *texturelevel */){
@@ -48,13 +52,13 @@ void Board::loadNewLevel(/* sf::Texture *texturelevel */){
 	//m_background.setTexture(*textureLevel);
 }
 //========================================================================
-/*bool Board::is_next_lvl_exist()const {
+bool Board::is_next_lvl_exist()const {
 	return m_levelReader.isThereNextLevel();
-}*/
+}
 //========================================================================
-/*const GameObject* Board::getContent(const sf::Vector2f& location)const{
+const GameObject* Board::getContent(const sf::Vector2f& location)const{
 	return m_map[(unsigned)location.x][(unsigned)location.y];
-}*/
+}
 //========================================================================
 int Board::getLevelTime()const {
 		return m_levelTime;

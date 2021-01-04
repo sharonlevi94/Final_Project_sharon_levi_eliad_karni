@@ -9,7 +9,7 @@ void Wall::draw(sf::RenderWindow& window, const sf::Texture& texture) const {
 	wall.setTexture(texture);
 	window.draw(wall);
 }
-
+//----------------------------------------------------------------------------
 void Wall::dig(){}
 //============================ private section ===============================
 //============================== gets section ================================

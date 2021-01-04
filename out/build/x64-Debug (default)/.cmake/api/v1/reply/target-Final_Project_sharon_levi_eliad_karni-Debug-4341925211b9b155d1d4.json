@@ -106,7 +106,6 @@
 				1,
 				2,
 				3,
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/target-Final_Project_sharon_levi_eliad_karni-Debug-4341925211b9b155d1d4.json
 				4,
 				5,
 				6,
@@ -119,9 +118,6 @@
 				13,
 				14,
 				15
-=======
-				4
->>>>>>> 39b3668305aeedb950c97089f8dc9e9fe8b71363:out/build/x64-Debug (default)/.cmake/api/v1/reply/target-Final_Project_sharon_levi_eliad_karni-Debug-334750845919312788bd.json
 			]
 		}
 	],
@@ -196,7 +192,6 @@
 				1,
 				2,
 				3,
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/target-Final_Project_sharon_levi_eliad_karni-Debug-4341925211b9b155d1d4.json
 				4,
 				5,
 				6,
@@ -209,9 +204,6 @@
 				13,
 				14,
 				15
-=======
-				4
->>>>>>> 39b3668305aeedb950c97089f8dc9e9fe8b71363:out/build/x64-Debug (default)/.cmake/api/v1/reply/target-Final_Project_sharon_levi_eliad_karni-Debug-334750845919312788bd.json
 			]
 		}
 	],
@@ -238,7 +230,6 @@
 		{
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/target-Final_Project_sharon_levi_eliad_karni-Debug-4341925211b9b155d1d4.json
 			"path" : "src/Player.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -258,9 +249,6 @@
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
 			"path" : "src/CollectableObject.cpp",
-=======
-			"path" : "src/Controller.cpp",
->>>>>>> 39b3668305aeedb950c97089f8dc9e9fe8b71363:out/build/x64-Debug (default)/.cmake/api/v1/reply/target-Final_Project_sharon_levi_eliad_karni-Debug-334750845919312788bd.json
 			"sourceGroupIndex" : 0
 		},
 		{

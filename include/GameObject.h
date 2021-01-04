@@ -11,12 +11,12 @@ public:
 		const sf::Vector2f location = sf::Vector2f(0,0), 
 		const sf::Vector2f size = sf::Vector2f(OBJ_WIDTH, OBJ_HEIGHT), 
 		int state = STAND,
-		char type = NULL);
+		int type = NULL);
 
 	//virtual ~GameObject();
 	                                      
 	virtual void draw(sf::RenderWindow& , const sf::Texture&)const = 0;
-	char identify ()const;
+	int identify ()const;
 	//virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) = 0;
 	//virtual void reset(const sf::Vector2f&) = 0;
 	//virtual void addSprite(const sf::Sprite&)=0;

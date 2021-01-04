@@ -14,9 +14,9 @@ public:
 
 	void draw(sf::RenderWindow& window)const;
 	void loadNewLevel(/* sf::Texture* */);
-	//bool is_next_lvl_exist()const;
+	bool is_next_lvl_exist()const;
 	bool is_time_lvl_exist()const;
-	//const GameObject* getContent(const sf::Vector2f& location)const;
+	const GameObject* getContent(const sf::Vector2f& location)const;
 	int getLevelTime()const;
 	
 
