@@ -1,5 +1,5 @@
 ﻿target_sources (Final_Project_sharon_levi_eliad_karni PRIVATE 
-                                     "Board.cpp"
+                                     #"Board.cpp"
                                      #"DataReader.cpp"
                                      "Utilities.cpp"
                                      #"Player.cpp"

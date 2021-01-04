@@ -9,9 +9,20 @@ Menu::Menu(const sf::Vector2f& size, const sf::Vector2f& location):
 //============================== gets section ================================
 //============================ methods section ===============================
 void Menu::draw(sf::RenderWindow & window){
+	//sprites and texts declerations
 	sf::Sprite background;
-	background.setTexture(this->temp_effects.getTexture(MENU_BACKGROUND));
-	window.draw(background);
+	sf::Sprite logo;
+
+	//background.setTexture(this->temp_effects.getTexture(MENU_BACKGROUND));
+	logo.setTexture(this->temp_effects.getTexture(GAME_LOGO));
+	logo.setPosition(sf::Vector2f(
+		((float)window.getSize().x)/2,
+		((float)window.getSize().y)/2
+	));
+	logo.setScale(500,500);
+
+	//window.draw(background);
+	window.draw(logo);
 	sf::Font font;
 }
 //============================ private section ===============================

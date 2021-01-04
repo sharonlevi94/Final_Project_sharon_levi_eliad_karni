@@ -9,6 +9,7 @@
 EffectsHolder::EffectsHolder() {
 	this->m_texture = {};
 	this->setBackgrounds();
+	this->setLogos();
 	this->setFonts();
 }
 
@@ -43,6 +44,7 @@ const sf::Font& EffectsHolder::getFont(int fontKey) const{
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================
+//============================================================================
 void EffectsHolder::setBackgrounds(){
 	//adding menu background path
 	this->m_texture.insert(std::pair<int, sf::Texture*>
@@ -53,6 +55,13 @@ void EffectsHolder::setBackgrounds(){
 		(LEVEL1, new sf::Texture));
 	this->m_texture[LEVEL1]->loadFromFile(LEVEL1_BACKGROUND_PATH);
 }
+//============================================================================
+void EffectsHolder::setLogos() {
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(GAME_LOGO, new sf::Texture));
+	this->m_texture[GAME_LOGO]->loadFromFile(GAME_LOGO_PATH);
+}
+//============================================================================
 void EffectsHolder::setFonts(){
 	this->m_font.insert(std::pair<int, sf::Font*>
 		(ARIRL_FONT, new sf::Font));

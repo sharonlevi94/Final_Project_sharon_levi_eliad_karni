@@ -20,5 +20,6 @@ private:
 	std::map<int, sf::Font*> m_font;
 
 	void setBackgrounds();
+	void setLogos();
 	void setFonts();
 };
