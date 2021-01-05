@@ -6,6 +6,7 @@
 #include "Macros.h"
 #include "EffectsHolder.h"
 #include <vector>
+#include "Utilities.h"
 using std::vector;
 //==================== Constructors & distructors section ====================
 Board::Board(sf::Vector2u size)
@@ -14,31 +15,34 @@ Board::Board(sf::Vector2u size)
 	m_location(sf::Vector2f{ 0,0 }),
 	m_effectsHolder(EffectsHolder()),
 	m_levelNumber(1),
-	m_size((sf::Vector2f)size)
+	m_backgroundSize((sf::Vector2f)size)
 {
 	this->loadNewLevel();
 }
 //========================================================================
 Board::~Board() {
-	for (int i = 0; i < m_size.x; i++)
-		for (int j = 0; j < m_size.y; j++)
+	for (int i = 0; i < m_levelSize.x; i++)
+		for (int j = 0; j < m_levelSize.y; j++)
 			m_map[i][j]->~GameObject();
 }
 //========================================================================
 void Board::draw(sf::RenderWindow& window)const{
 	window.draw(m_background);
-	for (int i = 0; i < m_size.x; i++)
-		for (int j = 0; j < m_size.y; j++)
-			m_map[i][j]->draw(window,
-				m_effectsHolder.getTexture(m_map[i][j]->identify()));
+	//window.display();
+	for (int i = 0; i < m_levelSize.x; i++)
+		for (int j =0; j < m_levelSize.y; j++)
+			if (m_map[i][j] != nullptr) {
+				m_map[i][j]->draw(window,
+					m_effectsHolder.getTexture(m_map[i][j]->identify()));
+				window.display();
+			}
 }
 //========================================================================
 void Board::loadNewLevel(/* sf::Texture *texturelevel */){
 	this->m_levelNumber++;
-	
 	//read new level & size from the dataReader:
 	this->m_map = m_levelReader.readNextLevel();  
-	m_size = m_levelReader.getLevelSize();
+	m_levelSize = m_levelReader.getLevelSize();
 	//set time level, if exist:
 	this->m_levelTime = m_levelReader.getLevelTime();
 	if (m_levelTime == NO_LEVEL_TIME)
@@ -46,7 +50,7 @@ void Board::loadNewLevel(/* sf::Texture *texturelevel */){
 	else
 		this->m_timeLimit = true;
 	//set background of the level:
-	m_background.setSize(m_size);
+	m_background.setSize(m_backgroundSize);
 	m_background.setPosition(m_location);
 	m_background.setTexture(&m_effectsHolder.getTexture(m_levelNumber));
 	//m_background.setTexture(*textureLevel);
