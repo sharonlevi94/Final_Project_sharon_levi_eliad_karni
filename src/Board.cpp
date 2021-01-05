@@ -27,10 +27,10 @@ Board::~Board() {
 //========================================================================
 void Board::draw(sf::RenderWindow& window)const{
 	window.draw(m_background);
-	for (int i = 0; i < m_size.x; i++)
+	/*for (int i = 0; i < m_size.x; i++)
 		for (int j = 0; j < m_size.y; j++)
 			m_map[i][j]->draw(window,
-				m_effectsHolder.getTexture(m_map[i][j]->identify()));
+				m_effectsHolder.getTexture(m_map[i][j]->identify()));*/
 }
 //========================================================================
 void Board::loadNewLevel(/* sf::Texture *texturelevel */){
