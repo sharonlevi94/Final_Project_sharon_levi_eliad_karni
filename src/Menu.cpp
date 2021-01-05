@@ -84,7 +84,7 @@ void Menu::calcLogo(const EffectsHolder& effects) {
 //============================================================================
 void Menu::calcStartButton(const EffectsHolder& effects) {
 	this->m_startGameButton.setString("START GAME!");
-	this->m_startGameButton.setFont(effects.getFont(ARIRL_FONT));
+	this->m_startGameButton.setFont(effects.getFont(ARIEL_FONT));
 	this->m_startGameButton.setFillColor(sf::Color::White);
 	this->m_startGameButton.setOutlineColor(sf::Color::Black);
 
@@ -104,7 +104,7 @@ void Menu::calcStartButton(const EffectsHolder& effects) {
 //============================================================================
 void Menu::calcQuitButton(const EffectsHolder& effects){
 	this->m_quitGameButton.setString("QUIT GAME");
-	this->m_quitGameButton.setFont(effects.getFont(ARIRL_FONT));
+	this->m_quitGameButton.setFont(effects.getFont(ARIEL_FONT));
 	this->m_quitGameButton.setFillColor(sf::Color::White);
 	this->m_quitGameButton.setOutlineColor(sf::Color::Black);
 

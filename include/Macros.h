@@ -89,4 +89,4 @@ constexpr auto GIFT_T = 16;
 constexpr auto GAME_LOGO = 26;
 //--------------------------------- sounds -----------------------------------
 //---------------------------------- fonts -----------------------------------
-constexpr auto ARIRL_FONT = 1;
+constexpr auto ARIEL_FONT = 1;
