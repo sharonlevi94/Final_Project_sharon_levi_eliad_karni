@@ -22,7 +22,8 @@ public:
 
 private:
 	vector<vector<GameObject*>> m_map;
-	sf::Vector2f m_size;
+	sf::Vector2f m_backgroundSize;
+	sf::Vector2f m_levelSize;
 	sf::Vector2f m_location;
 	DataReader m_levelReader;
 	int m_levelTime;

@@ -77,11 +77,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Final_Project_sharon_levi_eliad_karni::@6890427a1f51a3e7e1df",
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-68c66b35c45ec045a08c.json
-					"jsonFile" : "target-Final_Project_sharon_levi_eliad_karni-Debug-d2307de32d26afbba577.json",
-=======
 					"jsonFile" : "target-Final_Project_sharon_levi_eliad_karni-Debug-4341925211b9b155d1d4.json",
->>>>>>> 3fe837ba255abe930838505c07dc3af085d407d5:out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-785d5f4570c180f23508.json
 					"name" : "Final_Project_sharon_levi_eliad_karni",
 					"projectIndex" : 0
 				}
