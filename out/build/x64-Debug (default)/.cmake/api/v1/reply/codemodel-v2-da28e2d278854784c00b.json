@@ -77,11 +77,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Final_Project_sharon_levi_eliad_karni::@6890427a1f51a3e7e1df",
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-da28e2d278854784c00b.json
 					"jsonFile" : "target-Final_Project_sharon_levi_eliad_karni-Debug-5a25f074912a3bfb64d1.json",
-=======
-					"jsonFile" : "target-Final_Project_sharon_levi_eliad_karni-Debug-625c800b4539a467ef91.json",
->>>>>>> dbf198e15b60513d6d70d6f9e637bc2757fa6c0c:out/build/x64-Debug (default)/.cmake/api/v1/reply/codemodel-v2-ba10f027654c5b61c1c8.json
 					"name" : "Final_Project_sharon_levi_eliad_karni",
 					"projectIndex" : 0
 				}
@@ -91,8 +87,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)",
-		"source" : "C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni"
+		"build" : "D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)",
+		"source" : "D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni"
 	},
 	"version" : 
 	{
