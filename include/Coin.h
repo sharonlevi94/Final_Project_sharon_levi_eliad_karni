@@ -7,7 +7,8 @@ using std::vector;
 class Coin: public CollectableObject
 {
 public:
-	using CollectableObject::CollectableObject;
+	Coin(const sf::Vector2f& location = sf::Vector2f(0, 0),
+		const EffectsHolder& effects = EffectsHolder());
 	
 	//virtual void draw(sf::RenderWindow&)const override;
 	//virtual char          identify ()const  override;

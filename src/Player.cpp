@@ -4,24 +4,14 @@
 #include "Utilities.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-
+Player::Player(const sf::Vector2f& location ,
+	const EffectsHolder& effects)
+	: MovingObject(location,effects,PLAYER_T) {}
 //============================== gets section ================================
 
 //============================ methods section ===============================
-void Player::draw(sf::RenderWindow& window,const sf::Texture& texture) const {
-	sf::Sprite player;
-	player.setTexture(texture);
-
-	player.setPosition(calcScreenLocation(
-		(sf::Vector2f)window.getSize(),
-		sf::Vector2f(20, 20),
-		this->getLocation()));
-
-	player.setScale(calcScale((sf::Vector2f)window.getSize(),
-		sf::Vector2f(20, 20),
-		(sf::Vector2f)player.getTexture()->getSize()));
-
-	window.draw(player);
+void Player::draw(sf::RenderWindow& window) const {
+	window.draw(this->getSprite());
 }
 //============================================================================
 void Player::playTurn() {

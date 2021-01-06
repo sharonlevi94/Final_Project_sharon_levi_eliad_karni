@@ -5,9 +5,10 @@
 class Player : public MovingObject
 {
 public:
-	using MovingObject::MovingObject;
-	//virtual char identify() const override;
-	virtual void draw(sf::RenderWindow& ,const sf::Texture&) const;
+	Player(const sf::Vector2f& location = sf::Vector2f(0, 0),
+		const EffectsHolder& effects = EffectsHolder());
+
+	virtual void draw(sf::RenderWindow& window) const;
 	virtual void playTurn() override;
 	//virtual void reset(const sf::Vector2f&) override;
 	//virtual void addSprite(const sf::Sprite&)override;

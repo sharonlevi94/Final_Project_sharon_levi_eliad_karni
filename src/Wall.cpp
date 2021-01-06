@@ -3,6 +3,10 @@
 #include "Utilities.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
+Wall::Wall(const sf::Vector2f& location = sf::Vector2f(0, 0),
+	const EffectsHolder& effects = EffectsHolder())
+	:StaticObject(location,effects,WALL_T)
+{}
 //============================== gets section ================================
 //============================ methods section ===============================
 //----------------------------------------------------------------------------

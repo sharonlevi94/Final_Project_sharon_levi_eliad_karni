@@ -18,13 +18,14 @@ public:
 
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize()const;
-	int                 getState   ()const;
+	int getState ()const;
 	const sf::Sprite& getSprite()const;
+
 protected:
 	virtual void setLocation(const sf::Vector2f&);
 private:
 	sf::Sprite m_objectSprite;
-	int                   m_state;
+	int m_state;
 
 	virtual void setState (const int)=0;
 	virtual void setTexture (const sf::Texture&)=0;

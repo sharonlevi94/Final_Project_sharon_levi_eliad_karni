@@ -4,7 +4,8 @@
 class Rod : public StaticObject
 {
 public:
-	using StaticObject::StaticObject;
+	Rod(const sf::Vector2f& location = sf::Vector2f(0, 0),
+		const EffectsHolder& effects = EffectsHolder());
 
 	virtual void draw(sf::RenderWindow&)const override;
 //	virtual char identify() const override;

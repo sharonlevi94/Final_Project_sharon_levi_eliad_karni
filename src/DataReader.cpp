@@ -55,7 +55,7 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 				{
 				case PLAYER: {
 					row.push_back(new Player(sf::Vector2f((float)j,(float)i),
-						STAND,PLAYER_T));
+						));
 					break;
 				}
 						   

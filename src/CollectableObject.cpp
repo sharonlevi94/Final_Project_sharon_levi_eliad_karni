@@ -7,7 +7,8 @@
 //==================== Constructors & distructors section ====================
 CollectableObject::CollectableObject(const sf::Vector2f& location,
 	const EffectsHolder& effects,
-	char objectType) :StaticObject(location, effects, objectType),
+	char objectType)
+	: StaticObject(location, effects, objectType),
 	m_is_collected(false){}
 //============================== gets section ================================
 //============================ methods section ===============================
