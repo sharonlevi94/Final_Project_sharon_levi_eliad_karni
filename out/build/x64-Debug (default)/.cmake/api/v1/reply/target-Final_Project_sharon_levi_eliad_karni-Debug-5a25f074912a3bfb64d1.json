@@ -119,10 +119,7 @@
 				14,
 				15,
 				16,
-				17,
-				18,
-				19,
-				20
+				17
 			]
 		}
 	],
@@ -210,10 +207,7 @@
 				14,
 				15,
 				16,
-				17,
-				18,
-				19,
-				20
+				17
 			]
 		}
 	],
@@ -282,18 +276,6 @@
 		{
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
-			"path" : "src/FoolEnemy.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"compileGroupIndex" : 0,
-			"path" : "src/RandEnemy.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"compileGroupIndex" : 0,
 			"path" : "src/SmartEnemy.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -319,12 +301,6 @@
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
 			"path" : "src/Menu.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 6,
-			"compileGroupIndex" : 0,
-			"path" : "src/GameState.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

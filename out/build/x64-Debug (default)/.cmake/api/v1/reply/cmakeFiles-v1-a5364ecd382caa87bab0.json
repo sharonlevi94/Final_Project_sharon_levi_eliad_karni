@@ -163,22 +163,10 @@
 			"path" : "resources/enemy.png"
 		},
 		{
-			"path" : "resources/eraser.png"
-		},
-		{
 			"path" : "resources/ladder.png"
 		},
 		{
-			"path" : "resources/menu.png"
-		},
-		{
 			"path" : "resources/rod.png"
-		},
-		{
-			"path" : "resources/save.png"
-		},
-		{
-			"path" : "resources/trash.png"
 		},
 		{
 			"path" : "resources/wall.png"
