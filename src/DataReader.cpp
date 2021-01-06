@@ -69,7 +69,6 @@ vector<vector<GameObject*>> DataReader::readNextLevel
 				}
 				case WALL: {
 					row.push_back(new Wall(sf::Vector2f((float)j, (float)i),effects));
-
 					break;
 				}
 				case LADDER: {
