@@ -9,7 +9,7 @@
 #include "Utilities.h"
 using std::vector;
 //==================== Constructors & distructors section ====================
-Board::Board(sf::Vector2u size)
+Board::Board(sf::Vector2u size, const EffectsHolder& effects)
 	: m_levelReader(DataReader()),
 	m_background(sf::RectangleShape()),
 	m_location(sf::Vector2f{ 0,0 }),
@@ -17,7 +17,7 @@ Board::Board(sf::Vector2u size)
 	m_levelNumber(1),
 	m_backgroundSize((sf::Vector2f)size)
 {
-	this->loadNewLevel();
+	this->loadNewLevel(effects);
 }
 //========================================================================
 Board::~Board() {
@@ -35,10 +35,10 @@ void Board::draw(sf::RenderWindow& window)const{
 			}
 }
 //========================================================================
-void Board::loadNewLevel(/* sf::Texture *texturelevel */){
+void Board::loadNewLevel(const EffectsHolder& effects){
 	this->m_levelNumber++;
 	//read new level & size from the dataReader:
-	this->m_map = m_levelReader.readNextLevel();  
+	this->m_map = m_levelReader.readNextLevel(effects);
 	m_levelSize = m_levelReader.getLevelSize();
 	//set time level, if exist:
 	this->m_levelTime = m_levelReader.getLevelTime();

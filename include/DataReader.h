@@ -5,11 +5,11 @@
 class DataReader{
 public:
 	//------------------------- constractors section -------------------------
-	DataReader();
+	DataReader( );
 	~DataReader();
 	//------------------------- method section -------------------------------
 	bool isThereNextLevel()const;
-	vector<vector<GameObject*>> readNextLevel();
+	vector<vector<GameObject*>> readNextLevel(const EffectsHolder&);
 	sf::Vector2f getLevelSize()const;
 	int getLevelTime()const;
 private:

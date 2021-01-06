@@ -8,10 +8,10 @@
 Controller::Controller() :
 	m_window(sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Rod Runner",
 		sf::Style::Fullscreen)),
-	m_board(Board(m_window.getSize())),
+	m_effects(EffectsHolder()),
+	m_board(Board(m_window.getSize(),m_effects)),
 	/*m_gameobjects({}),,
 	m_player(nullptr),*/
-	m_effects(EffectsHolder()),
 	m_menu()
 	/*m_gameState()*/ {
 	this->m_menu = Menu(Menu(this->m_effects,
