@@ -1,17 +1,20 @@
 #ifndef _COLLECTABLEOBJECT_
 #define _COLLECTABLEOBJECT_
 #pragma once
+#include <SFML/Graphics.hpp>
 #include "StaticObject.h"
+#include "EffectsHolder.h"
 
-class CollectableObject : public StaticObject
-{
+class CollectableObject : public StaticObject{
 public:
-	using StaticObject::StaticObject;
+	CollectableObject(const sf::Vector2f& location = sf::Vector2f(0,0),
+	const EffectsHolder& effects = EffectsHolder(),
+		char objectType = NOTHING);
 
-	//virtual bool is_collected()const =0;
+	virtual bool is_collected()const;
 
 private:
-	bool m_is_collected=false;
+	bool m_is_collected;
 
 //	virtual void collect()=0;
 };

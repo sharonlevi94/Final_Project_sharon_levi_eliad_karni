@@ -8,7 +8,7 @@ public:
 	using MovingObject::MovingObject;
 	//virtual char identify() const override;
 	virtual void draw(sf::RenderWindow& ,const sf::Texture&) const;
-	//virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
+	virtual void playTurn() override;
 	//virtual void reset(const sf::Vector2f&) override;
 	//virtual void addSprite(const sf::Sprite&)override;
 
@@ -19,6 +19,6 @@ public:
 
 private:
 	//virtual void setState(const int) override;
-	//virtual void setLocation(const sf::Vector2f&) override;
+	virtual void setLocation(const sf::Vector2f&) override;
 	//virtual void setSprite(const sf::Sprite&) override;
 };

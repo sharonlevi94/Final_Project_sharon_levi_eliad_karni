@@ -8,30 +8,24 @@ class GameObject
 {
 public:
 	GameObject(
-		const sf::Vector2f location = sf::Vector2f(0,0), 
-		const sf::Vector2f size = sf::Vector2f(OBJ_WIDTH, OBJ_HEIGHT), 
-		int state = STAND,
-		int type = NULL);
-
-	//virtual ~GameObject();
+		const sf::Vector2f = sf::Vector2f(0,0),
+		const EffectsHolder& = EffectsHolder(),
+		char objectType = NOTHING);
 	                                      
-	virtual void draw(sf::RenderWindow& , const sf::Texture&)const = 0;
-	int identify ()const;
-	//virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) = 0;
-	//virtual void reset(const sf::Vector2f&) = 0;
-	//virtual void addSprite(const sf::Sprite&)=0;
+	virtual void draw(sf::RenderWindow&)const;
+	virtual void playTurn() = 0;
+	virtual void reset(const sf::Vector2f&) = 0;
 
 	const sf::Vector2f& getLocation()const;
-	const sf::Vector2f& getSize    ()const;
+	const sf::Vector2f& getSize()const;
 	int                 getState   ()const;
-
-	
+	const sf::Sprite& getSprite()const;
+protected:
+	virtual void setLocation(const sf::Vector2f&);
 private:
-	char m_type;
-	sf::Vector2f       m_location;
-	sf::Vector2f           m_size;
+	sf::Sprite m_objectSprite;
 	int                   m_state;
 
-	//virtual void setState (const int)=0;
-	//virtual void setSprite (const sf::Sprite&)=0;
+	virtual void setState (const int)=0;
+	virtual void setTexture (const sf::Texture&)=0;
 };

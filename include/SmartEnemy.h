@@ -6,7 +6,7 @@ public:
 	using Enemy::Enemy;
 	
 
-	virtual void draw(sf::RenderWindow&, const sf::Texture&) const override;
+	virtual void draw(sf::RenderWindow&) const override;
 //	virtual char identify() const override;
 	//virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
 	//virtual void reset(const sf::Vector2f&) override;

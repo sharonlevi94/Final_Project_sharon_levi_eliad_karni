@@ -6,7 +6,7 @@ class Wall : public StaticObject
 public:
 	using StaticObject::StaticObject;
 
-	virtual void draw(sf::RenderWindow&, const sf::Texture&)const override;
+	virtual void draw(sf::RenderWindow&)const override;
 	//virtual int identify() const override;
 	// void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
 //	virtual void reset(const sf::Vector2f& )override;

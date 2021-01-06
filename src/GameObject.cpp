@@ -1,22 +1,40 @@
 //============================= include section ==============================
 #include "GameObject.h"
+#include <SFML/Graphics.hpp>
+#include "Utilities.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 GameObject::GameObject(const sf::Vector2f location,
-	const sf::Vector2f size,
-	int state,
-	int type) :
-	m_type(type),
-	m_location(location),
-	m_size(size),
-    m_state(state) {}
+	const EffectsHolder& effects, char objectType) :
+    m_state(STAND), m_objectSprite(sf::Sprite()) {
+	this->m_objectSprite.setPosition(location);
+	this->m_objectSprite.setTexture(effects.getTexture(objectType));
+}
 //============================== gets section ================================
-const sf::Vector2f& GameObject::getLocation()const { return this->m_location; }
-const sf::Vector2f& GameObject::getSize()const { return this->m_size; }
-int  GameObject::getState()const { return this->m_state; }
-int GameObject::identify()const { return this->m_type; }
+//============================================================================
+const sf::Vector2f& GameObject::getLocation()const { 
+	return this->m_objectSprite.getPosition();
+}
+//============================================================================
+int GameObject::getState()const {
+	return this->m_state;
+}
+//============================================================================
+const sf::Vector2f& GameObject::getSize()const{
+	return sf::Vector2f(this->m_objectSprite.getLocalBounds().width,
+		this->m_objectSprite.getLocalBounds().height);
+}
+//============================================================================
+const sf::Sprite& GameObject::getSprite() const {
+	return (this->m_objectSprite); 
+}
 //============================ methods section ===============================
-
-//============================ private section ===============================
+//============================================================================
+void GameObject::draw(sf::RenderWindow& window) const{
+	window.draw(this->m_objectSprite);
+}
+//=========================== protected section ==============================
 //============================== sets section ================================
-//============================ methods section ===============================
+void GameObject::setLocation(const sf::Vector2f& movment) {
+	this->m_objectSprite.move(movment);
+}
