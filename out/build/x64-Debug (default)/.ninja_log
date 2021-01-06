@@ -1,4 +1,5 @@
 # ninja log v5
+<<<<<<< HEAD
 30	110	631622556	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/CollectableObject.cpp.obj	39ea50448d93f952
 16	1782	631622558	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/MovingObject.cpp.obj	4ac4b1c37dc2f45d
 21	1826	631622558	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Utilities.cpp.obj	9e1c228abca08263
@@ -18,3 +19,24 @@
 1784	3376	631622560	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/EffectsHolder.cpp.obj	b8a87a431fa118fc
 2070	3497	631622560	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	8d31597f6f8951de
 3498	4333	631622561	Final_Project_sharon_levi_eliad_karni.exe	f89c9748cfa97606
+=======
+39	282	631622781	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/CollectableObject.cpp.obj	a5def10d7a126ea5
+17	3474	631622784	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/MovingObject.cpp.obj	7f0e5e2801e6bf03
+24	3572	631622784	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Player.cpp.obj	8d028d2145e71ac
+9	3717	631622784	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Utilities.cpp.obj	3c143e5bd0d92eba
+282	3937	631622785	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Enemy.cpp.obj	6ae6a28db60eb7c9
+13	4174	631622785	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/DataReader.cpp.obj	be13a64cca29fb
+34	4188	631622785	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Coin.cpp.obj	29ba07e964240c77
+77	4328	631622785	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Ladder.cpp.obj	f2ff7538dd605bba
+2	4337	631622785	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Board.cpp.obj	3737d27e9dfc8b5e
+28	4341	631622785	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Controller.cpp.obj	a50753154ba12f04
+4188	4435	631622785	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/StaticObject.cpp.obj	2789158ed1945479
+48	4765	631622785	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/EffectsHolder.cpp.obj	ae07601cb306973
+3572	7031	631622788	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Rod.cpp.obj	c0a3f527d2aa10b5
+3477	7211	631622788	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/SmartEnemy.cpp.obj	3f17e2435ae84c2
+3938	7470	631622788	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Menu.cpp.obj	efb237822e57b12f
+3717	7515	631622788	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Wall.cpp.obj	b66f68346f22dda4
+4329	7535	631622788	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/GameObject.cpp.obj	2ab631939605602d
+4175	7650	631622788	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/main.cpp.obj	35a342789a58928a
+7651	8588	631622789	Final_Project_sharon_levi_eliad_karni.exe	d94679283d80a57f
+>>>>>>> dbf198e15b60513d6d70d6f9e637bc2757fa6c0c
