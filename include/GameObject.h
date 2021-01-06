@@ -9,16 +9,17 @@ class GameObject
 public:
 	GameObject(
 		const sf::Vector2f = sf::Vector2f(0,0),
-		int = STAND,
-		const EffectsHolder& = EffectsHolder());
+		const EffectsHolder& = EffectsHolder(),
+		char objectType = NOTHING);
 	                                      
-	virtual void draw()const = 0;
+	virtual void draw(sf::RenderWindow&)const;
 	virtual void playTurn() = 0;
 	virtual void reset(const sf::Vector2f&) = 0;
 
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize()const;
 	int                 getState   ()const;
+	const sf::Sprite& getSprite()const;
 protected:
 	virtual void setLocation(const sf::Vector2f&);
 private:
