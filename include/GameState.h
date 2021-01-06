@@ -15,7 +15,7 @@ public:
 
 	GameState(const EffectsHolder& effects = EffectsHolder(),
 		const sf::Vector2f& location = sf::Vector2f(0,0),
-		int levelTime = 0, const sf::Vector2f& size = sf::Vector2f(0, 0));
+		const sf::Vector2f& size = sf::Vector2f(0, 0));
 	//=========================== method section =============================
 
 	void draw(sf::RenderWindow& window);
@@ -31,9 +31,9 @@ private:
 	sf::Clock       m_clock;
 	//recommanded to save Text as parameter thoe its heavy creating.
 	sf::Text	m_stateText;
-	int         m_levelTime;
+	sf::Time         m_levelTime;
 	int             m_level;
 	int             m_score;
 	int             m_lifes;
-	float		 m_turnTime;
+	sf::Time		 m_turnTime;
 };

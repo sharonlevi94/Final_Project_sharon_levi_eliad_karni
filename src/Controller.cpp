@@ -8,12 +8,12 @@
 Controller::Controller() :
 	m_window(sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Rod Runner",
 		sf::Style::Fullscreen)),
-	m_board(Board(m_window.getSize())),
-	/*m_gameobjects({}),,
-	m_player(nullptr),*/
+	//m_board(Board(sf::Vector2f(m_window.getSize().x, m_window.getSize().y * (9/10)))),
+	//m_gameobjects({}),,
+	//m_player(nullptr),
 	m_effects(EffectsHolder()),
-	m_menu()
-	/*m_gameState()*/ {
+	m_menu(),
+	m_gameState(GameState(this->m_effects,sf::Vector2f(0,0), sf::Vector2f(0,0))){
 	this->m_menu = Menu(Menu(this->m_effects,
 		(sf::Vector2f)this->m_window.getSize(),
 		sf::Vector2f(0, 0)));
@@ -76,11 +76,11 @@ char Controller::runMenu() {
 void Controller::runGame() {
 	while (this->m_window.isOpen()){
 		this->m_window.clear();
-		this->m_board.draw(m_window);
+		//this->m_board.draw(m_window);
 		this->m_window.display();
 		//this->m_gameState.levelup(150);
 		sf::Event event{};
-		while (m_window.waitEvent(event)) {
+		while (this->m_gameState.) {
 			switch (event.type){
 			case sf::Event::Closed:
 				this->m_window.close();

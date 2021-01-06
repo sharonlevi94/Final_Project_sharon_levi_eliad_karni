@@ -15,17 +15,14 @@ void Player::draw(sf::RenderWindow& window) const {
 }
 //============================================================================
 void Player::playTurn() {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-
-	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		this->setLocation(sf::Vector2f(0, -1));
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		this->setLocation(sf::Vector2f(-1, 0));
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		this->setLocation(sf::Vector2f(1, 0));
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		this->setLocation(sf::Vector2f(0, -1));
 }
 //============================================================================
 //============================ private section ===============================
