@@ -1,6 +1,4 @@
 //============================= include section ==============================
-//#include "Menu.h"
-//#include "Board.h"
 #include "Controller.h"
 #include <stdlib.h>
 //============================== main section ================================

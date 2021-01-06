@@ -17,8 +17,6 @@ DataReader::DataReader()
 	if(!this->m_boardReader.is_open())
 		terminate
 		("Cannot open the levels file, pls make sure the file is exist");
-
-	//this->readNextLevel(); //read the first level
 }
 //========================================================================
 DataReader::~DataReader() {
@@ -29,7 +27,7 @@ void DataReader::receiveLevelParameters(){
 	m_boardReader >> m_levelSize.x >> m_levelSize.y;
 	m_boardReader >> m_levelTime;
 	char eat_space;
-	m_boardReader >> eat_space;
+	m_boardReader.get(eat_space);
 }
 //========================================================================
 /*
