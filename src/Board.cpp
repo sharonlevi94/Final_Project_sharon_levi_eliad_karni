@@ -26,11 +26,11 @@ Board::~Board() {
 			m_map[i][j]->~GameObject();
 }
 //========================================================================
-void Board::draw(sf::RenderWindow& window)const{
+void Board::draw(sf::RenderWindow& window)const {
 	window.draw(m_background);
 	//window.display();
 	for (int i = 0; i < m_levelSize.x; i++)
-		for (int j =0; j < m_levelSize.y; j++)
+		for (int j = 0; j < m_levelSize.y; j++)
 			if (m_map[i][j] != nullptr) {
 				m_map[i][j]->draw(window,
 					m_effectsHolder.getTexture(m_map[i][j]->identify()));
@@ -38,10 +38,10 @@ void Board::draw(sf::RenderWindow& window)const{
 			}
 }
 //========================================================================
-void Board::loadNewLevel(/* sf::Texture *texturelevel */){
+void Board::loadNewLevel(/* sf::Texture *texturelevel */) {
 	this->m_levelNumber++;
 	//read new level & size from the dataReader:
-	this->m_map = m_levelReader.readNextLevel();  
+	this->m_map = m_levelReader.readNextLevel();
 	m_levelSize = m_levelReader.getLevelSize();
 	//set time level, if exist:
 	this->m_levelTime = m_levelReader.getLevelTime();
@@ -60,12 +60,12 @@ bool Board::is_next_lvl_exist()const {
 	return m_levelReader.isThereNextLevel();
 }
 //========================================================================
-const GameObject* Board::getContent(const sf::Vector2f& location)const{
+const GameObject* Board::getContent(const sf::Vector2f& location)const {
 	return m_map[(unsigned)location.x][(unsigned)location.y];
 }
 //========================================================================
 int Board::getLevelTime()const {
-		return m_levelTime;
+	return m_levelTime;
 }
 //========================================================================
 bool Board::is_time_lvl_exist()const {
