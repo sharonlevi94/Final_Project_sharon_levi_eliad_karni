@@ -12,11 +12,12 @@ GameState::GameState(const EffectsHolder& effects,
 	m_size(size), m_location(location), m_clock(sf::Clock()),
 	m_stateText(sf::Text()), m_levelTime(sf::Time()), m_level(0), m_score(0),
 	m_lifes(3), m_turnTime(sf::Time()){
+	this->m_stateText.setFont(effects.getFont(ARIEL_FONT));
 }
 //============================ methods section ===============================
 //============================================================================
 void GameState::draw (sf::RenderWindow& window){
-	this->m_stateText.setFillColor(sf::Color::Black);
+	this->m_stateText.setFillColor(sf::Color::White);
 	this->m_stateText.setPosition(this->m_location);
 
 	this->m_stateText.setString("level: " + std::to_string(this->m_level)
@@ -29,6 +30,13 @@ void GameState::draw (sf::RenderWindow& window){
 	));
 
 	window.draw(this->m_stateText);
+}
+//============================================================================
+bool GameState::isTimeUp() {
+	if (this->m_levelTime.asSeconds() == -1)
+		return false;
+	return(this->m_clock.getElapsedTime().asSeconds() == 
+		this->m_levelTime.asSeconds());
 }
 //============================================================================
 void GameState::levelup(int time) { 

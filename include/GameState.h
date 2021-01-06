@@ -23,6 +23,7 @@ public:
 	void collectedCoin ();
 	void died          ();
 	bool nextTurn	   ();
+	bool isTimeUp();
 
 private:
 	//======================== members section ===============================

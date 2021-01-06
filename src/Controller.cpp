@@ -13,7 +13,8 @@ Controller::Controller() :
 	//m_player(nullptr),
 	m_effects(EffectsHolder()),
 	m_menu(),
-	m_gameState(GameState(this->m_effects,sf::Vector2f(0,0), sf::Vector2f(0,0))){
+	m_gameState(GameState(this->m_effects,sf::Vector2f(0,0), sf::Vector2f(this->m_window.getSize().x,
+		this))){
 	this->m_menu = Menu(Menu(this->m_effects,
 		(sf::Vector2f)this->m_window.getSize(),
 		sf::Vector2f(0, 0)));
@@ -80,18 +81,8 @@ void Controller::runGame() {
 		this->m_window.display();
 		//this->m_gameState.levelup(150);
 		sf::Event event{};
-		while (this->m_gameState.) {
-			switch (event.type){
-			case sf::Event::Closed:
-				this->m_window.close();
-				break;
-			case sf::Event::KeyPressed:
-				std::cout << "key pressed";
-				break;
-			default:
-				break;
-			}
-		}
+		while (!this->m_gameState.nextTurn()) {}
+		this->m_gameState.draw(this->m_window);
 	}
 }
 //============================ private section ===============================
