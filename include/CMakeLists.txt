@@ -1,0 +1,1 @@
+﻿target_include_directories (Final_Project_sharon_levi_eliad_karni PRIVATE ${CMAKE_CURRENT_LIST_DIR})
