@@ -14,7 +14,7 @@ public:
 	                                      
 	virtual void draw(sf::RenderWindow&)const;
 	virtual void playTurn() = 0;
-	virtual void reset(const sf::Vector2f&) = 0;
+	virtual void reset();
 
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize()const;

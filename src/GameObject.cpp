@@ -28,9 +28,14 @@ const sf::Vector2f& GameObject::getSize()const{
 const sf::Sprite& GameObject::getSprite() const {
 	return (this->m_objectSprite); 
 }
+//============================================================================
+void GameObject::reset() {
+	this->m_state = STAND;
+}
 //============================ methods section ===============================
 //============================================================================
 void GameObject::draw(sf::RenderWindow& window) const{
+	calcScale
 	window.draw(this->m_objectSprite);
 }
 //=========================== protected section ==============================

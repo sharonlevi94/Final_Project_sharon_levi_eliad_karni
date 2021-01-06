@@ -8,17 +8,19 @@
 #include <vector>
 #include "Utilities.h"
 using std::vector;
-//==================== Constructors & distructors section ====================
-Board::Board(sf::Vector2u size, const EffectsHolder& effects)
+//==================== Constructors & distruors section ====================
+Board::Board(const sf::Vector2f& location,
+             const sf::Vector2f& size, 
+			 const EffectsHolder& effects)
 	: m_levelReader(DataReader()),
 	m_background(sf::RectangleShape()),
-	m_location(sf::Vector2f{ 0,0 }),
-	m_effectsHolder(EffectsHolder()),
+	m_location(location),
 	m_levelNumber(1),
-	m_backgroundSize((sf::Vector2f)size)
-{
-	this->loadNewLevel(effects);
-}
+	m_backgroundSize(size),
+	m_map({}),
+	m_levelSize(sf::Vector2f(0,0)),
+	m_levelTime(0)
+{}
 //========================================================================
 Board::~Board() {
 	for (int i = 0; i < m_levelSize.x; i++)
@@ -32,25 +34,22 @@ void Board::draw(sf::RenderWindow& window)const{
 		for (int j =0; j < m_levelSize.y; j++)
 			if (m_map[i][j] != nullptr) {
 				m_map[i][j]->draw(window);
+				window.display();
 			}
 }
 //========================================================================
-void Board::loadNewLevel(const EffectsHolder& effects){
+std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects){
 	this->m_levelNumber++;
 	//read new level & size from the dataReader:
 	this->m_map = m_levelReader.readNextLevel(effects);
 	m_levelSize = m_levelReader.getLevelSize();
 	//set time level, if exist:
 	this->m_levelTime = m_levelReader.getLevelTime();
-	if (m_levelTime == NO_LEVEL_TIME)
-		this->m_timeLimit = false;
-	else
-		this->m_timeLimit = true;
 	//set background of the level:
 	m_background.setSize(m_backgroundSize);
 	m_background.setPosition(m_location);
-	m_background.setTexture(&m_effectsHolder.getTexture(m_levelNumber));
-	//m_background.setTexture(*textureLevel);
+	m_background.setTexture(&effects.getTexture(m_levelNumber));
+	return this->FindMovingObj();
 }
 //========================================================================
 bool Board::is_next_lvl_exist()const {
@@ -65,7 +64,12 @@ int Board::getLevelTime()const {
 		return m_levelTime;
 }
 //========================================================================
-bool Board::is_time_lvl_exist()const {
-	return this->m_timeLimit;
+vector<MovingObject*> Board::FindMovingObj(){
+	vector<MovingObject*> characters = {};
+	for(int i =0 ; i< this->m_map.size() ; i++)
+		for(int j=0 ; j<this->m_map[i].size() ; j++){
+			if (dynamic_cast <MovingObject*> (m_map[i][j]))
+				characters.push_back((MovingObject*)m_map[i][j]);
+		}
+	return characters;
 }
-//========================================================================

@@ -7,12 +7,8 @@ public:
 		const EffectsHolder& effects = EffectsHolder());
 	
 	virtual void draw(sf::RenderWindow&) const;
-//	virtual char identify() const override;
-	//virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
-	//virtual void reset(const sf::Vector2f&) override;
-	//virtual void addSprite(const sf::Sprite&)override;
+	virtual void playTurn() override;
 
-	//virtual void fall(int) override;
 	//virtual bool isMovePossible()const  override;
 
 private:

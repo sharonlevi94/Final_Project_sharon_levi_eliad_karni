@@ -10,18 +10,7 @@ public:
 	Coin(const sf::Vector2f& location = sf::Vector2f(0, 0),
 		const EffectsHolder& effects = EffectsHolder());
 	
-	//virtual void draw(sf::RenderWindow&)const override;
-	//virtual char          identify ()const  override;
-	//virtual void          playTurn (const GameObject* (*)(const sf::Vector2f&))  override;
-	//virtual void          reset    (const sf::Vector2f&)  override;
-	//virtual void addSprite(const sf::Sprite&) override;
-
-	//const sf::Vector2f& getLocation  ()const;
-	//const sf::Vector2f& getSize      ()const;
-	//int                 getState     ()const;
-	//const sf::Sprite*   getSprite    ()const;
-
-	//bool                is_collected ()const  override;
+	virtual void          playTurn ()  override;
 
 private:
 

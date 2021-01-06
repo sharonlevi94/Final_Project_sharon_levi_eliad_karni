@@ -1,5 +1,6 @@
 #pragma once
 #include "StaticObject.h"
+#include <SFML/Graphics.hpp>
 class Ladder: public StaticObject
 {
 public:
@@ -8,7 +9,7 @@ public:
 
 	virtual void draw(sf::RenderWindow&)const override;
 	//virtual char identify() const override;
-	//virtual void playTurn(const GameObject* (*)(const sf::Vector2f&)) override;
+	virtual void playTurn() override;
 	//virtual void reset(const sf::Vector2f& )override;
 	//virtual void addSprite(const sf::Sprite&)override;
 

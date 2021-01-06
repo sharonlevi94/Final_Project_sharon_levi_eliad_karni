@@ -3,11 +3,14 @@
 #include "Utilities.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-Rod::Rod(const sf::Vector2f& location = sf::Vector2f(0, 0),
-	const EffectsHolder& effects = EffectsHolder())
+Rod::Rod(const sf::Vector2f& location, const EffectsHolder& effects)
 	: StaticObject(location, effects, ROD_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
+void Rod::playTurn(){}
+void Rod::draw(sf::RenderWindow& window)const {
+	this->GameObject::draw(window);
+}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

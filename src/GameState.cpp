@@ -13,17 +13,18 @@ GameState::GameState(const EffectsHolder& effects,
 	m_stateText(sf::Text()), m_levelTime(sf::Time()), m_level(0), m_score(0),
 	m_lifes(3), m_turnTime(sf::Time()){
 	this->m_stateText.setFont(effects.getFont(ARIEL_FONT));
+	this->m_stateText.setFillColor(sf::Color::White);
 }
 //============================ methods section ===============================
 //============================================================================
 void GameState::draw (sf::RenderWindow& window){
-	this->m_stateText.setFillColor(sf::Color::White);
 	this->m_stateText.setPosition(this->m_location);
 
 	this->m_stateText.setString("level: " + std::to_string(this->m_level)
 		+  " lifes: " + std::to_string(this->m_lifes) + " time left: " + 
 		std::to_string((this->m_levelTime.asSeconds() - 
 			(this->m_clock.getElapsedTime().asSeconds()))));
+	std::cout << (std::string)this->m_stateText.getString() << std::endl;
 	this->m_stateText.scale(sf::Vector2f(
 	this->m_size.x / this->m_stateText.getLocalBounds().width,
 	this->m_size.y / this->m_stateText.getLocalBounds().height

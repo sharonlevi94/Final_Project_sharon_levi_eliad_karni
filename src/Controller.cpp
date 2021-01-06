@@ -1,24 +1,25 @@
 //============================= include section ==============================
 #include "Controller.h"
 #include "Menu.h"
+#include "Board.h"
 #include "GameState.h"
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Controller::Controller() :
-	m_window(sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Rod Runner",
-		sf::Style::Fullscreen)),
-	//m_board(Board(sf::Vector2f(m_window.getSize().x, m_window.getSize().y * (9/10)))),
-	//m_gameobjects({}),,
-	//m_player(nullptr),
-	m_effects(EffectsHolder()),
-	m_menu(),
-	m_gameState(GameState(this->m_effects,sf::Vector2f(0,0), sf::Vector2f(this->m_window.getSize().x,
-		this))){
-	this->m_menu = Menu(Menu(this->m_effects,
+	m_window(sf::VideoMode::getDesktopMode(), "Rod Runner",
+		sf::Style::Fullscreen),
+	m_effects(),
+	m_board(sf::Vector2f(0, this->m_window.getSize().y / 10),
+		sf::Vector2f(m_window.getSize().x, m_window.getSize().y* (9 / 10)),
+		this->m_effects),
+	m_gameobjects({}),
+	m_player(nullptr){
+	this->m_menu = Menu(this->m_effects,
 		(sf::Vector2f)this->m_window.getSize(),
-		sf::Vector2f(0, 0)));
-	//this->m_gameState = GameState(this->m_effects, sf::Vector2f(500, 1900));
+		sf::Vector2f(0, 0));
+	this->m_gameState = GameState(this->m_effects, sf::Vector2f(0, 0), sf::Vector2f(this->m_window.getSize().x,
+		this->m_window.getSize().y / 10));
 }
 //============================== gets section ================================
 //============================ methods section ===============================
@@ -75,15 +76,22 @@ char Controller::runMenu() {
 }
 //============================================================================
 void Controller::runGame() {
+	this->m_board.loadNewLevel(this->m_effects);
 	while (this->m_window.isOpen()){
 		this->m_window.clear();
-		//this->m_board.draw(m_window);
+		this->m_board.draw(m_window);
 		this->m_window.display();
-		//this->m_gameState.levelup(150);
-		sf::Event event{};
-		while (!this->m_gameState.nextTurn()) {}
-		this->m_gameState.draw(this->m_window);
+		//this->m_gameState.draw(this->m_window);
+		if (m_clock.getElapsedTime().asSeconds() == 0.05) {
+			m_clock.restart();
+			this->play_turns();
+		}
 	}
+}
+//============================================================================
+void Controller::play_turns() {
+	for (int i = 0; i < this->m_gameobjects.size(); ++i)
+		this->m_gameobjects[i]->playTurn();
 }
 //============================ private section ===============================
 //============================== gets section ================================

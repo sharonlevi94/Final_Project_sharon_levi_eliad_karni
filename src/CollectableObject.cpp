@@ -12,7 +12,8 @@ CollectableObject::CollectableObject(const sf::Vector2f& location,
 	m_is_collected(false){}
 //============================== gets section ================================
 //============================ methods section ===============================
-
+//============================================================================
+bool CollectableObject::is_collected()const { return (this->m_is_collected); }
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

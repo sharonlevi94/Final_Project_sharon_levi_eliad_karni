@@ -14,16 +14,18 @@ void Player::draw(sf::RenderWindow& window) const {
 	window.draw(this->getSprite());
 }
 //============================================================================
-void Player::playTurn() {
+void Player::playTurn(const sf::Vector2f& mapSize) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		this->setLocation(sf::Vector2f(0, -1));
+		this->setLocation(sf::Vector2f(0, -1), mapSize);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		this->setLocation(sf::Vector2f(-1, 0));
+		this->setLocation(sf::Vector2f(-1, 0), mapSize);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		this->setLocation(sf::Vector2f(1, 0));
+		this->setLocation(sf::Vector2f(1, 0),mapSize);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		this->setLocation(sf::Vector2f(0, -1));
+		this->setLocation(sf::Vector2f(0, -1),mapSize);
 }
+//============================================================================
+void Player::playTurn() {}
 //============================================================================
 //============================ private section ===============================
 //============================== sets section ================================

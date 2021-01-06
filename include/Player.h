@@ -10,16 +10,8 @@ public:
 
 	virtual void draw(sf::RenderWindow& window) const;
 	virtual void playTurn() override;
-	//virtual void reset(const sf::Vector2f&) override;
-	//virtual void addSprite(const sf::Sprite&)override;
-
-	//virtual void fall(int) override;
-	//virtual bool isMovePossible()const  override;
-
+ void playTurn(const sf::Vector2f&);
 	//void dig(Wall&);
 
 private:
-	//virtual void setState(const int) override;
-	virtual void setLocation(const sf::Vector2f&) override;
-	//virtual void setSprite(const sf::Sprite&) override;
 };
