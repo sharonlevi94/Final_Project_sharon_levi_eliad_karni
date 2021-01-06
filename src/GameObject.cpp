@@ -18,9 +18,13 @@ const sf::Vector2f& GameObject::getLocation()const {
 int GameObject::getState()const {
 	return this->m_state;
 }
-//============================ private section ===============================
+//============================================================================
+const sf::Vector2f& GameObject::getSize()const{
+	return sf::Vector2f(this->m_objectSprite.getLocalBounds().width,
+		this->m_objectSprite.getLocalBounds().height);
+}
+//=========================== protected section ==============================
 //============================== sets section ================================
 void GameObject::setLocation(const sf::Vector2f& movment) {
 	this->m_objectSprite.move(movment);
 }
-//============================ methods section ===============================
