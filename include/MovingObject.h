@@ -9,5 +9,6 @@ public:
 	//virtual bool isMovePossible()const=0;
 
 private:
-	//virtual void setLocation (const sf::Vector2f&)=0;
+	virtual void setLocation(const sf::Vector2f&); // = 0;
+	sf::Vector2f m_currentLocation;
 };

@@ -17,8 +17,6 @@ DataReader::DataReader()
 	if(!this->m_boardReader.is_open())
 		terminate
 		("Cannot open the levels file, pls make sure the file is exist");
-
-	//this->readNextLevel(); //read the first level
 }
 //========================================================================
 DataReader::~DataReader() {
@@ -29,7 +27,7 @@ void DataReader::receiveLevelParameters(){
 	m_boardReader >> m_levelSize.x >> m_levelSize.y;
 	m_boardReader >> m_levelTime;
 	char eat_space;
-	m_boardReader >> eat_space;
+	m_boardReader.get(eat_space);
 }
 //========================================================================
 /*
@@ -57,43 +55,36 @@ vector<vector<GameObject*>> DataReader::readNextLevel() {
 				{
 				case PLAYER: {
 					row.push_back(new Player(sf::Vector2f((float)j,(float)i),
-						sf::Vector2f((float)OBJ_WIDTH,(float)OBJ_HEIGHT),
 						STAND,PLAYER_T));
 					break;
 				}
 						   
 				case ENEMY: {
 					row.push_back(new SmartEnemy(sf::Vector2f((float)j, (float)i),
-						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
 						STAND, ENEMY_T));
 					break;
 				}
 				case COIN: {
 					row.push_back(new Coin(sf::Vector2f((float)j, (float)i),
-						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
 						NOT_COLLECTED, COIN_T));
 					break;
 				}
 				case WALL: {
 					row.push_back(new Wall(sf::Vector2f((float)j, (float)i),
-						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
 						EXIST, WALL_T));
 
 					break;
 				}
 				case LADDER: {
 					row.push_back(new Ladder(sf::Vector2f((float)j, (float)i),
-						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
 						NOT_CLIMBED,  LADDER_T));
 					break;
 				}
 				case ROD: {
 					row.push_back(new Rod(sf::Vector2f((float)j, (float)i),
-						sf::Vector2f((float)OBJ_WIDTH, (float)OBJ_HEIGHT),
 						NOT_CLIMBED,  ROD_T));
 					break;
 				}
-				
 				default: {
 					row.push_back(NULL); // inputed ' '
 					break;

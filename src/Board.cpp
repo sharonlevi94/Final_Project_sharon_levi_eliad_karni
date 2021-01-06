@@ -28,13 +28,11 @@ Board::~Board() {
 //========================================================================
 void Board::draw(sf::RenderWindow& window)const{
 	window.draw(m_background);
-	//window.display();
 	for (int i = 0; i < m_levelSize.x; i++)
 		for (int j =0; j < m_levelSize.y; j++)
 			if (m_map[i][j] != nullptr) {
 				m_map[i][j]->draw(window,
 					m_effectsHolder.getTexture(m_map[i][j]->identify()));
-				window.display();
 			}
 }
 //========================================================================

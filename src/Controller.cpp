@@ -37,9 +37,11 @@ void Controller::run() {
 char Controller::runMenu() {
 	while (this->m_window.isOpen())
 	{
+		//displaying menu state
 		this->m_window.clear();
 		this->m_menu.draw(this->m_window);
 		this->m_window.display();
+		//recevive user movments
 		sf::Event event{};
 		while (this->m_window.waitEvent(event)) {
 			switch (event.type) {
@@ -76,18 +78,20 @@ void Controller::runGame() {
 		this->m_window.clear();
 		this->m_board.draw(m_window);
 		this->m_window.display();
-		//boardreader
 		//this->m_gameState.levelup(150);
-		sf::Event event;
+		sf::Event event{};
 		while (m_window.waitEvent(event)) {
-			
-		}
-		/*while (true){
-			if (this->m_gameState.nextTurn()) {
-				this->m_gameState.draw(this->m_window);
-				this->m_window.display();
+			switch (event.type){
+			case sf::Event::Closed:
+				this->m_window.close();
+				break;
+			case sf::Event::KeyPressed:
+				std::cout << "key pressed";
+				break;
+			default:
+				break;
 			}
-		}*/
+		}
 	}
 }
 //============================ private section ===============================

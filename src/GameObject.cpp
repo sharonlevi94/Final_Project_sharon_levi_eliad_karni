@@ -1,22 +1,26 @@
 //============================= include section ==============================
 #include "GameObject.h"
+#include <SFML/Graphics.hpp>
+#include <EffectsHolder.h>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 GameObject::GameObject(const sf::Vector2f location,
-	const sf::Vector2f size,
-	int state,
-	int type) :
-	m_type(type),
-	m_location(location),
-	m_size(size),
-    m_state(state) {}
+	int state, const EffectsHolder& effects) :
+    m_state(state), m_objectSprite(sf::Sprite()) {
+	this->m_objectSprite.setPosition(location);
+}
 //============================== gets section ================================
-const sf::Vector2f& GameObject::getLocation()const { return this->m_location; }
-const sf::Vector2f& GameObject::getSize()const { return this->m_size; }
-int  GameObject::getState()const { return this->m_state; }
-int GameObject::identify()const { return this->m_type; }
-//============================ methods section ===============================
-
+//============================================================================
+const sf::Vector2f& GameObject::getLocation()const { 
+	return this->m_objectSprite.getPosition();
+}
+//============================================================================
+int GameObject::getState()const {
+	return this->m_state;
+}
 //============================ private section ===============================
 //============================== sets section ================================
+void GameObject::setLocation(const sf::Vector2f& movment) {
+	this->m_objectSprite.move(movment);
+}
 //============================ methods section ===============================
