@@ -4,8 +4,6 @@
 #include "GameState.h"
 #include "EffectsHolder.h"
 #include "MovingObject.h"
-#include "Board.h"
-#include "Enemy.h"
 #include "Player.h"
 #include "Coin.h"
 #include <SFML/Graphics.hpp>

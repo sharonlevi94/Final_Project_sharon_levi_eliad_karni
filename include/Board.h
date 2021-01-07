@@ -1,3 +1,5 @@
+#ifndef _BOARD_H_
+#define _BOARD_H_
 #pragma once
 #include <vector>
 #include "GameObject.h"
@@ -36,3 +38,4 @@ private:
 
 	void releaseMap();
 };
+#endif //_BOARD_H_
