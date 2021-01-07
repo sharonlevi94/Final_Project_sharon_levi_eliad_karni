@@ -123,7 +123,7 @@ vector<MovingObject*> Board::FindMovingObj(){
 }
 
 sf::Vector2f Board::getlevelSize()const{
-	return this->m_levelSize;
+	return this->m_backgroundSize;
 }
 
 const sf::Vector2f& Board::getLocation() const { return this->m_location; }
