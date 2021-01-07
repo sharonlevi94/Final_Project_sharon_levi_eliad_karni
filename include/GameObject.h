@@ -26,7 +26,4 @@ protected:
 private:
 	sf::Sprite m_objectSprite;
 	int m_state;
-
-	//virtual void setState (const int)=0;
-	//virtual void setTexture (const sf::Texture&)=0;
 };

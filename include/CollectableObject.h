@@ -1,5 +1,3 @@
-#ifndef _COLLECTABLEOBJECT_
-#define _COLLECTABLEOBJECT_
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "StaticObject.h"
@@ -16,7 +14,4 @@ public:
 
 private:
 	bool m_is_collected;
-
-//	virtual void collect()=0;
 };
-#endif // !_COLLECTABLEOBJECT_

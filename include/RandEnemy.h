@@ -1,17 +1,13 @@
 #pragma once
 #include "Enemy.h"
-class RandEnemy: public Enemy
+#include "Board.h"
+class RandEnemy : public Enemy
 {
 public:
-	RandEnemy();
+	RandEnemy(const sf::Vector2f = sf::Vector2f(0, 0),
+		const EffectsHolder & = EffectsHolder(),
+		const sf::Vector2f & = sf::Vector2f(0, 0));
 
-	virtual void draw(sf::RenderWindow&, const sf::Texture&) const;
-	//virtual char identify() const override;
-	//virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
-	//virtual void reset(const sf::Vector2f&);
-
+	virtual void playTurn(const Board&) override;
 private:
-
-	//virtual void setState(const int);
-	//virtual void setLocation(const sf::Vector2f&);
 };

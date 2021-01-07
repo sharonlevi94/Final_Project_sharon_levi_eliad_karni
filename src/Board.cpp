@@ -19,21 +19,13 @@ Board::Board(const sf::Vector2f& location,
              const sf::Vector2f& size, 
 			 const EffectsHolder& effects)
 	: m_levelReader(DataReader()),
-	m_background(sf::RectangleShape()),
 	m_location(location),
-	m_levelNumber(1),
- 	m_backgroundSize(size),
 	m_map({}),
-	m_levelSize(size),
-	m_levelTime(0)
-{}
-//========================================================================
-Board::~Board() {
-	releaseMap();
-	this->m_map = {};
+	m_background(),
+	m_levelSize(size){
 }
 //========================================================================
-void Board::draw(sf::RenderWindow& window)const{
+void Board::draw(sf::RenderWindow& window)const {
 	window.draw(m_background);
 	for (int i = 0; i < m_levelSize.x; i++)
 		for (int j =0; j < m_levelSize.y; j++)
@@ -48,7 +40,6 @@ std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects) {
 		this->getlevelSize().y / map.size());
 	vector<MovingObject*> movingsVec = {};
 
-	this->m_levelNumber++;
 	m_levelSize = m_levelReader.getLevelSize();
 	this->releaseMap();
 	for (int i = 0; i < map.size(); i++) {
@@ -91,12 +82,11 @@ std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects) {
 		this->m_map.push_back(row);
 	}
 
-	//set time level, if exist:
-	this->m_levelTime = m_levelReader.getLevelTime();
 	//set background of the level:
-	m_background.setSize(m_backgroundSize);
+	m_background.setTexture(effects.getTexture(1));
+	m_background.setScale(sf::Vector2f(this->m_levelSize.x / this->m_background.getTexture()->getSize().x,
+		this->m_levelSize.y / this->m_background.getTexture()->getSize().y));
 	m_background.setPosition(m_location);
-	m_background.setTexture(&effects.getTexture(m_levelNumber));
 	return movingsVec;
 }
 //========================================================================
@@ -104,30 +94,16 @@ bool Board::is_next_lvl_exist()const {
 	return m_levelReader.isThereNextLevel();
 }
 //========================================================================
-const GameObject* Board::getContent(const sf::Vector2f& location)const{
-	return m_map[(unsigned)location.x][(unsigned)location.y];
-}
-//========================================================================
 int Board::getLevelTime()const {
-		return m_levelTime;
+		return this->m_levelReader.getLevelTime();
 }
 //========================================================================
-vector<MovingObject*> Board::FindMovingObj(){
-	vector<MovingObject*> characters = {};
-	for(int i =0 ; i< this->m_map.size() ; i++)
-		for(int j=0 ; j<this->m_map[i].size() ; j++){
-			if (dynamic_cast <MovingObject*> (m_map[i][j]))
-				characters.push_back((MovingObject*)m_map[i][j]);
-		}
-	return characters;
-}
-
 sf::Vector2f Board::getlevelSize()const{
 	return this->m_levelSize;
 }
-
+//========================================================================
 const sf::Vector2f& Board::getLocation() const { return this->m_location; }
-
+//========================================================================
 void Board::releaseMap() {
 	for (int i = 0; i < this->m_map.size(); ++i) {
 		for (int j = 0; j < this->m_map[i].size(); ++j) {

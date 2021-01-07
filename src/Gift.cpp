@@ -1,13 +1,17 @@
 //============================= include section ==============================
-#include "gift.h"
+#include "Gift.h"
+#include "Utilities.h"
+#include "Macros.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-Gift::Gift(const sf::Vector2f& location,
-	const EffectsHolder& effects)
-	: CollectableObject(location,effects,GIFT_T) {}
+Gift::Gift(const sf::Vector2f location,
+	const EffectsHolder& effects,
+	const sf::Vector2f& size)
+	:CollectableObject(location, effects, size, COIN_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-
+//============================================================================
+void Gift::playTurn(const Board& board) {}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

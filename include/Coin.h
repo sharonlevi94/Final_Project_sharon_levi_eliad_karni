@@ -13,9 +13,4 @@ public:
 	virtual void          playTurn (const Board&)  override;
 
 private:
-
-	//virtual void        collect () override;
-	//virtual void        setState (const int)  override;
-	//virtual void        setLocation (const sf::Vector2f&) override;
-	//virtual void        setSprite  (const sf::Sprite&) override;
 };
