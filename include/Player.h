@@ -1,6 +1,7 @@
 #pragma once
 #include "MovingObject.h"
 #include "Wall.h"
+#include "Board.h"
 
 class Player : public MovingObject
 {
@@ -11,7 +12,7 @@ public:
 
 	//virtual void draw(sf::RenderWindow& window) const;
 	virtual void playTurn() override;
-	void playTurn(const sf::Vector2f&);
+	void playTurn(const Board&);
 	//void dig(Wall&);
 
 private:

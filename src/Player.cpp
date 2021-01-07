@@ -26,20 +26,20 @@ void Player::playTurn() {
 		this->setLocation(sf::Vector2f(0, 1));
 }
 //============================================================================
-void Player::playTurn(const sf::Vector2f& screenSize) {
+void Player::playTurn(const Board& board) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) &&
-		this->getLocation().y - 1 >= 0)
+		this->getLocation().y - 1 >= board.getLocation().y)
 		this->setLocation(sf::Vector2f(0, -1));
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) &&
-		this->getLocation().x - 1 >= 0)
+		this->getLocation().x - 1 >= board.getLocation().x)
 		this->setLocation(sf::Vector2f(-1, 0));
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)&&
 		this->getLocation().x + this->getSprite().getGlobalBounds().width + 1 
-		<= screenSize.x)
+		<= board.getlevelSize().x + board.getLocation().x)
 		this->setLocation(sf::Vector2f(1, 0));
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
 		this->getLocation().y + this->getSprite().getGlobalBounds().height + 1
-		<= screenSize.y)
+		<= board.getlevelSize().y + board.getLocation().y)
 		this->setLocation(sf::Vector2f(0, 1));
 }
 //============================================================================

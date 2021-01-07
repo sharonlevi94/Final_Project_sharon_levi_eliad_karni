@@ -10,7 +10,7 @@ Controller::Controller() :
 	m_window(sf::VideoMode::getDesktopMode(), "Lode Runner",
 		sf::Style::Fullscreen),
 	m_effects(),
-	m_board(sf::Vector2f(0, (float)this->m_window.getSize().y / 10),
+	m_board(sf::Vector2f(0, (float)this->m_window.getSize().y * 0.1),
 		sf::Vector2f((float)m_window.getSize().x, (float)m_window.getSize().y * (0.9)),
 		this->m_effects),
 	m_gameobjects({}),
@@ -19,7 +19,7 @@ Controller::Controller() :
 		(sf::Vector2f)this->m_window.getSize(),
 		sf::Vector2f(0, 0));
 	this->m_gameState = GameState(this->m_effects, sf::Vector2f(0, 0), sf::Vector2f(this->m_window.getSize().x,
-		this->m_window.getSize().y / 10));
+		this->m_window.getSize().y * 0.08));
 }
 //============================== gets section ================================
 //============================ methods section ===============================
@@ -76,14 +76,15 @@ char Controller::runMenu() {
 }
 //============================================================================
 void Controller::runGame() {
+	this->m_gameState.levelup(-1);
 	this->m_gameobjects =  this->m_board.loadNewLevel(this->m_effects);
 	while (this->m_window.isOpen()){
 		this->m_window.clear();
+		this->m_gameState.draw(this->m_window);
 		this->m_board.draw(m_window);
 		this->drawObjects();
 		this->m_window.display();
 		//sf::Time ss = this->m_clock.getElapsedTime().asSeconds();
-		//this->m_gameState.draw(this->m_window);
 		//if (m_clock.getElapsedTime().asSeconds() == 0.05) {
 			m_clock.restart();
 			this->play_turns();
@@ -95,7 +96,7 @@ void Controller::play_turns() {
 	for (int i = 0; i < this->m_gameobjects.size(); ++i) {
 		if(dynamic_cast <Player*> (this->m_gameobjects[i]))
 			((Player*)(this->m_gameobjects[i]))->
-			playTurn((sf::Vector2f)this->m_window.getSize());
+			playTurn(this->m_board);
 		else
 			this->m_gameobjects[i]->playTurn();
 	}
