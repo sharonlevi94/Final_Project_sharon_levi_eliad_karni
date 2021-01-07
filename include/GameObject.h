@@ -1,7 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include "EffectsHolder.h"
-#include "Macros.h"
 #include "Board.h"
 class GameObject
 {

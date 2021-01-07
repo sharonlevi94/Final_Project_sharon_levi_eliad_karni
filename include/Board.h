@@ -4,6 +4,14 @@
 #include "DataReader.h"
 #include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
+#include "Macros.h"
+#include "Utilities.h"
+#include "Player.h"
+#include "SmartEnemy.h"
+#include "Coin.h"
+#include "Ladder.h" 
+#include "Wall.h"
+#include "Rod.h"
 
 class Board
 {

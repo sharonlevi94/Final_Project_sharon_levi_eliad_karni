@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "StaticObject.h"
-#include "EffectsHolder.h"
 
 class CollectableObject : public StaticObject{
 public:
