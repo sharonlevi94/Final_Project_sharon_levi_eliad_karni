@@ -11,6 +11,7 @@ public:
 
 	//virtual void draw(sf::RenderWindow& window) const;
 	virtual void playTurn() override;
+	void playTurn(const sf::Vector2f&);
 	//void dig(Wall&);
 
 private:
