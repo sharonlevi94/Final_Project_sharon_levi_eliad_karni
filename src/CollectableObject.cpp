@@ -6,9 +6,10 @@
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 CollectableObject::CollectableObject(const sf::Vector2f& location,
-	const EffectsHolder& effects,
+	const EffectsHolder & effects,
+	const sf::Vector2f & size,
 	char objectType)
-	: StaticObject(location, effects, objectType),
+	: StaticObject(location, effects, size, objectType),
 	m_is_collected(false){}
 //============================== gets section ================================
 //============================ methods section ===============================

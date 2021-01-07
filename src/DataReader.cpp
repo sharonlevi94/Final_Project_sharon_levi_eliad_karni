@@ -38,10 +38,9 @@ bool DataReader::isThereNextLevel()const {
 	return (!this->m_boardReader.eof());
 }
 //========================================================================
-vector<vector<GameObject*>> DataReader::readNextLevel
-(const EffectsHolder& effects){
+vector<vector<char>> DataReader::readNextLevel(){
 	//1. allocate 2D vector of game objs
-	vector<vector<GameObject*>> newLevel = {};
+	vector<vector<char>> newLevel = {};
 	//2. check first if there is more level in the file
 	if (this->isThereNextLevel()) {
 		char input;
@@ -49,34 +48,34 @@ vector<vector<GameObject*>> DataReader::readNextLevel
 		this->receiveLevelParameters();
 	    //4. read the level itself from the file
 		for (int i = 0; i < m_levelSize.x; i++) {
-			std::vector<GameObject*> row = {};
+			std::vector<char> row = {};
 			for (int j = 0; j < m_levelSize.y; j++) {
 				m_boardReader.get(input);
 				switch (input)
 				{
 				case PLAYER: {
-					row.push_back(new Player(sf::Vector2f((float)j,(float)i),effects));
+					row.push_back(PLAYER);
 					break;
 				}
 						   
 				case ENEMY: {
-					row.push_back(new SmartEnemy(sf::Vector2f((float)j, (float)i),effects));
+					row.push_back(ENEMY);
 					break;
 				}
 				case COIN: {
-					row.push_back(new Coin(sf::Vector2f((float)j, (float)i),effects));
+					row.push_back(COIN);
 					break;
 				}
 				case WALL: {
-					row.push_back(new Wall(sf::Vector2f((float)j, (float)i),effects));
+					row.push_back(WALL);
 					break;
 				}
 				case LADDER: {
-					row.push_back(new Ladder(sf::Vector2f((float)j, (float)i), effects));
+					row.push_back(LADDER);
 					break;
 				}
 				case ROD: {
-					row.push_back(new Rod(sf::Vector2f((float)j, (float)i), effects));
+					row.push_back(ROD);
 					break;
 				}
 				default: {

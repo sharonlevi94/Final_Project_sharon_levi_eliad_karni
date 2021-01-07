@@ -4,14 +4,11 @@
 class Ladder: public StaticObject
 {
 public:
-	Ladder(const sf::Vector2f& location = sf::Vector2f(0, 0),
-		const EffectsHolder& effects = EffectsHolder());
+	Ladder(const sf::Vector2f = sf::Vector2f(0,0),
+		const EffectsHolder& = EffectsHolder(),
+		const sf::Vector2f& = sf::Vector2f(0,0));
 
-	virtual void draw(sf::RenderWindow&)const override;
-	//virtual char identify() const override;
-	virtual void playTurn() override;
-	//virtual void reset(const sf::Vector2f& )override;
-	//virtual void addSprite(const sf::Sprite&)override;
+	virtual void playTurn(const Board&) override;
 
 private:
 	//virtual void setState(const int);

@@ -4,11 +4,12 @@
 class Wall : public StaticObject
 {
 public:
-	Wall(const sf::Vector2f& location = sf::Vector2f(0, 0),
-		const EffectsHolder& effects = EffectsHolder());
+	Wall(const sf::Vector2f = sf::Vector2f(0,0),
+		const EffectsHolder& = EffectsHolder(),
+		const sf::Vector2f& = sf::Vector2f(0,0));
 
-	virtual void draw(sf::RenderWindow&)const override;
-	void playTurn() override;
+//	virtual void draw(sf::RenderWindow&)const override;
+	void playTurn(const Board&) override;
 	void dig();
 
 private:

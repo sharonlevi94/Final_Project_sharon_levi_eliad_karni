@@ -21,7 +21,8 @@ public:
 	const GameObject* getContent(const sf::Vector2f& location)const;
 	int getLevelTime()const;
 	vector<MovingObject*> FindMovingObj();
-	
+	sf::Vector2f getlevelSize()const;
+	const sf::Vector2f& getLocation() const;
 
 private:
 	vector<vector<GameObject*>> m_map;
@@ -32,4 +33,6 @@ private:
 	int m_levelTime;
 	sf::RectangleShape m_background;
 	int m_levelNumber;
+
+	void releaseMap();
 };

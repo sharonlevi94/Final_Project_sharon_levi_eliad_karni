@@ -4,12 +4,13 @@
 class FoolEnemy: public Enemy
 {
 public:
-	FoolEnemy(const sf::Vector2f& location = sf::Vector2f(0, 0),
-		const EffectsHolder& effects = EffectsHolder());
+	FoolEnemy(const sf::Vector2f = sf::Vector2f(0,0),
+		const EffectsHolder& = EffectsHolder(),
+		const sf::Vector2f& = sf::Vector2f(0,0));
 	
 	virtual void fall();
 	virtual void draw(sf::RenderWindow&, const sf::Texture&) const;
-	virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
+	virtual void playTurn(const Board&);
 	virtual void reset(const sf::Vector2f&);
 
 private:

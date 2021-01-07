@@ -26,7 +26,7 @@ private:
 	Menu m_menu;
 	GameState m_gameState;
 	EffectsHolder m_effects;
-	vector <GameObject*> m_gameobjects;
+	vector <MovingObject*> m_gameobjects;
 	Player* m_player;
 	sf::Clock m_clock;
 };

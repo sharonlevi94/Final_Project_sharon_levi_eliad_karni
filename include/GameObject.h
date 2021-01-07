@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "EffectsHolder.h"
+#include "Board.h"
 #include <vector>
 #include "Macros.h"
 using std::vector;
@@ -10,10 +11,11 @@ public:
 	GameObject(
 		const sf::Vector2f = sf::Vector2f(0,0),
 		const EffectsHolder& = EffectsHolder(),
+		const sf::Vector2f& = sf::Vector2f(0,0),
 		char objectType = NOTHING);
 	                                      
-	virtual void draw(sf::RenderWindow&)const;
-	virtual void playTurn() = 0;
+	virtual void draw(sf::RenderWindow& window);
+	virtual void playTurn(const Board&) = 0;
 	virtual void reset();
 
 	const sf::Vector2f& getLocation()const;
