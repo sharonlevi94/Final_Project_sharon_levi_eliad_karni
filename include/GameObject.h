@@ -1,9 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "EffectsHolder.h"
-#include "Board.h"
 #include <vector>
 #include "Macros.h"
+#include "Board.h"
 using std::vector;
 class GameObject
 {

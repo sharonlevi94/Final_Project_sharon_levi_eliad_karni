@@ -25,3 +25,6 @@
 1080	1504	631691200	Final_Project_sharon_levi_eliad_karni.exe	e2b79d2b75a964f1
 1	1153	631691308	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Player.cpp.obj	5e51003bdba58126
 1153	1523	631691308	Final_Project_sharon_levi_eliad_karni.exe	e2b79d2b75a964f1
+10	1859	631692161	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/MovingObject.cpp.obj	4ac4b1c37dc2f45d
+28	1860	631692161	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Enemy.cpp.obj	30807ef003c186dd
+17	1862	631692161	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/CollectableObject.cpp.obj	39ea50448d93f952
