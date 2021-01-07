@@ -1,3 +1,5 @@
+#ifndef _MENU_H
+#define _MENU_H
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <EffectsHolder.h>
@@ -27,4 +29,5 @@ private:
 	void calcStartButton(const EffectsHolder& effects);
 	void calcQuitButton(const EffectsHolder& effects);
 	void calcBackground(const EffectsHolder& effects);
-};
+}; 
+#endif //_MENU_H_

@@ -1,3 +1,5 @@
+#ifndef _RANDENEMY_H_
+#define _RANDENEMY_H_
 #pragma once
 #include "Enemy.h"
 #include "Board.h"
@@ -10,4 +12,5 @@ public:
 
 	virtual void playTurn(const Board&) override;
 private:
-};
+}; 
+#endif //_BOARD_H_

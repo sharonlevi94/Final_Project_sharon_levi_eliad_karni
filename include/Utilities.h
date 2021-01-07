@@ -1,3 +1,5 @@
+#ifndef _UTILITIES_H_
+#define _UTILITIES_H_
 #pragma once
 #include <fstream> // for string
 #include <SFML/Graphics.hpp>
@@ -9,3 +11,4 @@ sf::Vector2f calcScale(const sf::Vector2f& size,
 sf::Vector2f calcScreenLocation(const sf::Vector2f& ScreenSize,
 	const sf::Vector2f& mapSize,
 	const sf::Vector2f& location); 
+#endif //_UTILITIES_H_

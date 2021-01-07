@@ -1,3 +1,5 @@
+#ifndef _STATICOBJECT_H
+#define _STATICOBJECT_H
 #pragma once
 #include "GameObject.h"
 #include <SFML/Graphics.hpp>
@@ -8,3 +10,4 @@ public:
 
 private:
 };
+#endif //_STATIC_OBJECT_H

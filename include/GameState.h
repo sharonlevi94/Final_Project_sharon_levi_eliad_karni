@@ -1,3 +1,5 @@
+#ifndef _GAMESTATE_H_
+#define _GAMESTATE_H_
 #pragma once
 //============================= include section ==============================
 #include <SFML/graphics.hpp>
@@ -38,3 +40,4 @@ private:
 	int             m_lifes;
 	sf::Time		 m_turnTime;
 };
+#endif //_GAMESTATE_H_

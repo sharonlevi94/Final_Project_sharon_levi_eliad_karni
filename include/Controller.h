@@ -1,3 +1,5 @@
+#ifndef _CONTTROLLER_H
+#define _CONTTROLLER_H
 #pragma once
 #include "Board.h"
 #include "Menu.h"
@@ -24,7 +26,8 @@ private:
 	Menu m_menu;
 	GameState m_gameState;
 	EffectsHolder m_effects;
-	vector <MovingObject*> m_gameobjects;
+	std::vector <MovingObject*> m_gameobjects;
 	Player* m_player;
 	sf::Clock m_clock;
 };
+#endif //_CONTTROLLER_H

@@ -1,3 +1,5 @@
+#ifndef _ENEMY_H
+#define _ENEMY_H
 #pragma once
 #include "MovingObject.h"
 #include <SFML/Graphics.hpp>
@@ -10,3 +12,4 @@ public:
 private:
 	 
 };
+#endif //_BOARD_H_

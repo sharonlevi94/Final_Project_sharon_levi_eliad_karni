@@ -1,6 +1,9 @@
+#ifndef _BOARD_H_
+#define _BOARD_H_
 #pragma once
 #include <vector>
 #include "MovingObject.h"
+#include "GameObject.h"
 #include "DataReader.h"
 #include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
@@ -28,3 +31,4 @@ private:
 
 	void releaseMap();
 };
+#endif //_BOARD_H_

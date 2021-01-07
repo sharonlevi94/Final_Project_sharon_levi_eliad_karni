@@ -1,3 +1,5 @@
+#ifndef _MACROS_H_
+#define _MACROS_H_
 #pragma once
 /*
   This file contains :
@@ -90,3 +92,4 @@ constexpr auto GAME_LOGO = 26;
 //--------------------------------- sounds -----------------------------------
 //---------------------------------- fonts -----------------------------------
 constexpr auto ARIEL_FONT = 1;
+#endif //_BOARD_H_

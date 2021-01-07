@@ -1,7 +1,8 @@
+#ifndef _GAMEOBJECT_H_
+#define _GAMEOBJECT_H_
 #pragma once
-#include "Board.h"
 #include "Utilities.h"
-
+#include "Macros.h"
 class GameObject
 {
 public:
@@ -12,7 +13,7 @@ public:
 		char objectType = NOTHING);
 	                                      
 	virtual void draw(sf::RenderWindow& window);
-	virtual void playTurn(const Board&) = 0;
+	virtual void playTurn() = 0;
 	virtual void reset();
 
 	const sf::Vector2f& getLocation()const;
@@ -26,3 +27,4 @@ private:
 	sf::Sprite m_objectSprite;
 	int m_state;
 };
+#endif //_GAMEOBJECT_H

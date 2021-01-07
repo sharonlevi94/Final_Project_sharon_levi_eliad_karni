@@ -1,3 +1,5 @@
+#ifndef _DATAREADER_H_
+#define _DATAREADER_H_
 #pragma once
 #include "GameObject.h"
 #include <vector>
@@ -10,7 +12,7 @@ public:
 	~DataReader();
 	//------------------------- method section -------------------------------
 	bool isThereNextLevel()const;
-	vector<vector<char>> readNextLevel();
+	std::vector<std::vector<char>> readNextLevel();
 	sf::Vector2f getLevelSize()const;
 	int getLevelTime()const;
 private:
@@ -22,3 +24,4 @@ private:
 	sf::Vector2f m_levelSize;
 	int m_levelTime;
 };
+#endif //_DATAREADER_H_

@@ -1,3 +1,5 @@
+#ifndef _EFFECTSHOLDER_H_
+#define _EFFECTSHOLDER_H_
 #pragma once
 #include <map>
 #include <SFML/Graphics.hpp>
@@ -22,3 +24,4 @@ private:
 	void setFonts();
 	void setObjects();
 };
+#endif //_EFFECTSHOLDER_H_

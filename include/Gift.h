@@ -1,3 +1,5 @@
+#ifndef _GIFT_H_
+#define _GIFT_H_
 #pragma once
 #include "CollectableObject.h"
 class Gift :public CollectableObject
@@ -7,6 +9,7 @@ public:
 		const EffectsHolder & = EffectsHolder(),
 		const sf::Vector2f & = sf::Vector2f(0, 0));
 
-	virtual void          playTurn(const Board&)  override;
+	virtual void          playTurn()  override;
 private:
 };
+#endif //_BOARD_H_

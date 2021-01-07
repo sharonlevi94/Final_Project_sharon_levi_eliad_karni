@@ -1,6 +1,7 @@
+#ifndef _ROD_H
+#define _ROD_H
 #pragma once
 #include "StaticObject.h"
-
 class Rod : public StaticObject
 {
 public:
@@ -8,9 +9,8 @@ public:
 		const EffectsHolder& = EffectsHolder(),
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
-	virtual void playTurn(const Board&) override;
+	virtual void playTurn() override;
 
 private:
-	//virtual void setState(const int);
-	//virtual void setSprite(const sf::Sprite&);
 };
+#endif //_ROD_H_

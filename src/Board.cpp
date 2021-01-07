@@ -2,6 +2,7 @@
    This file conatains all methods of the class Board.
 */
 #include "Board.h"
+#include "MovingObject.h"
 #include "Macros.h"
 #include "Utilities.h"
 #include "Player.h"
@@ -10,8 +11,6 @@
 #include "Ladder.h" 
 #include "Wall.h"
 #include "Rod.h"
-
-using std::vector;
 //==================== Constructors & distruors section ====================
 Board::Board(const sf::Vector2f& location,
              const sf::Vector2f& size, 
@@ -33,10 +32,10 @@ void Board::draw(sf::RenderWindow& window)const {
 }
 //========================================================================
 std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects) {
-	vector<vector<char>> map = m_levelReader.readNextLevel();
+	std::vector<std::vector<char>> map = m_levelReader.readNextLevel();
 	sf::Vector2f boxSize(this->getlevelSize().x / map.size(),
 		this->getlevelSize().y / map.size());
-	vector<MovingObject*> movingsVec = {};
+	std::vector<std::MovingObject*> movingsVec = {};
 
 	m_levelSize = m_levelReader.getLevelSize();
 	this->releaseMap();
