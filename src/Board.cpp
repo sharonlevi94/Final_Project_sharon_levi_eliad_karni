@@ -2,6 +2,14 @@
    This file conatains all methods of the class Board.
 */
 #include "Board.h"
+#include "Macros.h"
+#include "Utilities.h"
+#include "Player.h"
+#include "SmartEnemy.h"
+#include "Coin.h"
+#include "Ladder.h" 
+#include "Wall.h"
+#include "Rod.h"
 
 using std::vector;
 //==================== Constructors & distruors section ====================

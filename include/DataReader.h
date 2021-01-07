@@ -1,7 +1,8 @@
 #pragma once
+#include "GameObject.h"
 #include <vector>
 #include <fstream>
-using std::vector;
+
 class DataReader{
 public:
 	//------------------------- constractors section -------------------------

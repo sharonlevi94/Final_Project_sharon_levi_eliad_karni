@@ -1,5 +1,7 @@
 #pragma once
 #include "Board.h"
+#include "Utilities.h"
+
 class GameObject
 {
 public:

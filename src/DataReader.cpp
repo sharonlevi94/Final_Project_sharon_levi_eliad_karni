@@ -9,7 +9,6 @@
 #include "Wall.h"
 #include "Rod.h"
 #include <iostream>
-using std::endl;
 //========================================================================
 DataReader::DataReader() 
 	: m_levelSize({}),m_levelTime(NO_LEVEL_TIME){
