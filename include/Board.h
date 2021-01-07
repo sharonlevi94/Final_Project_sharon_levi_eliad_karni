@@ -6,7 +6,6 @@
 #include <SFML/Graphics.hpp>
 #include "MovingObject.h"
 using std::vector;
-
 class Board
 {
 public:
