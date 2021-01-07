@@ -1,11 +1,12 @@
 #pragma once
 #include "GameObject.h"
+#include <vector>
 #include <fstream>
 
 class DataReader{
 public:
 	//------------------------- constractors section -------------------------
-	DataReader( );
+	DataReader();
 	~DataReader();
 	//------------------------- method section -------------------------------
 	bool isThereNextLevel()const;

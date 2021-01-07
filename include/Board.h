@@ -5,12 +5,11 @@
 #include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
 #include "MovingObject.h"
-using std::vector;
 class Board
 {
 public:
-	Board(const sf::Vector2f& location = sf::Vector2f(0,0),
-		const sf::Vector2f& size = sf::Vector2f(0,0),
+	Board(const sf::Vector2f& location = sf::Vector2f(0, 0),
+		const sf::Vector2f& size = sf::Vector2f(0, 0),
 		const EffectsHolder& effects = EffectsHolder());
 	~Board();
 
@@ -19,12 +18,12 @@ public:
 	bool is_next_lvl_exist()const;
 	const GameObject* getContent(const sf::Vector2f& location)const;
 	int getLevelTime()const;
-	vector<MovingObject*> FindMovingObj();
+	std::vector<MovingObject*> FindMovingObj();
 	sf::Vector2f getlevelSize()const;
 	const sf::Vector2f& getLocation() const;
 
 private:
-	vector<vector<GameObject*>> m_map;
+	std::vector<std::vector<GameObject*>> m_map;
 	sf::Vector2f m_backgroundSize;
 	sf::Vector2f m_levelSize;
 	sf::Vector2f m_location;

@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <vector>
 #include "CollectableObject.h"
 using std::vector;
 
