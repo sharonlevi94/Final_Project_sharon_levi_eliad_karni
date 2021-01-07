@@ -54,7 +54,7 @@ std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects) {
 	for (int i = 0; i < map.size(); i++) {
 		std::vector<GameObject*> row = {};
 		for (int j = 0; j < map[i].size(); j++) {
-			switch (map[j][i])
+			switch (map[i][j])
 			{
 			case PLAYER: {
 				movingsVec.push_back(new Player(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, effects, boxSize));

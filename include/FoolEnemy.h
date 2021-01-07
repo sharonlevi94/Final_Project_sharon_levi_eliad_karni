@@ -10,7 +10,7 @@ public:
 	
 	virtual void fall();
 	virtual void draw(sf::RenderWindow&, const sf::Texture&) const;
-	virtual void playTurn(const Board&);
+	virtual void playTurn();
 	virtual void reset(const sf::Vector2f&);
 
 private:

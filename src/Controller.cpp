@@ -94,9 +94,9 @@ void Controller::runGame() {
 void Controller::play_turns() {
 	for (int i = 0; i < this->m_gameobjects.size(); ++i) {
 		if(dynamic_cast <Player*> (this->m_gameobjects[i]))
-			((Player*)(this->m_gameobjects[i]))->playTurn(this->m_board);
+			((Player*)(this->m_gameobjects[i]))->playTurn();
 		else
-			this->m_gameobjects[i]->playTurn(this->m_board);
+			this->m_gameobjects[i]->playTurn();
 	}
 		
 }

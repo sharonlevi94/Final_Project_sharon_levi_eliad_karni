@@ -8,7 +8,7 @@ public:
 		const EffectsHolder& = EffectsHolder(),
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
-	virtual void playTurn(const Board&) override;
+	virtual void playTurn() override;
 
 private:
 	//virtual void setState(const int);

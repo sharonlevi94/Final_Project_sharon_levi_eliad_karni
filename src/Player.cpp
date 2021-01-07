@@ -15,7 +15,7 @@ Player::Player(const sf::Vector2f location,
 	window.draw(this->getSprite());
 }*/
 //============================================================================
-void Player::playTurn(const Board& board) {
+void Player::playTurn() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		this->setLocation(sf::Vector2f(0, -1));
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))

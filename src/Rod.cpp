@@ -9,7 +9,7 @@ Rod::Rod(const sf::Vector2f location,
 	: StaticObject(location, effects,size, ROD_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-void Rod::playTurn(const Board& board){}
+void Rod::playTurn(){}
 /*void Rod::draw(sf::RenderWindow& window)const {
 	this->GameObject::draw(window);
 }*/
