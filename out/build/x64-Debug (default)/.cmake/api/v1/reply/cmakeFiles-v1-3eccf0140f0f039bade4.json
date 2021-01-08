@@ -182,9 +182,6 @@
 		},
 		{
 			"path" : "resources/Logo.png"
-		},
-		{
-			"path" : "resources/Levels.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

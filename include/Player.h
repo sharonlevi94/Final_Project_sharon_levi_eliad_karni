@@ -12,7 +12,6 @@ public:
 
 	//virtual void draw(sf::RenderWindow& window) const;
 	virtual void playTurn(sf::Time) override;
-	void playTurn(const Board&);
 	//void dig(Wall&);
 
 private:

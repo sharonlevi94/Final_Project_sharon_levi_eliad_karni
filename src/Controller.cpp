@@ -79,27 +79,28 @@ void Controller::runGame() {
 	this->m_gameState.levelup(-1);
 	this->m_gameobjects =  this->m_board.loadNewLevel(this->m_effects);
 	while (this->m_window.isOpen()){
-		this->m_window.clear();
-		this->m_gameState.draw(this->m_window);
-		this->m_board.draw(m_window);
-		this->drawObjects();
-		this->m_window.display();
-		//if (m_clock.getElapsedTime().asSeconds() == 0.05) {
-			sf::Time deltaTime=m_clock.restart();
-			this->play_turns(deltaTime);
-		//}
+				this->m_window.clear();
+				this->m_gameState.draw(this->m_window);
+				this->m_board.draw(m_window);
+				this->drawObjects();
+				this->m_window.display();
+				sf::Event event = {};
+				while (m_window.pollEvent(event)) {
+					if (event.type == sf::Event::MouseButtonReleased)
+						m_window.close();
+				}
+				sf::Time deltaTime = m_clock.restart();
+				this->play_turns(deltaTime);
 	}
 }
 //============================================================================
 void Controller::play_turns(sf::Time deltaTime) {
 	for (int i = 0; i < this->m_gameobjects.size(); ++i) {
 		if(dynamic_cast <Player*> (this->m_gameobjects[i]))
-			((Player*)(this->m_gameobjects[i]))->
-			playTurn(deltaTime);
+			((Player*)(this->m_gameobjects[i]))->playTurn(deltaTime);
 		else
 			this->m_gameobjects[i]->playTurn(deltaTime);
-	}
-		
+	}	
 }
 //============================================================================
 void Controller::drawObjects() {
