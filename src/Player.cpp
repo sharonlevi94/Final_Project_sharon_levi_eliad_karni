@@ -15,15 +15,16 @@ Player::Player(const sf::Vector2f location,
 	window.draw(this->getSprite());
 }*/
 //============================================================================
-void Player::playTurn() {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		this->setLocation(sf::Vector2f(0, -1));
+void Player::playTurn(sf::Time deltaTime) {
+	const auto SpeedPerSecond = 500.f;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) 
+		this->setLocation(sf::Vector2f(0, -1)*SpeedPerSecond*deltaTime.asSeconds());
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		this->setLocation(sf::Vector2f(-1, 0));
+		this->setLocation(sf::Vector2f(-1, 0) * SpeedPerSecond * deltaTime.asSeconds());
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		this->setLocation(sf::Vector2f(1, 0));
+		this->setLocation(sf::Vector2f(1, 0) * SpeedPerSecond * deltaTime.asSeconds());
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		this->setLocation(sf::Vector2f(0, 1));
+		this->setLocation(sf::Vector2f(0, 1) * SpeedPerSecond * deltaTime.asSeconds());
 }
 //============================================================================
 void Player::playTurn(const Board& board) {

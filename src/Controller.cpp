@@ -84,21 +84,20 @@ void Controller::runGame() {
 		this->m_board.draw(m_window);
 		this->drawObjects();
 		this->m_window.display();
-		//sf::Time ss = this->m_clock.getElapsedTime().asSeconds();
 		//if (m_clock.getElapsedTime().asSeconds() == 0.05) {
-			m_clock.restart();
-			this->play_turns();
+			sf::Time deltaTime=m_clock.restart();
+			this->play_turns(deltaTime);
 		//}
 	}
 }
 //============================================================================
-void Controller::play_turns() {
+void Controller::play_turns(sf::Time deltaTime) {
 	for (int i = 0; i < this->m_gameobjects.size(); ++i) {
 		if(dynamic_cast <Player*> (this->m_gameobjects[i]))
 			((Player*)(this->m_gameobjects[i]))->
-			playTurn(this->m_board);
+			playTurn(deltaTime);
 		else
-			this->m_gameobjects[i]->playTurn();
+			this->m_gameobjects[i]->playTurn(deltaTime);
 	}
 		
 }

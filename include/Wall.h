@@ -9,7 +9,7 @@ public:
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
 //	virtual void draw(sf::RenderWindow&)const override;
-	void playTurn() override;
+	void playTurn(sf::Time) override;
 	void dig();
 
 private:

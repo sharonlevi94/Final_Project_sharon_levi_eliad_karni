@@ -14,7 +14,7 @@ public:
 		char objectType = NOTHING);
 	                                      
 	virtual void draw(sf::RenderWindow& window);
-	virtual void playTurn() = 0;
+	virtual void playTurn(sf::Time) = 0;
 	virtual void reset();
 
 	const sf::Vector2f& getLocation()const;

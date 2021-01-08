@@ -121,13 +121,13 @@ vector<MovingObject*> Board::FindMovingObj(){
 		}
 	return characters;
 }
-
+//========================================================================
 sf::Vector2f Board::getlevelSize()const{
 	return this->m_backgroundSize;
 }
-
+//========================================================================
 const sf::Vector2f& Board::getLocation() const { return this->m_location; }
-
+//========================================================================
 void Board::releaseMap() {
 	for (int i = 0; i < this->m_map.size(); ++i) {
 		for (int j = 0; j < this->m_map[i].size(); ++j) {

@@ -17,7 +17,7 @@ public:
 	void runGame();
 	char runMenu();
 	//void resetLevel() const;
-	void play_turns();
+	void play_turns(sf::Time);
 	void drawObjects();
 
 private:

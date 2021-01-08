@@ -8,7 +8,7 @@ public:
 		const sf::Vector2f& = sf::Vector2f(0,0));
 	
 
-	virtual void playTurn() override;
+	virtual void playTurn(sf::Time) override;
 
 
 
