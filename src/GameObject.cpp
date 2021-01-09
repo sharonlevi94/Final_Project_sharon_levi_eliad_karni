@@ -38,12 +38,17 @@ void GameObject::reset() {
 	this->m_state = STAND;
 }
 //============================ methods section ===============================
-//============================================================================
 void GameObject::draw(sf::RenderWindow& window){
 	window.draw(this->m_objectSprite);
+}
+//============================================================================
+bool GameObject::CollidesWith(const GameObject& obj) {
+	return m_objectSprite.getGlobalBounds().intersects
+	(obj.getSprite().getGlobalBounds());
 }
 //=========================== protected section ==============================
 //============================== sets section ================================
 void GameObject::setLocation(const sf::Vector2f& movment) {
 	this->m_objectSprite.move(movment);
 }
+

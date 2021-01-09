@@ -87,9 +87,11 @@ void Controller::runGame() {
 				sf::Event event = {};
 				while (m_window.pollEvent(event)) {
 					if (event.type == sf::Event::MouseButtonReleased)
+						//m_window.close();
+						this->runMenu();
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 						m_window.close();
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-						m_window.close();
+
 				}
 				sf::Time deltaTime = m_clock.restart();
 				this->play_turns(deltaTime);
