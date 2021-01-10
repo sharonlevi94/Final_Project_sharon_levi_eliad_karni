@@ -11,8 +11,7 @@ public:
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
 	//virtual void draw(sf::RenderWindow& window) const;
-	virtual void playTurn() override;
-	void playTurn(const Board&);
+	virtual void playTurn(sf::Time) override;
 	//void dig(Wall&);
 
 private:

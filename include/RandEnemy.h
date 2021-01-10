@@ -3,11 +3,13 @@
 class RandEnemy: public Enemy
 {
 public:
-	RandEnemy();
+	RandEnemy(const sf::Vector2f = sf::Vector2f(0, 0),
+		const EffectsHolder & = EffectsHolder(),
+		const sf::Vector2f & = sf::Vector2f(0, 0));
 
-	virtual void draw(sf::RenderWindow&, const sf::Texture&) const;
+	//virtual void draw(sf::RenderWindow&, const sf::Texture&) const;
 	//virtual char identify() const override;
-	//virtual void playTurn(const GameObject* (*)(const sf::Vector2f&));
+	virtual void playTurn(sf::Time) override;
 	//virtual void reset(const sf::Vector2f&);
 
 private:

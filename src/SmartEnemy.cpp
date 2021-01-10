@@ -14,7 +14,7 @@ SmartEnemy::SmartEnemy(const sf::Vector2f location,
 	window.draw(this->getSprite());
 }*/
 //============================================================================
-void SmartEnemy::playTurn() {}
+void SmartEnemy::playTurn(sf::Time) {}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

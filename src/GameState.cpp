@@ -23,7 +23,7 @@ void GameState::draw (sf::RenderWindow& window){
 	this->m_stateText.setString("level: " + std::to_string(this->m_level)
 		+  " | lifes: " + std::to_string(this->m_lifes) + " | time left: " + 
 		std::to_string(-1));
-	std::cout << (std::string)this->m_stateText.getString() << std::endl;
+	//std::cout << (std::string)this->m_stateText.getString() << std::endl;
 	this->m_stateText.setScale(sf::Vector2f(
 	this->m_size.x / this->m_stateText.getLocalBounds().width,
 	this->m_size.y / this->m_stateText.getLocalBounds().height

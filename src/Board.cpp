@@ -8,7 +8,7 @@
 #include <vector>
 #include "Utilities.h"
 #include "Player.h"
-#include "SmartEnemy.h"
+#include "RandEnemy.h"
 #include "Coin.h"
 #include "Ladder.h" 
 #include "Wall.h"
@@ -62,7 +62,7 @@ std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects) {
 				break;
 			}
 			case ENEMY: {
-				movingsVec.push_back(new SmartEnemy(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, effects, boxSize));
+				movingsVec.push_back(new RandEnemy(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, effects, boxSize));
 				row.push_back(nullptr);
 				break;
 			}
@@ -121,13 +121,13 @@ vector<MovingObject*> Board::FindMovingObj(){
 		}
 	return characters;
 }
-
+//========================================================================
 sf::Vector2f Board::getlevelSize()const{
 	return this->m_backgroundSize;
 }
-
+//========================================================================
 const sf::Vector2f& Board::getLocation() const { return this->m_location; }
-
+//========================================================================
 void Board::releaseMap() {
 	for (int i = 0; i < this->m_map.size(); ++i) {
 		for (int j = 0; j < this->m_map[i].size(); ++j) {

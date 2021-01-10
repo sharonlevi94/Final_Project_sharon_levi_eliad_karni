@@ -6,8 +6,7 @@
   #3. macros of windows sizes.
   #4. states of the game objects.
 */
-//========================== game objects symbols ============================
-
+//========================== game objects symbols ===========================
 constexpr auto PLAYER = '@';
 constexpr auto ENEMY = '%';
 constexpr auto COIN = '*';

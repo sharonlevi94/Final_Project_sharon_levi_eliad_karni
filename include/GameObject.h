@@ -14,8 +14,9 @@ public:
 		char objectType = NOTHING);
 	                                      
 	virtual void draw(sf::RenderWindow& window);
-	virtual void playTurn() = 0;
+	virtual void playTurn(sf::Time) = 0;
 	virtual void reset();
+	bool CollidesWith(const GameObject&);
 
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize()const;
