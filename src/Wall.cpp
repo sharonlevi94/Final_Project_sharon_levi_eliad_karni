@@ -1,6 +1,7 @@
 //============================= include section ==============================
 #include "Wall.h"
 #include "Utilities.h"
+#include "Board.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Wall::Wall(const sf::Vector2f location,
