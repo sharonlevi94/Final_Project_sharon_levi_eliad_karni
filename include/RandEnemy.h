@@ -10,6 +10,7 @@ public:
 	//virtual void draw(sf::RenderWindow&, const sf::Texture&) const;
 	//virtual char identify() const override;
 	virtual void playTurn(sf::Time) override;
+	virtual void handleColision(GameObject&)override;
 	//virtual void reset(const sf::Vector2f&);
 
 private:

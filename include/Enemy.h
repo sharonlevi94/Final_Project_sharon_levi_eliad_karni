@@ -7,6 +7,8 @@ public:
 	using MovingObject::MovingObject;
 
 	bool isCatchedPlayer(const sf::Vector2f&);
+	virtual void handleColision(Wall&)override;
+	virtual void handleColision(Player&)override;
 private:
 	 
 };

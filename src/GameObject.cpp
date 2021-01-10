@@ -42,7 +42,7 @@ void GameObject::draw(sf::RenderWindow& window){
 	window.draw(this->m_objectSprite);
 }
 //============================================================================
-bool GameObject::CollidesWith(const GameObject& obj) {
+bool GameObject::CollidesWith(const GameObject& obj)const {
 	return m_objectSprite.getGlobalBounds().intersects
 	(obj.getSprite().getGlobalBounds());
 }

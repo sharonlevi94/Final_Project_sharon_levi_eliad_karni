@@ -13,9 +13,9 @@ Wall::Wall(const sf::Vector2f location,
 //============================================================================
 void Wall::dig(){}
 //============================================================================
-/*void Wall::draw(sf::RenderWindow& window)const {
-	this->GameObject::draw(window);
-}*/
+void Wall::handleColision(GameObject& obj) {
+	obj.handleColision(*this);
+}
 //============================================================================
 void Wall::playTurn(sf::Time) {}
 //============================ private section ===============================

@@ -1,6 +1,6 @@
 #pragma once
 #include "StaticObject.h"
-
+#include "Player.h"
 class Wall : public StaticObject
 {
 public:
@@ -11,8 +11,8 @@ public:
 //	virtual void draw(sf::RenderWindow&)const override;
 	void playTurn(sf::Time) override;
 	void dig();
-
+	virtual void handleColision(GameObject&)override;
+	virtual void handleColision(Player&)override;
 private:
 	int m_digState;
-
 };
