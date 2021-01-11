@@ -1,14 +1,15 @@
 #pragma once
+//============================ include section ===============================
 #include "Board.h"
 #include "Menu.h"
 #include "GameState.h"
 #include "EffectsHolder.h"
-#include "MovingObject.h"
-#include "Board.h"
-#include "Enemy.h"
-#include "Player.h"
-#include "Coin.h"
 #include <SFML/Graphics.hpp>
+#include <vector>
+//========================== forward declarations ============================
+class MovingObject;
+class Player;
+
 class Controller
 {
 public:
@@ -16,9 +17,12 @@ public:
 	void run();
 	void runGame();
 	char runMenu();
-	//void resetLevel() const;
+
+	void resetLevel();
+	void seperateGameObjects(const vector<MovingObject*>&);
 	void play_turns(const sf::Time&);
 	void drawObjects();
+	void gameOver();
 
 private:
 	sf::RenderWindow m_window;
@@ -26,7 +30,7 @@ private:
 	Menu m_menu;
 	GameState m_gameState;
 	EffectsHolder m_effects;
-	vector <MovingObject*> m_gameobjects;
+	vector <MovingObject*> m_enemies;
 	Player* m_player;
 	sf::Clock m_clock;
 };

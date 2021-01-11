@@ -1,6 +1,7 @@
 #pragma once
-#include "GameObject.h"
 #include <fstream>
+#include <vector>
+#include <SFML/Graphics.hpp>
 
 class DataReader{
 public:
@@ -9,7 +10,7 @@ public:
 	~DataReader();
 	//------------------------- method section -------------------------------
 	bool isThereNextLevel()const;
-	vector<vector<char>> readNextLevel();
+	std::vector<std::vector<char>> readNextLevel();
 	sf::Vector2f getLevelSize()const;
 	int getLevelTime()const;
 private:

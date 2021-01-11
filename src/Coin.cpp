@@ -1,5 +1,6 @@
 //============================= include section ==============================
 #include "Coin.h"
+#include "Board.h"
 #include "Utilities.h"
 #include "Macros.h"
 //============================= public section ===============================
@@ -11,8 +12,9 @@ Coin::Coin(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 //============================================================================
-void Coin::playTurn(sf::Time) {}
+void Coin::playTurn(const sf::Time&, const Board&) {}
 void Coin::handleColision(Wall&) {}
+void Coin::handleColision(Enemy&) {}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

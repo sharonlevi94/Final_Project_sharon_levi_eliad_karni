@@ -3,6 +3,7 @@
 #include "Wall.h"
 #include "Board.h"
 
+
 class Player : public MovingObject
 {
 public:
@@ -10,11 +11,12 @@ public:
 		const EffectsHolder& = EffectsHolder(),
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
-	//virtual void draw(sf::RenderWindow& window) const;
-	virtual void playTurn(sf::Time) override;
-	//virtual void handleColision(GameObject&)override;
+	virtual void playTurn(const sf::Time&,const Board&) override;
 	virtual void handleColision(Wall&)override;
-	//void dig(Wall&);
-
+	virtual void handleColision(Enemy&)override;
+	int getLives()const;
+	void death();
+	bool is_alive()const;
 private:
+	int m_lives;
 };

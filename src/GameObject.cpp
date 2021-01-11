@@ -50,6 +50,8 @@ bool GameObject::CollidesWith(const GameObject& obj)const {
 void GameObject::handleColision(GameObject& obj) {
 	obj.handleColision(*this);
 }
+//============================================================================
+void GameObject::setState(int state) { this->m_state = state; }
 //=========================== protected section ==============================
 //============================== sets section ================================
 void GameObject::setLocation(const sf::Vector2f& movment) {

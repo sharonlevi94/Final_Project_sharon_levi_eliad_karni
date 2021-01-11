@@ -1,6 +1,7 @@
 //============================= include section ==============================
 #include "Ladder.h"
 #include "Utilities.h"
+#include "Board.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Ladder::Ladder(const sf::Vector2f location,
@@ -9,8 +10,9 @@ Ladder::Ladder(const sf::Vector2f location,
 	: StaticObject(location,effects,size,LADDER_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-void Ladder::playTurn(sf::Time) {}
+void Ladder::playTurn(const sf::Time& deltaTime,const Board& board) {}
 void Ladder::handleColision(Wall&){}
+void Ladder::handleColision(Enemy&) {}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

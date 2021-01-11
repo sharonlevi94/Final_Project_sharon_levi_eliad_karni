@@ -1,5 +1,6 @@
 //============================= include section ==============================
 #include "RandEnemy.h"
+#include "Board.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 RandEnemy::RandEnemy(const sf::Vector2f location,
@@ -8,7 +9,7 @@ RandEnemy::RandEnemy(const sf::Vector2f location,
 	:Enemy(location, effects, size, ENEMY_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-void RandEnemy::playTurn(sf::Time deltaTime){
+void RandEnemy::playTurn(const sf::Time& deltaTime,const Board& board){
 	srand(time(NULL));
 	const auto SpeedPerSecond = 200.f;
 	int rand_move =rand()%4;

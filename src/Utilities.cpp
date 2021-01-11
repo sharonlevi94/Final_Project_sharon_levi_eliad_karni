@@ -32,4 +32,7 @@ sf::Vector2f calcScreenLocation(const sf::Vector2f& ScreenSize,
 	return sf::Vector2f((ScreenSize.x / mapSize.x) * location.x,
 		(ScreenSize.y / mapSize.y) * location.y);
 	}
-
+//========================================================================
+sf::Vector2f calcDistance(const sf::Vector2f& from, const sf::Vector2f& to) {
+	return(sf::Vector2f(to.x - from.x, to.y - from.y));
+}

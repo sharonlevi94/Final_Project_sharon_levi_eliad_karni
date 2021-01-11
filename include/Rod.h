@@ -8,10 +8,9 @@ public:
 		const EffectsHolder& = EffectsHolder(),
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
-	virtual void playTurn(sf::Time) override;
-	//virtual void handleColision(Player&)override;
+	virtual void playTurn(const sf::Time&,const Board&) override;
 	virtual void handleColision(Wall&)override;
+	virtual void handleColision(Enemy&)override;
+
 private:
-	//virtual void setState(const int);
-	//virtual void setSprite(const sf::Sprite&);
 };

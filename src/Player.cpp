@@ -2,32 +2,41 @@
 #include "Player.h"
 #include "SFML/Graphics.hpp"
 #include "Utilities.h"
+#include "Board.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Player::Player(const sf::Vector2f location,
 		const EffectsHolder& effects,
 		const sf::Vector2f& size )
-	: MovingObject(location,effects,size,PLAYER_T) {}
+	: MovingObject(location,effects,size,PLAYER_T),
+	m_lives(NUM_OF_LIFE){}
 //============================ methods section ===============================
-void Player::playTurn(sf::Time deltaTime) {
+void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
 	const auto SpeedPerSecond = 250.f; //set movement speed
 	//this->setLastLocation(); //save the last location of the object
 	/*if (this->falling())
 		this->fall();*/
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		//only to ledder
-		this->setLocation(sf::Vector2f(0, -1)*SpeedPerSecond*deltaTime.asSeconds());
+		this->moveUp(deltaTime, board);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		this->setLocation(sf::Vector2f(-1, 0) * SpeedPerSecond * deltaTime.asSeconds());
+		this->moveLeft(deltaTime, board);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		this->setLocation(sf::Vector2f(1, 0) * SpeedPerSecond * deltaTime.asSeconds());
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		this->setLocation(sf::Vector2f(0, 1) * SpeedPerSecond * deltaTime.asSeconds());
 }
 //============================================================================
-
-//============================================================================
-void Player::handleColision( Wall&) {
-	
+int Player::getLives()const { return m_lives; }
+void Player::death(){
+	this->m_lives--;
 }
+bool Player::is_alive()const{
+	if (this->m_lives > 0)
+		return true;
+	return false;
+}
+//============================================================================
+void Player::handleColision( Wall&) {}
+//============================================================================
+void Player::handleColision(Enemy&) { this->m_lives--; }
 //============================================================================

@@ -140,7 +140,16 @@ if (!this->m_background.getGlobalBounds().contains(location))
 		return nullptr;
 	float objectWidth = this->m_backgroundSize.x / this->m_levelSize.x,
 		objectHeight = this->m_backgroundSize.y / this->m_levelSize.y;
-	
-	return this->m_map[location.x / objectWidth]
-	[location.y / objectHeight];
+	int x = (int)(location.x / objectWidth),
+		y = (int)(location.y / objectHeight);
+	if ((int)(location.x / objectWidth) != location.x / objectWidth)
+		++x;
+	if ((int)(location.y / objectHeight) != location.y / objectHeight)
+		++y;
+
+	return this->m_map[x][y];
 }
+//========================================================================
+int Board::getMovmentSpeed() const{ return 250; }
+//========================================================================
+bool Board::isMovePossible(const sf::Vector2f& location) const{ return true; }

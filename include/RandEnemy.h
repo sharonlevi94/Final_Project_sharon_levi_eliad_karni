@@ -7,15 +7,8 @@ public:
 		const EffectsHolder & = EffectsHolder(),
 		const sf::Vector2f & = sf::Vector2f(0, 0));
 
-	//virtual void draw(sf::RenderWindow&, const sf::Texture&) const;
-	//virtual char identify() const override;
-	virtual void playTurn(sf::Time) override;
-	//virtual void handleColision(GameObject&)override;
+	virtual void playTurn(const sf::Time&,const Board&) override;
 	virtual void handleColision(Wall&)override;
-	//virtual void reset(const sf::Vector2f&);
 
 private:
-
-	//virtual void setState(const int);
-	//virtual void setLocation(const sf::Vector2f&);
 };

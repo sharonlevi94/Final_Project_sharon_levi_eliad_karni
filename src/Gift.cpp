@@ -7,7 +7,7 @@ Gift::Gift(const sf::Vector2f& location,
 	: CollectableObject(location,effects,GIFT_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-
+void Gift::playTurn(const sf::Time& deltaTime, const Board& board) {}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

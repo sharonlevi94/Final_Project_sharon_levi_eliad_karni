@@ -1,6 +1,7 @@
 #pragma once
+//============================ include section ===============================
 #include "GameObject.h"
-//========================== forward declarations ============================
+#include <SFML/Graphics.hpp>
 class Board;
 
 class MovingObject : public GameObject
@@ -15,14 +16,18 @@ public:
 	sf::Vector2f getLeft()const;
 	sf::Vector2f getBelow()const;
 	sf::Vector2f getRight()const;
+	sf::Vector2f getInitialLoc()const;
 
 	void moveUp(const sf::Time&, const Board&);
 	void moveDown(const sf::Time&, const Board&);
 	void moveLeft(const sf::Time&, const Board&);
 	void moveRight(const sf::Time&, const Board&);
+	bool leftIsFloor(const Board&);
+	bool rightIsFloor(const Board&);
 	void fall();
 
 	bool isFalling(const Board&);
 	virtual void setLocation(const sf::Vector2f&);
 private:
+	sf::Vector2f m_initialLoc;
 };

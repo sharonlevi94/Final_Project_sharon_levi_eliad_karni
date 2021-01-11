@@ -1,9 +1,7 @@
-#ifndef _COLLECTABLEOBJECT_
-#define _COLLECTABLEOBJECT_
 #pragma once
+//============================ include section ===============================
 #include <SFML/Graphics.hpp>
 #include "StaticObject.h"
-#include "EffectsHolder.h"
 
 class CollectableObject : public StaticObject{
 public:
@@ -19,4 +17,3 @@ private:
 
 //	virtual void collect()=0;
 };
-#endif // !_COLLECTABLEOBJECT_

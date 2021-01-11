@@ -1,10 +1,12 @@
 #pragma once
+//============================ include section ===============================
 #include <vector>
 #include "DataReader.h"
+#include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
 //========================== forward declarations ============================
 class MovingObject;
-class EffectsHolder;
+class GameObject;
 
 using std::vector;
 class Board
@@ -23,7 +25,9 @@ public:
 	sf::Vector2f getlevelSize()const;
 	const sf::Vector2f& getLocation() const;
 	GameObject* getContent(const sf::Vector2f location)const;
-
+	
+	int getMovmentSpeed()const;
+	bool isMovePossible(const sf::Vector2f&)const;
 private:
 	vector<vector<GameObject*>> m_map;
 	sf::Vector2f m_backgroundSize;
