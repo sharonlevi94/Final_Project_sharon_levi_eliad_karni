@@ -104,10 +104,6 @@ bool Board::is_next_lvl_exist()const {
 	return m_levelReader.isThereNextLevel();
 }
 //========================================================================
-const GameObject* Board::getContent(const sf::Vector2f& location)const{
-	return m_map[(unsigned)location.x][(unsigned)location.y];
-}
-//========================================================================
 int Board::getLevelTime()const {
 		return m_levelTime;
 }
@@ -136,4 +132,14 @@ void Board::releaseMap() {
 			this->m_map[i][j] = nullptr;
 		}
 	}
+}
+//========================================================================
+GameObject* Board::getContent(const sf::Vector2f location) const{
+if (!this->m_background.getGlobalBounds().contains(location))
+		return nullptr;
+	float objectWidth = this->m_backgroundSize.x / this->m_levelSize.x,
+		objectHeight = this->m_backgroundSize.y / this->m_levelSize.y;
+	
+	return this->m_map[location.x / objectWidth]
+	[location.y / objectHeight];
 }

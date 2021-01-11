@@ -18,11 +18,11 @@ public:
 	void draw(sf::RenderWindow& window)const;
 	std::vector<MovingObject*> loadNewLevel(const EffectsHolder&);
 	bool is_next_lvl_exist()const;
-	const GameObject* getContent(const sf::Vector2f& location)const;
 	int getLevelTime()const;
 	vector<MovingObject*> FindMovingObj();
 	sf::Vector2f getlevelSize()const;
 	const sf::Vector2f& getLocation() const;
+	GameObject* getContent(const sf::Vector2f location)const;
 
 private:
 	vector<vector<GameObject*>> m_map;

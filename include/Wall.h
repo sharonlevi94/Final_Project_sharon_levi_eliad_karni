@@ -11,8 +11,8 @@ public:
 //	virtual void draw(sf::RenderWindow&)const override;
 	void playTurn(sf::Time) override;
 	void dig();
-	virtual void handleColision(GameObject&)override;
-	virtual void handleColision(Player&)override;
+	//virtual void handleColision( GameObject&);
+	virtual void handleColision( Wall&)override;
 private:
 	int m_digState;
 };
