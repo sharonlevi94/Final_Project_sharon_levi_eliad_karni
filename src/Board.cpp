@@ -2,6 +2,7 @@
    This file conatains all methods of the class Board.
 */
 #include <SFML/Graphics.hpp>
+#include "MovingObject.h"
 #include "Board.h"
 #include "Macros.h"
 #include "EffectsHolder.h"

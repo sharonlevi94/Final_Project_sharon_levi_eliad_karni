@@ -1,12 +1,12 @@
 #pragma once
 #include <vector>
-#include "GameObject.h"
 #include "DataReader.h"
-#include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
-#include "MovingObject.h"
-using std::vector;
+//========================== forward declarations ============================
+class MovingObject;
+class EffectsHolder;
 
+using std::vector;
 class Board
 {
 public:

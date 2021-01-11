@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
-#include "Board.h"
+//========================== forward declarations ============================
+class Board;
 
 class MovingObject : public GameObject
 {
@@ -22,7 +23,6 @@ public:
 	void fall();
 
 	bool isFalling(const Board&);
-
 	virtual void setLocation(const sf::Vector2f&);
 private:
 };

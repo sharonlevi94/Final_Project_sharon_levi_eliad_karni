@@ -1,4 +1,3 @@
-
 //============================= include section ==============================
 #include "MovingObject.h"
 #include <SFML/Graphics.hpp>
@@ -23,6 +22,7 @@ sf::Vector2f MovingObject::getRight()const{
 	return sf::Vector2f(this->getLocation().x + this->getSize().x + 1, this->getSprite().getOrigin().y);
 }
 //============================ methods section ===============================
+/*
 void MovingObject::moveUp(const sf::Time& time, const Board& board){
 	
 }
@@ -38,7 +38,7 @@ bool MovingObject::isFalling(const Board& board){
 	sf::Vector2f(this->getSize().x, this->getSize().y + 1)) != nullptr &&
 	board.getContent(this->getLocation() - 
 	sf::Vector2f(0, this->getSize().y + 1)) != nullptr);
-}
+}*/
 //============================ private section ===============================
 //============================== gets section ================================
 //============================== sets section ================================

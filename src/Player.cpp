@@ -12,9 +12,9 @@ Player::Player(const sf::Vector2f location,
 void Player::playTurn(sf::Time deltaTime) {
 	const auto SpeedPerSecond = 250.f; //set movement speed
 	//this->setLastLocation(); //save the last location of the object
-	if (this->falling())
-		this->fall();
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	/*if (this->falling())
+		this->fall();*/
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		//only to ledder
 		this->setLocation(sf::Vector2f(0, -1)*SpeedPerSecond*deltaTime.asSeconds());
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
