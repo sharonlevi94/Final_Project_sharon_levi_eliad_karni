@@ -42,13 +42,18 @@ void GameObject::draw(sf::RenderWindow& window){
 	window.draw(this->m_objectSprite);
 }
 //============================================================================
-bool GameObject::CollidesWith(const GameObject& obj) {
+bool GameObject::CollidesWith(const GameObject& obj)const {
 	return m_objectSprite.getGlobalBounds().intersects
 	(obj.getSprite().getGlobalBounds());
+}
+//============================================================================
+void GameObject::handleColision(GameObject& obj) {
+	obj.handleColision(*this);
 }
 //=========================== protected section ==============================
 //============================== sets section ================================
 void GameObject::setLocation(const sf::Vector2f& movment) {
 	this->m_objectSprite.move(movment);
 }
+
 

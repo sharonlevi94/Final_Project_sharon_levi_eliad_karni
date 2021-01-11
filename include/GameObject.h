@@ -4,6 +4,12 @@
 #include <vector>
 #include "Macros.h"
 using std::vector;
+class Wall;
+//class Ladder;
+//class Coin;
+class Player;
+//class Enemy;
+//class Rod;
 class GameObject
 {
 public:
@@ -16,8 +22,11 @@ public:
 	virtual void draw(sf::RenderWindow& window);
 	virtual void playTurn(sf::Time) = 0;
 	virtual void reset();
-	bool CollidesWith(const GameObject&);
 
+	bool CollidesWith(const GameObject&)const;
+	/*virtual*/ void handleColision(GameObject&);
+	virtual void handleColision(Wall&)=0;
+	
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize()const;
 	int getState ()const;

@@ -11,8 +11,8 @@ public:
 		const EffectsHolder& = EffectsHolder(),
 		const sf::Vector2f& = sf::Vector2f(0,0));
 	
-	virtual void          playTurn (sf::Time)  override;
-
+	virtual void  playTurn (sf::Time)  override;
+	virtual void handleColision(Wall&)override;
 private:
 
 	//virtual void        collect () override;

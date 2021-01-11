@@ -10,9 +10,7 @@ Rod::Rod(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 void Rod::playTurn(sf::Time){}
-/*void Rod::draw(sf::RenderWindow& window)const {
-	this->GameObject::draw(window);
-}*/
+void Rod::handleColision(Wall&){}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

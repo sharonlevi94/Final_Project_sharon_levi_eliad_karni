@@ -10,7 +10,7 @@ Controller::Controller() :
 	m_window(sf::VideoMode::getDesktopMode(), "Lode Runner",
 		sf::Style::Fullscreen),
 	m_effects(),
-	m_board(sf::Vector2f(0, (float)this->m_window.getSize().y * 0.1),
+	m_board(sf::Vector2f(0, (float)this->m_window.getSize().y * 0.1f),
 		sf::Vector2f((float)m_window.getSize().x, (float)m_window.getSize().y * (0.9)),
 		this->m_effects),
 	m_gameobjects({}),
@@ -18,7 +18,8 @@ Controller::Controller() :
 	this->m_menu = Menu(this->m_effects,
 		(sf::Vector2f)this->m_window.getSize(),
 		sf::Vector2f(0, 0));
-	this->m_gameState = GameState(this->m_effects, sf::Vector2f(0, 0), sf::Vector2f(this->m_window.getSize().x,
+	this->m_gameState = GameState(this->m_effects, sf::Vector2f(0, 0),
+		sf::Vector2f(this->m_window.getSize().x,
 		this->m_window.getSize().y * 0.08));
 }
 //============================== gets section ================================
@@ -98,13 +99,17 @@ void Controller::runGame() {
 	}
 }
 //============================================================================
-void Controller::play_turns(sf::Time deltaTime) {
+void Controller::play_turns(const sf::Time& deltaTime) {
 	for (int i = 0; i < this->m_gameobjects.size(); ++i) {
 		if(dynamic_cast <Player*> (this->m_gameobjects[i]))
 			((Player*)(this->m_gameobjects[i]))->playTurn(deltaTime);
-		else
+		else {
 			this->m_gameobjects[i]->playTurn(deltaTime);
-	}	
+		}
+		GameObject* obj = this->m_board.getContent(m_gameobjects[i]->getLocation());
+		if (obj != nullptr)
+			m_gameobjects[i]->handleColision(*obj);
+	}
 }
 //============================================================================
 void Controller::drawObjects() {

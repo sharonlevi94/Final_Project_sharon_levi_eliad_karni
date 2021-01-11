@@ -11,6 +11,7 @@ public:
 	//virtual void fall();
 	//virtual void draw(sf::RenderWindow&, const sf::Texture&) const;
 	virtual void playTurn(sf::Time);
+	virtual void handleColision(GameObject&)override;
 	//virtual void reset(const sf::Vector2f&);
 
 private:

@@ -10,6 +10,7 @@ Ladder::Ladder(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 void Ladder::playTurn(sf::Time) {}
+void Ladder::handleColision(Wall&){}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================
