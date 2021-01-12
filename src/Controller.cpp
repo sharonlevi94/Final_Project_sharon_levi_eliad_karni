@@ -81,6 +81,7 @@ void Controller::runGame() {
 	this->m_gameState.levelup(-1);
 	this->seperateGameObjects(this->m_board.loadNewLevel(this->m_effects));
 	while (this->m_window.isOpen()){
+
 				this->m_window.clear();
 				this->m_gameState.draw(this->m_window);
 				this->m_board.draw(m_window);
@@ -89,13 +90,10 @@ void Controller::runGame() {
 
 				sf::Event event = {};
 				while (m_window.pollEvent(event)) {
-					if (event.type == sf::Event::MouseButtonReleased)
-						//m_window.close();
-						this->runMenu();
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 						m_window.close();
-
 				}
+
 				sf::Time deltaTime = m_clock.restart();
 				this->play_turns(deltaTime);
 					if (this->m_player->is_alive())

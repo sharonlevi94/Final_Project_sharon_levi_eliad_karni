@@ -136,20 +136,18 @@ void Board::releaseMap() {
 }
 //========================================================================
 GameObject* Board::getContent(const sf::Vector2f location) const{
-if (!this->m_background.getGlobalBounds().contains(location))
-		return nullptr;
-	float objectWidth = this->m_backgroundSize.x / this->m_levelSize.x,
-		objectHeight = this->m_backgroundSize.y / this->m_levelSize.y;
-	int x = (int)(location.x / objectWidth),
-		y = (int)(location.y / objectHeight);
-	if ((int)(location.x / objectWidth) != location.x / objectWidth)
-		++x;
-	if ((int)(location.y / objectHeight) != location.y / objectHeight)
-		++y;
+	int x = (int)((location.x - this->m_location.x) /
+		(this->m_backgroundSize.x / this->m_map[0].size())),
+		y = (int)((location.y - this->m_location.y) /
+			(this->m_backgroundSize.y / this->m_map.size()));
 
-	return this->m_map[x][y];
+
+	return this->m_map[y][x];
 }
 //========================================================================
 int Board::getMovmentSpeed() const{ return 250; }
 //========================================================================
-bool Board::isMovePossible(const sf::Vector2f& location) const{ return true; }
+bool Board::isMovePossible(const sf::Vector2f& location) const{ 
+	return (this->m_background.getGlobalBounds().contains(location) &&
+		!dynamic_cast <Wall*> (this->getContent(location)));
+}

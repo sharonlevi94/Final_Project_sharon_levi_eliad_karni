@@ -26,8 +26,8 @@ int GameObject::getState()const {
 }
 //============================================================================
 const sf::Vector2f& GameObject::getSize()const{
-	return sf::Vector2f(this->m_objectSprite.getLocalBounds().width,
-		this->m_objectSprite.getLocalBounds().height);
+	return sf::Vector2f(this->getSprite().getGlobalBounds().width, 
+		this->getSprite().getGlobalBounds().height);
 }
 //============================================================================
 const sf::Sprite& GameObject::getSprite() const {

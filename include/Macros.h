@@ -27,6 +27,7 @@ constexpr auto WALK_LEFT = 2;
 constexpr auto WALK_RIGHT = 3;
 constexpr auto CLIMBING = 4;
 constexpr auto DIGGING = 5;
+constexpr auto RODDING = 6;
 //coin
 constexpr auto NOT_COLLECTED = 6;
 constexpr auto COLLECTED = 7;
@@ -36,11 +37,6 @@ constexpr auto DIGGED = 9;
 //ladder/rod
 constexpr auto CLIMBED = 10;
 constexpr auto NOT_CLIMBED = 11;
-//=========================== Window's parameters ============================
-
-constexpr auto MESSAGE_WIDTH = 600;
-constexpr auto MESSAGE_HEIGHT = 400;
-
 //=============================== game rules =================================
 
 constexpr auto NUM_OF_LIFE = 3;

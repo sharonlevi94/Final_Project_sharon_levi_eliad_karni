@@ -11,18 +11,17 @@ RandEnemy::RandEnemy(const sf::Vector2f location,
 //============================ methods section ===============================
 void RandEnemy::playTurn(const sf::Time& deltaTime,const Board& board){
 	srand(time(NULL));
-	const auto SpeedPerSecond = 200.f;
 	int rand_move =rand()%4;
 	switch (rand_move)
 	{
-	case 0: this->setLocation(sf::Vector2f(0, -1) * SpeedPerSecond * deltaTime.asSeconds());
+	case 0:this->moveUp(deltaTime, board);
 		break;
-	case 1: this->setLocation(sf::Vector2f(-1, 0) * SpeedPerSecond * deltaTime.asSeconds());
+	case 1:this->moveLeft(deltaTime, board);
 		break;
-	case 2: this->setLocation(sf::Vector2f(1, 0) * SpeedPerSecond * deltaTime.asSeconds());
+	case 2: this->moveRight(deltaTime, board);
 		break;
 	default:
-		this->setLocation(sf::Vector2f(0, 1) * SpeedPerSecond * deltaTime.asSeconds());
+		this->moveDown(deltaTime, board);
 		break;
 	}
 }

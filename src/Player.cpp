@@ -14,16 +14,16 @@ Player::Player(const sf::Vector2f location,
 void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
 	const auto SpeedPerSecond = 250.f; //set movement speed
 	//this->setLastLocation(); //save the last location of the object
-	/*if (this->falling())
-		this->fall();*/
+	if (this->isFalling(board) || sf::Keyboard::isKeyPressed
+	(sf::Keyboard::Down))
+		this->moveDown(deltaTime, board);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		this->moveUp(deltaTime, board);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		this->moveLeft(deltaTime, board);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		this->setLocation(sf::Vector2f(1, 0) * SpeedPerSecond * deltaTime.asSeconds());
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		this->setLocation(sf::Vector2f(0, 1) * SpeedPerSecond * deltaTime.asSeconds());
+		this->moveRight(deltaTime, board);
+		
 }
 //============================================================================
 int Player::getLives()const { return m_lives; }
