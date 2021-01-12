@@ -17,6 +17,8 @@ public:
 	sf::Vector2f getBelow()const;
 	sf::Vector2f getRight()const;
 	sf::Vector2f getCenter()const;
+	sf::Vector2f getBotLeft()const;
+	sf::Vector2f getBotRight()const;
 	sf::Vector2f getInitialLoc()const;
 
 	void moveUp(const sf::Time&, const Board&);

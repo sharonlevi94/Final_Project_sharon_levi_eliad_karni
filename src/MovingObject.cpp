@@ -36,6 +36,15 @@ sf::Vector2f MovingObject::getRight()const{
 	return sf::Vector2f(this->getLocation().x + this->getSize().x + 1, this->getCenter().y);
 }
 //============================================================================
+sf::Vector2f MovingObject::getBotLeft()const {
+	return (sf::Vector2f(this->getLocation().x, 
+		this->getLocation().y + this->getSize().y));
+}
+//============================================================================
+sf::Vector2f MovingObject::getBotRight()const {
+	return (this->getLocation() + this->getSize());
+}
+//============================================================================
 sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
 //============================ methods section ===============================
 //============================================================================
@@ -64,6 +73,12 @@ void MovingObject::moveDown(const sf::Time& deltaTime, const Board&  board){
 			this->setLocation(sf::Vector2f(object->getLocation().x -
 				this->getLocation().x, 0));
 		}
+		else if (dynamic_cast <Rod*> (board.getContent(this->getCenter())) &&
+			dynamic_cast <Rod*> (object) && this->getState() != RODDING) {
+			this->setLocation(sf::Vector2f(0, object->getLocation().y
+				- this->getLocation().y));
+			this->setState(RODDING);
+		}
 		else
 			this->setState(STAND);
 		this->setLocation(sf::Vector2f(0, 1) * (float)board.
@@ -75,37 +90,53 @@ void MovingObject::moveDown(const sf::Time& deltaTime, const Board&  board){
 //============================================================================
 void MovingObject::moveLeft(const sf::Time& deltaTime, const Board& board){
 		if (board.isMovePossible(this->getLeft())){
-			if (!dynamic_cast <Wall*>
-				(board.getContent(this->getLeft() + sf::Vector2f(-1, 0)))) {
-				this->setLocation(sf::Vector2f(-1, 0)*(float)board.getMovmentSpeed()*deltaTime.asSeconds());
-				this->setState(STAND);
+			while (dynamic_cast <Wall*>
+				(board.getContent(this->getBotLeft()))) {
+				this->setLocation(sf::Vector2f(0, -1));
 			}
+			this->setLocation(sf::Vector2f(-1, 0) * (float)board.getMovmentSpeed() * deltaTime.asSeconds());
+			if (dynamic_cast <Rod*>
+				(board.getContent(this->getAbove()))) {
+				this->setLocation(sf::Vector2f(0, board.getContent(
+					this->getAbove())->getLocation().y - this->getLocation().y));
+				this->setState(RODDING);
+			}
+			else
+				this->setState(STAND);
 		}
 }
 //============================================================================
 void MovingObject::moveRight(const sf::Time& deltaTime, const Board& board){
 		if (board.isMovePossible(this->getRight())){
-			if (!dynamic_cast <Wall*>
-				(board.getContent(this->getRight() + sf::Vector2f(1, 0)))) {
-				this->setLocation(sf::Vector2f(1, 0)*(float)board.getMovmentSpeed()*deltaTime.asSeconds());
-				this->setState(STAND);
+			while (dynamic_cast <Wall*>
+				(board.getContent(this->getBotRight()))) {
+				this->setLocation(sf::Vector2f(0, -1));
 			}
+			this->setLocation(sf::Vector2f(1, 0) * (float)board.getMovmentSpeed() * deltaTime.asSeconds());
+			if (dynamic_cast <Rod*>
+				(board.getContent(this->getAbove()))) {
+				this->setLocation(sf::Vector2f(0, board.getContent(
+					this->getAbove())->getLocation().y - this->getLocation().y));
+				this->setState(RODDING);
+			}
+			else
+				this->setState(STAND);
 		}
 }
 //============================================================================
 bool MovingObject::isFalling(const Board& board){
 	if (this->getState() != CLIMBING && this->getState() != RODDING) {
-		if ((board.getContent(this->getBelow())) == nullptr)
-			return true;
-		if (dynamic_cast <Ladder*> (board.getContent(this->getCenter())))
+		if (dynamic_cast <Ladder*> (board.getContent(this->getCenter())) ||
+			dynamic_cast <Ladder*> (board.getContent(this->getBelow())))
 			return false;
-		if (!dynamic_cast <Rod*> (board.getContent(this->getAbove())))
+		if (dynamic_cast <Rod*> 
+			(board.getContent(this->getAbove())))
+			return false;
+		if (!dynamic_cast <Wall*> ((board.getContent(this->getBelow()))))
 			return true;
 	}
 	return false;
 }
-//============================================================================
-bool isMovePossible(const Board&, const sf::Vector2f&);
 //============================ private section ===============================
 //============================== gets section ================================
 //============================== sets section ================================
