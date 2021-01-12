@@ -25,7 +25,6 @@ void RandEnemy::playTurn(const sf::Time& deltaTime,const Board& board){
 		break;
 	}
 }
- void RandEnemy::handleColision(Wall&){}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

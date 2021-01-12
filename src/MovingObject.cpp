@@ -143,6 +143,15 @@ bool MovingObject::isFalling(const Board& board){
 	}
 	return false;
 }
+//============================================================================
+void MovingObject::reset(){
+	this->GameObject::reset();
+	sf::Vector2f temp = sf::Vector2f(this->m_initialLoc.x -this->getLocation().x,
+		this->m_initialLoc.y - this->getLocation().y);
+
+	this->setLocation(sf::Vector2f(this->m_initialLoc.x -this->getLocation().x, 
+		this->m_initialLoc.y - this->getLocation().y));
+}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================== sets section ================================

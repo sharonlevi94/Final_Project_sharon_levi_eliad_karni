@@ -96,22 +96,29 @@ void Controller::runGame() {
 
 				sf::Time deltaTime = m_clock.restart();
 				this->play_turns(deltaTime);
-					if (this->m_player->is_alive())
-						this->resetLevel();
-					else
-						this->gameOver();			
 	}
 }
 //============================================================================
 void Controller::play_turns(const sf::Time& deltaTime) {
 	//the player is playing:
 	this->m_player->playTurn(deltaTime, this->m_board);
+
 	//enemies are playing:
-	for (int i = 0; i < this->m_enemies.size(); ++i) {
+	for (int i = 0; i < this->m_enemies.size(); i++) {
 		this->m_enemies[i]->playTurn(deltaTime, this->m_board);
-		if (this->m_enemies[i]->CollidesWith(*this->m_player))
-			this->m_player->handleColision(*(Enemy*)this->m_enemies[i]);
 	}
+	//check colision:
+	for (int i = 0; i < this->m_enemies.size(); i++) {
+		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
+			this->m_enemies[i]->handleColision(*this->m_player);
+			if (this->m_player->is_alive())
+				this->resetLevel();
+			else
+				this->gameOver();
+			break;
+		}
+	}
+	
 }
 //============================================================================
 void Controller::drawObjects() {
@@ -130,12 +137,12 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 }
 //============================================================================
 void Controller::resetLevel(){
-	this->m_player->setLocation(m_player->getInitialLoc());
+	this->m_player->reset();
 	for (int i=0; i < m_enemies.size(); i++)
-		this->m_enemies[i]->setLocation(this->m_enemies[i]->getInitialLoc());
+		this->m_enemies[i]->reset();
 }
 //============================================================================
-void Controller::gameOver() { }
+void Controller::gameOver() {}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

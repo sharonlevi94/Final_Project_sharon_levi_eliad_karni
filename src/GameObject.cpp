@@ -47,10 +47,6 @@ bool GameObject::CollidesWith(const GameObject& obj)const {
 	(obj.getSprite().getGlobalBounds());
 }
 //============================================================================
-void GameObject::handleColision(GameObject& obj) {
-	obj.handleColision(*this);
-}
-//============================================================================
 void GameObject::setState(int state) { this->m_state = state; }
 //=========================== protected section ==============================
 //============================== sets section ================================
