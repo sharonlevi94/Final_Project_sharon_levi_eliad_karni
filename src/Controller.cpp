@@ -26,12 +26,12 @@ Controller::Controller() :
 //============================== gets section ================================
 //============================ methods section ===============================
 void Controller::run() {
-	while (true) {
+	while (true) {/*
 		this->m_window.clear();
 		char choose = this->runMenu();
 		if (!this->m_window.isOpen() || choose == 'q')
 			break;
-		if (choose == 's')
+		if (choose == 's')*/
 			this->runGame();
 		if (!this->m_window.isOpen())
 			break;

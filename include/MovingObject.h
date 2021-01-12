@@ -23,8 +23,6 @@ public:
 	void moveDown(const sf::Time&, const Board&);
 	void moveLeft(const sf::Time&, const Board&);
 	void moveRight(const sf::Time&, const Board&);
-	bool leftIsFloor(const Board&);
-	bool rightIsFloor(const Board&);
 
 	bool isFalling(const Board&);
 	virtual void setLocation(const sf::Vector2f&);

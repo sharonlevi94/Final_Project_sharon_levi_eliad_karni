@@ -40,84 +40,70 @@ sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
 //============================ methods section ===============================
 //============================================================================
 void MovingObject::moveUp(const sf::Time& deltaTime, const Board& board){
-	for (int i = 0; i < board.getMovmentSpeed() * deltaTime.asSeconds() ; 
-		++i){
-		if (board.isMovePossible(this->getAbove())){
-			GameObject* ladder = board.getContent(this->getBelow() + 
-				sf::Vector2f(0, -2));
-			if (dynamic_cast <Ladder*> (ladder)) {
-				this->setLocation(sf::Vector2f(0, -1)*(float)board.getMovmentSpeed()
-					*deltaTime.asSeconds());
-				this->setState(CLIMBING);
-				this->setLocation(sf::Vector2f(ladder->getLocation().x - 
-					this->getLocation().x, 0));
-				break;
-			}
+	if (board.isMovePossible(this->getAbove())){
+		GameObject* ladder = board.getContent(this->getBelow() + 
+			sf::Vector2f(0, -2));
+		if (dynamic_cast <Ladder*> (ladder)) {
+			this->setLocation(sf::Vector2f(0, -1)*(float)board.getMovmentSpeed()
+				*deltaTime.asSeconds());
+			this->setState(CLIMBING);
+			this->setLocation(sf::Vector2f(ladder->getLocation().x - 
+				this->getLocation().x, 0));
 		}
 		else
-			break;
+			this->setState(STAND);
 	}
+	
 }
 //============================================================================
 void MovingObject::moveDown(const sf::Time& deltaTime, const Board&  board){
-	for (int i = 0; i < board.getMovmentSpeed() * deltaTime.asSeconds();
-		++i) {
-		if (board.isMovePossible(this->getBelow())) {
-			GameObject* object = board.getContent(this->getBelow() + sf::Vector2f(0,-1));
-			if (dynamic_cast <Ladder*> (object)) {
-				this->setState(CLIMBING);
-				this->setLocation(sf::Vector2f(object->getLocation().x -
-					this->getLocation().x, 0));
-			}
-			this->setLocation(sf::Vector2f(0, 1) * (float)board.
-				getMovmentSpeed() * deltaTime.asSeconds());
-			break;
+	if (board.isMovePossible(this->getBelow())) {
+		GameObject* object = board.getContent(this->getBelow() + sf::Vector2f(0, -1));
+		if (dynamic_cast <Ladder*> (object)) {
+			this->setState(CLIMBING);
+			this->setLocation(sf::Vector2f(object->getLocation().x -
+				this->getLocation().x, 0));
 		}
-		else 
-			break;
+		else
+			this->setState(STAND);
+		this->setLocation(sf::Vector2f(0, 1) * (float)board.
+			getMovmentSpeed() * deltaTime.asSeconds());
+		
 	}
+	
 }
 //============================================================================
 void MovingObject::moveLeft(const sf::Time& deltaTime, const Board& board){
-	for (int i = 0; i < board.getMovmentSpeed() * deltaTime.asSeconds() ; ++i){
 		if (board.isMovePossible(this->getLeft())){
 			if (!dynamic_cast <Wall*>
 				(board.getContent(this->getLeft() + sf::Vector2f(-1, 0)))) {
 				this->setLocation(sf::Vector2f(-1, 0)*(float)board.getMovmentSpeed()*deltaTime.asSeconds());
 				this->setState(STAND);
-				break;
 			}
 		}
-		else 
-			break;
-	}
 }
 //============================================================================
 void MovingObject::moveRight(const sf::Time& deltaTime, const Board& board){
-for (int i = 0; i < board.getMovmentSpeed() * deltaTime.asSeconds() ; ++i){
 		if (board.isMovePossible(this->getRight())){
 			if (!dynamic_cast <Wall*>
 				(board.getContent(this->getRight() + sf::Vector2f(1, 0)))) {
 				this->setLocation(sf::Vector2f(1, 0)*(float)board.getMovmentSpeed()*deltaTime.asSeconds());
 				this->setState(STAND);
-				break;
 			}
 		}
-		else 
-			break;
-	}
 }
 //============================================================================
 bool MovingObject::isFalling(const Board& board){
-	return(this->getState() != CLIMBING && this->getState() != RODDING &&
-		(board.getContent(this->getBelow()) == nullptr ||
-			!dynamic_cast <Ladder*> (board.getContent(this->getBelow())) ||
-			dynamic_cast <Rod*> (board.getContent(this->getBelow()))));
+	if (this->getState() != CLIMBING && this->getState() != RODDING) {
+		if ((board.getContent(this->getBelow())) == nullptr)
+			return true;
+		if (dynamic_cast <Ladder*> (board.getContent(this->getCenter())))
+			return false;
+		if (!dynamic_cast <Rod*> (board.getContent(this->getAbove())))
+			return true;
+	}
+	return false;
 }
-//============================================================================
-bool MovinleftIsFloor(const Board&);
-//============================================================================
-bool rightIsFloor(const Board&);
 //============================================================================
 bool isMovePossible(const Board&, const sf::Vector2f&);
 //============================ private section ===============================
