@@ -14,7 +14,7 @@ Player::Player(const sf::Vector2f location,
 void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
 	if (this->isFalling(board) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		this->moveDown(deltaTime, board);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		this->moveUp(deltaTime, board);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		this->moveLeft(deltaTime, board);
