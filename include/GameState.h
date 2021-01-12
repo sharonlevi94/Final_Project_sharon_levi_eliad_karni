@@ -25,7 +25,8 @@ public:
 	bool isTimeUp();
 	bool isGameOver();
 	
-	float getRemindTime();
+	int getRemindMin();
+	int getRemindSec();
 	sf::Vector2f getSize()const;
 	sf::Vector2f getLocation()const;
 
