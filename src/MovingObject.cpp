@@ -64,7 +64,6 @@ void MovingObject::moveUp(const sf::Time& deltaTime, const Board& board){
 		else
 			this->setState(STAND);
 	}
-	
 }
 //============================================================================
 void MovingObject::moveDown(const sf::Time& deltaTime, const Board&  board){
