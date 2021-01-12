@@ -33,7 +33,8 @@ sf::Vector2f MovingObject::getBelow()const{
 }
 //============================================================================
 sf::Vector2f MovingObject::getRight()const{
-	return sf::Vector2f(this->getLocation().x + this->getSize().x + 1, this->getCenter().y);
+	return sf::Vector2f(this->getLocation().x + this->getSize().x + 1, 
+		this->getCenter().y);
 }
 //============================================================================
 sf::Vector2f MovingObject::getBotLeft()const {
@@ -53,7 +54,8 @@ void MovingObject::moveUp(const sf::Time& deltaTime, const Board& board){
 		GameObject* ladder = board.getContent(this->getBelow() + 
 			sf::Vector2f(0, -2));
 		if (dynamic_cast <Ladder*> (ladder)) {
-			this->setLocation(sf::Vector2f(0, -1)*(float)board.getMovmentSpeed()
+			this->setLocation(sf::Vector2f(0, -1)*(float)board
+				.getMovmentSpeed()
 				*deltaTime.asSeconds());
 			this->setState(CLIMBING);
 			this->setLocation(sf::Vector2f(ladder->getLocation().x - 
@@ -67,7 +69,8 @@ void MovingObject::moveUp(const sf::Time& deltaTime, const Board& board){
 //============================================================================
 void MovingObject::moveDown(const sf::Time& deltaTime, const Board&  board){
 	if (board.isMovePossible(this->getBelow())) {
-		GameObject* object = board.getContent(this->getBelow() + sf::Vector2f(0, -1));
+		GameObject* object = board.getContent(this->getBelow() + 
+			sf::Vector2f(0, -1));
 		if (dynamic_cast <Ladder*> (object)) {
 			this->setState(CLIMBING);
 			this->setLocation(sf::Vector2f(object->getLocation().x -
@@ -94,11 +97,13 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, const Board& board){
 				(board.getContent(this->getBotLeft()))) {
 				this->setLocation(sf::Vector2f(0, -1));
 			}
-			this->setLocation(sf::Vector2f(-1, 0) * (float)board.getMovmentSpeed() * deltaTime.asSeconds());
+			this->setLocation(sf::Vector2f(-1, 0) * (float)board.
+				getMovmentSpeed() * deltaTime.asSeconds());
 			if (dynamic_cast <Rod*>
 				(board.getContent(this->getAbove()))) {
 				this->setLocation(sf::Vector2f(0, board.getContent(
-					this->getAbove())->getLocation().y - this->getLocation().y));
+					this->getAbove())->getLocation().y - 
+					this->getLocation().y));
 				this->setState(RODDING);
 			}
 			else
@@ -112,11 +117,13 @@ void MovingObject::moveRight(const sf::Time& deltaTime, const Board& board){
 				(board.getContent(this->getBotRight()))) {
 				this->setLocation(sf::Vector2f(0, -1));
 			}
-			this->setLocation(sf::Vector2f(1, 0) * (float)board.getMovmentSpeed() * deltaTime.asSeconds());
+			this->setLocation(sf::Vector2f(1, 0) * (float)board.
+				getMovmentSpeed() * deltaTime.asSeconds());
 			if (dynamic_cast <Rod*>
 				(board.getContent(this->getAbove()))) {
 				this->setLocation(sf::Vector2f(0, board.getContent(
-					this->getAbove())->getLocation().y - this->getLocation().y));
+					this->getAbove())->getLocation().y - 
+					this->getLocation().y));
 				this->setState(RODDING);
 			}
 			else
