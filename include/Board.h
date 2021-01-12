@@ -27,6 +27,7 @@ public:
 	GameObject* getContent(const sf::Vector2f location)const;
 	void resetLvl();
 	void gameOver();
+	bool isAllCoinsCollected()const;
 	
 	int getMovmentSpeed()const;
 	bool isMovePossible(const sf::Vector2f&)const;

@@ -14,6 +14,7 @@
 #include "Ladder.h" 
 #include "Wall.h"
 #include "Rod.h"
+#include "CollectableObject.h"
 using std::vector;
 //==================== Constructors & distruors section ====================
 Board::Board(const sf::Vector2f& location,
@@ -141,7 +142,6 @@ GameObject* Board::getContent(const sf::Vector2f location) const{
 		y = (int)((location.y - this->m_location.y) /
 			(this->m_backgroundSize.y / this->m_map.size()));
 
-
 	return this->m_map[y][x];
 }
 //========================================================================
@@ -163,4 +163,14 @@ void Board::resetLvl(){
 void Board::gameOver() {
 	this->m_levelReader.resetRead();
 	this->releaseMap();
+}
+//========================================================================
+bool Board::isAllCoinsCollected()const {
+	for (int i = 0; i < m_map.size(); i++)
+		for (int j = 0; j < m_map[0].size(); j++) {
+			if (dynamic_cast<Coin*>(m_map[i][j]))
+				if (!((Coin*)m_map[i][j])->is_collected())
+					return false;
+		}
+	return true;
 }
