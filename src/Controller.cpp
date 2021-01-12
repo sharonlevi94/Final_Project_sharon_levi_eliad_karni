@@ -106,19 +106,16 @@ void Controller::play_turns(const sf::Time& deltaTime) {
 	//enemies are playing:
 	for (int i = 0; i < this->m_enemies.size(); i++) {
 		this->m_enemies[i]->playTurn(deltaTime, this->m_board);
-	}
-	//check colision:
-	for (int i = 0; i < this->m_enemies.size(); i++) {
+		//check colision:
 		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
 			this->m_enemies[i]->handleColision(*this->m_player);
-			if (this->m_player->is_alive())
-				this->resetLevel();
-			else
-				this->gameOver();
-			break;
+			if (this->m_player->is_alive()) {
+				this->m_gameState.died();
+				if (!this->m_gameState.isGameOver())
+					this->resetLevel();
+			}
 		}
 	}
-	
 }
 //============================================================================
 void Controller::drawObjects() {

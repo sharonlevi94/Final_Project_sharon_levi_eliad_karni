@@ -10,9 +10,10 @@
 //==================== Constructors & distructors section ====================
 MovingObject::MovingObject(const sf::Vector2f location,
 	const EffectsHolder& effects,
-	const sf::Vector2f& size)
-	: GameObject(location, effects, size, PLAYER_T),
-	m_initialLoc(location){}
+	const sf::Vector2f& size,
+	char objectType)
+	: GameObject(location, effects, size, objectType),
+	m_initialLoc(location) {}
 //============================== gets section ================================
 sf::Vector2f MovingObject::getCenter() const{
 	return sf::Vector2f(this->getLocation().x + (this->getSize().x/2),

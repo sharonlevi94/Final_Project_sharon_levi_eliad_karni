@@ -24,6 +24,7 @@ public:
 	void died          ();
 	bool nextTurn	   ();
 	bool isTimeUp();
+	bool isGameOver();
 
 private:
 	//======================== members section ===============================

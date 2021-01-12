@@ -58,5 +58,10 @@ bool GameState::nextTurn() {
 		return true;
 	}
 	return false;
-		
+}
+//============================================================================
+bool GameState::isGameOver(){
+	if (this->m_lifes <= 0)
+		return true;
+	return false;
 }

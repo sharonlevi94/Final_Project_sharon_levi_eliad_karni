@@ -11,9 +11,12 @@ public:
 		char objectType = NOTHING);
 
 	virtual bool is_collected()const;
+	virtual void draw(sf::RenderWindow&)override;
+	virtual void reset()override;
+	virtual void collect();
 
 private:
 	bool m_is_collected;
 
-//	virtual void collect()=0;
+	
 };

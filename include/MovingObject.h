@@ -7,10 +7,10 @@ class Board;
 class MovingObject : public GameObject
 {
 public:
-	using GameObject::GameObject;
 	MovingObject(const sf::Vector2f = sf::Vector2f(0, 0),
 		const EffectsHolder & = EffectsHolder(),
-		const sf::Vector2f & = sf::Vector2f(0, 0));
+		const sf::Vector2f & = sf::Vector2f(0, 0),
+		char objectType = NOTHING);
 
 	sf::Vector2f getAbove()const;
 	sf::Vector2f getLeft()const;
