@@ -22,7 +22,7 @@ public:
 
 	virtual void draw(sf::RenderWindow& window);
 	virtual void playTurn(const sf::Time&, const Board&) = 0;
-	virtual void reset(const sf::Vector2f&);
+	virtual void reset();
 
 	bool CollidesWith(const GameObject&)const;
 	virtual void handleColision(GameObject&)=0;

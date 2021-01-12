@@ -28,6 +28,7 @@ public:
 
 	bool isFalling(const Board&);
 	virtual void setLocation(const sf::Vector2f&);
+	virtual void reset()override;
 
 private:
 	sf::Vector2f m_initialLoc;

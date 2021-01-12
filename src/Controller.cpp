@@ -137,9 +137,9 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 }
 //============================================================================
 void Controller::resetLevel(){
-	this->m_player->reset(m_player->getInitialLoc());
+	this->m_player->reset();
 	for (int i=0; i < m_enemies.size(); i++)
-		this->m_enemies[i]->reset(this->m_enemies[i]->getInitialLoc());
+		this->m_enemies[i]->reset();
 }
 //============================================================================
 void Controller::gameOver() {}

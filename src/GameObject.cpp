@@ -34,9 +34,8 @@ const sf::Sprite& GameObject::getSprite() const {
 	return (this->m_objectSprite); 
 }
 //============================================================================
-void GameObject::reset(const sf::Vector2f& initialLoc) {
+void GameObject::reset() {
 	this->m_state = STAND;
-	this->m_objectSprite.setPosition(initialLoc);
 }
 //============================ methods section ===============================
 void GameObject::draw(sf::RenderWindow& window){
