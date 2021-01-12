@@ -52,14 +52,19 @@ sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
 //============================================================================
 void MovingObject::moveUp(const sf::Time& deltaTime, const Board& board){
 	if (board.isMovePossible(this->getAbove())){
-		GameObject* ladder = board.getContent(this->getBelow() + 
+		GameObject* below = board.getContent(this->getBelow() + 
 			sf::Vector2f(0, -2));
-		if (dynamic_cast <Ladder*> (ladder)) {
+		GameObject* above = board.getContent(this->getAbove() +
+			sf::Vector2f(0, 1));
+		if (dynamic_cast <Ladder*> (below) || 
+			dynamic_cast <Ladder*> (above)) {
+			if (!dynamic_cast <Ladder*> (below))
+				below = above;
 			this->setLocation(sf::Vector2f(0, -1)*(float)board
 				.getMovmentSpeed()
 				*deltaTime.asSeconds());
 			this->setState(CLIMBING);
-			this->setLocation(sf::Vector2f(ladder->getLocation().x - 
+			this->setLocation(sf::Vector2f(below->getLocation().x - 
 				this->getLocation().x, 0));
 		}
 		else

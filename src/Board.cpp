@@ -145,9 +145,22 @@ GameObject* Board::getContent(const sf::Vector2f location) const{
 	return this->m_map[y][x];
 }
 //========================================================================
-int Board::getMovmentSpeed() const{ return 250; }
+int Board::getMovmentSpeed() const{ return 300; }
 //========================================================================
 bool Board::isMovePossible(const sf::Vector2f& location) const{ 
 	return (this->m_background.getGlobalBounds().contains(location) &&
 		!dynamic_cast <Wall*> (this->getContent(location)));
+}
+//========================================================================
+void Board::resetLvl(){
+	for (int i = 0; i < this->m_map.size(); ++i)
+		for (int j = 0; j < this->m_map[i].size(); ++j) {
+			if(this->m_map[i][j] != nullptr)
+				this->m_map[i][j]->reset();
+		}
+}
+//========================================================================
+void Board::gameOver() {
+	this->m_levelReader.resetRead();
+	this->releaseMap();
 }

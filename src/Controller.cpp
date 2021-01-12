@@ -2,6 +2,7 @@
 #include "Controller.h"
 #include "Menu.h"
 #include "Board.h"
+#include "Coin.h"
 #include "GameState.h"
 #include "Player.h"
 #include <SFML/Graphics.hpp>
@@ -26,12 +27,12 @@ Controller::Controller() :
 //============================== gets section ================================
 //============================ methods section ===============================
 void Controller::run() {
-	while (true) {/*
+	while (true) {
 		this->m_window.clear();
 		char choose = this->runMenu();
 		if (!this->m_window.isOpen() || choose == 'q')
 			break;
-		if (choose == 's')*/
+		if (choose == 's')
 			this->runGame();
 		if (!this->m_window.isOpen())
 			break;
@@ -102,6 +103,12 @@ void Controller::runGame() {
 void Controller::play_turns(const sf::Time& deltaTime) {
 	//the player is playing:
 	this->m_player->playTurn(deltaTime, this->m_board);
+	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->getCenter()))) {
+		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
+			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->collect();
+			this->m_gameState.collectedCoin();
+		}
+	}
 
 	//enemies are playing:
 	for (int i = 0; i < this->m_enemies.size(); i++) {
@@ -134,12 +141,19 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 }
 //============================================================================
 void Controller::resetLevel(){
+	//reset Static objects:
+	this->m_board.resetLvl(); 
+
+	//reset MovingObjects:
 	this->m_player->reset();
-	for (int i=0; i < m_enemies.size(); i++)
+	for (int i = 0; i < this->m_enemies.size(); ++i)
 		this->m_enemies[i]->reset();
 }
 //============================================================================
-void Controller::gameOver() {}
+void Controller::gameOver() {
+	this->m_board.~Board();
+	this->run();
+}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

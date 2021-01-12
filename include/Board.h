@@ -25,6 +25,8 @@ public:
 	sf::Vector2f getlevelSize()const;
 	const sf::Vector2f& getLocation() const;
 	GameObject* getContent(const sf::Vector2f location)const;
+	void resetLvl();
+	void gameOver();
 	
 	int getMovmentSpeed()const;
 	bool isMovePossible(const sf::Vector2f&)const;

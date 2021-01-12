@@ -6,13 +6,14 @@
 class DataReader{
 public:
 	//------------------------- constractors section -------------------------
-	DataReader( );
+	DataReader();
 	~DataReader();
 	//------------------------- method section -------------------------------
 	bool isThereNextLevel()const;
 	std::vector<std::vector<char>> readNextLevel();
 	sf::Vector2f getLevelSize()const;
 	int getLevelTime()const;
+	void resetRead();
 private:
 	//--------------------- privete methods section --------------------------
 	void receiveLevelParameters();
