@@ -26,6 +26,7 @@ public:
 
 	bool isFalling(const Board&);
 	virtual void setLocation(const sf::Vector2f&);
+
 private:
 	sf::Vector2f m_initialLoc;
 };

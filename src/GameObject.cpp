@@ -34,8 +34,9 @@ const sf::Sprite& GameObject::getSprite() const {
 	return (this->m_objectSprite); 
 }
 //============================================================================
-void GameObject::reset() {
+void GameObject::reset(const sf::Vector2f& initialLoc) {
 	this->m_state = STAND;
+	this->m_objectSprite.setPosition(initialLoc);
 }
 //============================ methods section ===============================
 void GameObject::draw(sf::RenderWindow& window){
@@ -45,10 +46,6 @@ void GameObject::draw(sf::RenderWindow& window){
 bool GameObject::CollidesWith(const GameObject& obj)const {
 	return m_objectSprite.getGlobalBounds().intersects
 	(obj.getSprite().getGlobalBounds());
-}
-//============================================================================
-void GameObject::handleColision(GameObject& obj) {
-	obj.handleColision(*this);
 }
 //============================================================================
 void GameObject::setState(int state) { this->m_state = state; }

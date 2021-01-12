@@ -11,8 +11,11 @@ Ladder::Ladder(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 void Ladder::playTurn(const sf::Time& deltaTime,const Board& board) {}
-void Ladder::handleColision(Wall&){}
+void Ladder::handleColision(Player&) {/*ignore*/ }
 void Ladder::handleColision(Enemy&) {}
+void Ladder::handleColision(GameObject& obj) {
+	obj.handleColision(*this);
+}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================
