@@ -59,6 +59,7 @@ constexpr auto WALL_PATH = "wall.png";
 constexpr auto LADDER_PATH = "ladder.png";
 constexpr auto ROD_PATH = "rod.png";
 constexpr auto GIFT_PATH = "gift.png";
+constexpr auto GAME_STATE_PATH = "game_state.jpg";
 
 //---------------------------------- logos -----------------------------------
 constexpr auto GAME_LOGO_PATH = "Logo.png";
@@ -72,6 +73,7 @@ constexpr auto LEVEL2 = 3;
 constexpr auto LEVEL3 = 4;
 constexpr auto LEVEL4 = 5;
 constexpr auto LEVEL5 = 6;
+constexpr auto GAME_STATE = 9;
 //------------------------------- objects -------------------------------------
 constexpr auto PLAYER_T = 10;
 constexpr auto ENEMY_T = 11;
@@ -80,6 +82,7 @@ constexpr auto WALL_T = 13;
 constexpr auto LADDER_T = 14;
 constexpr auto ROD_T = 15;
 constexpr auto GIFT_T = 16;
+
 //--------------------------------- logos ------------------------------------
 constexpr auto GAME_LOGO = 26;
 //--------------------------------- sounds -----------------------------------

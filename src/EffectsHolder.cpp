@@ -47,10 +47,14 @@ const sf::Font& EffectsHolder::getFont(int fontKey) const{
 //============================ methods section ===============================
 //============================================================================
 void EffectsHolder::setBackgrounds(){
-	//adding menu background path
+	//adding game's backgrounds path
 	this->m_texture.insert(std::pair<int, sf::Texture*>
 		(MENU_BACKGROUND, new sf::Texture));
 	this->m_texture[MENU_BACKGROUND]->loadFromFile(MENU_BACKGROUND_PATH);
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(GAME_STATE, new sf::Texture));
+	this->m_texture[GAME_STATE]->loadFromFile(GAME_STATE_PATH);
+
 	//adding level1 background path
 	this->m_texture.insert(std::pair<int, sf::Texture*>
 		(LEVEL1, new sf::Texture));
