@@ -9,24 +9,27 @@
 GameState::GameState(const EffectsHolder& effects,
 	const sf::Vector2f& location,
 	const sf::Vector2f& size):
-	m_size(size), m_location(location), m_clock(sf::Clock()),
-	m_stateText(sf::Text()), m_levelTime(sf::Time()), m_level(0), m_score(0),
-	m_lifes(3), m_turnTime(sf::Time()){
+	m_clock(), m_stateText(), m_levelTime(), m_level(0), m_score(0),
+	m_lifes(NUM_OF_LIFE), m_background(size){
+	this->m_background.setPosition(location);
+	this->m_background.setTexture(&effects.getTexture(GAME_STATE));
+
 	this->m_stateText.setFont(effects.getFont(ARIEL_FONT));
 	this->m_stateText.setFillColor(sf::Color::White);
 }
 //============================ methods section ===============================
 //============================================================================
 void GameState::draw (sf::RenderWindow& window){
-	this->m_stateText.setPosition(this->m_location);
+	window.draw(this->m_background);
 
-	this->m_stateText.setString("level: " + std::to_string(this->m_level)
+	this->m_stateText.setPosition(this->getLocation());
+	this->m_stateText.setString(" level: " + std::to_string(this->m_level)
 		+  " | lifes: " + std::to_string(this->m_lifes) + " | time left: " + 
-		std::to_string(-1) + " | Score: " + std::to_string(this->m_score));
+		std::to_string(-1) + " | Score: " + std::to_string(this->m_score) + " ");
 	//std::cout << (std::string)this->m_stateText.getString() << std::endl;
 	this->m_stateText.setScale(sf::Vector2f(
-	this->m_size.x / this->m_stateText.getLocalBounds().width,
-	this->m_size.y / this->m_stateText.getLocalBounds().height
+	this->getSize().x / this->m_stateText.getLocalBounds().width,
+	this->getSize().y / this->m_stateText.getLocalBounds().height
 	));
 
 	window.draw(this->m_stateText);
@@ -42,7 +45,6 @@ bool GameState::isTimeUp() {
 void GameState::levelup(int time) { 
 	this->m_score += this->m_level * 50;
 	++this->m_level;
-	this->m_turnTime = sf::seconds((float)time);
 }
 //============================================================================
 void GameState::collectedCoin() { this->m_score += this->m_level * 2; }
@@ -52,16 +54,16 @@ void GameState::died() {
 	this->m_clock.restart();
 }
 //============================================================================
-bool GameState::nextTurn() {
-	if (this->m_clock.getElapsedTime().asSeconds() > this->m_turnTime.asSeconds()) {
-		this->m_turnTime += sf::seconds((float)0.01);
-		return true;
-	}
-	return false;
-}
-//============================================================================
 bool GameState::isGameOver(){
 	if (this->m_lifes <= 0)
 		return true;
 	return false;
+}
+//============================================================================
+sf::Vector2f GameState::getSize()const { 
+	return this->m_background.getSize(); 
+}
+//============================================================================
+sf::Vector2f GameState::getLocation()const {
+	return this->m_background.getPosition();
 }

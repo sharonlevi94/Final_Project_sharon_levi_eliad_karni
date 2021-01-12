@@ -22,20 +22,19 @@ public:
 	void levelup       (int);
 	void collectedCoin ();
 	void died          ();
-	bool nextTurn	   ();
 	bool isTimeUp();
 	bool isGameOver();
+	sf::Vector2f getSize()const;
+	sf::Vector2f getLocation()const;
 
 private:
 	//======================== members section ===============================
-	sf::Vector2f     m_size;
-	sf::Vector2f m_location;
 	sf::Clock       m_clock;
+	sf::RectangleShape m_background;
 	//recommanded to save Text as parameter thoe its heavy creating.
 	sf::Text	m_stateText;
 	sf::Time         m_levelTime;
 	int             m_level;
 	int             m_score;
 	int             m_lifes;
-	sf::Time		 m_turnTime;
 };
