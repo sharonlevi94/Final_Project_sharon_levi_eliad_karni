@@ -4,9 +4,8 @@
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 RandEnemy::RandEnemy(const sf::Vector2f location,
-	const EffectsHolder& effects,
 	const sf::Vector2f& size)
-	:Enemy(location, effects, size, ENEMY_T) {}
+	:Enemy(location, size, ENEMY_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
 void RandEnemy::playTurn(const sf::Time& deltaTime,const Board& board){

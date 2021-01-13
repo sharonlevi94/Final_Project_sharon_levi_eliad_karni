@@ -7,9 +7,8 @@
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Player::Player(const sf::Vector2f location,
-		const EffectsHolder& effects,
 		const sf::Vector2f& size )
-	: MovingObject(location,effects,size,PLAYER_T),
+	: MovingObject(location,size,PLAYER_T),
 	m_lives(NUM_OF_LIFE){
 
 }

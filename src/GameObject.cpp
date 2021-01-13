@@ -1,16 +1,16 @@
 //============================= include section ==============================
 #include "GameObject.h"
 #include <SFML/Graphics.hpp>
+#include "EffectsHolder.h"
 #include "Board.h"
 #include "Utilities.h"
 #include <iostream>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-GameObject::GameObject(const sf::Vector2f location,
-	const EffectsHolder& effects, const sf::Vector2f& size, char objectType) :
+GameObject::GameObject(const sf::Vector2f location, const sf::Vector2f& size, char objectType) :
     m_state(STAND), m_objectSprite() {
 	this->m_objectSprite.setPosition(location);
-	this->m_objectSprite.setTexture(effects.getTexture(objectType));
+	this->m_objectSprite.setTexture(EffectsHolder::instance().getTexture(objectType));
 	this->m_objectSprite.setScale((float)size.x /this->m_objectSprite.getTexture()->getSize().x,
 		(float)size.y / this->m_objectSprite.getTexture()->getSize().y);
 

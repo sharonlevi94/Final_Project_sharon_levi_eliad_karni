@@ -2,7 +2,6 @@
 //============================ include section ===============================
 #include <vector>
 #include "DataReader.h"
-#include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
 //========================== forward declarations ============================
 class MovingObject;
@@ -13,12 +12,11 @@ class Board
 {
 public:
 	Board(const sf::Vector2f& location = sf::Vector2f(0,0),
-		const sf::Vector2f& size = sf::Vector2f(0,0),
-		const EffectsHolder& effects = EffectsHolder());
+		const sf::Vector2f& size = sf::Vector2f(0,0));
 	~Board();
 
 	void draw(sf::RenderWindow& window)const;
-	std::vector<MovingObject*> loadNewLevel(const EffectsHolder&);
+	std::vector<MovingObject*> loadNewLevel();
 	bool is_next_lvl_exist()const;
 	int getLevelTime()const;
 	vector<MovingObject*> FindMovingObj();

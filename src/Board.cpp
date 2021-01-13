@@ -18,8 +18,7 @@
 using std::vector;
 //==================== Constructors & distruors section ====================
 Board::Board(const sf::Vector2f& location,
-             const sf::Vector2f& size, 
-			 const EffectsHolder& effects)
+             const sf::Vector2f& size)
 	: m_levelReader(DataReader()),
 	m_background(sf::RectangleShape()),
 	m_location(location),
@@ -44,7 +43,7 @@ void Board::draw(sf::RenderWindow& window)const{
 			}
 }
 //========================================================================
-std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects) {
+std::vector<MovingObject*> Board::loadNewLevel() {
 	vector<vector<char>> map = m_levelReader.readNextLevel();
 	sf::Vector2f boxSize(this->getlevelSize().x / map.size(),
 		this->getlevelSize().y / map.size());
@@ -59,29 +58,29 @@ std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects) {
 			switch (map[i][j])
 			{
 			case PLAYER: {
-				movingsVec.push_back(new Player(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, effects, boxSize));
+				movingsVec.push_back(new Player(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
 				row.push_back(nullptr);
 				break;
 			}
 			case ENEMY: {
-				movingsVec.push_back(new RandEnemy(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, effects, boxSize));
+				movingsVec.push_back(new RandEnemy(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
 				row.push_back(nullptr);
 				break;
 			}
 			case COIN: {
-				row.push_back(new Coin(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location,  effects,boxSize));
+				row.push_back(new Coin(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
 				break;
 			}
 			case WALL: {
-				row.push_back(new Wall(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location,  effects, boxSize));
+				row.push_back(new Wall(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
 				break;
 			}
 			case LADDER: {
-				row.push_back(new Ladder(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, effects, boxSize));
+				row.push_back(new Ladder(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
 				break;
 			}
 			case ROD: {
-				row.push_back(new Rod(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, effects, boxSize));
+				row.push_back(new Rod(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
 				break;
 			}
 			default: {
@@ -98,7 +97,7 @@ std::vector<MovingObject*> Board::loadNewLevel(const EffectsHolder& effects) {
 	//set background of the level:
 	m_background.setSize(m_backgroundSize);
 	m_background.setPosition(m_location);
-	m_background.setTexture(&effects.getTexture(m_levelNumber));
+	m_background.setTexture(&EffectsHolder::instance().getTexture(m_levelNumber));
 	return movingsVec;
 }
 //========================================================================

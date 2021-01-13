@@ -1,21 +1,18 @@
 //============================= include section ==============================
 #include "Menu.h"
 #include <SFML/Graphics.hpp>
+#include "EffectsHolder.h"
 #include "Macros.h"
-#include <iostream>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-Menu::Menu(const EffectsHolder& effects, const sf::Vector2f& size,
+Menu::Menu(const sf::Vector2f& size,
 	const sf::Vector2f& location) :
 	m_location(location), m_size(size), m_startGameButton(sf::Text()),
-	m_quitGameButton(sf::Text()), m_GameLogo(sf::Sprite()),
-	//TODO fix sound!!!!
-	m_clickSound(nullptr), m_backgroundSound(nullptr){
-	//calcLogo(effects);
-	calcLogo(effects);
-	calcStartButton(effects);
-	calcQuitButton(effects);
-	calcBackground(effects);
+	m_quitGameButton(sf::Text()), m_GameLogo(sf::Sprite()){
+	calcLogo();
+	calcStartButton();
+	calcQuitButton();
+	calcBackground();
 }
 //============================== gets section ================================
 //============================ methods section ===============================
@@ -68,8 +65,9 @@ bool Menu::pointingHundle(const sf::Vector2f& location) {
 //============================== gets section ================================
 //============================ methods section ===============================
 //============================================================================
-void Menu::calcLogo(const EffectsHolder& effects) {
-	this->m_GameLogo.setTexture(effects.getTexture(GAME_LOGO));
+void Menu::calcLogo() {
+	this->m_GameLogo.setTexture(EffectsHolder::instance().
+		getTexture(GAME_LOGO));
 	this->m_GameLogo.setScale((float)(this->m_size.x / 2) /
 		this->m_GameLogo.getTexture()->getSize().x,
 		(float)this->m_size.x / 2 / this->m_GameLogo.getTexture()
@@ -82,9 +80,10 @@ void Menu::calcLogo(const EffectsHolder& effects) {
 		((float)this->m_size.y) / 7));
 }
 //============================================================================
-void Menu::calcStartButton(const EffectsHolder& effects) {
+void Menu::calcStartButton() {
 	this->m_startGameButton.setString("START GAME!");
-	this->m_startGameButton.setFont(effects.getFont(ARIEL_FONT));
+	this->m_startGameButton.setFont(EffectsHolder::instance()
+		.getFont(ARIEL_FONT));
 	this->m_startGameButton.setFillColor(sf::Color::White);
 	this->m_startGameButton.setOutlineColor(sf::Color::Black);
 
@@ -102,9 +101,10 @@ void Menu::calcStartButton(const EffectsHolder& effects) {
 		this->m_size.y / 15);
 }
 //============================================================================
-void Menu::calcQuitButton(const EffectsHolder& effects){
+void Menu::calcQuitButton(){
 	this->m_quitGameButton.setString("QUIT GAME");
-	this->m_quitGameButton.setFont(effects.getFont(ARIEL_FONT));
+	this->m_quitGameButton.setFont(EffectsHolder::instance()
+		.getFont(ARIEL_FONT));
 	this->m_quitGameButton.setFillColor(sf::Color::White);
 	this->m_quitGameButton.setOutlineColor(sf::Color::Black);
 
@@ -124,8 +124,9 @@ void Menu::calcQuitButton(const EffectsHolder& effects){
 		this->m_size.y / 15);
 }
 //============================================================================
-void Menu::calcBackground(const EffectsHolder& effects) {
-	this->m_background.setTexture(effects.getTexture(MENU_BACKGROUND));
+void Menu::calcBackground() {
+	this->m_background.setTexture(EffectsHolder::instance()
+		.getTexture(MENU_BACKGROUND));
 	
 	this->m_background.scale(this->m_size.x / 
 		this->m_background.getTexture()->getSize().x,

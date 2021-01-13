@@ -6,15 +6,14 @@
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-GameState::GameState(const EffectsHolder& effects,
-	const sf::Vector2f& location,
+GameState::GameState(const sf::Vector2f& location,
 	const sf::Vector2f& size):
 	m_clock(), m_stateText(), m_levelTime(), m_level(0), m_score(0),
 	m_lifes(NUM_OF_LIFE), m_background(size){
 	this->m_background.setPosition(location);
-	this->m_background.setTexture(&effects.getTexture(GAME_STATE));
+	this->m_background.setTexture(&EffectsHolder::instance().getTexture(GAME_STATE));
 
-	this->m_stateText.setFont(effects.getFont(ARIEL_FONT));
+	this->m_stateText.setFont(EffectsHolder::instance().getFont(ARIEL_FONT));
 	this->m_stateText.setFillColor(sf::Color::White);
 }
 //============================ methods section ===============================
@@ -30,7 +29,7 @@ void GameState::draw (sf::RenderWindow& window){
 	}
 	else
 		time = "inf";
-
+	           
 	this->m_stateText.setString(
 		" level: " + std::to_string(this->m_level) +
 		" | lives: " + std::to_string(this->m_lifes) +

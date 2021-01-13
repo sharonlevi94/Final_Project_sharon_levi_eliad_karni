@@ -9,10 +9,9 @@
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 MovingObject::MovingObject(const sf::Vector2f location,
-	const EffectsHolder& effects,
 	const sf::Vector2f& size,
 	char objectType)
-	: GameObject(location, effects, size, objectType),
+	: GameObject(location, size, objectType),
 	m_initialLoc(location) {}
 //============================== gets section ================================
 sf::Vector2f MovingObject::getCenter() const{

@@ -5,9 +5,8 @@
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Wall::Wall(const sf::Vector2f location,
-		const EffectsHolder& effects,
 		const sf::Vector2f& size )
-	: StaticObject(location,effects,size,WALL_T), m_digState(STAND)
+	: StaticObject(location, size, WALL_T), m_digState(STAND)
 {}
 //============================== gets section ================================
 //============================ methods section ===============================

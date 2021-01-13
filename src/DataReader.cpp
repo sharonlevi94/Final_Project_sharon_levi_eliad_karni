@@ -2,14 +2,10 @@
 #include "Macros.h"
 #include "Utilities.h"
 #include <vector>
-#include "Player.h"
-#include "SmartEnemy.h"
-#include "Coin.h"
-#include "Ladder.h" 
-#include "Wall.h"
-#include "Rod.h"
 #include <iostream>
+
 using std::endl;
+using std::vector;
 //========================================================================
 DataReader::DataReader() 
 	: m_levelSize({}),m_levelTime(NO_LEVEL_TIME){

@@ -3,7 +3,6 @@
 #include "Board.h"
 #include "Menu.h"
 #include "GameState.h"
-#include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 //========================== forward declarations ============================
@@ -31,7 +30,6 @@ private:
 	Board m_board;
 	Menu m_menu;
 	GameState m_gameState;
-	EffectsHolder m_effects;
 	vector <MovingObject*> m_enemies;
 	Player* m_player;
 	sf::Clock m_clock;

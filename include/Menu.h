@@ -1,11 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <EffectsHolder.h>
+
 class Menu
 {
 public:
 	Menu(
-		const EffectsHolder& effects = EffectsHolder(),
 		const sf::Vector2f& size = sf::Vector2f(800,600),
 		const sf::Vector2f& location = sf::Vector2f(0,0));
 
@@ -18,13 +17,11 @@ private:
 	sf::Vector2f m_location;
 	sf::Text m_startGameButton;
 	sf::Text m_quitGameButton;
-	sf::Sound* m_clickSound;
-	sf::Sound* m_backgroundSound;
 	sf::Sprite m_GameLogo;
 	sf::Sprite m_background;
 
-	void calcLogo(const EffectsHolder& effects);
-	void calcStartButton(const EffectsHolder& effects);
-	void calcQuitButton(const EffectsHolder& effects);
-	void calcBackground(const EffectsHolder& effects);
+	void calcLogo();
+	void calcStartButton();
+	void calcQuitButton();
+	void calcBackground();
 };

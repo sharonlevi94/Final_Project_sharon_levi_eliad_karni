@@ -1,7 +1,6 @@
 #pragma once
 //============================= include section ==============================
 #include <SFML/graphics.hpp>
-#include "EffectsHolder.h"
 #include <iostream>
 /*============================================================================
 * GameState
@@ -13,8 +12,7 @@ class GameState
 public:
 	//============== constructors and destructors section ====================
 
-	GameState(const EffectsHolder& effects = EffectsHolder(),
-		const sf::Vector2f& location = sf::Vector2f(0,0),
+	GameState(const sf::Vector2f& location = sf::Vector2f(0,0),
 		const sf::Vector2f& size = sf::Vector2f(0, 0));
 	//=========================== method section =============================
 

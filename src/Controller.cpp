@@ -4,6 +4,7 @@
 #include "Board.h"
 #include "Coin.h"
 #include "GameState.h"
+#include "EffectsHolder.h"
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
@@ -11,16 +12,14 @@
 Controller::Controller() :
 	m_window(sf::VideoMode::getDesktopMode(), "Lode Runner",
 		sf::Style::Fullscreen),
-	m_effects(),
 	m_board(sf::Vector2f(0, (float)this->m_window.getSize().y * 0.1f),
-		sf::Vector2f((float)m_window.getSize().x, (float)m_window.getSize().y * (0.9f)),
-		this->m_effects),
+		sf::Vector2f((float)m_window.getSize().x, (float)m_window.getSize().y * (0.9f))),
 	m_enemies({}),
 	m_player(nullptr){
-	this->m_menu = Menu(this->m_effects,
+	this->m_menu = Menu(
 		(sf::Vector2f)this->m_window.getSize(),
 		sf::Vector2f(0, 0));
-	this->m_gameState = GameState(this->m_effects, sf::Vector2f(0, 0),
+	this->m_gameState = GameState(sf::Vector2f(0, 0),
 		sf::Vector2f((float)(this->m_window.getSize().x),
 		this->m_window.getSize().y * 0.08f));
 }
@@ -80,7 +79,7 @@ char Controller::runMenu() {
 //============================================================================
 void Controller::runGame() {
 	this->m_gameState.levelup(90);
-	this->seperateGameObjects(this->m_board.loadNewLevel(this->m_effects));
+	this->seperateGameObjects(this->m_board.loadNewLevel());
 	while (this->m_window.isOpen()){
 
 				this->m_window.clear();

@@ -1,7 +1,6 @@
 #pragma once
 //============================ include section ===============================
 #include <SFML/Graphics.hpp>
-#include "EffectsHolder.h"
 #include "Macros.h"
 //========================== forward declarations ============================
 class Wall;
@@ -16,7 +15,6 @@ class GameObject{
 public:
 	GameObject(
 		const sf::Vector2f = sf::Vector2f(0,0),
-		const EffectsHolder& = EffectsHolder(),
 		const sf::Vector2f& = sf::Vector2f(0,0),
 		char objectType = NOTHING);
 

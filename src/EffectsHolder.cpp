@@ -13,6 +13,11 @@ EffectsHolder::EffectsHolder() {
 	this->setFonts();
 	this->setObjects();
 }
+const EffectsHolder& EffectsHolder::instance() {
+	static EffectsHolder inst;
+	return(inst);
+}
+
 //----------------------------------------------------------------------------
 EffectsHolder::~EffectsHolder(){
 	//delete textures allocations
