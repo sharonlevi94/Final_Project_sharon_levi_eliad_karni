@@ -79,7 +79,7 @@ char Controller::runMenu() {
 }
 //============================================================================
 void Controller::runGame() {
-	this->m_gameState.levelup(-1);
+	this->m_gameState.levelup(80);
 	this->seperateGameObjects(this->m_board.loadNewLevel(this->m_effects));
 	while (this->m_window.isOpen()){
 
@@ -94,7 +94,8 @@ void Controller::runGame() {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 						m_window.close();
 				}
-
+				if (this->m_gameState.isTimeUp())
+					this->resetLevel();
 				sf::Time deltaTime = m_clock.restart();
 				this->play_turns(deltaTime);
 				if (m_board.isAllCoinsCollected()) {
@@ -150,6 +151,7 @@ void Controller::resetLevel(){
 	this->m_player->reset();
 	for (int i = 0; i < this->m_enemies.size(); ++i)
 		this->m_enemies[i]->reset();
+	this->m_gameState.died();
 }
 //============================================================================
 void Controller::gameOver() {

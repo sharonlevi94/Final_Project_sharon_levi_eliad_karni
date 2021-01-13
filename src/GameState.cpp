@@ -21,12 +21,14 @@ GameState::GameState(const EffectsHolder& effects,
 //============================================================================
 void GameState::draw (sf::RenderWindow& window){
 	window.draw(this->m_background);
-
 	this->m_stateText.setPosition(this->getLocation());
-	this->m_stateText.setString(" level: " + std::to_string(this->m_level)
-		+  " | lifes: " + std::to_string(this->m_lifes) + " | time left: " + 
-		std::to_string(-1) + " | Score: " + std::to_string(this->m_score) + " ");
-	//std::cout << (std::string)this->m_stateText.getString() << std::endl;
+	//clac output:
+	this->m_stateText.setString(
+		" level: " + std::to_string(this->m_level) +
+		" | lives: " + std::to_string(this->m_lifes) +
+		" | time left: " + std::to_string(this->getRemindMin()) +
+		"." + std::to_string(this->getRemindSec()) +
+		" | Score: " + std::to_string(this->m_score) + " ");
 	this->m_stateText.setScale(sf::Vector2f(
 	this->getSize().x / this->m_stateText.getLocalBounds().width,
 	this->getSize().y / this->m_stateText.getLocalBounds().height
@@ -38,13 +40,14 @@ void GameState::draw (sf::RenderWindow& window){
 bool GameState::isTimeUp() {
 	if (this->m_levelTime.asSeconds() == -1)
 		return false;
-	return(this->m_clock.getElapsedTime().asSeconds() == 
-		this->m_levelTime.asSeconds());
+	return (this->m_clock.getElapsedTime() > this->m_levelTime);
 }
 //============================================================================
 void GameState::levelup(int time) { 
+	this->m_levelTime = sf::seconds((float)time);
 	this->m_score += this->m_level * 50;
 	++this->m_level;
+	this->m_clock.restart();
 }
 //============================================================================
 void GameState::collectedCoin() { this->m_score += this->m_level * 2; }
@@ -66,4 +69,15 @@ sf::Vector2f GameState::getSize()const {
 //============================================================================
 sf::Vector2f GameState::getLocation()const {
 	return this->m_background.getPosition();
+}
+//============================================================================
+int GameState::getRemindMin() {
+	if (this->m_levelTime.asSeconds() == -1)
+		return -1;
+	return (((this->m_levelTime - this->m_clock.getElapsedTime())
+		.asSeconds())/60);
+}
+//============================================================================
+int GameState::getRemindSec() {
+	return ((((this->m_levelTime - this->m_clock.getElapsedTime()).asSeconds()) / 60) - );
 }

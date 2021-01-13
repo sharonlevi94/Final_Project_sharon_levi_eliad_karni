@@ -24,6 +24,9 @@ public:
 	void died          ();
 	bool isTimeUp();
 	bool isGameOver();
+	
+	int getRemindMin();
+	int getRemindSec();
 	sf::Vector2f getSize()const;
 	sf::Vector2f getLocation()const;
 
