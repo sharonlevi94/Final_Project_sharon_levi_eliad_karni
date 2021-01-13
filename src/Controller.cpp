@@ -104,29 +104,15 @@ void Controller::runGame() {
 void Controller::play_turns(const sf::Time& deltaTime) {
 	//the player is playing:
 	this->m_player->playTurn(deltaTime, this->m_board);
-	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->getCenter()))) {
-		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
-			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->collect();
-			this->m_gameState.collectedCoin();
-		}
-	}
+	
 	this->enemiesTurns(deltaTime);
+
+	this->checkColisions();
 }
 //============================================================================
 void Controller::enemiesTurns(const sf::Time& deltaTime) {
-	for (int i = 0; i < this->m_enemies.size(); i++) {
+	for (int i = 0; i < this->m_enemies.size(); i++) 
 		this->m_enemies[i]->playTurn(deltaTime, this->m_board);
-		//check colision:
-		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
-			this->m_enemies[i]->handleColision(*this->m_player);
-			if (this->m_player->is_alive()) {
-				if (!this->m_gameState.isGameOver()) {
-					this->resetLevel();
-					break;
-				}
-			}
-		}
-	}
 }
 //============================================================================
 void Controller::drawObjects() {
@@ -158,6 +144,24 @@ void Controller::resetLevel(){
 void Controller::gameOver() {
 	this->m_board.~Board();
 	this->run();
+}
+void Controller::checkColisions() {
+	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->getCenter()))) {
+		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
+			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->collect();
+			this->m_gameState.collectedCoin();
+		}
+	}
+	for (int i = 0; i < this->m_enemies.size(); i++) {
+		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
+			if (this->m_player->is_alive()) {
+				if (!this->m_gameState.isGameOver()) {
+					this->resetLevel();
+					break;
+				}
+			}
+		}
+	}
 }
 //============================ private section ===============================
 //============================== gets section ================================
