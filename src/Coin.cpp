@@ -12,12 +12,6 @@ Coin::Coin(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 //============================================================================
-void Coin::playTurn(const sf::Time&, const Board&) {}
-void Coin::handleColision(Player&) {}
-void Coin::handleColision(Enemy&) {}
-void Coin::handleColision(GameObject& obj) {
-	obj.handleColision(*this);
-}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

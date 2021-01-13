@@ -17,11 +17,6 @@ void Wall::dig(){}
 
 //============================================================================
 void Wall::playTurn(const sf::Time& deltaTime,const Board& board) {}
-void Wall::handleColision(Player&) {/*ignore*/ }
-void Wall::handleColision( Enemy&){}
-void Wall::handleColision(GameObject& obj) {
-	obj.handleColision(*this);
-}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

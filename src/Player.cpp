@@ -25,21 +25,3 @@ void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
 		this->moveRight(deltaTime, board);;
 }
 //============================================================================
-int Player::getLives()const { return m_lives; }
-void Player::death(){
-	this->m_lives--;
-}
-//============================================================================
-bool Player::is_alive()const{
-	if (this->m_lives > 0)
-		return true;
-	return false;
-}
-//============================================================================
-void Player::handleColision(Player&) {/*ignore*/ }
-//============================================================================
-void Player::handleColision(Enemy&) { this->m_lives--; }
-//============================================================================
-void Player::handleColision(GameObject& obj) {
-	obj.handleColision(*this);
-}

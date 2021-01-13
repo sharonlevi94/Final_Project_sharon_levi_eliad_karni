@@ -25,9 +25,6 @@ public:
 	virtual void reset();
 
 	bool CollidesWith(const GameObject&)const;
-	virtual void handleColision(GameObject&)=0;
-	virtual void handleColision(Enemy&)=0;
-	virtual void handleColision(Player&) = 0;
 	
 	const sf::Vector2f& getLocation()const;
 	const sf::Vector2f& getSize()const;
