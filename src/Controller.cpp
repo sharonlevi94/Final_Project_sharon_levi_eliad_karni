@@ -110,6 +110,7 @@ void Controller::play_turns(const sf::Time& deltaTime) {
 			this->m_gameState.collectedCoin();
 		}
 	}
+	this->enemiesTurns(deltaTime);
 }
 //============================================================================
 void Controller::enemiesTurns(const sf::Time& deltaTime) {
