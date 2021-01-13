@@ -98,7 +98,6 @@ void Controller::runGame() {
 				sf::Time deltaTime = m_clock.restart();
 				this->play_turns(deltaTime);
 				if (m_board.isAllCoinsCollected()) {
-					m_board.~Board();
 					this->seperateGameObjects(this->m_board.loadNewLevel(this->m_effects));
 				}
 	}

@@ -185,6 +185,9 @@
 		},
 		{
 			"path" : "resources/Levels.txt"
+		},
+		{
+			"path" : "resources/game_state.jpg"
 		}
 	],
 	"kind" : "cmakeFiles",
