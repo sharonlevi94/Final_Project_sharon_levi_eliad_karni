@@ -20,14 +20,21 @@ GameState::GameState(const EffectsHolder& effects,
 //============================ methods section ===============================
 //============================================================================
 void GameState::draw (sf::RenderWindow& window){
-	window.draw(this->m_background);
+	window.draw(this->m_background);       
 	this->m_stateText.setPosition(this->getLocation());
 	//clac output:
+	std::string time = this->getRemindMin();
+	if (time != "-1") {
+		time += ":";
+		time += this->getRemindSec();
+	}
+	else
+		time = "inf";
+
 	this->m_stateText.setString(
 		" level: " + std::to_string(this->m_level) +
 		" | lives: " + std::to_string(this->m_lifes) +
-		" | time left: " + std::to_string(this->getRemindMin()) +
-		"." + std::to_string(this->getRemindSec()) +
+		" | time left: " + time +
 		" | Score: " + std::to_string(this->m_score) + " ");
 	this->m_stateText.setScale(sf::Vector2f(
 	this->getSize().x / this->m_stateText.getLocalBounds().width,
@@ -71,13 +78,21 @@ sf::Vector2f GameState::getLocation()const {
 	return this->m_background.getPosition();
 }
 //============================================================================
-int GameState::getRemindMin() {
+std::string GameState::getRemindMin() {
 	if (this->m_levelTime.asSeconds() == -1)
-		return -1;
-	return (((this->m_levelTime - this->m_clock.getElapsedTime())
-		.asSeconds())/60);
+		return std::to_string(-1);
+	int time = (int)(((this->m_levelTime - this->m_clock.getElapsedTime())
+		.asSeconds()) / 60.f);
+
+	return std::to_string(time);
 }
 //============================================================================
-int GameState::getRemindSec() {
-	return ((((this->m_levelTime - this->m_clock.getElapsedTime()).asSeconds()) / 60) - );
+std::string GameState::getRemindSec() {
+	int time = ((int)(this->m_levelTime.asSeconds() - 
+		this->m_clock.getElapsedTime().asSeconds()) % 60);
+	for (int i = 0; time > 100; ++i)
+		time /= 10;
+	if (time < 10)
+		return("0" + std::to_string(time));
+	return (std::to_string(time));
 }

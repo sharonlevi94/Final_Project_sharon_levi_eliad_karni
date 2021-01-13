@@ -79,48 +79,56 @@ char Controller::runMenu() {
 }
 //============================================================================
 void Controller::runGame() {
-	this->m_gameState.levelup(80);
+	this->m_gameState.levelup(90);
 	this->seperateGameObjects(this->m_board.loadNewLevel(this->m_effects));
 	while (this->m_window.isOpen()){
 
-				this->m_window.clear();
-				this->m_gameState.draw(this->m_window);
-				this->m_board.draw(m_window);
-				this->drawObjects();
-				this->m_window.display();
+		this->m_window.clear();
+		this->m_gameState.draw(this->m_window);
+		this->m_board.draw(m_window);
+		this->drawObjects();
+		this->m_window.display();
+		
 
-				sf::Event event = {};
-				while (m_window.pollEvent(event)) {
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-						m_window.close();
-				}
-				if (this->m_gameState.isTimeUp())
-					this->resetLevel();
-				sf::Time deltaTime = m_clock.restart();
-				this->play_turns(deltaTime);
+		sf::Event event = {};
+		while (m_window.pollEvent(event)) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				m_window.close();
+		}
+		sf::Time deltaTime = m_clock.restart();
+		this->play_turns(deltaTime);
 	}
 }
 //============================================================================
 void Controller::play_turns(const sf::Time& deltaTime) {
-	//the player is playing:
+	this->playerTurn(deltaTime);
+	this->enemiesTurns(deltaTime);
+}
+//============================================================================
+void Controller::playerTurn(const sf::Time& deltaTime) {
 	this->m_player->playTurn(deltaTime, this->m_board);
-	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->getCenter()))) {
-		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
-			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->collect();
+	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->
+		getCenter()))) {
+		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
+			is_collected()) {
+			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
+				collect();
 			this->m_gameState.collectedCoin();
 		}
 	}
-
-	//enemies are playing:
+}
+//============================================================================
+void Controller::enemiesTurns(const sf::Time& deltaTime) {
 	for (int i = 0; i < this->m_enemies.size(); i++) {
 		this->m_enemies[i]->playTurn(deltaTime, this->m_board);
 		//check colision:
 		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
 			this->m_enemies[i]->handleColision(*this->m_player);
 			if (this->m_player->is_alive()) {
-				this->m_gameState.died();
-				if (!this->m_gameState.isGameOver())
+				if (!this->m_gameState.isGameOver()) {
 					this->resetLevel();
+					break;
+				}
 			}
 		}
 	}

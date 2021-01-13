@@ -53,5 +53,3 @@ void GameObject::setState(int state) { this->m_state = state; }
 void GameObject::setLocation(const sf::Vector2f& movment) {
 	this->m_objectSprite.move(movment);
 }
-
-
