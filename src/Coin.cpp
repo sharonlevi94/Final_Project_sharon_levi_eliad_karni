@@ -1,13 +1,18 @@
 //============================= include section ==============================
 #include "Coin.h"
-#include "Board.h"
-#include "Utilities.h"
 #include "Macros.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Coin::Coin(const sf::Vector2f location,
 		const sf::Vector2f& size)
-	:CollectableObject(location,size,COIN_T) {}
+	:CollectableObject(location, size, COIN_T) {
+	++m_coinsCounter;
+}
+Coin::~Coin() { --m_coinsCounter; }
+//========================== statics declaretions ============================
+unsigned int Coin::m_coinsCounter = 0;
+
+unsigned int Coin::getCoinsCounter() { return m_coinsCounter; }
 //============================== gets section ================================
 //============================ methods section ===============================
 //============================================================================
