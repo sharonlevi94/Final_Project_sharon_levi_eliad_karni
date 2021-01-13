@@ -11,6 +11,8 @@ public:
 	~Coin();
 	
 	static unsigned int getCoinsCounter();
+	virtual void reset()override;
+	virtual void collect()override;
 	virtual void playTurn(const sf::Time&, const Board&)override;
 private:
 	static unsigned int m_coinsCounter;

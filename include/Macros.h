@@ -20,14 +20,22 @@ constexpr auto PLAYER_ON_LADDER = 'S';
 constexpr auto OBJ_HEIGHT = 30; //y
 constexpr auto OBJ_WIDTH = 30; //x
 
+//menu answers
+constexpr auto QUIT_GAME = 'Q';
+constexpr auto PLAY_GAME = 'P';
+constexpr auto NONE_CHOSEN = 'N';
+
 //========================== game objects states ============================
-//player/enemy
+//MovingObject
 constexpr auto STAND = 1;
 constexpr auto WALK_LEFT = 2;
 constexpr auto WALK_RIGHT = 3;
 constexpr auto CLIMBING = 4;
 constexpr auto DIGGING = 5;
 constexpr auto RODDING = 6;
+constexpr auto LOOK_LEFT = 1;
+constexpr auto LOOK_RIGHT = 2;
+constexpr auto LOOK_STRAIGHT = 1;
 //coin
 constexpr auto NOT_COLLECTED = 6;
 constexpr auto COLLECTED = 7;

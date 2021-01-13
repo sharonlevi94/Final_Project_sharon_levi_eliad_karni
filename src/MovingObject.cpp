@@ -12,41 +12,12 @@ MovingObject::MovingObject(const sf::Vector2f location,
 	const sf::Vector2f& size,
 	char objectType)
 	: GameObject(location, size, objectType),
-	m_initialLoc(location) {}
+	m_initialLoc(location), m_lookingState(LOOK_STRAIGHT) {}
 //============================== gets section ================================
-sf::Vector2f MovingObject::getCenter() const{
-	return sf::Vector2f(this->getLocation().x + (this->getSize().x/2),
-		this->getLocation().y + (this->getSize().y/2));
-}
-//============================================================================
-sf::Vector2f MovingObject::getAbove()const{
-	return sf::Vector2f(this->getCenter().x, this->getLocation().y - 1);
-}
-//============================================================================
-sf::Vector2f MovingObject::getLeft()const{
-	return sf::Vector2f( this->getLocation().x - 1, this->getCenter().y);
-}
-//============================================================================
-sf::Vector2f MovingObject::getBelow()const{
-	return sf::Vector2f(this->getCenter().x, 
-	this->getLocation().y + this->getSize().y + 1);
-}
-//============================================================================
-sf::Vector2f MovingObject::getRight()const{
-	return sf::Vector2f(this->getLocation().x + this->getSize().x + 1, 
-		this->getCenter().y);
-}
-//============================================================================
-sf::Vector2f MovingObject::getBotLeft()const {
-	return (sf::Vector2f(this->getLocation().x, 
-		this->getLocation().y + this->getSize().y));
-}
-//============================================================================
-sf::Vector2f MovingObject::getBotRight()const {
-	return (this->getLocation() + this->getSize());
-}
 //============================================================================
 sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
+
+int MovingObject::getLookState()const { return this->m_lookingState; }
 //============================ methods section ===============================
 //============================================================================
 void MovingObject::moveUp(const sf::Time& deltaTime, const Board& board){
@@ -59,12 +30,16 @@ void MovingObject::moveUp(const sf::Time& deltaTime, const Board& board){
 			dynamic_cast <Ladder*> (above)) {
 			if (!dynamic_cast <Ladder*> (below))
 				below = above;
-			this->setLocation(sf::Vector2f(0, -1)*(float)board
-				.getMovmentSpeed()
-				*deltaTime.asSeconds());
+			if(board.isMovePossible(this->getLocation() + sf::Vector2f(0, -1)
+				* (float)board.getMovmentSpeed() * deltaTime.asSeconds()))
+				this->setLocation(sf::Vector2f(0, -1)*(float)board
+					.getMovmentSpeed() * deltaTime.asSeconds());
 			this->setState(CLIMBING);
-			this->setLocation(sf::Vector2f(below->getLocation().x - 
-				this->getLocation().x, 0));
+			if(board.isMovePossible(this->getLocation() +
+				sf::Vector2f(below->getLocation().x - 
+					this->getLocation().x, 0)))
+				this->setLocation(sf::Vector2f(below->getLocation().x - 
+					this->getLocation().x, 0));
 		}
 		else
 			this->setState(STAND);
@@ -77,19 +52,25 @@ void MovingObject::moveDown(const sf::Time& deltaTime, const Board&  board){
 			sf::Vector2f(0, -1));
 		if (dynamic_cast <Ladder*> (object)) {
 			this->setState(CLIMBING);
-			this->setLocation(sf::Vector2f(object->getLocation().x -
-				this->getLocation().x, 0));
+			if(board.isMovePossible(this->getLocation() + sf::Vector2f(0, 1)
+				* (float)board.getMovmentSpeed() * deltaTime.asSeconds()))
+				this->setLocation(sf::Vector2f(object->getLocation().x -
+					this->getLocation().x, 0));
 		}
 		else if (dynamic_cast <Rod*> (board.getContent(this->getCenter())) &&
 			dynamic_cast <Rod*> (object) && this->getState() != RODDING) {
-			this->setLocation(sf::Vector2f(0, object->getLocation().y
-				- this->getLocation().y));
+			if (board.isMovePossible(this->getLocation() + sf::Vector2f(0, 1)
+				* (float)board.getMovmentSpeed() * deltaTime.asSeconds()))
+				this->setLocation(sf::Vector2f(0, object->getLocation().y
+					- this->getLocation().y));
 			this->setState(RODDING);
 		}
 		else
 			this->setState(STAND);
-		this->setLocation(sf::Vector2f(0, 1) * (float)board.
-			getMovmentSpeed() * deltaTime.asSeconds());
+		if (board.isMovePossible(this->getLocation() + sf::Vector2f(0, 1)
+			* (float)board.getMovmentSpeed() * deltaTime.asSeconds()))
+			this->setLocation(sf::Vector2f(0, 1) * (float)board.
+				getMovmentSpeed() * deltaTime.asSeconds());
 		
 	}
 	
@@ -98,41 +79,47 @@ void MovingObject::moveDown(const sf::Time& deltaTime, const Board&  board){
 void MovingObject::moveLeft(const sf::Time& deltaTime, const Board& board){
 		if (board.isMovePossible(this->getLeft())){
 			while (dynamic_cast <Wall*>
-				(board.getContent(this->getBotLeft()))) {
+				(board.getContent(this->getBotLeft())) ||
+				dynamic_cast <Rod*>
+				(board.getContent(this->getAbove()))) {
 				this->setLocation(sf::Vector2f(0, -1));
 			}
-			this->setLocation(sf::Vector2f(-1, 0) * (float)board.
-				getMovmentSpeed() * deltaTime.asSeconds());
 			if (dynamic_cast <Rod*>
 				(board.getContent(this->getAbove()))) {
-				this->setLocation(sf::Vector2f(0, board.getContent(
-					this->getAbove())->getLocation().y - 
-					this->getLocation().y));
 				this->setState(RODDING);
 			}
 			else
 				this->setState(STAND);
+			this->setLocation(sf::Vector2f(-1, 0) * (float)board.
+				getMovmentSpeed() * deltaTime.asSeconds());
+
+			for (int i = 0; i < (float)board.
+				getMovmentSpeed() * deltaTime.asSeconds(); ++i)
+				if (board.isMovePossible(this->getLeft()))
+					this->setLocation(sf::Vector2f(-1, 0));
 		}
 }
 //============================================================================
 void MovingObject::moveRight(const sf::Time& deltaTime, const Board& board){
-		if (board.isMovePossible(this->getRight())){
-			while (dynamic_cast <Wall*>
-				(board.getContent(this->getBotRight()))) {
-				this->setLocation(sf::Vector2f(0, -1));
-			}
-			this->setLocation(sf::Vector2f(1, 0) * (float)board.
-				getMovmentSpeed() * deltaTime.asSeconds());
-			if (dynamic_cast <Rod*>
-				(board.getContent(this->getAbove()))) {
-				this->setLocation(sf::Vector2f(0, board.getContent(
-					this->getAbove())->getLocation().y - 
-					this->getLocation().y));
-				this->setState(RODDING);
-			}
-			else
-				this->setState(STAND);
+	if (board.isMovePossible(this->getRight())) {
+		while (dynamic_cast <Wall*>
+			(board.getContent(this->getBotRight())) ||
+			dynamic_cast <Rod*>
+			(board.getContent(this->getAbove()))) {
+			this->setLocation(sf::Vector2f(0, -1));
 		}
+		if (dynamic_cast <Rod*>
+			(board.getContent(this->getAbove()))) {
+			this->setState(RODDING);
+		}
+		else
+			this->setState(STAND);
+		for (int i = 0; i < (float)board.
+			getMovmentSpeed() * deltaTime.asSeconds(); ++i)
+			if (board.isMovePossible(this->getRight()))
+				this->setLocation(sf::Vector2f(1, 0)); // * (float)board.
+					//getMovmentSpeed() * deltaTime.asSeconds());
+	}
 }
 //============================================================================
 bool MovingObject::isFalling(const Board& board){
@@ -163,6 +150,15 @@ void MovingObject::reset(){
 //============================================================================
 void MovingObject::setLocation(const sf::Vector2f& movement){
 	this->GameObject::setLocation(movement);
+}
+//============================================================================
+void MovingObject::setLookState(int state) {
+	if (state % 3 == LOOK_STRAIGHT)
+		this->m_lookingState = LOOK_STRAIGHT;
+	else if (state % 3 == LOOK_RIGHT)
+		this->m_lookingState = LOOK_RIGHT;
+	else
+		this->m_lookingState = LOOK_LEFT;
 }
 //============================================================================
 

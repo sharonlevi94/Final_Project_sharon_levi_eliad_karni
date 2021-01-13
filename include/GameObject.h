@@ -24,8 +24,16 @@ public:
 
 	bool CollidesWith(const GameObject&)const;
 	
+	sf::Vector2f getAbove()const;
+	sf::Vector2f getLeft()const;
+	sf::Vector2f getBelow()const;
+	sf::Vector2f getRight()const;
+	sf::Vector2f getCenter()const;
+	sf::Vector2f getBotLeft()const;
+	sf::Vector2f getBotRight()const;
+
 	const sf::Vector2f& getLocation()const;
-	const sf::Vector2f& getSize()const;
+	sf::Vector2f getSize()const;
 	int getState ()const;
 	const sf::Sprite& getSprite()const;
 

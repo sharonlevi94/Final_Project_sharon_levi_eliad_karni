@@ -17,7 +17,6 @@ public:
 	void runGame();
 	char runMenu();
 
-	void playerTurn(const sf::Time&);
 	void enemiesTurns(const sf::Time&);
 	void resetLevel();
 	void seperateGameObjects(const vector<MovingObject*>&);

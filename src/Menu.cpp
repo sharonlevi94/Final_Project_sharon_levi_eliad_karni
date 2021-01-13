@@ -7,8 +7,8 @@
 //==================== Constructors & distructors section ====================
 Menu::Menu(const sf::Vector2f& size,
 	const sf::Vector2f& location) :
-	m_location(location), m_size(size), m_startGameButton(sf::Text()),
-	m_quitGameButton(sf::Text()), m_GameLogo(sf::Sprite()){
+	m_location(location), m_size(size), m_startGameButton(),
+	m_quitGameButton(), m_GameLogo(){
 	calcLogo();
 	calcStartButton();
 	calcQuitButton();
@@ -26,10 +26,10 @@ void Menu::draw(sf::RenderWindow & window){
 //============================================================================
 char Menu::handleClick(const sf::Vector2f& location) const{
 	if (this->m_startGameButton.getGlobalBounds().contains(location))
-		return('s');
+		return(PLAY_GAME);
 	if (this->m_quitGameButton.getGlobalBounds().contains(location))
-		return('q');
-	return('n');
+		return(QUIT_GAME);
+	return(NONE_CHOSEN);
 }
 //============================================================================
 bool Menu::pointingHundle(const sf::Vector2f& location) {

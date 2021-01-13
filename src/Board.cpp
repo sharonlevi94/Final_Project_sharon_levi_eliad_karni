@@ -1,20 +1,21 @@
 /*
    This file conatains all methods of the class Board.
 */
+#include "Board.h"
 #include <SFML/Graphics.hpp>
 #include "MovingObject.h"
-#include "Board.h"
 #include "Macros.h"
 #include "EffectsHolder.h"
 #include <vector>
 #include "Utilities.h"
 #include "Player.h"
 #include "RandEnemy.h"
+#include "FoolEnemy.h"
 #include "Coin.h"
 #include "Ladder.h" 
 #include "Wall.h"
 #include "Rod.h"
-#include "CollectableObject.h"
+
 using std::vector;
 //==================== Constructors & distruors section ====================
 Board::Board(const sf::Vector2f& location,
@@ -24,63 +25,64 @@ Board::Board(const sf::Vector2f& location,
 	m_location(location),
 	m_levelNumber(1),
  	m_backgroundSize(size),
-	m_map({}),
 	m_levelSize(size),
 	m_levelTime(0)
 {}
 //========================================================================
 Board::~Board() {
-	releaseMap();
-	this->m_map = {};
+	this->releaseMap();
 }
 //========================================================================
 void Board::draw(sf::RenderWindow& window)const{
 	window.draw(m_background);
 	for (int i = 0; i < m_levelSize.x; i++)
-		for (int j =0; j < m_levelSize.y; j++)
-			if (m_map[i][j] != nullptr) {
+		for (int j = 0; j < m_levelSize.y; j++)
+			if (m_map[i][j].get() != nullptr) {
 				m_map[i][j]->draw(window);
 			}
 }
 //========================================================================
-std::vector<MovingObject*> Board::loadNewLevel() {
+vector<MovingObject*> Board::loadNewLevel() {
 	vector<vector<char>> map = m_levelReader.readNextLevel();
+
 	sf::Vector2f boxSize(this->getlevelSize().x / map.size(),
 		this->getlevelSize().y / map.size());
+
 	vector<MovingObject*> movingsVec = {};
 
 	this->m_levelNumber++;
 	m_levelSize = m_levelReader.getLevelSize();
 	this->releaseMap();
-	for (int i = 0; i < map.size(); i++) {
-		std::vector<GameObject*> row = {};
-		for (int j = 0; j < map[i].size(); j++) {
-			switch (map[i][j])
+	for (int y = 0; y < map.size(); ++y) {
+		std::vector<std::unique_ptr<GameObject>> row;
+		row.resize(0);
+		for (int x = 0; x < map[y].size(); x++) {
+			switch (map[y][x])
 			{
 			case PLAYER: {
-				movingsVec.push_back(new Player(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
-				row.push_back(nullptr);
+				row.push_back(std::make_unique <Player> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				movingsVec.push_back((MovingObject*)row[x].get());
 				break;
 			}
 			case ENEMY: {
-				movingsVec.push_back(new RandEnemy(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
-				row.push_back(nullptr);
+				row.push_back(std::make_unique <FoolEnemy> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				movingsVec.push_back((MovingObject*)row[x].get());
 				break;
 			}
 			case COIN: {
-				row.push_back(new Coin(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Coin> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case WALL: {
-				row.push_back(new Wall(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Wall> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case LADDER: {
-				row.push_back(new Ladder(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Ladder>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case ROD: {
-				row.push_back(new Rod(sf::Vector2f(boxSize.x * j, boxSize.y * i) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Rod>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			default: {
@@ -89,15 +91,19 @@ std::vector<MovingObject*> Board::loadNewLevel() {
 			}
 			}
 		}
-		this->m_map.push_back(row);
+		this->m_map.resize(m_map.size() + 1);
+		this->m_map[y].resize(row.size());
+		for (int i = 0; i < row.size(); ++i)
+			this->m_map[y][i] = std::move(row[i]);
 	}
-
 	//set time level, if exist:
 	this->m_levelTime = m_levelReader.getLevelTime();
 	//set background of the level:
 	m_background.setSize(m_backgroundSize);
 	m_background.setPosition(m_location);
-	m_background.setTexture(&EffectsHolder::instance().getTexture(m_levelNumber));
+	m_background.setTexture(&EffectsHolder::instance()
+		.getTexture(m_levelNumber));
+		
 	return movingsVec;
 }
 //========================================================================
@@ -106,17 +112,7 @@ bool Board::is_next_lvl_exist()const {
 }
 //========================================================================
 int Board::getLevelTime()const {
-		return m_levelTime;
-}
-//========================================================================
-vector<MovingObject*> Board::FindMovingObj(){
-	vector<MovingObject*> characters = {};
-	for(int i =0 ; i< this->m_map.size() ; i++)
-		for(int j=0 ; j<this->m_map[i].size() ; j++){
-			if (dynamic_cast <MovingObject*> (m_map[i][j]))
-				characters.push_back((MovingObject*)m_map[i][j]);
-		}
-	return characters;
+		return this->m_levelReader.getLevelTime();
 }
 //========================================================================
 sf::Vector2f Board::getlevelSize()const{
@@ -126,13 +122,7 @@ sf::Vector2f Board::getlevelSize()const{
 const sf::Vector2f& Board::getLocation() const { return this->m_location; }
 //========================================================================
 void Board::releaseMap() {
-	for (int i = 0; i < this->m_map.size(); ++i) {
-		for (int j = 0; j < this->m_map[i].size(); ++j) {
-			if (this->m_map[i][j] != nullptr)
-				this->m_map[i][j]->~GameObject();
-			this->m_map[i][j] = nullptr;
-		}
-	}
+	this->m_map.resize(0);
 }
 //========================================================================
 GameObject* Board::getContent(const sf::Vector2f location) const{
@@ -141,10 +131,10 @@ GameObject* Board::getContent(const sf::Vector2f location) const{
 		y = (int)((location.y - this->m_location.y) /
 			(this->m_backgroundSize.y / this->m_map.size()));
 
-	return this->m_map[y][x];
+	return this->m_map[y][x].get();
 }
 //========================================================================
-int Board::getMovmentSpeed() const{ return 300; }
+int Board::getMovmentSpeed() const{ return 250; }
 //========================================================================
 bool Board::isMovePossible(const sf::Vector2f& location) const{ 
 	return (this->m_background.getGlobalBounds().contains(location) &&
@@ -154,7 +144,7 @@ bool Board::isMovePossible(const sf::Vector2f& location) const{
 void Board::resetLvl(){
 	for (int i = 0; i < this->m_map.size(); ++i)
 		for (int j = 0; j < this->m_map[i].size(); ++j) {
-			if(this->m_map[i][j] != nullptr)
+			if(this->m_map[i][j].get() != nullptr)
 				this->m_map[i][j]->reset();
 		}
 }
@@ -162,14 +152,4 @@ void Board::resetLvl(){
 void Board::gameOver() {
 	this->m_levelReader.resetRead();
 	this->releaseMap();
-}
-//========================================================================
-bool Board::isAllCoinsCollected()const {
-	for (int i = 0; i < m_map.size(); i++)
-		for (int j = 0; j < m_map[0].size(); j++) {
-			if (dynamic_cast<Coin*>(m_map[i][j]))
-				if (!((Coin*)m_map[i][j])->is_collected())
-					return false;
-		}
-	return true;
 }

@@ -9,7 +9,7 @@
                                      "Controller.cpp"
                                      "EffectsHolder.cpp"
                                      "Enemy.cpp"
-                                     #"FoolEnemy.cpp"
+                                     "FoolEnemy.cpp"
                                      "RandEnemy.cpp"
                                      #"SmartEnemy.cpp"
                                      #"Gift.cpp"

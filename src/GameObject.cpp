@@ -25,7 +25,7 @@ int GameObject::getState()const {
 	return this->m_state;
 }
 //============================================================================
-const sf::Vector2f& GameObject::getSize()const{
+ sf::Vector2f GameObject::getSize()const{
 	return sf::Vector2f(this->getSprite().getGlobalBounds().width, 
 		this->getSprite().getGlobalBounds().height);
 }
@@ -48,6 +48,38 @@ bool GameObject::CollidesWith(const GameObject& obj)const {
 }
 //============================================================================
 void GameObject::setState(int state) { this->m_state = state; }
+//============================================================================
+sf::Vector2f GameObject::getCenter() const {
+	return sf::Vector2f(this->getLocation().x + (this->getSize().x / 2),
+		this->getLocation().y + (this->getSize().y / 2));
+}
+//============================================================================
+sf::Vector2f GameObject::getAbove()const {
+	return sf::Vector2f(this->getCenter().x, this->getLocation().y - 1);
+}
+//============================================================================
+sf::Vector2f GameObject::getLeft()const {
+	return sf::Vector2f(this->getLocation().x - 1, this->getCenter().y);
+}
+//============================================================================
+sf::Vector2f GameObject::getBelow()const {
+	return sf::Vector2f(this->getCenter().x,
+		this->getLocation().y + this->getSize().y + 1);
+}
+//============================================================================
+sf::Vector2f GameObject::getRight()const {
+	return sf::Vector2f(this->getLocation().x + this->getSize().x + 1,
+		this->getCenter().y);
+}
+//============================================================================
+sf::Vector2f GameObject::getBotLeft()const {
+	return (sf::Vector2f(this->getLocation().x,
+		this->getLocation().y + this->getSize().y));
+}
+//============================================================================
+sf::Vector2f GameObject::getBotRight()const {
+	return (this->getLocation() + this->getSize());
+}
 //=========================== protected section ==============================
 //============================== sets section ================================
 void GameObject::setLocation(const sf::Vector2f& movment) {

@@ -29,9 +29,9 @@ void Controller::run() {
 	while (true) {
 		this->m_window.clear();
 		char choose = this->runMenu();
-		if (!this->m_window.isOpen() || choose == 'q')
+		if (!this->m_window.isOpen() || choose == QUIT_GAME)
 			break;
-		if (choose == 's')
+		if (choose == PLAY_GAME)
 			this->runGame();
 		if (!this->m_window.isOpen())
 			break;
@@ -56,10 +56,10 @@ char Controller::runMenu() {
 				switch (this->m_menu.handleClick(sf::Vector2f(
 					(float)event.mouseButton.x, 
 					(float)event.mouseButton.y))) {
-				case 's':
-					return 's';
-				case 'q':
-					return 'q';
+				case PLAY_GAME:
+					return PLAY_GAME;
+				case QUIT_GAME:
+					return QUIT_GAME;
 					break;
 				}
 				break;
@@ -131,7 +131,7 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 //============================================================================
 void Controller::resetLevel(){
 	//reset Static objects:
-	this->m_board.resetLvl(); 
+	//this->m_board.resetLvl(); 
 
 	//reset MovingObjects:
 	this->m_player->reset();
@@ -141,8 +141,7 @@ void Controller::resetLevel(){
 }
 //============================================================================
 void Controller::gameOver() {
-	this->m_board.~Board();
-	this->run();
+	this->m_board.gameOver();
 }
 //============================================================================
 void Controller::checkColisions() {
