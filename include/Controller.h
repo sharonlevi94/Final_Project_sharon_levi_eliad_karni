@@ -24,6 +24,7 @@ public:
 	void play_turns(const sf::Time&);
 	void drawObjects();
 	void gameOver();
+	void checkColisions();
 
 private:
 	sf::RenderWindow m_window;

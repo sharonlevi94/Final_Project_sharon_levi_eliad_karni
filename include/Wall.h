@@ -8,9 +8,6 @@ public:
 
 	void playTurn(const sf::Time&,const Board&) override;
 	void dig();
-	virtual void handleColision(GameObject&)override;
-	virtual void handleColision(Enemy&)override;
-	virtual void handleColision(Player&)override;
 private:
 	int m_digState;
 };
