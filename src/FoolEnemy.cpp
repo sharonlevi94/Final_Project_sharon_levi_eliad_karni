@@ -13,12 +13,12 @@ FoolEnemy::FoolEnemy(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 void FoolEnemy::playTurn(const sf::Time& deltaTime, const Board& board) {
-	if (this->getLookState() == LOOK_RIGHT ||
-		!(dynamic_cast <Wall*> (board.getContent(this->getBotLeft())) ||
+	if (this->getLookState() == LOOK_LEFT &&
+		(dynamic_cast <Wall*> (board.getContent(this->getBotLeft())) ||
 			dynamic_cast <Rod*> (board.getContent(this->getLeft()))) ||
 		dynamic_cast <Ladder*> ((board.getContent(this->getLeft())))) {
 		this->moveLeft(deltaTime, board);
-		this->setLookState(LOOK_RIGHT);
+		this->setLookState(LOOK_LEFT);
 	}
 	else {
 		this->moveRight(deltaTime, board);
