@@ -78,8 +78,9 @@ sf::Vector2f GameState::getLocation()const {
 }
 //============================================================================
 std::string GameState::getRemindMin() {
-	if (this->m_levelTime.asSeconds() == -1)
-		return std::to_string(-1);
+	if (this->m_levelTime.asSeconds() == NO_LEVEL_TIME)
+		return std::to_string(NO_LEVEL_TIME);
+
 	int time = (int)(((this->m_levelTime - this->m_clock.getElapsedTime())
 		.asSeconds()) / 60.f);
 
@@ -94,4 +95,18 @@ std::string GameState::getRemindSec() {
 	if (time < 10)
 		return("0" + std::to_string(time));
 	return (std::to_string(time));
+}
+//============================================================================
+void GameState::collectedGift(int giftType) {
+	sf::Time timeBonus = sf::seconds(20);
+	switch (giftType){
+	case TIME_BONUS:
+		this->m_levelTime+=timeBonus;
+		break;
+	case ADD_SCORE: this->m_score += 20;
+		break;
+	case ADD_LIFE: ++this->m_lifes;
+		break;
+	default: break;
+	}
 }

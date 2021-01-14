@@ -19,6 +19,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void levelup       (int);
 	void collectedCoin ();
+	void collectedGift (int);
 	void died          ();
 	bool isTimeUp();
 	bool isGameOver();

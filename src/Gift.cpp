@@ -7,6 +7,8 @@ Gift::Gift(const sf::Vector2f location,
 	const sf::Vector2f& size)
 	:CollectableObject(location, size, GIFT_T) {
 	++m_giftsCounter;
+	srand((int)time(NULL));
+	this->m_type = rand() % NUM_OF_GIFT_TYPES;
 }
 //============================================================================
 Gift::~Gift() { --m_giftsCounter; }
@@ -27,6 +29,9 @@ void Gift::collect() {
 //============================================================================
 void Gift::playTurn(const sf::Time& deltatime, const Board& board) {}
 //============================== gets section ================================
+int Gift::getType()const {
+	return this->m_type;
+}
 //============================ methods section ===============================
 //============================================================================
 //============================ private section ===============================

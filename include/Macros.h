@@ -46,10 +46,16 @@ constexpr auto DIGGED = 9;
 //ladder/rod
 constexpr auto CLIMBED = 10;
 constexpr auto NOT_CLIMBED = 11;
+//gift
+constexpr auto TIME_BONUS = 0;
+constexpr auto ADD_SCORE = 1;
+constexpr auto ADD_LIFE = 2;
+constexpr auto ADD_ENEMY = 3;
 //=============================== game rules =================================
 
 constexpr auto NUM_OF_LIFE = 3;
 constexpr auto NO_LEVEL_TIME = -1;
+constexpr auto NUM_OF_GIFT_TYPES = 4;
 
 //============================  map's file path ==============================
 //-------------------------- data files section ------------------------------

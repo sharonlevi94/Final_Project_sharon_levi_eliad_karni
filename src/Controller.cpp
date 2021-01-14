@@ -3,6 +3,7 @@
 #include "Menu.h"
 #include "Board.h"
 #include "Coin.h"
+#include "Gift.h"
 #include "GameState.h"
 #include "EffectsHolder.h"
 #include "Player.h"
@@ -151,6 +152,14 @@ void Controller::checkColisions() {
 			this->m_gameState.collectedCoin();
 		}
 	}
+
+	if (dynamic_cast <Gift*> (this->m_board.getContent(this->m_player->getCenter()))) {
+		if (!((Gift*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
+			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->collect();
+			this->m_gameState.collectedGift(((Gift*)this->m_board.getContent(this->m_player->getCenter()))->getType());
+		}
+	}
+
 	for (int i = 0; i < this->m_enemies.size(); i++) {
 		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
 			this->m_gameState.died();
