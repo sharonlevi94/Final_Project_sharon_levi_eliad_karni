@@ -2,12 +2,14 @@
 //============================ include section ===============================
 #include "Board.h"
 #include "Menu.h"
+#include "Enemy.h"
 #include "GameState.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 //========================== forward declarations ============================
 class MovingObject;
 class Player;
+class Enemy;
 
 class Controller
 {
@@ -24,6 +26,7 @@ public:
 	void drawObjects();
 	void gameOver();
 	void checkColisions();
+	void createEnemy();
 
 
 private:
@@ -32,6 +35,7 @@ private:
 	Menu m_menu;
 	GameState m_gameState;
 	vector <MovingObject*> m_enemies;
+	std::vector<std::unique_ptr<Enemy>> m_giftEnemies;
 	Player* m_player;
 	sf::Clock m_clock;
 };

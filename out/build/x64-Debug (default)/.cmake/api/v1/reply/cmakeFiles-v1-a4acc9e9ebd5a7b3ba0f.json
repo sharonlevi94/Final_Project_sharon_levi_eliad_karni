@@ -187,6 +187,9 @@
 			"path" : "resources/gift.png"
 		},
 		{
+			"path" : "resources/door.png"
+		},
+		{
 			"path" : "resources/Levels.txt"
 		},
 		{

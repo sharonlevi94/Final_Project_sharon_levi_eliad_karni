@@ -23,7 +23,7 @@ Board::Board(const sf::Vector2f& location,
 	: m_levelReader(DataReader()),
 	m_background(sf::RectangleShape()),
 	m_location(location),
-	m_levelNumber(1),
+	m_levelNumber(0),
  	m_backgroundSize(size),
 	m_levelSize(size),
 	m_levelTime(0)
@@ -89,6 +89,9 @@ vector<MovingObject*> Board::loadNewLevel() {
 				row.push_back(std::make_unique <Gift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
+			case DOOR: {
+
+			}
 			default: {
 				row.push_back(NULL); // inputed ' '
 				break;
@@ -105,8 +108,7 @@ vector<MovingObject*> Board::loadNewLevel() {
 	//set background of the level:
 	m_background.setSize(m_backgroundSize);
 	m_background.setPosition(m_location);
-	m_background.setTexture(&EffectsHolder::instance()
-		.getTexture(m_levelNumber));
+	m_background.setTexture(&EffectsHolder::instance().getBackground(m_levelNumber));
 		
 	return movingsVec;
 }

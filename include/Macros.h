@@ -16,6 +16,7 @@ constexpr auto LADDER = 'H';
 constexpr auto ROD = '-';
 constexpr auto PLAYER_ON_LADDER = 'S';
 constexpr auto GIFT = '+';
+constexpr auto DOOR = 'D';
 
 //obj size:
 constexpr auto OBJ_HEIGHT = 30; //y
@@ -78,6 +79,7 @@ constexpr auto WALL_PATH = "wall.png";
 constexpr auto LADDER_PATH = "ladder.png";
 constexpr auto ROD_PATH = "rod.png";
 constexpr auto GIFT_PATH = "gift.png";
+constexpr auto DOOR_PATH = "door.png";
 constexpr auto GAME_STATE_PATH = "game_state.jpg";
 
 //---------------------------------- logos -----------------------------------
@@ -87,11 +89,7 @@ constexpr auto GAME_LOGO_PATH = "Logo.png";
 //-------------------------------- textures ----------------------------------
 //------------------------------- backgrounds --------------------------------
 constexpr auto MENU_BACKGROUND = 1;
-constexpr auto LEVEL1 = 2;
-constexpr auto LEVEL2 = 3;
-constexpr auto LEVEL3 = 4;
-constexpr auto LEVEL4 = 5;
-constexpr auto LEVEL5 = 6;
+constexpr auto LEVEL_BACKGROUND = 2;
 constexpr auto GAME_STATE = 9;
 //------------------------------- objects -------------------------------------
 constexpr auto PLAYER_T = 10;
@@ -101,6 +99,7 @@ constexpr auto WALL_T = 13;
 constexpr auto LADDER_T = 14;
 constexpr auto ROD_T = 15;
 constexpr auto GIFT_T = 16;
+constexpr auto DOOR_T = 17;
 
 //--------------------------------- logos ------------------------------------
 constexpr auto GAME_LOGO = 26;

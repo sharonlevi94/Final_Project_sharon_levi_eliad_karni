@@ -17,6 +17,7 @@ Controller::Controller() :
 		sf::Vector2f((float)m_window.getSize().x, (float)m_window.getSize().y * (0.9f))),
 	m_enemies({}),
 	m_player(nullptr){
+	m_giftEnemies.resize(0);
 	this->m_menu = Menu(
 		(sf::Vector2f)this->m_window.getSize(),
 		sf::Vector2f(0, 0));
@@ -79,10 +80,9 @@ char Controller::runMenu() {
 }
 //============================================================================
 void Controller::runGame() {
-	this->m_gameState.levelup(90);
+	this->m_gameState.levelup(this->m_board.getLevelTime());
 	this->seperateGameObjects(this->m_board.loadNewLevel());
 	while (this->m_window.isOpen()){
-
 				this->m_window.clear();
 				this->m_gameState.draw(this->m_window);
 				this->m_board.draw(m_window);
@@ -159,7 +159,7 @@ void Controller::checkColisions() {
 			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->collect();
 			if(((Gift*)this->m_board.getContent(this->m_player->getCenter()))->getType()!=ADD_ENEMY)
 				this->m_gameState.collectedGift(((Gift*)this->m_board.getContent(this->m_player->getCenter()))->getType());
-			else{/*TODO: CREATE NEW ENEMY*/}
+			else { this->createEnemy(); }
 		}
 	}
 	//colision with enemy:
@@ -174,6 +174,10 @@ void Controller::checkColisions() {
 				break;
 		}
 	}
+}
+//============================================================================
+void Controller::createEnemy() {
+
 }
 //============================ private section ===============================
 //============================== gets section ================================

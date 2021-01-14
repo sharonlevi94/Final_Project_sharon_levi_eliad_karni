@@ -7,115 +7,137 @@
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 EffectsHolder::EffectsHolder() {
-	this->m_texture = {};
+	this->m_texture.clear();
+	this->m_sound.clear();
+	this->m_font.clear();
+
 	this->setBackgrounds();
 	this->setLogos();
 	this->setFonts();
 	this->setObjects();
 }
-const EffectsHolder& EffectsHolder::instance() {
+EffectsHolder& EffectsHolder::instance() {
 	static EffectsHolder inst;
 	return(inst);
 }
-
-//----------------------------------------------------------------------------
-EffectsHolder::~EffectsHolder(){
-	//delete textures allocations
-	for (auto iterator = this->m_texture.begin(); 
-		iterator != this->m_texture.end(); ++iterator)
-		delete(iterator->second);
-	//delete sounds allocations
-	for (auto iterator = this->m_sound.begin(); 
-		iterator != this->m_sound.end(); ++iterator)
-		delete(iterator->second);
-	//delete fonts allocations
-	for (auto iterator = this->m_font.begin(); 
-		iterator != this->m_font.end(); ++iterator)
-		delete(iterator->second);
-}
 //============================== gets section ================================
+//============================================================================
+const sf::Texture& EffectsHolder::getBackground(int textureKey){
+if(textureKey != this->m_backgroundLevelState){
+		switch(textureKey){
+		case 1:
+			this->m_texture[LEVEL_BACKGROUND]->
+				loadFromFile(LEVEL1_BACKGROUND_PATH);
+			break;
+		case 2:
+			this->m_texture[LEVEL_BACKGROUND]->
+				loadFromFile(LEVEL2_BACKGROUND_PATH);
+			break;
+		case 3:
+			this->m_texture[LEVEL_BACKGROUND]->
+				loadFromFile(LEVEL3_BACKGROUND_PATH);
+			break;
+		case 4:
+			this->m_texture[LEVEL_BACKGROUND]->
+				loadFromFile(LEVEL4_BACKGROUND_PATH);
+			break;
+		}
+		this->m_backgroundLevelState = textureKey;
+	}
+	return (*this->m_texture.find(LEVEL_BACKGROUND)->second);
+}
+//============================================================================
 const sf::Texture& EffectsHolder::getTexture(int textureKey)const{
 	return (*this->m_texture.find(textureKey)->second);
 }
-//----------------------------------------------------------------------------
+//============================================================================
 const sf::Sound& EffectsHolder::getSound(int soundKey) const{
 	return(*this->m_sound.find(soundKey)->second);
 }
-//----------------------------------------------------------------------------
+//============================================================================
 const sf::Font& EffectsHolder::getFont(int fontKey) const{
 	return(*this->m_font.find(fontKey)->second);
 }
 //============================ methods section ===============================
-
 //============================ private section ===============================
 //============================== sets section ================================
 //============================ methods section ===============================
 //============================================================================
 void EffectsHolder::setBackgrounds(){
+	std::unique_ptr<sf::Texture> texturesCreator;
 	//adding game's backgrounds path
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(MENU_BACKGROUND, new sf::Texture));
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(MENU_BACKGROUND, std::move(texturesCreator)));
 	this->m_texture[MENU_BACKGROUND]->loadFromFile(MENU_BACKGROUND_PATH);
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(GAME_STATE, new sf::Texture));
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(GAME_STATE,  std::move(texturesCreator)));
 	this->m_texture[GAME_STATE]->loadFromFile(GAME_STATE_PATH);
-
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(LEVEL_BACKGROUND, std::move(texturesCreator)));
 	//adding levels background path
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(LEVEL1, new sf::Texture));
-	this->m_texture[LEVEL1]->loadFromFile(LEVEL1_BACKGROUND_PATH);
-
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(LEVEL2, new sf::Texture));
-	this->m_texture[LEVEL2]->loadFromFile(LEVEL2_BACKGROUND_PATH);
-
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(LEVEL3, new sf::Texture));
-	this->m_texture[LEVEL3]->loadFromFile(LEVEL3_BACKGROUND_PATH);
-
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(LEVEL4, new sf::Texture));
-	this->m_texture[LEVEL4]->loadFromFile(LEVEL4_BACKGROUND_PATH);
 }
 //============================================================================
 void EffectsHolder::setLogos() {
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(GAME_LOGO, new sf::Texture));
+	std::unique_ptr<sf::Texture> texturesCreator;
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(GAME_LOGO, std::move(texturesCreator)));
 	this->m_texture[GAME_LOGO]->loadFromFile(GAME_LOGO_PATH);
 }
 //============================================================================
 void EffectsHolder::setFonts(){
-	this->m_font.insert(std::pair<int, sf::Font*>
-		(ARIEL_FONT, new sf::Font));
+	std::unique_ptr<sf::Font> fontsCreator;
+	fontsCreator = std::make_unique<sf::Font>();
+	this->m_font.insert(std::pair<int, std::unique_ptr <sf::Font>>
+		(ARIEL_FONT, std::move(fontsCreator)));
 	this->m_font[ARIEL_FONT]->loadFromFile(ARIEL_FONT_PATH);
 }
-//----------------------------------------------------------------------------
+//============================================================================
 void EffectsHolder::setObjects() {
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(PLAYER_T, new sf::Texture));
+	std::unique_ptr<sf::Texture> texturesCreator;
+
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(PLAYER_T, std::move(texturesCreator)));
 	this->m_texture[PLAYER_T]->loadFromFile(PLAYER_PATH);
-	/*-------------------------------------------------*/
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(ENEMY_T, new sf::Texture));
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(ENEMY_T, std::move(texturesCreator)));
 	this->m_texture[ENEMY_T]->loadFromFile(ENEMY_PATH);
-	/*-------------------------------------------------*/
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(COIN_T, new sf::Texture));
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(COIN_T, std::move(texturesCreator)));
 	this->m_texture[COIN_T]->loadFromFile(COIN_PATH);
-	/*-------------------------------------------------*/
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(WALL_T, new sf::Texture));
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(WALL_T, std::move(texturesCreator)));
 	this->m_texture[WALL_T]->loadFromFile(WALL_PATH);
-	/*-------------------------------------------------*/
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(LADDER_T, new sf::Texture));
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(LADDER_T, std::move(texturesCreator)));
 	this->m_texture[LADDER_T]->loadFromFile(LADDER_PATH);
-	/*-------------------------------------------------*/
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(ROD_T, new sf::Texture));
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(ROD_T, std::move(texturesCreator)));
 	this->m_texture[ROD_T]->loadFromFile(ROD_PATH);
-	/*-------------------------------------------------*/
-	this->m_texture.insert(std::pair<int, sf::Texture*>
-		(GIFT_T, new sf::Texture));
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(GIFT_T, std::move(texturesCreator)));
 	this->m_texture[GIFT_T]->loadFromFile(GIFT_PATH);
+	//------------------------------------------------------------------------
+	texturesCreator = std::make_unique<sf::Texture>();
+	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
+		(DOOR_T, std::move(texturesCreator)));
+	this->m_texture[DOOR_T]->loadFromFile(DOOR_PATH);
 }
