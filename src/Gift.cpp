@@ -6,25 +6,19 @@
 Gift::Gift(const sf::Vector2f location,
 	const sf::Vector2f& size)
 	:CollectableObject(location, size, GIFT_T) {
-	++m_giftsCounter;
 	srand(17);
 	this->m_type = rand() % NUM_OF_GIFT_TYPES;
 }
 //============================================================================
-Gift::~Gift() { --m_giftsCounter; }
-//========================== statics declaretions ============================
-unsigned int Gift::m_giftsCounter = 0;
-//============================================================================
-unsigned int Gift::getGiftsCounter() { return m_giftsCounter; }
+Gift::~Gift() { }
+
 //============================================================================
 void Gift::reset() {
 	CollectableObject::reset();
-	++m_giftsCounter;
 }
 //============================================================================
 void Gift::collect() {
 	CollectableObject::collect();
-	--m_giftsCounter;
 }
 //============================================================================
 void Gift::playTurn(const sf::Time& deltatime, const Board& board) {}
