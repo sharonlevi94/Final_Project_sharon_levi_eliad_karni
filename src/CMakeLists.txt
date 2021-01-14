@@ -12,7 +12,7 @@
                                      "FoolEnemy.cpp"
                                      "RandEnemy.cpp"
                                      #"SmartEnemy.cpp"
-                                     #"Gift.cpp"
+                                     "Gift.cpp"
                                      "Ladder.cpp"
                                      "Rod.cpp"
                                      "Wall.cpp"

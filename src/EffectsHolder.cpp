@@ -103,7 +103,7 @@ void EffectsHolder::setObjects() {
 		(ROD_T, new sf::Texture));
 	this->m_texture[ROD_T]->loadFromFile(ROD_PATH);
 	/*-------------------------------------------------*/
-	/*this->m_texture.insert(std::pair<int, sf::Texture*>
+	this->m_texture.insert(std::pair<int, sf::Texture*>
 		(GIFT_T, new sf::Texture));
-	this->m_texture[GIFT_T]->loadFromFile(GIFT_PATH);*/
+	this->m_texture[GIFT_T]->loadFromFile(GIFT_PATH);
 }

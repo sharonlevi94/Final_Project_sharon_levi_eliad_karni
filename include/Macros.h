@@ -15,6 +15,7 @@ constexpr auto NOTHING = ' ';
 constexpr auto LADDER = 'H';
 constexpr auto ROD = '-';
 constexpr auto PLAYER_ON_LADDER = 'S';
+constexpr auto GIFT = '+';
 
 //obj size:
 constexpr auto OBJ_HEIGHT = 30; //y

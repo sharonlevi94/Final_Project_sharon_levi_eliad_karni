@@ -59,7 +59,7 @@ void GameState::levelup(int time) {
 void GameState::collectedCoin() { this->m_score += this->m_level * 2; }
 //============================================================================
 void GameState::died() {
-	--this->m_lifes;
+	this->m_lifes--;
 	this->m_clock.restart();
 }
 //============================================================================

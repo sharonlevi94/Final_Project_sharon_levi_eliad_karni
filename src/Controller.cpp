@@ -130,7 +130,7 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 //============================================================================
 void Controller::resetLevel(){
 	//reset Static objects:
-	//this->m_board.resetLvl(); 
+	this->m_board.resetLvl(); 
 
 	//reset MovingObjects:
 	this->m_player->reset();

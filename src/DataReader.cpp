@@ -74,6 +74,10 @@ vector<vector<char>> DataReader::readNextLevel(){
 					row.push_back(ROD);
 					break;
 				}
+				case GIFT: {
+					row.push_back(GIFT);
+					break;
+				}
 				default: {
 					row.push_back(NULL); // inputed ' '
 					break;

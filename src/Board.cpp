@@ -15,7 +15,7 @@
 #include "Ladder.h" 
 #include "Wall.h"
 #include "Rod.h"
-
+#include "Gift.h"
 using std::vector;
 //==================== Constructors & distruors section ====================
 Board::Board(const sf::Vector2f& location,
@@ -83,6 +83,10 @@ vector<MovingObject*> Board::loadNewLevel() {
 			}
 			case ROD: {
 				row.push_back(std::make_unique <Rod>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				break;
+			}
+			case GIFT: {
+				row.push_back(std::make_unique <Gift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			default: {
