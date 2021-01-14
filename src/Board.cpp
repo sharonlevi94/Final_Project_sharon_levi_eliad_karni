@@ -16,6 +16,7 @@
 #include "Wall.h"
 #include "Rod.h"
 #include "Gift.h"
+#include "Door.h"
 using std::vector;
 //==================== Constructors & distruors section ====================
 Board::Board(const sf::Vector2f& location,
@@ -90,7 +91,8 @@ vector<MovingObject*> Board::loadNewLevel() {
 				break;
 			}
 			case DOOR: {
-
+				row.push_back(std::make_unique <Door>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				break;
 			}
 			default: {
 				row.push_back(NULL); // inputed ' '

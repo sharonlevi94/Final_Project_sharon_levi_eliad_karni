@@ -59,3 +59,8 @@
 921	1116	632357377	Final_Project_sharon_levi_eliad_karni.exe	7dd68bf1690165a3
 2	957	632357387	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/EffectsHolder.cpp.obj	ae07601cb306973
 957	1141	632357387	Final_Project_sharon_levi_eliad_karni.exe	7dd68bf1690165a3
+2	198	632359920	build.ninja	e89687055f71c097
+5	1362	632359922	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Door.cpp.obj	89eab451b248203a
+2	1386	632359922	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Board.cpp.obj	3737d27e9dfc8b5e
+16	1390	632359922	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/EffectsHolder.cpp.obj	ae07601cb306973
+1390	1705	632359922	Final_Project_sharon_levi_eliad_karni.exe	a09703194e4f7bfd

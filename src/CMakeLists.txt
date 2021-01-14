@@ -20,4 +20,5 @@
                                      "GameState.cpp"
                                      "GameObject.cpp"
                                      "StaticObject.cpp"
-                                     "main.cpp")
+                                     "main.cpp"
+                                     "Door.cpp")
