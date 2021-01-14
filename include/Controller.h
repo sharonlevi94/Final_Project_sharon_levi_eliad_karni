@@ -25,6 +25,7 @@ public:
 	void gameOver();
 	void checkColisions();
 
+
 private:
 	sf::RenderWindow m_window;
 	Board m_board;

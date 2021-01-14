@@ -178,19 +178,28 @@
 			"path" : "resources/MenuBackground.jpg"
 		},
 		{
-			"path" : "resources/level1.jpeg"
-		},
-		{
 			"path" : "resources/Logo.png"
-		},
-		{
-			"path" : "resources/Levels.txt"
 		},
 		{
 			"path" : "resources/game_state.jpg"
 		},
 		{
 			"path" : "resources/gift.png"
+		},
+		{
+			"path" : "resources/Levels.txt"
+		},
+		{
+			"path" : "resources/level1.jpeg"
+		},
+		{
+			"path" : "resources/level2.png"
+		},
+		{
+			"path" : "resources/level3.jpeg"
+		},
+		{
+			"path" : "resources/level4.jpeg"
 		}
 	],
 	"kind" : "cmakeFiles",

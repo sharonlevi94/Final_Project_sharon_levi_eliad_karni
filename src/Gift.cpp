@@ -7,7 +7,7 @@ Gift::Gift(const sf::Vector2f location,
 	const sf::Vector2f& size)
 	:CollectableObject(location, size, GIFT_T) {
 	++m_giftsCounter;
-	srand((int)time(NULL));
+	srand(17);
 	this->m_type = rand() % NUM_OF_GIFT_TYPES;
 }
 //============================================================================

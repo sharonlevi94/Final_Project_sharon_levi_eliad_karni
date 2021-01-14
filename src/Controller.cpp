@@ -146,20 +146,23 @@ void Controller::gameOver() {
 }
 //============================================================================
 void Controller::checkColisions() {
+	//colision with coin:
 	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->getCenter()))) {
 		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
 			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->collect();
 			this->m_gameState.collectedCoin();
 		}
 	}
-
+	//colision with gift:
 	if (dynamic_cast <Gift*> (this->m_board.getContent(this->m_player->getCenter()))) {
 		if (!((Gift*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
 			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->collect();
-			this->m_gameState.collectedGift(((Gift*)this->m_board.getContent(this->m_player->getCenter()))->getType());
+			if(((Gift*)this->m_board.getContent(this->m_player->getCenter()))->getType()!=ADD_ENEMY)
+				this->m_gameState.collectedGift(((Gift*)this->m_board.getContent(this->m_player->getCenter()))->getType());
+			else{/*TODO: CREATE NEW ENEMY*/}
 		}
 	}
-
+	//colision with enemy:
 	for (int i = 0; i < this->m_enemies.size(); i++) {
 		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
 			this->m_gameState.died();

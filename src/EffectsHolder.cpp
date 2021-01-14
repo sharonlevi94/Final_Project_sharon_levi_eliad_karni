@@ -60,10 +60,22 @@ void EffectsHolder::setBackgrounds(){
 		(GAME_STATE, new sf::Texture));
 	this->m_texture[GAME_STATE]->loadFromFile(GAME_STATE_PATH);
 
-	//adding level1 background path
+	//adding levels background path
 	this->m_texture.insert(std::pair<int, sf::Texture*>
 		(LEVEL1, new sf::Texture));
 	this->m_texture[LEVEL1]->loadFromFile(LEVEL1_BACKGROUND_PATH);
+
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(LEVEL2, new sf::Texture));
+	this->m_texture[LEVEL2]->loadFromFile(LEVEL2_BACKGROUND_PATH);
+
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(LEVEL3, new sf::Texture));
+	this->m_texture[LEVEL3]->loadFromFile(LEVEL3_BACKGROUND_PATH);
+
+	this->m_texture.insert(std::pair<int, sf::Texture*>
+		(LEVEL4, new sf::Texture));
+	this->m_texture[LEVEL4]->loadFromFile(LEVEL4_BACKGROUND_PATH);
 }
 //============================================================================
 void EffectsHolder::setLogos() {

@@ -67,6 +67,10 @@ constexpr auto ARIEL_FONT_PATH = "ARIALBD.TTF";
 //---------------------------- picture section -------------------------------
 constexpr auto MENU_BACKGROUND_PATH = "MenuBackground.jpg";
 constexpr auto LEVEL1_BACKGROUND_PATH = "level1.jpeg";
+constexpr auto LEVEL2_BACKGROUND_PATH = "level2.png";
+constexpr auto LEVEL3_BACKGROUND_PATH = "level3.jpeg";
+constexpr auto LEVEL4_BACKGROUND_PATH = "level4.jpeg";
+
 constexpr auto PLAYER_PATH = "player.png";
 constexpr auto ENEMY_PATH = "enemy.png";
 constexpr auto COIN_PATH = "coin.png";
