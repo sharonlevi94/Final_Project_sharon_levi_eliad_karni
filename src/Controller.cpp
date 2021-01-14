@@ -97,6 +97,7 @@ void Controller::runGame() {
 					this->resetLevel();
 				sf::Time deltaTime = m_clock.restart();
 				this->play_turns(deltaTime);
+				this->checkColisions();
 	}
 }
 //============================================================================
@@ -105,8 +106,6 @@ void Controller::play_turns(const sf::Time& deltaTime) {
 	this->m_player->playTurn(deltaTime, this->m_board);
 	
 	this->enemiesTurns(deltaTime);
-
-	this->checkColisions();
 }
 //============================================================================
 void Controller::enemiesTurns(const sf::Time& deltaTime) {
@@ -142,6 +141,7 @@ void Controller::resetLevel(){
 //============================================================================
 void Controller::gameOver() {
 	this->m_board.gameOver();
+	//this->run();
 }
 //============================================================================
 void Controller::checkColisions() {

@@ -35,7 +35,7 @@ bool DataReader::isThereNextLevel()const {
 }
 //========================================================================
 vector<vector<char>> DataReader::readNextLevel(){
-	//1. allocate 2D vector of game objs
+	//1. allocate 2D vector of chars
 	vector<vector<char>> newLevel = {};
 	//2. check first if there is more level in the file
 	if (this->isThereNextLevel()) {
@@ -84,6 +84,7 @@ vector<vector<char>> DataReader::readNextLevel(){
 				m_boardReader.get(input);
 			newLevel.push_back(row);
 		}
+		//m_boardReader.get(input);
 	}
 	return newLevel;
 }
