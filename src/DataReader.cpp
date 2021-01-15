@@ -98,8 +98,9 @@ vector<vector<char>> DataReader::readNextLevel(){
 }
 //========================================================================
 sf::Vector2f DataReader::getLevelSize()const { return this->m_levelSize; }
+//========================================================================
 int DataReader::getLevelTime()const { return this->m_levelTime; }
-
+//========================================================================
 void DataReader::resetRead() {
 	this->m_boardReader.seekg(0);
 }

@@ -20,14 +20,14 @@ public:
 	char runMenu();
 
 	void enemiesTurns(const sf::Time&);
-	void resetLevel();
+	void playerDied();
 	void seperateGameObjects(const vector<MovingObject*>&);
 	void play_turns(const sf::Time&);
 	void drawObjects();
 	void gameOver();
 	void checkColisions();
-	//void createEnemy();
-
+	void createEnemy();
+	void levelup();
 
 private:
 	sf::RenderWindow m_window;
