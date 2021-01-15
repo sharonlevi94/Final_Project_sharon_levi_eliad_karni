@@ -16,8 +16,9 @@ unsigned int Coin::m_coinsCounter = 0;
 unsigned int Coin::getCoinsCounter() { return m_coinsCounter; }
 //============================================================================
 void Coin::reset() {
+	if (this->is_collected())
+		++m_coinsCounter;
 	CollectableObject::reset();
-	++m_coinsCounter;
 }
 //============================================================================
 void Coin::collect() {

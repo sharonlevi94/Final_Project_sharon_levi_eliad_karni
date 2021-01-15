@@ -15,21 +15,25 @@ class Controller
 {
 public:
 	Controller();
+
 	void run();
 	void runGame();
 	char runMenu();
 
 	void enemiesTurns(const sf::Time&);
-	void playerDied();
-	void seperateGameObjects(const vector<MovingObject*>&);
 	void play_turns(const sf::Time&);
 	void drawObjects();
-	void gameOver();
 	void checkColisions();
-	//void createEnemy();
-	void resetLvl();
-	void levelup();
+	void checkEnemiesColisions();
+	void checkCoinsColisions();
+	void checkGiftsColisions();
 
+	void seperateGameObjects(const vector<MovingObject*>&);
+
+	void playerDied();
+	void levelup();
+	void resetLvl();
+	void gameOver();
 private:
 	sf::RenderWindow m_window;
 	Board m_board;
