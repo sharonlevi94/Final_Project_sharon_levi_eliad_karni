@@ -62,6 +62,12 @@ void GameState::died() {
 	this->m_lifes--;
 	this->m_clock.restart();
 }
+
+void GameState::gameOver() {
+	this->m_level = 0;
+	this->m_lifes = NUM_OF_LIFE;
+	this->m_score = 0;
+}
 //============================================================================
 bool GameState::isGameOver(){
 	if (this->m_lifes <= 0)
