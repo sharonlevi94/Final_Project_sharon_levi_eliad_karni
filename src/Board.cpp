@@ -27,7 +27,8 @@ Board::Board(const sf::Vector2f& location,
 	m_levelNumber(0),
  	m_backgroundSize(size),
 	m_levelSize(size),
-	m_levelTime(0)
+	m_levelTime(0),
+	m_door()
 {}
 //========================================================================
 Board::~Board() {
@@ -44,6 +45,7 @@ void Board::draw(sf::RenderWindow& window)const{
 }
 //========================================================================
 vector<MovingObject*> Board::loadNewLevel() {
+	srand(time(NULL)); //for random gifts
 	vector<vector<char>> map = m_levelReader.readNextLevel();
 
 	sf::Vector2f boxSize(this->getlevelSize().x / map.size(),
@@ -91,6 +93,7 @@ vector<MovingObject*> Board::loadNewLevel() {
 				break;
 			}
 			case DOOR: {
+				this->m_door=Door(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize);
 				row.push_back(std::make_unique <Door>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
@@ -160,4 +163,8 @@ void Board::resetLvl(){
 void Board::gameOver() {
 	this->m_levelReader.resetRead();
 	this->releaseMap();
+}
+//========================================================================
+const sf::Vector2f& Board::getDoorLocation()const {
+	return this->m_door.getLocation();
 }

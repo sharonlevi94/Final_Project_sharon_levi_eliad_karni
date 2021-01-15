@@ -1,5 +1,10 @@
 #pragma once
 #include "CollectableObject.h"
+#include <vector>
+#include "FoolEnemy.h"
+#include "GameState.h"
+using std::vector;
+class GameState;
 class Gift :public CollectableObject
 {
 public:
@@ -13,6 +18,7 @@ public:
 	virtual void reset()override;
 	virtual void collect()override;
 	virtual void playTurn(const sf::Time&, const Board&)override;
+	void handleColision(vector<std::unique_ptr<FoolEnemy>>&,sf::Vector2f,GameState&);
 private:
 	int m_type;
 };

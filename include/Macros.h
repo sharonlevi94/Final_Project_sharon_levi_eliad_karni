@@ -57,6 +57,7 @@ constexpr auto ADD_ENEMY = 3;
 constexpr auto NUM_OF_LIFE = 3;
 constexpr auto NO_LEVEL_TIME = -1;
 constexpr auto NUM_OF_GIFT_TYPES = 4;
+constexpr auto BONUS = 20;
 
 //============================  map's file path ==============================
 //-------------------------- data files section ------------------------------
