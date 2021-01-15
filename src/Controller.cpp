@@ -82,7 +82,7 @@ char Controller::runMenu() {
 void Controller::runGame() {
 	while (this->m_window.isOpen()){
 		if (Coin::getCoinsCounter() == 0)
-		this->levelup();
+			this->levelup();
 		sf::Time deltaTime = m_clock.restart();
 		this->m_window.clear();
 		this->m_gameState.draw(this->m_window);
