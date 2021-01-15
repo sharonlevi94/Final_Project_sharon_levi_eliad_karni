@@ -3,6 +3,7 @@
 #include <vector>
 #include "DataReader.h"
 #include <SFML/Graphics.hpp>
+#include "Door.h"
 //========================== forward declarations ============================
 class MovingObject;
 class GameObject;
@@ -25,6 +26,7 @@ public:
 	void resetLvl();
 	void gameOver();
 	
+	const sf::Vector2f& getDoorLocation()const;
 	int getMovmentSpeed()const;
 	bool isMovePossible(const sf::Vector2f&)const;
 private:
@@ -36,6 +38,6 @@ private:
 	int m_levelTime;
 	sf::RectangleShape m_background;
 	int m_levelNumber;
-
+	Door m_door;
 	void releaseMap();
 };

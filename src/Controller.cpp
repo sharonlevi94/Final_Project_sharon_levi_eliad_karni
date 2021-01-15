@@ -115,12 +115,17 @@ void Controller::play_turns(const sf::Time& deltaTime) {
 void Controller::enemiesTurns(const sf::Time& deltaTime) {
 	for (int i = 0; i < this->m_enemies.size(); i++) 
 		this->m_enemies[i]->playTurn(deltaTime, this->m_board);
+
+	for (int i = 0; i < this->m_giftEnemies.size(); i++)
+		this->m_giftEnemies[i]->playTurn(deltaTime, this->m_board);
 }
 //============================================================================
 void Controller::drawObjects() {
 	this->m_player->draw(this->m_window);
 	for (int i = 0; i < this->m_enemies.size(); ++i)
 		this->m_enemies[i]->draw(this->m_window);
+	for (int i = 0; i < this->m_giftEnemies.size(); ++i)
+		this->m_giftEnemies[i]->draw(this->m_window);
 }
 //============================================================================
 void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
@@ -155,9 +160,8 @@ void Controller::checkColisions() {
 	if (dynamic_cast <Gift*> (this->m_board.getContent(this->m_player->getCenter()))) {
 		if (!((Gift*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
 			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->collect();
-			if(((Gift*)this->m_board.getContent(this->m_player->getCenter()))->getType()!=ADD_ENEMY)
-				this->m_gameState.collectedGift(((Gift*)this->m_board.getContent(this->m_player->getCenter()))->getType());
-			else { this->createEnemy(); }
+			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->handleColision
+			(this->m_giftEnemies, this->m_board.getDoorLocation(), this->m_gameState);
 		}
 	}
 	//colision with enemy:
@@ -172,10 +176,17 @@ void Controller::checkColisions() {
 				break;
 		}
 	}
-}
-//============================================================================
-void Controller::createEnemy() {
-
+	for (int i = 0; i < this->m_giftEnemies.size(); i++) {
+		if (this->m_player->CollidesWith(*this->m_giftEnemies[i])) {
+			this->m_gameState.died();
+			if (this->m_gameState.isGameOver())
+				this->gameOver();
+			else {
+				this->resetLevel();
+			}
+			break;
+		}
+	}
 }
 //============================================================================
 void Controller::levelup() {

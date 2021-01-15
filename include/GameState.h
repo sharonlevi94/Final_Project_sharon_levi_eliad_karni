@@ -19,7 +19,6 @@ public:
 	void draw(sf::RenderWindow& window);
 	void levelup       (int);
 	void collectedCoin ();
-	void collectedGift (int);
 	void died          ();
 	bool isTimeUp();
 	bool isGameOver();
@@ -28,6 +27,11 @@ public:
 	std::string getRemindSec();
 	sf::Vector2f getSize()const;
 	sf::Vector2f getLocation()const;
+
+	void addTimeBonus(const sf::Time&);
+	void addLife();
+	void addScore(int);
+
 
 private:
 	//======================== members section ===============================

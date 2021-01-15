@@ -97,16 +97,12 @@ std::string GameState::getRemindSec() {
 	return (std::to_string(time));
 }
 //============================================================================
-void GameState::collectedGift(int giftType) {
-	sf::Time timeBonus = sf::seconds(20);
-	switch (giftType){
-	case TIME_BONUS:
-		this->m_levelTime+=timeBonus;
-		break;
-	case ADD_SCORE: this->m_score += 20;
-		break;
-	case ADD_LIFE: ++this->m_lifes;
-		break;
-	default: break;
-	}
+void GameState::addTimeBonus(const sf::Time& timeBonus){
+	this->m_levelTime += timeBonus;
+}
+//============================================================================
+void GameState::addLife() { this->m_lifes++; }
+//============================================================================
+void GameState::addScore(int scoreBonus){
+	this->m_score += scoreBonus;
 }

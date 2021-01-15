@@ -92,6 +92,7 @@ vector<vector<char>> DataReader::readNextLevel(){
 				m_boardReader.get(input);
 			newLevel.push_back(row);
 		}
+		m_boardReader.get(input);
 	}
 	return newLevel;
 }
