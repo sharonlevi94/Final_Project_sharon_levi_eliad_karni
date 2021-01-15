@@ -57,7 +57,12 @@
 981	1179	632403834	Final_Project_sharon_levi_eliad_karni.exe	a09703194e4f7bfd
 1	1042	632403922	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/DataReader.cpp.obj	be13a64cca29fb
 1043	1249	632403922	Final_Project_sharon_levi_eliad_karni.exe	a09703194e4f7bfd
+<<<<<<< HEAD
+2	1225	632404072	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/DataReader.cpp.obj	be13a64cca29fb
+1225	1421	632404072	Final_Project_sharon_levi_eliad_karni.exe	a09703194e4f7bfd
+=======
 >>>>>>> 078c87da920a39e43684efc59f5a47939343cdab
+<<<<<<< HEAD
 8	589	632408107	build.ninja	e9ed622d964d93cb
 2	2465	632408110	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/MovingObject.cpp.obj	4ac4b1c37dc2f45d
 9	2528	632408110	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Player.cpp.obj	5e51003bdba58126
@@ -95,3 +100,6 @@
 946	1281	632408777	Final_Project_sharon_levi_eliad_karni.exe	d1ee70b1c7b25a82
 2	1023	632408904	CMakeFiles/Final_Project_sharon_levi_eliad_karni.dir/src/Controller.cpp.obj	8fdaa3b5d4de3602
 1023	1381	632408904	Final_Project_sharon_levi_eliad_karni.exe	d1ee70b1c7b25a82
+=======
+>>>>>>> cacf70b65c71a4f07b3cbb429f3579cdf4a9980b
+>>>>>>> 9c8b4a6045f601794607d4d2666f9fa4a78c3525
