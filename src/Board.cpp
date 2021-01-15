@@ -9,6 +9,7 @@
 #include <vector>
 #include "Utilities.h"
 #include "Player.h"
+#include "SmartEnemy.h"
 #include "RandEnemy.h"
 #include "FoolEnemy.h"
 #include "Coin.h"
@@ -28,7 +29,8 @@ Board::Board(const sf::Vector2f& location,
  	m_backgroundSize(size),
 	m_levelSize(size),
 	m_levelTime(0),
-	m_door()
+	m_door(),
+	m_playerLoc({0,0})
 {}
 //========================================================================
 Board::~Board() {
@@ -65,10 +67,11 @@ vector<MovingObject*> Board::loadNewLevel() {
 			case PLAYER: {
 				row.push_back(std::make_unique <Player> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
+				this->m_playerLoc = sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location;
 				break;
 			}
 			case ENEMY: {
-				row.push_back(std::make_unique <FoolEnemy> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <SmartEnemy> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
 				break;
 			}
@@ -167,4 +170,12 @@ void Board::gameOver() {
 //========================================================================
 const sf::Vector2f& Board::getDoorLocation()const {
 	return this->m_door.getLocation();
+}
+//========================================================================
+void Board::updatePlayerLocation(const sf::Vector2f& newLoc) {
+	this->m_playerLoc = newLoc;
+}
+//========================================================================
+sf::Vector2f Board::getPlayerLoc()const {
+	return this->m_playerLoc;
 }

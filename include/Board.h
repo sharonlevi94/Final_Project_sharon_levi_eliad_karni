@@ -29,6 +29,8 @@ public:
 	const sf::Vector2f& getDoorLocation()const;
 	int getMovmentSpeed()const;
 	bool isMovePossible(const sf::Vector2f&)const;
+	void updatePlayerLocation(const sf::Vector2f&);
+	sf::Vector2f getPlayerLoc()const;
 private:
 	vector<vector<std::unique_ptr<GameObject>>> m_map;
 	sf::Vector2f m_backgroundSize;
@@ -39,5 +41,6 @@ private:
 	sf::RectangleShape m_background;
 	int m_levelNumber;
 	Door m_door;
+	sf::Vector2f m_playerLoc;
 	void releaseMap();
 };

@@ -89,11 +89,13 @@ void Controller::runGame() {
 		this->m_board.draw(m_window);
 		this->drawObjects();
 		this->m_window.display();
+
 		sf::Event event = {};
 		while (m_window.pollEvent(event)) {
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				m_window.close();
 		}
+
 		if (this->m_gameState.isTimeUp())
 			this->playerDied();
 		this->play_turns(deltaTime);
@@ -108,7 +110,7 @@ void Controller::runGame() {
 void Controller::play_turns(const sf::Time& deltaTime) {
 	//the player is playing:
 	this->m_player->playTurn(deltaTime, this->m_board);
-	
+	this->m_board.updatePlayerLocation(this->m_player->getLocation());
 	this->enemiesTurns(deltaTime);
 }
 //============================================================================
@@ -146,6 +148,7 @@ void Controller::playerDied(){
 }
 //============================================================================
 void Controller::gameOver() {
+	//TODO: Game Over msg
 	this->m_board.gameOver();
 }
 //============================================================================

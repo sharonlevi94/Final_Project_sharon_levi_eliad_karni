@@ -11,7 +11,7 @@
                                      "Enemy.cpp"
                                      "FoolEnemy.cpp"
                                      "RandEnemy.cpp"
-                                     #"SmartEnemy.cpp"
+                                     "SmartEnemy.cpp"
                                      "Gift.cpp"
                                      "Ladder.cpp"
                                      "Rod.cpp"

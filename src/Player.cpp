@@ -20,6 +20,6 @@ void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		this->moveLeft(deltaTime, board);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		this->moveRight(deltaTime, board);;
+		this->moveRight(deltaTime, board);
 }
 //============================================================================
