@@ -81,8 +81,14 @@ char Controller::runMenu() {
 //============================================================================
 void Controller::runGame() {
 	while (this->m_window.isOpen()){
-		if (Coin::getCoinsCounter() == 0)
-			this->levelup();
+		if (Coin::getCoinsCounter() == 0) {
+			if (this->m_board.is_next_lvl_exist())
+				this->levelup();
+			else {
+				this->gameOver();
+				break;
+			}
+		}
 		sf::Time deltaTime = m_clock.restart();
 		this->m_window.clear();
 		this->m_gameState.draw(this->m_window);
@@ -147,6 +153,7 @@ void Controller::playerDied(){
 //============================================================================
 void Controller::gameOver() {
 	this->m_board.gameOver();
+	this->m_gameState.gameOver();
 }
 //============================================================================
 void Controller::checkColisions() {

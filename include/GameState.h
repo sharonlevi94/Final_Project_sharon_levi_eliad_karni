@@ -20,6 +20,7 @@ public:
 	void levelup       (int);
 	void collectedCoin ();
 	void died          ();
+	void gameOver();
 	bool isTimeUp();
 	bool isGameOver();
 	
