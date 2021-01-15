@@ -82,7 +82,7 @@ char Controller::runMenu() {
 void Controller::runGame() {
 	while (this->m_window.isOpen()){
 		if (Coin::getCoinsCounter() == 0)
-			this->levelup();
+		this->levelup();
 		sf::Time deltaTime = m_clock.restart();
 		this->m_window.clear();
 		this->m_gameState.draw(this->m_window);
@@ -129,6 +129,7 @@ void Controller::drawObjects() {
 }
 //============================================================================
 void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
+	this->m_enemies.resize(0);
 	for (int i = 0; i < list.size(); ++i) {
 		if (dynamic_cast <Player*> (list[i]))
 			this->m_player = (Player*)list[i];
@@ -182,7 +183,7 @@ void Controller::checkColisions() {
 			if (this->m_gameState.isGameOver())
 				this->gameOver();
 			else {
-				this->resetLevel();
+				this->resetLvl();
 			}
 			break;
 		}
@@ -190,9 +191,15 @@ void Controller::checkColisions() {
 }
 //============================================================================
 void Controller::levelup() {
-	this->m_giftEnemies.clear();
-	this->m_gameState.levelup(this->m_board.getLevelTime());
+	this->m_giftEnemies.resize(0);
 	this->seperateGameObjects(this->m_board.loadNewLevel());
+	this->m_gameState.levelup(this->m_board.getLevelTime());
+}
+//============================================================================
+void Controller::resetLvl() {
+	for (int i = 0; i < this->m_enemies.size(); ++i)
+		this->m_enemies[i]->reset();
+	this->m_giftEnemies.resize(0);
 }
 //============================ private section ===============================
 //============================== gets section ================================

@@ -13,6 +13,7 @@ FoolEnemy::FoolEnemy(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 void FoolEnemy::playTurn(const sf::Time& deltaTime, const Board& board) {
+	/*
 	if (this->isFalling(board))
 		this->moveDown(deltaTime, board);
 	else {
@@ -33,6 +34,7 @@ void FoolEnemy::playTurn(const sf::Time& deltaTime, const Board& board) {
 				this->moveRight(deltaTime, board);
 		}
 	}
+	*/
 }
 //============================ private section ===============================
 //============================== gets section ================================

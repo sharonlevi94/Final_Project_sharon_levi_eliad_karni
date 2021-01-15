@@ -26,7 +26,8 @@ public:
 	void drawObjects();
 	void gameOver();
 	void checkColisions();
-	void createEnemy();
+	//void createEnemy();
+	void resetLvl();
 	void levelup();
 
 private:
