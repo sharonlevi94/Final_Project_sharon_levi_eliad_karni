@@ -80,25 +80,28 @@ char Controller::runMenu() {
 }
 //============================================================================
 void Controller::runGame() {
-	this->m_gameState.levelup(this->m_board.getLevelTime());
-	this->seperateGameObjects(this->m_board.loadNewLevel());
 	while (this->m_window.isOpen()){
-				this->m_window.clear();
-				this->m_gameState.draw(this->m_window);
-				this->m_board.draw(m_window);
-				this->drawObjects();
-				this->m_window.display();
-
-				sf::Event event = {};
-				while (m_window.pollEvent(event)) {
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-						m_window.close();
-				}
-				if (this->m_gameState.isTimeUp())
-					this->resetLevel();
-				sf::Time deltaTime = m_clock.restart();
-				this->play_turns(deltaTime);
-				this->checkColisions();
+		if (Coin::getCoinsCounter() == 0)
+			this->levelup();
+		sf::Time deltaTime = m_clock.restart();
+		this->m_window.clear();
+		this->m_gameState.draw(this->m_window);
+		this->m_board.draw(m_window);
+		this->drawObjects();
+		this->m_window.display();
+		sf::Event event = {};
+		while (m_window.pollEvent(event)) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				m_window.close();
+		}
+		if (this->m_gameState.isTimeUp())
+			this->playerDied();
+		this->play_turns(deltaTime);
+		this->checkColisions();
+		if (this->m_gameState.isGameOver()) {
+			this->gameOver();
+			break;
+		}
 	}
 }
 //============================================================================
@@ -129,20 +132,15 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 	}
 }
 //============================================================================
-void Controller::resetLevel(){
+void Controller::playerDied(){
 	//reset Static objects:
 	this->m_board.resetLvl(); 
-
-	//reset MovingObjects:
-	this->m_player->reset();
-	for (int i = 0; i < this->m_enemies.size(); ++i)
-		this->m_enemies[i]->reset();
+	this->m_giftEnemies.clear();
 	this->m_gameState.died();
 }
 //============================================================================
 void Controller::gameOver() {
 	this->m_board.gameOver();
-	//this->run();
 }
 //============================================================================
 void Controller::checkColisions() {
@@ -169,7 +167,7 @@ void Controller::checkColisions() {
 				if (this->m_gameState.isGameOver()) 
 					this->gameOver();
 				else{
-					this->resetLevel();
+					this->playerDied();
 				}
 				break;
 		}
@@ -178,6 +176,12 @@ void Controller::checkColisions() {
 //============================================================================
 void Controller::createEnemy() {
 
+}
+//============================================================================
+void Controller::levelup() {
+	this->m_giftEnemies.clear();
+	this->m_gameState.levelup(this->m_board.getLevelTime());
+	this->seperateGameObjects(this->m_board.loadNewLevel());
 }
 //============================ private section ===============================
 //============================== gets section ================================

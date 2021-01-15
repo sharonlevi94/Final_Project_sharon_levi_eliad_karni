@@ -27,7 +27,7 @@ Board::Board(const sf::Vector2f& location,
 	m_levelNumber(0),
  	m_backgroundSize(size),
 	m_levelSize(size),
-	m_levelTime(0)
+	m_levelTime(-1)
 {}
 //========================================================================
 Board::~Board() {
