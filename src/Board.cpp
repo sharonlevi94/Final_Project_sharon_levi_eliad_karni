@@ -71,7 +71,7 @@ vector<MovingObject*> Board::loadNewLevel() {
 				break;
 			}
 			case ENEMY: {
-				row.push_back(std::make_unique <SmartEnemy> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <RandEnemy> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
 				break;
 			}

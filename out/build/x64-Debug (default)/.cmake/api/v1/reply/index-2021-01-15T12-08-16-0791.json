@@ -35,11 +35,7 @@
 			}
 		},
 		{
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-15T10-52-01-0220.json
 			"jsonFile" : "cache-v2-a18d70c223710534c7a1.json",
-=======
-			"jsonFile" : "cache-v2-8334ce08d49d2a0f20b1.json",
->>>>>>> d2701e4387494b53db396f90e8ad3c305a35972a:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-15T10-49-03-0318.json
 			"kind" : "cache",
 			"version" : 
 			{
@@ -48,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-a4acc9e9ebd5a7b3ba0f.json",
+			"jsonFile" : "cmakeFiles-v1-6b3faa18907afefbefee.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -81,11 +77,7 @@
 				"responses" : 
 				[
 					{
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-15T10-52-01-0220.json
 						"jsonFile" : "cache-v2-a18d70c223710534c7a1.json",
-=======
-						"jsonFile" : "cache-v2-8334ce08d49d2a0f20b1.json",
->>>>>>> d2701e4387494b53db396f90e8ad3c305a35972a:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-15T10-49-03-0318.json
 						"kind" : "cache",
 						"version" : 
 						{
@@ -94,7 +86,7 @@
 						}
 					},
 					{
-						"jsonFile" : "cmakeFiles-v1-a4acc9e9ebd5a7b3ba0f.json",
+						"jsonFile" : "cmakeFiles-v1-6b3faa18907afefbefee.json",
 						"kind" : "cmakeFiles",
 						"version" : 
 						{
