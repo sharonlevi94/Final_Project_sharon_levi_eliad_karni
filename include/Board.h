@@ -40,7 +40,7 @@ private:
 	int m_levelTime;
 	sf::RectangleShape m_background;
 	int m_levelNumber;
-	Door m_door;
+	sf::Vector2i m_doorIndex;
 	sf::Vector2i m_playerIndex;
 	void releaseMap();
 };

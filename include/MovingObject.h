@@ -23,7 +23,6 @@ public:
 	virtual void setLocation(const sf::Vector2f&);
 	void setLookState(int);
 	virtual void reset()override;
-	void setTrapState(bool);
 
 private:
 	sf::Vector2f m_initialLoc;

@@ -12,7 +12,8 @@ public:
 
 	void playTurn(const sf::Time&, Board&) override;
 	virtual void draw(sf::RenderWindow&, const sf::Time&);
-	void getDigged();
+	virtual void reset()override;
+	void dig(const sf::Time&);
 	void unDigg(const sf::Time&);
 
 	bool isDigged()const;

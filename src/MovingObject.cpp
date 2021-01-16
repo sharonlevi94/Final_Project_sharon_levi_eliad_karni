@@ -65,6 +65,12 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 					- this->getLocation().y));
 			this->setState(RODDING);
 		}
+		else if (dynamic_cast <Wall*> (object)) {
+			if (((Wall*)object)->isDigged())
+				this->setLocation(sf::Vector2f(object->getLocation().x
+					- this->getLocation().x, 0));
+
+		}
 		else
 			this->setState(STAND);
 		if (board.isMovePossible(this->getLocation() + sf::Vector2f(0, 1)
@@ -77,11 +83,10 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 }
 //============================================================================
 void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
-	while (dynamic_cast <Wall*>
-		(board.getContent(this->getBotLeft())) ||
-		dynamic_cast <Rod*>
-		(board.getContent(this->getAbove()))) {
-		this->setLocation(sf::Vector2f(0, -1));
+	if (dynamic_cast <Wall*>
+		(board.getContent(this->getLocation() + sf::Vector2f(0,this->getSize().y)))) {
+		GameObject* object = (GameObject*)board.getContent(this->getLocation() + sf::Vector2f(0, this->getSize().y));
+		this->setLocation({ 0, object->getLocation().y - (this->getLocation().y + this->getSize().y) });
 	}
 	if (dynamic_cast <Rod*>
 		(board.getContent(this->getAbove()))) {
@@ -101,11 +106,10 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 }
 //============================================================================
 void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
-	while (dynamic_cast <Wall*>
-		(board.getContent(this->getBotRight())) ||
-		dynamic_cast <Rod*>
-		(board.getContent(this->getAbove()))) {
-		this->setLocation(sf::Vector2f(0, -1));
+	if (dynamic_cast <Wall*>
+		(board.getContent(this->getLocation() + this->getSize()))) {
+		GameObject* object = (GameObject*)board.getContent(this->getLocation() + this->getSize());
+		this->setLocation({0, object->getLocation().y - (this->getLocation().y + this->getSize().y) });
 	}
 	if (dynamic_cast <Rod*>
 		(board.getContent(this->getAbove()))) {
@@ -139,9 +143,14 @@ bool MovingObject::isFalling(const Board& board){
 		if (dynamic_cast <const Rod*> 
 			(board.getContent(this->getAbove())))
 			return false;
-		if (!dynamic_cast <const Wall*> ((board.getContent(this->getBelow()))) &&
-			board.isMovePossible(this->getBelow()))
+		if (dynamic_cast <const Wall*> (board.getContent(this->getBelow()))) {
+			if (((const Wall*)board.getContent(this->getBelow()))->isDigged())
+				return true;
+			return false;
+		}
+		if (board.isMovePossible(this->getBelow())) {
 			return true;
+		}
 	}
 	return false;
 }

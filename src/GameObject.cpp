@@ -17,6 +17,7 @@ GameObject::GameObject(const sf::Vector2f location, const sf::Vector2f& size,
 		(float)size.y / this->m_objectSprite.getTexture()->getSize().y);
 
 }
+GameObject::~GameObject() {}
 //============================== gets section ================================
 //============================================================================
 const sf::Vector2f& GameObject::getLocation()const { 
@@ -76,12 +77,12 @@ sf::Vector2f GameObject::getRight()const {
 }
 //============================================================================
 sf::Vector2f GameObject::getBotLeft()const {
-	return (sf::Vector2f(this->getLocation().x,
-		this->getLocation().y + this->getSize().y));
+	return sf::Vector2f(this->getCenter().x - this->getSize().x,
+		this->getCenter().y + this->getSize().y);
 }
 //============================================================================
 sf::Vector2f GameObject::getBotRight()const {
-	return (this->getLocation() + this->getSize());
+	return this->getCenter() + this->getSize();
 }
 //=========================== protected section ==============================
 //============================== sets section ================================

@@ -12,7 +12,10 @@ public:
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
 	virtual void playTurn(const sf::Time&, Board&) override;
-	void dig(Board&, const sf::Vector2f&);
+
 private:
 	std::vector<Wall*> m_diggedWalls;
+
+	void updateDiggedWalls(const sf::Time& deltaTime);
+	void dig(Board&, const sf::Vector2f&, const sf::Time&);
 };

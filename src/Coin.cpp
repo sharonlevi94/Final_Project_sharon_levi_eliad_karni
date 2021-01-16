@@ -9,7 +9,10 @@ Coin::Coin(const sf::Vector2f location,
 	++m_coinsCounter;
 }
 //============================================================================
-Coin::~Coin() { --m_coinsCounter; }
+Coin::~Coin() { 
+	if(!this->is_collected())
+		--m_coinsCounter; 
+}
 //========================== statics declaretions ============================
 unsigned int Coin::m_coinsCounter = 0;
 //============================================================================

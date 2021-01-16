@@ -8,7 +8,7 @@ class Coin: public CollectableObject
 public:
 	Coin(const sf::Vector2f = sf::Vector2f(0,0),
 		const sf::Vector2f& = sf::Vector2f(0,0));
-	~Coin();
+	virtual ~Coin()override;
 	
 	static unsigned int getCoinsCounter();
 	virtual void reset()override;

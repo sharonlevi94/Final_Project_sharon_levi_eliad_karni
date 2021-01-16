@@ -29,7 +29,7 @@ Board::Board(const sf::Vector2f& location,
  	m_backgroundSize(size),
 	m_levelSize(size),
 	m_levelTime(0),
-	m_door(),
+	m_doorIndex({0,0}),
 	m_playerIndex({0,0})
 {}
 //========================================================================
@@ -51,7 +51,7 @@ vector<MovingObject*> Board::loadNewLevel() {
 	srand((unsigned int)time(NULL)); //for random gifts
 	vector<vector<char>> map = m_levelReader.readNextLevel();
 
-	sf::Vector2f boxSize(this->getlevelSize().x / map.size(),
+	sf::Vector2f boxSize(this->getlevelSize().x / map[0].size(),
 		this->getlevelSize().y / map.size());
 
 	vector<MovingObject*> movingsVec = {};
@@ -68,9 +68,9 @@ vector<MovingObject*> Board::loadNewLevel() {
 			case PLAYER: {
 				row.push_back(std::make_unique <Player> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
-this->m_playerIndex.x = x;
-this->m_playerIndex.y = y;
-break;
+				this->m_playerIndex.x = x;
+				this->m_playerIndex.y = y;
+				break;
 			}
 			case ENEMY: {
 				row.push_back(std::make_unique <SmartEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
@@ -98,8 +98,10 @@ break;
 				break;
 			}
 			case DOOR: {
-				this->m_door = Door(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize);
+				this->m_doorIndex.x = x;
+				this->m_doorIndex.y = y;
 				row.push_back(std::make_unique <Door>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+
 				break;
 			}
 			default: {
@@ -190,10 +192,12 @@ void Board::resetLvl(){
 void Board::gameOver() {
 	this->m_levelReader.resetRead();
 	this->releaseMap();
+	this->m_levelNumber = 0;
 }
 //========================================================================
 const sf::Vector2f& Board::getDoorLocation()const {
-	return this->m_door.getLocation();
+	return this->m_map[this->m_doorIndex.y][this->m_doorIndex.x]
+		->getLocation();
 }
 //========================================================================
 const sf::Vector2f& Board::getPlayerLoc()const {
