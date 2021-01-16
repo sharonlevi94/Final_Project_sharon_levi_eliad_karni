@@ -8,6 +8,7 @@ public:
 
 	void playTurn(const sf::Time&,const Board&) override;
 	void dig();
+	void unDig();
 private:
 	int m_digState;
 };

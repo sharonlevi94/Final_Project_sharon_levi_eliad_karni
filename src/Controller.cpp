@@ -76,7 +76,7 @@ char Controller::runMenu() {
 
 		}
 	}
-	return 'q';
+	return QUIT_GAME;
 }
 //============================================================================
 void Controller::runGame() {
@@ -96,17 +96,12 @@ void Controller::runGame() {
 		this->drawObjects();
 		this->m_window.display();
 
-		sf::Event event = {};
-		while (m_window.pollEvent(event)) {
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-				m_window.close();
-		}
-
 		if (this->m_gameState.isTimeUp())
 			this->playerDied();
 		this->play_turns(deltaTime);
 		this->checkColisions();
-		if (this->m_gameState.isGameOver()) {
+		if (this->m_gameState.isGameOver() || 
+			sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
 			this->gameOver();
 			break;
 		}
@@ -121,9 +116,11 @@ void Controller::play_turns(const sf::Time& deltaTime) {
 }
 //============================================================================
 void Controller::enemiesTurns(const sf::Time& deltaTime) {
-	for (int i = 0; i < this->m_enemies.size(); i++) 
+	for (int i = 0; i < this->m_enemies.size(); i++) {
+		if (i == 2)
+			int a = 9;
 		this->m_enemies[i]->playTurn(deltaTime, this->m_board);
-
+	}
 	for (int i = 0; i < this->m_giftEnemies.size(); i++)
 		this->m_giftEnemies[i]->playTurn(deltaTime, this->m_board);
 }
@@ -149,7 +146,7 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 void Controller::playerDied(){
 	//reset Static objects:
 	this->m_board.resetLvl(); 
-	this->m_giftEnemies.clear();
+	this->m_giftEnemies.resize(0);
 	this->m_gameState.died();
 }
 //============================================================================
@@ -160,14 +157,24 @@ void Controller::gameOver() {
 }
 //============================================================================
 void Controller::checkColisions() {
-	//colision with coin:
-	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->getCenter()))) {
-		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
-			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->collect();
-			this->m_gameState.collectedCoin();
+	this->checkCoinsColisions();
+	this->checkGiftsColisions();
+	this->checkEnemiesColisions();
+}
+//============================================================================
+void Controller::checkEnemiesColisions() {
+	for (int i = 0; i < this->m_enemies.size(); i++)
+		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
+			this->playerDied();
+			return;
 		}
-	}
-	//colision with gift:
+	for (int i = 0; i < this->m_giftEnemies.size(); i++)
+		if (this->m_player->CollidesWith(*this->m_giftEnemies[i])) {
+			this->playerDied();
+		}
+}
+//============================================================================
+void Controller::checkCoinsColisions() {
 	if (dynamic_cast <Gift*> (this->m_board.getContent(this->m_player->getCenter()))) {
 		if (!((Gift*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
 			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->collect();
@@ -175,27 +182,16 @@ void Controller::checkColisions() {
 			(this->m_giftEnemies, this->m_board.getDoorLocation(), this->m_gameState);
 		}
 	}
-	//colision with enemy:
-	for (int i = 0; i < this->m_enemies.size(); i++) {
-		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
-			this->m_gameState.died();
-				if (this->m_gameState.isGameOver()) 
-					this->gameOver();
-				else{
-					this->playerDied();
-				}
-				break;
-		}
-	}
-	for (int i = 0; i < this->m_giftEnemies.size(); i++) {
-		if (this->m_player->CollidesWith(*this->m_giftEnemies[i])) {
-			this->m_gameState.died();
-			if (this->m_gameState.isGameOver())
-				this->gameOver();
-			else {
-				this->resetLvl();
-			}
-			break;
+}
+//============================================================================
+void Controller::checkGiftsColisions() {
+	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->
+		getCenter()))) {
+		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
+			is_collected()) {
+			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
+				collect();
+			this->m_gameState.collectedCoin();
 		}
 	}
 }
