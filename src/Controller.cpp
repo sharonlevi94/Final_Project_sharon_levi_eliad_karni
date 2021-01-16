@@ -89,10 +89,10 @@ void Controller::runGame() {
 				break;
 			}
 		}
-		sf::Time deltaTime = m_clock.restart();
+		sf::Time deltaTime = m_gameClock.restart();
 		this->m_window.clear();
 		this->m_gameState.draw(this->m_window);
-		this->m_board.draw(m_window);
+		this->m_board.draw(m_window, this->m_gameClock.getElapsedTime());
 		this->drawObjects();
 		this->m_window.display();
 
@@ -111,7 +111,6 @@ void Controller::runGame() {
 void Controller::play_turns(const sf::Time& deltaTime) {
 	//the player is playing:
 	this->m_player->playTurn(deltaTime, this->m_board);
-	this->m_board.updatePlayerLocation(this->m_player->getLocation());
 	this->enemiesTurns(deltaTime);
 }
 //============================================================================
@@ -126,11 +125,14 @@ void Controller::enemiesTurns(const sf::Time& deltaTime) {
 }
 //============================================================================
 void Controller::drawObjects() {
-	this->m_player->draw(this->m_window);
+	this->m_player->draw(this->m_window, this->m_gameClock
+		.getElapsedTime());
 	for (int i = 0; i < this->m_enemies.size(); ++i)
-		this->m_enemies[i]->draw(this->m_window);
+		this->m_enemies[i]->draw(this->m_window, this->m_gameClock
+			.getElapsedTime());
 	for (int i = 0; i < this->m_giftEnemies.size(); ++i)
-		this->m_giftEnemies[i]->draw(this->m_window);
+		this->m_giftEnemies[i]->draw(this->m_window, this->m_gameClock
+			.getElapsedTime());
 }
 //============================================================================
 void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
@@ -154,6 +156,7 @@ void Controller::gameOver() {
 	//TODO: Game Over msg
 	this->m_board.gameOver();
 	this->m_gameState.gameOver();
+	this->m_giftEnemies.resize(0);
 }
 //============================================================================
 void Controller::checkColisions() {

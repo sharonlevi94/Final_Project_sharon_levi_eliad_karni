@@ -14,9 +14,10 @@ CollectableObject::CollectableObject(const sf::Vector2f& location,
 //============================================================================
 bool CollectableObject::is_collected()const { return (this->m_is_collected); }
 //============================================================================
-void CollectableObject::draw(sf::RenderWindow& window) {
+void CollectableObject::draw(sf::RenderWindow& window, 
+	const sf::Time& animationTime) {
 	if (!this->m_is_collected)
-		this->GameObject::draw(window);
+		this->GameObject::draw(window, animationTime);
 }
 //============================================================================
 void CollectableObject::reset() {

@@ -9,7 +9,10 @@ Coin::Coin(const sf::Vector2f location,
 	++m_coinsCounter;
 }
 //============================================================================
-Coin::~Coin() { --m_coinsCounter; }
+Coin::~Coin() { 
+	if(!this->is_collected())
+		--m_coinsCounter; 
+}
 //========================== statics declaretions ============================
 unsigned int Coin::m_coinsCounter = 0;
 //============================================================================
@@ -26,7 +29,7 @@ void Coin::collect() {
 	--m_coinsCounter;
 }
 //============================================================================
-void Coin::playTurn(const sf::Time& deltatime, const Board& board) {}
+void Coin::playTurn(const sf::Time& deltatime, Board& board) {}
 //============================== gets section ================================
 //============================ methods section ===============================
 //============================================================================

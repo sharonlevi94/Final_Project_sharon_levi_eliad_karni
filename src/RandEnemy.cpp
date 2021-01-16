@@ -8,7 +8,7 @@ RandEnemy::RandEnemy(const sf::Vector2f location,
 	:Enemy(location, size, ENEMY_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-void RandEnemy::playTurn(const sf::Time& deltaTime,const Board& board){
+void RandEnemy::playTurn(const sf::Time& deltaTime, Board& board){
 	srand((unsigned int)time(NULL));
 	int rand_move =rand()%4;
 	switch (rand_move)

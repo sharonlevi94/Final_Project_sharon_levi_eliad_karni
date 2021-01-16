@@ -17,7 +17,7 @@ public:
 
 	virtual void reset()override;
 	virtual void collect()override;
-	virtual void playTurn(const sf::Time&, const Board&)override;
+	virtual void playTurn(const sf::Time&, Board&)override;
 	void handleColision(vector<std::unique_ptr<FoolEnemy>>&,sf::Vector2f,GameState&);
 private:
 	int m_type;

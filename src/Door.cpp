@@ -9,7 +9,7 @@ Door::Door(const sf::Vector2f location,
 	: StaticObject(location, size, DOOR_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-void Door::playTurn(const sf::Time& deltaTime, const Board& board) {}
+void Door::playTurn(const sf::Time& deltaTime, Board& board) {}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

@@ -3,16 +3,15 @@
 #include "SFML/Graphics.hpp"
 #include "Utilities.h"
 #include "Board.h"
+#include "Wall.h"
 #include "Macros.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Player::Player(const sf::Vector2f location,
 		const sf::Vector2f& size)
-	: MovingObject(location,size,PLAYER_T){
-
-}
+	: MovingObject(location, size, PLAYER_T), m_diggedWalls({}) {}
 //============================ methods section ===============================
-void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
+void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 	if (this->isFalling(board) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		this->moveDown(deltaTime, board);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -21,5 +20,27 @@ void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
 		this->moveLeft(deltaTime, board);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		this->moveRight(deltaTime, board);
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		dig(board, this->getBotRight(), deltaTime);
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		dig(board, this->getBotLeft(), deltaTime);
+	updateDiggedWalls(deltaTime);
+}
+
+
+//============================================================================
+void Player::dig(Board& board, const sf::Vector2f& location, 
+	const sf::Time& deltatime) {
+	void* debug = board.getContent(location);
+	if (board.getContent(location) == board.getContent(this->getBelow()))
+		return;
+	if (dynamic_cast <Wall*> (board.getContent(location))) {
+		this->m_diggedWalls.push_back((Wall*)board.getContent(location));
+		((Wall*)(board.getContent(location)))->dig(deltatime);
+	}
 }
 //============================================================================
+void Player::updateDiggedWalls(const sf::Time& deltaTime) {
+	for (int i = 0; i < this->m_diggedWalls.size(); ++i)
+		this->m_diggedWalls[i]->unDigg(deltaTime);
+}

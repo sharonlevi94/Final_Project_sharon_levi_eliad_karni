@@ -42,5 +42,5 @@ private:
 	vector <MovingObject*> m_enemies;
 	std::vector<std::unique_ptr<FoolEnemy>> m_giftEnemies;
 	Player* m_player;
-	sf::Clock m_clock;
+	sf::Clock m_gameClock;
 };

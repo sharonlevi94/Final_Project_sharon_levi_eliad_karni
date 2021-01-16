@@ -7,14 +7,17 @@
 #include <iostream>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-GameObject::GameObject(const sf::Vector2f location, const sf::Vector2f& size, char objectType) :
-    m_state(STAND), m_objectSprite() {
+GameObject::GameObject(const sf::Vector2f location, const sf::Vector2f& size,
+	char objectType) : m_state(STAND), m_objectSprite() {
 	this->m_objectSprite.setPosition(location);
-	this->m_objectSprite.setTexture(EffectsHolder::instance().getTexture(objectType));
-	this->m_objectSprite.setScale((float)size.x /this->m_objectSprite.getTexture()->getSize().x,
+	this->m_objectSprite.setTexture(EffectsHolder::instance().
+		getTexture(objectType));
+	this->m_objectSprite.setScale((float)size.x /this->m_objectSprite
+		.getTexture()->getSize().x,
 		(float)size.y / this->m_objectSprite.getTexture()->getSize().y);
 
 }
+GameObject::~GameObject() {}
 //============================== gets section ================================
 //============================================================================
 const sf::Vector2f& GameObject::getLocation()const { 
@@ -38,7 +41,8 @@ void GameObject::reset() {
 	this->m_state = STAND;
 }
 //============================ methods section ===============================
-void GameObject::draw(sf::RenderWindow& window){
+void GameObject::draw(sf::RenderWindow& window, 
+	const sf::Time& animationClock){
 	window.draw(this->m_objectSprite);
 }
 //============================================================================
@@ -73,12 +77,12 @@ sf::Vector2f GameObject::getRight()const {
 }
 //============================================================================
 sf::Vector2f GameObject::getBotLeft()const {
-	return (sf::Vector2f(this->getLocation().x,
-		this->getLocation().y + this->getSize().y));
+	return sf::Vector2f(this->getCenter().x - this->getSize().x,
+		this->getCenter().y + this->getSize().y);
 }
 //============================================================================
 sf::Vector2f GameObject::getBotRight()const {
-	return (this->getLocation() + this->getSize());
+	return this->getCenter() + this->getSize();
 }
 //=========================== protected section ==============================
 //============================== sets section ================================

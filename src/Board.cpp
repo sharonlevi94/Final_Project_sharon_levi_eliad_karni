@@ -29,28 +29,29 @@ Board::Board(const sf::Vector2f& location,
  	m_backgroundSize(size),
 	m_levelSize(size),
 	m_levelTime(0),
-	m_door(),
-	m_playerLoc({0,0})
+	m_doorIndex({0,0}),
+	m_playerIndex({0,0})
 {}
 //========================================================================
 Board::~Board() {
 	this->releaseMap();
 }
 //========================================================================
-void Board::draw(sf::RenderWindow& window)const{
+void Board::draw(sf::RenderWindow& window, 
+	const sf::Time& animationTime){
 	window.draw(m_background);
 	for (int i = 0; i < m_levelSize.x; i++)
 		for (int j = 0; j < m_levelSize.y; j++)
 			if (m_map[i][j].get() != nullptr) {
-				m_map[i][j]->draw(window);
+				m_map[i][j]->draw(window, animationTime);
 			}
 }
 //========================================================================
 vector<MovingObject*> Board::loadNewLevel() {
-	srand(time(NULL)); //for random gifts
+	srand((unsigned int)time(NULL)); //for random gifts
 	vector<vector<char>> map = m_levelReader.readNextLevel();
 
-	sf::Vector2f boxSize(this->getlevelSize().x / map.size(),
+	sf::Vector2f boxSize(this->getlevelSize().x / map[0].size(),
 		this->getlevelSize().y / map.size());
 
 	vector<MovingObject*> movingsVec = {};
@@ -67,20 +68,21 @@ vector<MovingObject*> Board::loadNewLevel() {
 			case PLAYER: {
 				row.push_back(std::make_unique <Player> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
-				this->m_playerLoc = sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location;
+				this->m_playerIndex.x = x;
+				this->m_playerIndex.y = y;
 				break;
 			}
 			case ENEMY: {
-				row.push_back(std::make_unique <RandEnemy> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <SmartEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
 				break;
 			}
 			case COIN: {
-				row.push_back(std::make_unique <Coin> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Coin>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case WALL: {
-				row.push_back(std::make_unique <Wall> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Wall>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case LADDER: {
@@ -96,8 +98,10 @@ vector<MovingObject*> Board::loadNewLevel() {
 				break;
 			}
 			case DOOR: {
-				this->m_door=Door(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize);
+				this->m_doorIndex.x = x;
+				this->m_doorIndex.y = y;
 				row.push_back(std::make_unique <Door>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+
 				break;
 			}
 			default: {
@@ -117,7 +121,7 @@ vector<MovingObject*> Board::loadNewLevel() {
 	m_background.setSize(m_backgroundSize);
 	m_background.setPosition(m_location);
 	m_background.setTexture(&EffectsHolder::instance().getBackground(m_levelNumber));
-		
+
 	return movingsVec;
 }
 //========================================================================
@@ -126,10 +130,10 @@ bool Board::is_next_lvl_exist()const {
 }
 //========================================================================
 int Board::getLevelTime()const {
-		return this->m_levelReader.getLevelTime();
+	return this->m_levelReader.getLevelTime();
 }
 //========================================================================
-sf::Vector2f Board::getlevelSize()const{
+sf::Vector2f Board::getlevelSize()const {
 	return this->m_backgroundSize;
 }
 //========================================================================
@@ -139,7 +143,10 @@ void Board::releaseMap() {
 	this->m_map.resize(0);
 }
 //========================================================================
-GameObject* Board::getContent(const sf::Vector2f location) const{
+/* this method is not const because it gives its user ability to change
+ * game objects statuses.
+ */
+GameObject* Board::getContent(const sf::Vector2f& location) {
 	if (!this->m_background.getGlobalBounds().contains(location))
 		return nullptr;
 	int x = (int)((location.x - this->m_location.x) /
@@ -149,11 +156,29 @@ GameObject* Board::getContent(const sf::Vector2f location) const{
 	return this->m_map[y][x].get();
 }
 //========================================================================
-int Board::getMovmentSpeed() const{ return 250; }
+const GameObject* Board::getContent(const sf::Vector2f& location) const {
+	if (!this->m_background.getGlobalBounds().contains(location))
+		return nullptr;
+	int x = (int)((location.x - this->m_location.x) /
+		(this->m_backgroundSize.x / this->m_map[0].size())),
+		y = (int)((location.y - this->m_location.y) /
+			(this->m_backgroundSize.y / this->m_map.size()));
+	return this->m_map[y][x].get();
+}
 //========================================================================
-bool Board::isMovePossible(const sf::Vector2f& location) const{ 
-	return (this->m_background.getGlobalBounds().contains(location) &&
-		!dynamic_cast <Wall*> (this->getContent(location)));
+int Board::getMovmentSpeed() const { return 250; }
+//========================================================================
+bool Board::isMovePossible(const sf::Vector2f& location) const {
+	if (this->m_background.getGlobalBounds().contains(location)) {
+		if (dynamic_cast <const Wall*> (this->getContent(location))) {
+			if (((Wall*)this->getContent(location))->isDigged())
+				return true;
+			return false;
+		}
+		return true;
+	}
+
+	return false;
 }
 //========================================================================
 void Board::resetLvl(){
@@ -167,16 +192,15 @@ void Board::resetLvl(){
 void Board::gameOver() {
 	this->m_levelReader.resetRead();
 	this->releaseMap();
+	this->m_levelNumber = 0;
 }
 //========================================================================
 const sf::Vector2f& Board::getDoorLocation()const {
-	return this->m_door.getLocation();
+	return this->m_map[this->m_doorIndex.y][this->m_doorIndex.x]
+		->getLocation();
 }
 //========================================================================
-void Board::updatePlayerLocation(const sf::Vector2f& newLoc) {
-	this->m_playerLoc = newLoc;
-}
-//========================================================================
-sf::Vector2f Board::getPlayerLoc()const {
-	return this->m_playerLoc;
+const sf::Vector2f& Board::getPlayerLoc()const {
+	return this->m_map[this->m_playerIndex.y][this->m_playerIndex.x]
+		->getLocation();
 }
