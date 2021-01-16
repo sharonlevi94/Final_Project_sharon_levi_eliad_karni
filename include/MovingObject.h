@@ -14,15 +14,16 @@ public:
 	sf::Vector2f getInitialLoc()const;
 	int getLookState()const;
 
-	void moveUp(const sf::Time&, const Board&);
-	void moveDown(const sf::Time&, const Board&);
-	void moveLeft(const sf::Time&, const Board&);
-	void moveRight(const sf::Time&, const Board&);
+	void moveUp(const sf::Time&, Board&);
+	void moveDown(const sf::Time&, Board&);
+	void moveLeft(const sf::Time&, Board&);
+	void moveRight(const sf::Time&, Board&);
 
 	bool isFalling(const Board&);
 	virtual void setLocation(const sf::Vector2f&);
 	void setLookState(int);
 	virtual void reset()override;
+	void setTrapState(bool);
 
 private:
 	sf::Vector2f m_initialLoc;

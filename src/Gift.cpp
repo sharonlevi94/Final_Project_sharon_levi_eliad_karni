@@ -22,7 +22,7 @@ void Gift::collect() {
 	CollectableObject::collect();
 }
 //============================================================================
-void Gift::playTurn(const sf::Time& deltatime, const Board& board) {}
+void Gift::playTurn(const sf::Time& deltatime, Board& board) {}
 //============================== gets section ================================
 int Gift::getType()const {
 	return this->m_type;

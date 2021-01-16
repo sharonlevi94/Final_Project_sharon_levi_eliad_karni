@@ -16,21 +16,21 @@ public:
 		const sf::Vector2f& size = sf::Vector2f(0,0));
 	~Board();
 
-	void draw(sf::RenderWindow& window)const;
+	void draw(sf::RenderWindow& window, const sf::Time&);
 	vector<MovingObject*>loadNewLevel();
 	bool is_next_lvl_exist()const;
 	int getLevelTime()const;
 	sf::Vector2f getlevelSize()const;
 	const sf::Vector2f& getLocation() const;
-	GameObject* getContent(const sf::Vector2f location)const;
+	GameObject* getContent(const sf::Vector2f& location);
+	const GameObject* getContent(const sf::Vector2f&) const;
 	void resetLvl();
 	void gameOver();
 	
 	const sf::Vector2f& getDoorLocation()const;
 	int getMovmentSpeed()const;
 	bool isMovePossible(const sf::Vector2f&)const;
-	void updatePlayerLocation(const sf::Vector2f&);
-	sf::Vector2f getPlayerLoc()const;
+	const sf::Vector2f& getPlayerLoc()const;
 private:
 	vector<vector<std::unique_ptr<GameObject>>> m_map;
 	sf::Vector2f m_backgroundSize;
@@ -41,6 +41,6 @@ private:
 	sf::RectangleShape m_background;
 	int m_levelNumber;
 	Door m_door;
-	sf::Vector2f m_playerLoc;
+	sf::Vector2i m_playerIndex;
 	void releaseMap();
 };

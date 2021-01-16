@@ -7,11 +7,13 @@
 #include <iostream>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-GameObject::GameObject(const sf::Vector2f location, const sf::Vector2f& size, char objectType) :
-    m_state(STAND), m_objectSprite() {
+GameObject::GameObject(const sf::Vector2f location, const sf::Vector2f& size,
+	char objectType) : m_state(STAND), m_objectSprite() {
 	this->m_objectSprite.setPosition(location);
-	this->m_objectSprite.setTexture(EffectsHolder::instance().getTexture(objectType));
-	this->m_objectSprite.setScale((float)size.x /this->m_objectSprite.getTexture()->getSize().x,
+	this->m_objectSprite.setTexture(EffectsHolder::instance().
+		getTexture(objectType));
+	this->m_objectSprite.setScale((float)size.x /this->m_objectSprite
+		.getTexture()->getSize().x,
 		(float)size.y / this->m_objectSprite.getTexture()->getSize().y);
 
 }
@@ -38,7 +40,8 @@ void GameObject::reset() {
 	this->m_state = STAND;
 }
 //============================ methods section ===============================
-void GameObject::draw(sf::RenderWindow& window){
+void GameObject::draw(sf::RenderWindow& window, 
+	const sf::Time& animationClock){
 	window.draw(this->m_objectSprite);
 }
 //============================================================================

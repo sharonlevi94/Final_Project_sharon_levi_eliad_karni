@@ -12,7 +12,7 @@ FoolEnemy::FoolEnemy(const sf::Vector2f location,
 	:Enemy(location, size, ENEMY_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-void FoolEnemy::playTurn(const sf::Time& deltaTime, const Board& board) {
+void FoolEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 	
 	if (this->isFalling(board))
 		this->moveDown(deltaTime, board);

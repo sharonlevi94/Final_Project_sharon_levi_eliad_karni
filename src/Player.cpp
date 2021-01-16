@@ -8,11 +8,9 @@
 //==================== Constructors & distructors section ====================
 Player::Player(const sf::Vector2f location,
 		const sf::Vector2f& size)
-	: MovingObject(location,size,PLAYER_T){
-
-}
+	: MovingObject(location, size, PLAYER_T), m_diggedWalls({}) {}
 //============================ methods section ===============================
-void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
+void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 	if (this->isFalling(board) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		this->moveDown(deltaTime, board);
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -23,3 +21,5 @@ void Player::playTurn(const sf::Time& deltaTime,const Board& board) {
 		this->moveRight(deltaTime, board);
 }
 //============================================================================
+void Player::dig(Board& boardconst, const sf::Vector2f& location) {
+}

@@ -26,7 +26,7 @@ void Coin::collect() {
 	--m_coinsCounter;
 }
 //============================================================================
-void Coin::playTurn(const sf::Time& deltatime, const Board& board) {}
+void Coin::playTurn(const sf::Time& deltatime, Board& board) {}
 //============================== gets section ================================
 //============================ methods section ===============================
 //============================================================================

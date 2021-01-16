@@ -11,7 +11,7 @@ SmartEnemy::SmartEnemy(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 //============================================================================
-void SmartEnemy::playTurn(const sf::Time& deltaTime,const  Board& board) {
+void SmartEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 	//Location moveAns = this->m_location;
 	if ((this->getLocation().y < board.getPlayerLoc().y &&
 		dynamic_cast <Ladder*> (board.getContent(this->getBelow())) &&
