@@ -19,10 +19,8 @@ void Wall::dig(const sf::Time& deltaTime) {
 }
 //============================================================================
 void Wall::unDigg(const sf::Time& deltaTime) {
-	std::cout << deltaTime.asSeconds() << ' ' << m_diggedTime.asSeconds();
 	this->m_diggedTime += deltaTime;
-	std::cout << " = " << m_diggedTime.asSeconds() << std::endl ;
-	if (this->m_diggedTime.asSeconds() > 5.f)
+	if (this->m_diggedTime.asSeconds() > 3.f)
 		this->m_isDigged = false;
 }
 //============================================================================
