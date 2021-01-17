@@ -98,14 +98,11 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 	else
 		this->setState(STAND);
 
-	for (int i = 0; i < (float)board.
-		getMovmentSpeed(); ++i) {
-		if (board.isMovePossible(this->getLocation() + (sf::Vector2f(-1, 0) 
-			* deltaTime.asSeconds())))
-			this->setLocation(sf::Vector2f(-1, 0)* deltaTime.asSeconds());
-		else
-			break;
-	}
+	if (board.isMovePossible((this->getLeft() + sf::Vector2f(1,0)) + 
+		(sf::Vector2f(-1, 0) * deltaTime.asSeconds() * 
+			(float)board.getMovmentSpeed())))
+		this->setLocation(sf::Vector2f(-1, 0)* deltaTime.asSeconds() *
+		(float)board.getMovmentSpeed());
 }
 //============================================================================
 void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
@@ -126,13 +123,11 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 		getMovmentSpeed() * deltaTime.asSeconds();
 
 
-	for (int i = 0; i < (float)board.getMovmentSpeed(); ++i) {
-		if (board.isMovePossible(this->getLocation() + (sf::Vector2f(1, 0) 
-			* deltaTime.asSeconds())))
-			this->setLocation(sf::Vector2f(1, 0) * deltaTime.asSeconds());
-		else
-			break;
-	}
+	if (board.isMovePossible((this->getRight() + sf::Vector2f(-1, 0)) +
+		(sf::Vector2f(1, 0) * deltaTime.asSeconds() *
+			(float)board.getMovmentSpeed())))
+		this->setLocation(sf::Vector2f(1, 0) * deltaTime.asSeconds() *
+			(float)board.getMovmentSpeed());
 }
 //============================================================================
 bool MovingObject::isFalling(const Board& board){
