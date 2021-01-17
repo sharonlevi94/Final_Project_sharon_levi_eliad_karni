@@ -16,7 +16,7 @@ MovingObject::MovingObject(const sf::Vector2f location,
 //============================== gets section ================================
 //============================================================================
 sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
-
+//============================================================================
 int MovingObject::getLookState()const { return this->m_lookingState; }
 //============================ methods section ===============================
 //============================================================================
