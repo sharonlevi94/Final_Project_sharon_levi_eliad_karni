@@ -2,6 +2,7 @@
 #include "Wall.h"
 #include "Utilities.h"
 #include "Board.h"
+#include <iostream>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Wall::Wall(const sf::Vector2f location, const sf::Vector2f& size )
@@ -18,9 +19,10 @@ void Wall::dig(const sf::Time& deltaTime) {
 }
 //============================================================================
 void Wall::unDigg(const sf::Time& deltaTime) {
+	std::cout << deltaTime.asSeconds() << ' ' << m_diggedTime.asSeconds();
 	this->m_diggedTime += deltaTime;
-	sf::Time a = sf::seconds(5);
-	if (this->m_diggedTime.asSeconds() > a.asSeconds())
+	std::cout << " = " << m_diggedTime.asSeconds() << std::endl ;
+	if (this->m_diggedTime.asSeconds() > 5.f)
 		this->m_isDigged = false;
 }
 //============================================================================

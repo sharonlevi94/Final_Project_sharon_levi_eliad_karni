@@ -31,16 +31,19 @@ void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 //============================================================================
 void Player::dig(Board& board, const sf::Vector2f& location, 
 	const sf::Time& deltatime) {
-	void* debug = board.getContent(location);
 	if (board.getContent(location) == board.getContent(this->getBelow()))
 		return;
 	if (dynamic_cast <Wall*> (board.getContent(location))) {
-		this->m_diggedWalls.push_back((Wall*)board.getContent(location));
-		((Wall*)(board.getContent(location)))->dig(deltatime);
+		if(!((Wall*)(board.getContent(location)))->isDigged())
+			this->m_diggedWalls.push_back((Wall*)board.getContent(location));
+			((Wall*)(board.getContent(location)))->dig(deltatime);
 	}
 }
 //============================================================================
 void Player::updateDiggedWalls(const sf::Time& deltaTime) {
-	for (int i = 0; i < this->m_diggedWalls.size(); ++i)
+	for (int i = 0; i < this->m_diggedWalls.size(); ++i) {
 		this->m_diggedWalls[i]->unDigg(deltaTime);
+		if(!this->m_diggedWalls[i]->isDigged())
+			this->m_diggedWalls.erase(this->m_diggedWalls.begin() + i);
+	}
 }

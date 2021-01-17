@@ -26,7 +26,7 @@
 	"objects" : 
 	[
 		{
-			"jsonFile" : "codemodel-v2-cc4741d16c2f0d8d3fa5.json",
+			"jsonFile" : "codemodel-v2-2a3d91dd62ccabd073e6.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
@@ -35,11 +35,7 @@
 			}
 		},
 		{
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-16T17-45-34-0158.json
 			"jsonFile" : "cache-v2-452ad7dd00509e962fc0.json",
-=======
-			"jsonFile" : "cache-v2-a18d70c223710534c7a1.json",
->>>>>>> 94fb08c4a7b63b469123b57fe57fdfea606cc848:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-16T09-21-31-0887.json
 			"kind" : "cache",
 			"version" : 
 			{
@@ -48,11 +44,7 @@
 			}
 		},
 		{
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-16T17-45-34-0158.json
-			"jsonFile" : "cmakeFiles-v1-5284936ad9d2055b239b.json",
-=======
-			"jsonFile" : "cmakeFiles-v1-a4acc9e9ebd5a7b3ba0f.json",
->>>>>>> 94fb08c4a7b63b469123b57fe57fdfea606cc848:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-16T09-21-31-0887.json
+			"jsonFile" : "cmakeFiles-v1-1eb488012ff4a92cd782.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -85,11 +77,7 @@
 				"responses" : 
 				[
 					{
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-16T17-45-34-0158.json
 						"jsonFile" : "cache-v2-452ad7dd00509e962fc0.json",
-=======
-						"jsonFile" : "cache-v2-a18d70c223710534c7a1.json",
->>>>>>> 94fb08c4a7b63b469123b57fe57fdfea606cc848:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-16T09-21-31-0887.json
 						"kind" : "cache",
 						"version" : 
 						{
@@ -98,11 +86,7 @@
 						}
 					},
 					{
-<<<<<<< HEAD:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-16T17-45-34-0158.json
-						"jsonFile" : "cmakeFiles-v1-5284936ad9d2055b239b.json",
-=======
-						"jsonFile" : "cmakeFiles-v1-a4acc9e9ebd5a7b3ba0f.json",
->>>>>>> 94fb08c4a7b63b469123b57fe57fdfea606cc848:out/build/x64-Debug (default)/.cmake/api/v1/reply/index-2021-01-16T09-21-31-0887.json
+						"jsonFile" : "cmakeFiles-v1-1eb488012ff4a92cd782.json",
 						"kind" : "cmakeFiles",
 						"version" : 
 						{
@@ -111,7 +95,7 @@
 						}
 					},
 					{
-						"jsonFile" : "codemodel-v2-cc4741d16c2f0d8d3fa5.json",
+						"jsonFile" : "codemodel-v2-2a3d91dd62ccabd073e6.json",
 						"kind" : "codemodel",
 						"version" : 
 						{

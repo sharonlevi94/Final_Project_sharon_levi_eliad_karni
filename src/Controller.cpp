@@ -80,6 +80,7 @@ char Controller::runMenu() {
 }
 //============================================================================
 void Controller::runGame() {
+	m_gameClock.restart();
 	while (this->m_window.isOpen()){
 		if (Coin::getCoinsCounter() == 0) {
 			if (this->m_board.is_next_lvl_exist())
