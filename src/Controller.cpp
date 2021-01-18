@@ -117,8 +117,6 @@ void Controller::play_turns(const sf::Time& deltaTime) {
 //============================================================================
 void Controller::enemiesTurns(const sf::Time& deltaTime) {
 	for (int i = 0; i < this->m_enemies.size(); i++) {
-		if (i == 2)
-			int a = 9;
 		this->m_enemies[i]->playTurn(deltaTime, this->m_board);
 	}
 	for (int i = 0; i < this->m_giftEnemies.size(); i++)
@@ -137,7 +135,7 @@ void Controller::drawObjects() {
 }
 //============================================================================
 void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
-	this->m_enemies.resize(0);
+	this->m_enemies.clear();
 	for (int i = 0; i < list.size(); ++i) {
 		if (dynamic_cast <Player*> (list[i]))
 			this->m_player = (Player*)list[i];
@@ -155,9 +153,11 @@ void Controller::playerDied(){
 //============================================================================
 void Controller::gameOver() {
 	//TODO: Game Over msg
+	this->m_player = nullptr;
+	this->m_enemies.clear();
 	this->m_board.gameOver();
 	this->m_gameState.gameOver();
-	this->m_giftEnemies.resize(0);
+	this->m_giftEnemies.clear();
 }
 //============================================================================
 void Controller::checkColisions() {

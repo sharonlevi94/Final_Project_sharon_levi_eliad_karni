@@ -66,41 +66,49 @@ vector<MovingObject*> Board::loadNewLevel() {
 			switch (map[y][x])
 			{
 			case PLAYER: {
-				row.push_back(std::make_unique <Player> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Player> (sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
 				this->m_playerIndex.x = x;
 				this->m_playerIndex.y = y;
 				break;
 			}
 			case ENEMY: {
-				row.push_back(std::make_unique <SmartEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <SmartEnemy>
+					(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
 				break;
 			}
 			case COIN: {
-				row.push_back(std::make_unique <Coin>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Coin>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case WALL: {
-				row.push_back(std::make_unique <Wall>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Wall>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case LADDER: {
-				row.push_back(std::make_unique <Ladder>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Ladder>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case ROD: {
-				row.push_back(std::make_unique <Rod>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Rod>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case GIFT: {
-				row.push_back(std::make_unique <Gift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Gift>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case DOOR: {
 				this->m_doorIndex.x = x;
 				this->m_doorIndex.y = y;
-				row.push_back(std::make_unique <Door>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Door>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 
 				break;
 			}
@@ -125,7 +133,8 @@ vector<MovingObject*> Board::loadNewLevel() {
 	return movingsVec;
 }
 //========================================================================
-bool Board::is_next_lvl_exist()const {
+//the method isn't const because fstream's peek method isn't const
+bool Board::is_next_lvl_exist() const{
 	return m_levelReader.isThereNextLevel();
 }
 //========================================================================
@@ -140,7 +149,7 @@ sf::Vector2f Board::getlevelSize()const {
 const sf::Vector2f& Board::getLocation() const { return this->m_location; }
 //========================================================================
 void Board::releaseMap() {
-	this->m_map.resize(0);
+	this->m_map.clear();
 }
 //========================================================================
 /* this method is not const because it gives its user ability to change

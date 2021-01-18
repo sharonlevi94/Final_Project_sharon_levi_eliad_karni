@@ -58,6 +58,18 @@ const sf::Sound& EffectsHolder::getSound(int soundKey) const{
 const sf::Font& EffectsHolder::getFont(int fontKey) const{
 	return(*this->m_font.find(fontKey)->second);
 }
+//============================================================================
+void EffectsHolder::playMusic(int levelNumber) {
+	switch (levelNumber)
+	{
+	case 0:
+		this->m_music.openFromFile();
+		break;
+	default:
+		break;
+	}
+	
+}
 //============================ methods section ===============================
 //============================ private section ===============================
 //============================== sets section ================================
