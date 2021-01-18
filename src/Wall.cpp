@@ -14,6 +14,7 @@ bool Wall::isDigged() const { return this->m_isDigged; }
 void Wall::dig(const sf::Time& deltaTime) {
 	if (!this->m_isDigged) {
 		this->m_isDigged = true;
+		this->m_isTrapping = false;
 		this->m_diggedTime = sf::seconds(0);
 	}
 }

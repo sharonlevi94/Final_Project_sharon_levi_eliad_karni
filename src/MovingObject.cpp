@@ -22,6 +22,8 @@ int MovingObject::getLookState()const { return this->m_lookingState; }
 //============================ methods section ===============================
 //============================================================================
 bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
+	if (this->m_isTrapped && !this->m_trappingWall->getTrappingState())
+		this->getUntrapped();
 	if (this->isFalling(board)) {
 		moveDown(deltaTime, board);
 		return true;
@@ -36,11 +38,6 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 			(this->getLocation().y + this->getSize().y) });
 			}
 		}
-	}
-	if (this->m_isTrapped && !this->m_trappingWall->getTrappingState() ||
-	(this->m_trappingWall != nullptr && 
-		this->CollidesWith(*this->m_trappingWall))){
-		this->getUntrapped();
 	}
 	return false;
 }
@@ -113,10 +110,11 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 	if (!this->m_isTrapped && dynamic_cast <Wall*>
 		(board.getContent(this->getLocation() + 
 			sf::Vector2f(0, this->getSize().y)))) {
-		GameObject* object = (GameObject*)board.getContent
+		Wall* object = (Wall*)board.getContent
 		(this->getLocation() + sf::Vector2f(0, this->getSize().y));
-		this->setLocation({ 0, object->getLocation().y - 
-			(this->getLocation().y + this->getSize().y) });
+		if(object->getTrappingState())
+			this->setLocation({ 0, object->getLocation().y - 
+				(this->getLocation().y + this->getSize().y) });
 	}
 	if (dynamic_cast <Rod*>
 		(board.getContent(this->getAbove()))) {
@@ -135,10 +133,11 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 	if (!this->m_isTrapped && dynamic_cast <Wall*>
 		(board.getContent(this->getLocation() + this->getSize()))) {
-		GameObject* object = (GameObject*)board.getContent
+		Wall* object = (Wall*)board.getContent
 		(this->getLocation() + this->getSize());
-		this->setLocation({0, object->getLocation().y - 
-			(this->getLocation().y + this->getSize().y) });
+		if(object->getTrappingState())
+			this->setLocation({0, object->getLocation().y - 
+				(this->getLocation().y + this->getSize().y) });
 	}
 	if (dynamic_cast <Rod*>
 		(board.getContent(this->getAbove()))) {
@@ -146,9 +145,6 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 	}
 	else
 		this->setState(STAND);
-	float move = (float)board.
-		getMovmentSpeed() * deltaTime.asSeconds();
-
 
 	if (board.isMovePossible((this->getRight() + sf::Vector2f(-1, 0)) +
 		(sf::Vector2f(1, 0) * deltaTime.asSeconds() *
@@ -183,9 +179,9 @@ bool MovingObject::isFalling(const Board& board){
 			return false;
 		if (dynamic_cast <const Wall*> (board.getContent
 		(this->getBelow()))) {
-			if (((const Wall*)board.getContent(this->getBelow()))->isDigged()&&
-				((const Wall*)board.getContent(this->getBelow()))
-				->getTrappingState())
+			if (((const Wall*)board.getContent(this->getBelow()))->isDigged() &&
+				(!((const Wall*)board.getContent(this->getBelow()))
+				->getTrappingState())|| board.getContent(this->getBelow()) == this->m_trappingWall)
 				return true;
 			return false;
 		}
@@ -201,6 +197,8 @@ void MovingObject::reset(){
 	this->setLocation(sf::Vector2f(this->m_initialLoc.x - 
 		this->getLocation().x,
 		this->m_initialLoc.y - this->getLocation().y));
+	if(this->m_isTrapped)
+		this->getUntrapped();
 }
 //============================ private section ===============================
 //============================== gets section ================================
