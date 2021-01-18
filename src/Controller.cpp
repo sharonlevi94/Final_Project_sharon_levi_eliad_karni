@@ -168,7 +168,8 @@ void Controller::checkColisions() {
 //============================================================================
 void Controller::checkEnemiesColisions() {
 	for (int i = 0; i < this->m_enemies.size(); i++)
-		if (this->m_player->CollidesWith(*this->m_enemies[i])) {
+		if (this->m_player->CollidesWith(*this->m_enemies[i])&&
+			!this->m_enemies[i]->getTrapState()) {
 			this->playerDied();
 			return;
 		}
