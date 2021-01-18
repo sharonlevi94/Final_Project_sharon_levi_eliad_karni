@@ -62,7 +62,7 @@ void GameState::died() {
 	this->m_lifes--;
 	this->m_clock.restart();
 }
-
+//============================================================================
 void GameState::gameOver() {
 	this->m_level = 0;
 	this->m_lifes = NUM_OF_LIFE;
@@ -82,6 +82,8 @@ sf::Vector2f GameState::getSize()const {
 sf::Vector2f GameState::getLocation()const {
 	return this->m_background.getPosition();
 }
+//============================================================================
+int GameState::getLevel()const { return this->m_level; }
 //============================================================================
 std::string GameState::getRemindMin() {
 	if (this->m_levelTime.asSeconds() == NO_LEVEL_TIME)

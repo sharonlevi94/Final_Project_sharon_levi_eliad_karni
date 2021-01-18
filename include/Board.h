@@ -17,7 +17,7 @@ public:
 	~Board();
 
 	void draw(sf::RenderWindow& window, const sf::Time&);
-	vector<MovingObject*>loadNewLevel();
+	vector<MovingObject*>loadNewLevel(int);
 	bool is_next_lvl_exist()const;
 	int getLevelTime()const;
 	sf::Vector2f getlevelSize()const;
@@ -28,7 +28,6 @@ public:
 	void gameOver();
 	
 	const sf::Vector2f& getDoorLocation()const;
-	int getMovmentSpeed()const;
 	bool isMovePossible(const sf::Vector2f&)const;
 	const sf::Vector2f& getPlayerLoc()const;
 private:
@@ -39,7 +38,6 @@ private:
 	DataReader m_levelReader;
 	int m_levelTime;
 	sf::RectangleShape m_background;
-	int m_levelNumber;
 	sf::Vector2i m_doorIndex;
 	sf::Vector2i m_playerIndex;
 	void releaseMap();

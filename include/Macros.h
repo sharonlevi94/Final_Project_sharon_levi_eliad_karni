@@ -6,7 +6,12 @@
   #3. macros of windows sizes.
   #4. states of the game objects.
 */
-//========================== game objects symbols ===========================
+//========================== game const parameters ===========================
+//games parameters
+constexpr auto MOVEMENT_SPEED = 250;
+constexpr auto MUSIC_VOLUME = 50;
+
+// game objects symbols
 constexpr auto PLAYER = '@';
 constexpr auto ENEMY = '%';
 constexpr auto COIN = '*';
@@ -105,5 +110,10 @@ constexpr auto DOOR_T = 17;
 //--------------------------------- logos ------------------------------------
 constexpr auto GAME_LOGO = 26;
 //--------------------------------- sounds -----------------------------------
+constexpr auto MENU_MUSIC_PATH = "menuMusic.ogg";
+constexpr auto LEVEL1_MUSIC_PATH = "level1Music.ogg";
+constexpr auto LEVEL2_MUSIC_PATH = "level2Music.ogg";
+constexpr auto LEVEL3_MUSIC_PATH = "level3Music.ogg";
+constexpr auto LEVEL4_MUSIC_PATH = "level4Music.ogg";
 //---------------------------------- fonts -----------------------------------
 constexpr auto ARIEL_FONT = 1;

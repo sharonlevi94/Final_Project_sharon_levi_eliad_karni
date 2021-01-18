@@ -19,15 +19,17 @@ public:
 	void draw(sf::RenderWindow& window);
 	void levelup       (int);
 	void collectedCoin ();
-	void died          ();
+	void died ();
 	void gameOver();
 	bool isTimeUp();
 	bool isGameOver();
 	
 	std::string getRemindMin();
 	std::string getRemindSec();
+
 	sf::Vector2f getSize()const;
 	sf::Vector2f getLocation()const;
+	int getLevel()const;
 
 	void addTimeBonus(const sf::Time&);
 	void addLife();

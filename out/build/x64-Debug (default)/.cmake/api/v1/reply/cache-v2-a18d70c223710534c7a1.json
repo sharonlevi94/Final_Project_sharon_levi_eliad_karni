@@ -1038,6 +1038,22 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "FLAC_LIB",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/SFML/SFML-2.5.1/lib/flac.lib"
+		},
+		{
 			"name" : "Final_Project_sharon_levi_eliad_karni_BINARY_DIR",
 			"properties" : 
 			[
@@ -1078,6 +1094,38 @@
 			"value" : "C:/SFML/SFML-2.5.1/lib/freetype.lib"
 		},
 		{
+			"name" : "Ogg_LIB",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/SFML/SFML-2.5.1/lib/ogg.lib"
+		},
+		{
+			"name" : "OpenAL_LIB",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/SFML/SFML-2.5.1/lib/openal32.lib"
+		},
+		{
 			"name" : "SFML_DOC_DIR",
 			"properties" : 
 			[
@@ -1088,6 +1136,54 @@
 			],
 			"type" : "PATH",
 			"value" : "SFML_DOC_DIR-NOTFOUND"
+		},
+		{
+			"name" : "VorbisEnc_LIB",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/SFML/SFML-2.5.1/lib/vorbisenc.lib"
+		},
+		{
+			"name" : "VorbisFile_LIB",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/SFML/SFML-2.5.1/lib/vorbisfile.lib"
+		},
+		{
+			"name" : "Vorbis_LIB",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/SFML/SFML-2.5.1/lib/vorbis.lib"
 		}
 	],
 	"kind" : "cache",

@@ -6,16 +6,19 @@
 #include "Macros.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-EffectsHolder::EffectsHolder() {
+EffectsHolder::EffectsHolder():
+m_music(){
 	this->m_texture.clear();
 	this->m_sound.clear();
 	this->m_font.clear();
+	this->m_music.setVolume(MUSIC_VOLUME);
 
 	this->setBackgrounds();
 	this->setLogos();
 	this->setFonts();
 	this->setObjects();
 }
+//============================================================================
 EffectsHolder& EffectsHolder::instance() {
 	static EffectsHolder inst;
 	return(inst);
@@ -58,6 +61,31 @@ const sf::Sound& EffectsHolder::getSound(int soundKey) const{
 const sf::Font& EffectsHolder::getFont(int fontKey) const{
 	return(*this->m_font.find(fontKey)->second);
 }
+//============================================================================
+void EffectsHolder::playMusic(int levelNumber) {
+	switch (levelNumber)
+	{
+	case 0:
+		this->m_music.openFromFile(MENU_MUSIC_PATH);
+		break;
+	case 1:
+		this->m_music.openFromFile(LEVEL1_MUSIC_PATH);
+		break;
+	case 2:
+		this->m_music.openFromFile(LEVEL2_MUSIC_PATH);
+		break;
+	case 3:
+		this->m_music.openFromFile(LEVEL3_MUSIC_PATH);
+		break;
+	case 4:
+		this->m_music.openFromFile(LEVEL4_MUSIC_PATH);
+		break;
+	}
+	this->m_music.play();
+	this->m_music.setLoop(true);
+}
+//============================================================================
+void EffectsHolder::pauseMusic() { this->m_music.pause(); }
 //============================ methods section ===============================
 //============================ private section ===============================
 //============================== sets section ================================

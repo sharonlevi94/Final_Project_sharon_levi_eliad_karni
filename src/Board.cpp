@@ -28,7 +28,6 @@ Board::Board(const sf::Vector2f& location,
 	: m_levelReader(DataReader()),
 	m_background(sf::RectangleShape()),
 	m_location(location),
-	m_levelNumber(0),
  	m_backgroundSize(size),
 	m_levelSize(size),
 	m_levelTime(0),
@@ -50,7 +49,7 @@ void Board::draw(sf::RenderWindow& window,
 			}
 }
 //========================================================================
-vector<MovingObject*> Board::loadNewLevel() {
+vector<MovingObject*> Board::loadNewLevel(int level) {
 	srand((unsigned int)time(NULL)); //for random gifts & enemies
 	int rand_obj = rand()%NUM_OF_GIFT_TYPES;
 	vector<vector<char>> map = m_levelReader.readNextLevel();
@@ -60,7 +59,6 @@ vector<MovingObject*> Board::loadNewLevel() {
 
 	vector<MovingObject*> movingsVec = {};
 
-	this->m_levelNumber++;
 	m_levelSize = m_levelReader.getLevelSize();
 	this->releaseMap();
 	for (int y = 0; y < map.size(); ++y) {
@@ -70,7 +68,8 @@ vector<MovingObject*> Board::loadNewLevel() {
 			switch (map[y][x])
 			{
 			case PLAYER: {
-				row.push_back(std::make_unique <Player> (sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Player> (sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
 				this->m_playerIndex.x = x;
 				this->m_playerIndex.y = y;
@@ -100,19 +99,23 @@ vector<MovingObject*> Board::loadNewLevel() {
 				break;
 			}
 			case COIN: {
-				row.push_back(std::make_unique <Coin>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Coin>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case WALL: {
-				row.push_back(std::make_unique <Wall>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Wall>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case LADDER: {
-				row.push_back(std::make_unique <Ladder>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Ladder>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case ROD: {
-				row.push_back(std::make_unique <Rod>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				row.push_back(std::make_unique <Rod>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case GIFT: {
@@ -146,12 +149,16 @@ vector<MovingObject*> Board::loadNewLevel() {
 	//set background of the level:
 	m_background.setSize(m_backgroundSize);
 	m_background.setPosition(m_location);
-	m_background.setTexture(&EffectsHolder::instance().getBackground(m_levelNumber));
+	m_background.setTexture(&EffectsHolder::instance()
+		.getBackground(level));
+	//load level's music
+	EffectsHolder::instance().playMusic(level);
 
 	return movingsVec;
 }
 //========================================================================
-bool Board::is_next_lvl_exist()const {
+//the method isn't const because fstream's peek method isn't const
+bool Board::is_next_lvl_exist() const{
 	return m_levelReader.isThereNextLevel();
 }
 //========================================================================
@@ -166,7 +173,7 @@ sf::Vector2f Board::getlevelSize()const {
 const sf::Vector2f& Board::getLocation() const { return this->m_location; }
 //========================================================================
 void Board::releaseMap() {
-	this->m_map.resize(0);
+	this->m_map.clear();
 }
 //========================================================================
 /* this method is not const because it gives its user ability to change
@@ -192,8 +199,6 @@ const GameObject* Board::getContent(const sf::Vector2f& location) const {
 	return this->m_map[y][x].get();
 }
 //========================================================================
-int Board::getMovmentSpeed() const { return 250; }
-//========================================================================
 bool Board::isMovePossible(const sf::Vector2f& location) const {
 	if (this->m_background.getGlobalBounds().contains(location)) {
 		if (dynamic_cast <const Wall*> (this->getContent(location))) {
@@ -218,7 +223,6 @@ void Board::resetLvl(){
 void Board::gameOver() {
 	this->m_levelReader.resetRead();
 	this->releaseMap();
-	this->m_levelNumber = 0;
 }
 //========================================================================
 const sf::Vector2f& Board::getDoorLocation()const {
