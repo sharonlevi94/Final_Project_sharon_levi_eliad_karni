@@ -15,10 +15,13 @@ public:
 	virtual void reset()override;
 	void dig(const sf::Time&);
 	void unDigg(const sf::Time&);
+	void changeTrapMode(bool);
+	bool getTrappingState()const;
 
 	bool isDigged()const;
 
 private:
 	bool m_isDigged;
+	bool m_isTrapping;
 	sf::Time m_diggedTime;
 };

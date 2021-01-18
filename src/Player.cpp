@@ -12,19 +12,20 @@ Player::Player(const sf::Vector2f location,
 	: MovingObject(location, size, PLAYER_T), m_diggedWalls({}) {}
 //============================ methods section ===============================
 void Player::playTurn(const sf::Time& deltaTime, Board& board) {
-	if (this->isFalling(board) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		this->moveDown(deltaTime, board);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		dig(board, this->getBotRight(), deltaTime);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		dig(board, this->getBotLeft(), deltaTime);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		this->moveUp(deltaTime, board);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		this->moveLeft(deltaTime, board);
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		this->moveRight(deltaTime, board);
-
+	if (!this->MovingObject::physicsTurn(deltaTime, board)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			this->moveDown(deltaTime, board);
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+			dig(board, this->getBotRight(), deltaTime);
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+			dig(board, this->getBotLeft(), deltaTime);
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			this->moveUp(deltaTime, board);
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			this->moveLeft(deltaTime, board);
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			this->moveRight(deltaTime, board);
+	}
 	updateDiggedWalls(deltaTime);
 }
 

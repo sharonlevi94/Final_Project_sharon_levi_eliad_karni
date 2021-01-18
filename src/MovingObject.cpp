@@ -11,14 +11,36 @@
 MovingObject::MovingObject(const sf::Vector2f location,
 	const sf::Vector2f& size,
 	char objectType)
-	: GameObject(location, size, objectType),
-	m_initialLoc(location), m_lookingState(LOOK_STRAIGHT) {}
+	: GameObject(location, size, objectType), m_isTrapped(false),
+	m_initialLoc(location), m_lookingState(LOOK_STRAIGHT), 
+	m_trappingWall(nullptr){}
 //============================== gets section ================================
 //============================================================================
 sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
 //============================================================================
 int MovingObject::getLookState()const { return this->m_lookingState; }
 //============================ methods section ===============================
+//============================================================================
+bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
+	if (this->m_isTrapped && !this->m_trappingWall->getTrappingState())
+		this->getUntrapped();
+	if (this->isFalling(board)) {
+		moveDown(deltaTime, board);
+		return true;
+	}
+	if (dynamic_cast <Wall*> (board.getContent(this->getCenter()))) {
+		if (!((Wall*)board.getContent(this->getCenter()))
+			->getTrappingState()) {
+			if (board.getContent(this->getCenter())->getCenter().y >= this
+				->getCenter().y) {
+				this->setLocation({ 0, board.getContent(this->getCenter())
+					->getLocation().y -
+			(this->getLocation().y + this->getSize().y) });
+			}
+		}
+	}
+	return false;
+}
 //============================================================================
 void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 	if (board.isMovePossible(this->getAbove())){
@@ -66,10 +88,11 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 			this->setState(RODDING);
 		}
 		else if (dynamic_cast <Wall*> (object)) {
-			if (((Wall*)object)->isDigged())
+			if (((Wall*)object)->isDigged()) {
 				this->setLocation(sf::Vector2f(object->getLocation().x
 					- this->getLocation().x, 0));
-
+				this->getTrapped(((Wall*)object));
+			}
 		}
 		else
 			this->setState(STAND);
@@ -84,13 +107,14 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 }
 //============================================================================
 void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
-	if (dynamic_cast <Wall*>
+	if (!this->m_isTrapped && dynamic_cast <Wall*>
 		(board.getContent(this->getLocation() + 
-			sf::Vector2f(0,this->getSize().y)))) {
-		GameObject* object = (GameObject*)board.getContent
+			sf::Vector2f(0, this->getSize().y)))) {
+		Wall* object = (Wall*)board.getContent
 		(this->getLocation() + sf::Vector2f(0, this->getSize().y));
-		this->setLocation({ 0, object->getLocation().y - 
-			(this->getLocation().y + this->getSize().y) });
+		if(object->getTrappingState())
+			this->setLocation({ 0, object->getLocation().y - 
+				(this->getLocation().y + this->getSize().y) });
 	}
 	if (dynamic_cast <Rod*>
 		(board.getContent(this->getAbove()))) {
@@ -107,12 +131,13 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 }
 //============================================================================
 void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
-	if (dynamic_cast <Wall*>
+	if (!this->m_isTrapped && dynamic_cast <Wall*>
 		(board.getContent(this->getLocation() + this->getSize()))) {
-		GameObject* object = (GameObject*)board.getContent
+		Wall* object = (Wall*)board.getContent
 		(this->getLocation() + this->getSize());
-		this->setLocation({0, object->getLocation().y - 
-			(this->getLocation().y + this->getSize().y) });
+		if(object->getTrappingState())
+			this->setLocation({0, object->getLocation().y - 
+				(this->getLocation().y + this->getSize().y) });
 	}
 	if (dynamic_cast <Rod*>
 		(board.getContent(this->getAbove()))) {
@@ -120,9 +145,6 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 	}
 	else
 		this->setState(STAND);
-	float move = (float)board.
-		getMovmentSpeed() * deltaTime.asSeconds();
-
 
 	if (board.isMovePossible((this->getRight() + sf::Vector2f(-1, 0)) +
 		(sf::Vector2f(1, 0) * deltaTime.asSeconds() *
@@ -130,6 +152,20 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 		this->setLocation(sf::Vector2f(1, 0) * deltaTime.asSeconds() *
 			(float)board.getMovmentSpeed());
 }
+//============================================================================
+void MovingObject::getTrapped(Wall* trappingWall) {
+	this->m_isTrapped = true;
+	trappingWall->changeTrapMode(true);
+	this->m_trappingWall = trappingWall;
+}
+//============================================================================
+void MovingObject::getUntrapped() {
+	this->m_isTrapped = false;
+	this->m_trappingWall->changeTrapMode(false);
+	this->m_trappingWall = nullptr;
+}
+//============================================================================
+bool MovingObject::getTrapState()const { return this->m_isTrapped; }
 //============================================================================
 bool MovingObject::isFalling(const Board& board){
 	if (this->getState() != CLIMBING && this->getState() != RODDING) {
@@ -143,7 +179,9 @@ bool MovingObject::isFalling(const Board& board){
 			return false;
 		if (dynamic_cast <const Wall*> (board.getContent
 		(this->getBelow()))) {
-			if (((const Wall*)board.getContent(this->getBelow()))->isDigged())
+			if (((const Wall*)board.getContent(this->getBelow()))->isDigged() &&
+				(!((const Wall*)board.getContent(this->getBelow()))
+				->getTrappingState())|| board.getContent(this->getBelow()) == this->m_trappingWall)
 				return true;
 			return false;
 		}
@@ -159,6 +197,8 @@ void MovingObject::reset(){
 	this->setLocation(sf::Vector2f(this->m_initialLoc.x - 
 		this->getLocation().x,
 		this->m_initialLoc.y - this->getLocation().y));
+	if(this->m_isTrapped)
+		this->getUntrapped();
 }
 //============================ private section ===============================
 //============================== gets section ================================

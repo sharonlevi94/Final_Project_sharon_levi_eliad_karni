@@ -13,28 +13,28 @@ FoolEnemy::FoolEnemy(const sf::Vector2f location,
 //============================== gets section ================================
 //============================ methods section ===============================
 void FoolEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
-	
-	if (this->isFalling(board))
-		this->moveDown(deltaTime, board);
-	else {
-		if (this->getLookState() == LOOK_LEFT) {
-			if ((dynamic_cast <Wall*> (board.getContent(this->getLeft())))) {
-				this->moveRight(deltaTime, board);
-				this->setLookState(LOOK_RIGHT);
-			}
-			else
-				this->moveLeft(deltaTime, board);
-		}
+	if (!this->MovingObject::physicsTurn(deltaTime, board)) {
+		if (this->isFalling(board))
+			this->moveDown(deltaTime, board);
 		else {
-			if ((dynamic_cast <Wall*> (board.getContent(this->getRight())))) {
-				this->moveLeft(deltaTime, board);
-				this->setLookState(LOOK_LEFT);
+			if (this->getLookState() == LOOK_LEFT) {
+				if ((dynamic_cast <Wall*> (board.getContent(this->getLeft())))) {
+					this->moveRight(deltaTime, board);
+					this->setLookState(LOOK_RIGHT);
+				}
+				else
+					this->moveLeft(deltaTime, board);
 			}
-			else
-				this->moveRight(deltaTime, board);
+			else {
+				if ((dynamic_cast <Wall*> (board.getContent(this->getRight())))) {
+					this->moveLeft(deltaTime, board);
+					this->setLookState(LOOK_LEFT);
+				}
+				else
+					this->moveRight(deltaTime, board);
+			}
 		}
 	}
-	
 }
 //============================ private section ===============================
 //============================== gets section ================================
