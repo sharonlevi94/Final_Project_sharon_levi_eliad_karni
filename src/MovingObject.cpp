@@ -4,6 +4,7 @@
 #include "Ladder.h"
 #include "Wall.h"
 #include "Rod.h"
+#include "Macros.h"
 #include <SFML/Graphics.hpp>
 
 //============================= public section ===============================
@@ -53,9 +54,9 @@ void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 			if (!dynamic_cast <Ladder*> (below))
 				below = above;
 			if(board.isMovePossible(this->getLocation() + sf::Vector2f(0, -1)
-				* (float)board.getMovmentSpeed() * deltaTime.asSeconds()))
-				this->setLocation(sf::Vector2f(0, -1)*(float)board
-					.getMovmentSpeed() * deltaTime.asSeconds());
+				* (MOVEMENT_SPEED * deltaTime.asSeconds())))
+				this->setLocation(sf::Vector2f(0, -1) * (MOVEMENT_SPEED
+					* deltaTime.asSeconds()));
 			this->setState(CLIMBING);
 			if(board.isMovePossible(this->getLocation() +
 				sf::Vector2f(below->getLocation().x - 
@@ -75,14 +76,14 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 		if (dynamic_cast <Ladder*> (object)) {
 			this->setState(CLIMBING);
 			if(board.isMovePossible(this->getLocation() + sf::Vector2f(0, 1)
-				* (float)board.getMovmentSpeed() * deltaTime.asSeconds()))
+				* (MOVEMENT_SPEED * deltaTime.asSeconds())))
 				this->setLocation(sf::Vector2f(object->getLocation().x -
 					this->getLocation().x, 0));
 		}
 		else if (dynamic_cast <Rod*> (board.getContent(this->getCenter())) &&
 			dynamic_cast <Rod*> (object) && this->getState() != RODDING) {
 			if (board.isMovePossible(this->getLocation() + sf::Vector2f(0, 1)
-				* (float)board.getMovmentSpeed() * deltaTime.asSeconds()))
+				* (MOVEMENT_SPEED * deltaTime.asSeconds())))
 				this->setLocation(sf::Vector2f(0, object->getLocation().y
 					- this->getLocation().y));
 			this->setState(RODDING);
@@ -98,9 +99,9 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 			this->setState(STAND);
 		if (board.isMovePossible((this->getBelow() + sf::Vector2f(0, -1)
 		+ sf::Vector2f(0, 1)
-		* (float)board.getMovmentSpeed() * deltaTime.asSeconds())))
-			this->setLocation(sf::Vector2f(0, 1) * (float)board.
-				getMovmentSpeed() * deltaTime.asSeconds());
+		* (MOVEMENT_SPEED * deltaTime.asSeconds()))))
+			this->setLocation(sf::Vector2f(0, 1) * 
+				(MOVEMENT_SPEED * deltaTime.asSeconds()));
 		
 	}
 	
@@ -124,10 +125,9 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 		this->setState(STAND);
 
 	if (board.isMovePossible((this->getLeft() + sf::Vector2f(1,0)) + 
-		(sf::Vector2f(-1, 0) * deltaTime.asSeconds() * 
-			(float)board.getMovmentSpeed())))
-		this->setLocation(sf::Vector2f(-1, 0)* deltaTime.asSeconds() *
-		(float)board.getMovmentSpeed());
+		(sf::Vector2f(-1, 0) * (MOVEMENT_SPEED * deltaTime.asSeconds()))))
+		this->setLocation(sf::Vector2f(-1, 0) * 
+			(MOVEMENT_SPEED * deltaTime.asSeconds()));
 }
 //============================================================================
 void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
@@ -147,10 +147,9 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 		this->setState(STAND);
 
 	if (board.isMovePossible((this->getRight() + sf::Vector2f(-1, 0)) +
-		(sf::Vector2f(1, 0) * deltaTime.asSeconds() *
-			(float)board.getMovmentSpeed())))
-		this->setLocation(sf::Vector2f(1, 0) * deltaTime.asSeconds() *
-			(float)board.getMovmentSpeed());
+		(sf::Vector2f(1, 0) * (MOVEMENT_SPEED * deltaTime.asSeconds()))))
+		this->setLocation(sf::Vector2f(1, 0) * 
+			(MOVEMENT_SPEED * deltaTime.asSeconds()));
 }
 //============================================================================
 void MovingObject::getTrapped(Wall* trappingWall) {

@@ -14,6 +14,7 @@ public:
 	const sf::Texture& getTexture(int)const;
 	const sf::Font& getFont(int)const;
 	void playMusic(int);
+	void pauseMusic();
 
 private:
 	std::map<int, std::unique_ptr <sf::Texture>> m_texture;

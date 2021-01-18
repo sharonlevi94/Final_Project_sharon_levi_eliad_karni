@@ -17,8 +17,9 @@ add_subdirectory (resources)
 set (SFML_STATIC_LIBRARIES TRUE)
 set (SFML_DIR "C:/SFML/SFML-2.5.1/lib/cmake/SFML")
 
-find_package (SFML 2.5 COMPONENTS graphics REQUIRED)
+find_package (SFML 2.5 COMPONENTS graphics audio REQUIRED)
 
 set_target_properties (sfml-main sfml-system sfml-window sfml-graphics sfml-audio sfml-network PROPERTIES MAP_IMPORTED_CONFIG_RELWITHDEBINFO RELEASE)
+configure_file ("C:/SFML/SFML-2.5.1/bin/openal32.dll" ${CMAKE_BINARY_DIR} COPYONLY)
 
-target_link_libraries (Final_Project_sharon_levi_eliad_karni sfml-graphics sfml-main)
+target_link_libraries (Final_Project_sharon_levi_eliad_karni sfml-graphics sfml-audio sfml-main)
