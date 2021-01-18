@@ -27,4 +27,5 @@ public:
 private:
 	sf::Vector2f m_initialLoc;
 	int m_lookingState;
+	bool m_isTrapped;
 };

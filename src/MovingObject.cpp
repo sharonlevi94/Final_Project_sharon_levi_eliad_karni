@@ -11,7 +11,7 @@
 MovingObject::MovingObject(const sf::Vector2f location,
 	const sf::Vector2f& size,
 	char objectType)
-	: GameObject(location, size, objectType),
+	: GameObject(location, size, objectType), m_isTrapped(false),
 	m_initialLoc(location), m_lookingState(LOOK_STRAIGHT) {}
 //============================== gets section ================================
 //============================================================================
@@ -66,10 +66,11 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 			this->setState(RODDING);
 		}
 		else if (dynamic_cast <Wall*> (object)) {
-			if (((Wall*)object)->isDigged())
+			if (((Wall*)object)->isDigged()) {
 				this->setLocation(sf::Vector2f(object->getLocation().x
 					- this->getLocation().x, 0));
-
+				this->m_isTrapped = true;
+			}
 		}
 		else
 			this->setState(STAND);
@@ -85,7 +86,7 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 	if (dynamic_cast <Wall*>
 		(board.getContent(this->getLocation() + 
-			sf::Vector2f(0,this->getSize().y)))) {
+			sf::Vector2f(0, this->getSize().y)))) {
 		GameObject* object = (GameObject*)board.getContent
 		(this->getLocation() + sf::Vector2f(0, this->getSize().y));
 		this->setLocation({ 0, object->getLocation().y - 
