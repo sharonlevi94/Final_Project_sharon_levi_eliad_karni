@@ -178,7 +178,7 @@ void Controller::checkEnemiesColisions() {
 		}
 }
 //============================================================================
-void Controller::checkCoinsColisions() {
+void Controller::checkGiftsColisions() {
 	if (dynamic_cast <Gift*> (this->m_board.getContent(this->m_player->getCenter()))) {
 		if (!((Gift*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
 			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->collect();
@@ -188,7 +188,7 @@ void Controller::checkCoinsColisions() {
 	}
 }
 //============================================================================
-void Controller::checkGiftsColisions() {
+void Controller::checkCoinsColisions() {
 	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->
 		getCenter()))) {
 		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->

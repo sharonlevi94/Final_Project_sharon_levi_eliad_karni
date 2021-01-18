@@ -16,7 +16,10 @@
 #include "Ladder.h" 
 #include "Wall.h"
 #include "Rod.h"
-#include "Gift.h"
+#include "TimeGift.h"
+#include "LifeGift.h"
+#include "ScoreGift.h"
+#include "BadGift.h"
 #include "Door.h"
 using std::vector;
 //==================== Constructors & distruors section ====================
@@ -48,7 +51,8 @@ void Board::draw(sf::RenderWindow& window,
 }
 //========================================================================
 vector<MovingObject*> Board::loadNewLevel() {
-	srand((unsigned int)time(NULL)); //for random gifts
+	srand((unsigned int)time(NULL)); //for random gifts & enemies
+	int rand_obj = rand()%NUM_OF_GIFT_TYPES;
 	vector<vector<char>> map = m_levelReader.readNextLevel();
 
 	sf::Vector2f boxSize(this->getlevelSize().x / map[0].size(),
@@ -73,8 +77,22 @@ vector<MovingObject*> Board::loadNewLevel() {
 				break;
 			}
 			case ENEMY: {
-				row.push_back(std::make_unique <SmartEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-				movingsVec.push_back((MovingObject*)row[x].get());
+				switch (rand_obj)
+				{
+				case 0:
+					row.push_back(std::make_unique <RandEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+					movingsVec.push_back((MovingObject*)row[x].get());
+					break;
+				case 1:
+					row.push_back(std::make_unique <FoolEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+					movingsVec.push_back((MovingObject*)row[x].get());
+					break;
+				default:
+					row.push_back(std::make_unique <SmartEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+					movingsVec.push_back((MovingObject*)row[x].get());
+					break;
+				}
+				int rand_obj = rand() % NUM_OF_GIFT_TYPES;
 				break;
 			}
 			case COIN: {
@@ -94,7 +112,18 @@ vector<MovingObject*> Board::loadNewLevel() {
 				break;
 			}
 			case GIFT: {
-				row.push_back(std::make_unique <Gift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				switch (rand_obj)
+				{
+				case 0: row.push_back(std::make_unique <TimeGift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+					break;
+				case 1: row.push_back(std::make_unique <ScoreGift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+					break;
+				case 2: row.push_back(std::make_unique <LifeGift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+					break;
+				default: row.push_back(std::make_unique <BadGift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+					break;
+				}
+				int rand_obj = rand() % NUM_OF_GIFT_TYPES;
 				break;
 			}
 			case DOOR: {

@@ -124,7 +124,11 @@
 				19,
 				20,
 				21,
-				22
+				22,
+				23,
+				24,
+				25,
+				26
 			]
 		}
 	],
@@ -217,7 +221,11 @@
 				19,
 				20,
 				21,
-				22
+				22,
+				23,
+				24,
+				25,
+				26
 			]
 		}
 	],
@@ -359,6 +367,30 @@
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
 			"path" : "src/Door.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/BadGift.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/ScoreGift.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/LifeGift.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "src/TimeGift.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
