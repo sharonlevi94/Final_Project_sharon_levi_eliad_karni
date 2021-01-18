@@ -21,4 +21,8 @@
                                      "GameObject.cpp"
                                      "StaticObject.cpp"
                                      "main.cpp"
-                                     "Door.cpp")
+                                     "Door.cpp"
+                                     "BadGift.cpp"
+                                     "ScoreGift.cpp"
+                                     "LifeGift.cpp"
+                                     "TimeGift.cpp")

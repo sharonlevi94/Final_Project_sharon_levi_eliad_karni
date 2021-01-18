@@ -2,7 +2,7 @@
 //============================ include section ===============================
 #include "Board.h"
 #include "Menu.h"
-#include "FoolEnemy.h"
+#include "RandEnemy.h"
 #include "GameState.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -40,7 +40,7 @@ private:
 	Menu m_menu;
 	GameState m_gameState;
 	vector <MovingObject*> m_enemies;
-	std::vector<std::unique_ptr<FoolEnemy>> m_giftEnemies;
+	std::vector<std::unique_ptr<RandEnemy>> m_giftEnemies;
 	Player* m_player;
 	sf::Clock m_gameClock;
 };
