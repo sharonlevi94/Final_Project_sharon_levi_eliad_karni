@@ -74,8 +74,9 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 		}
 		else
 			this->setState(STAND);
-		if (board.isMovePossible(this->getLocation() + sf::Vector2f(0, 1)
-			* (float)board.getMovmentSpeed() * deltaTime.asSeconds()))
+		if (board.isMovePossible((this->getBelow() + sf::Vector2f(0, -1)
+		+ sf::Vector2f(0, 1)
+		* (float)board.getMovmentSpeed() * deltaTime.asSeconds())))
 			this->setLocation(sf::Vector2f(0, 1) * (float)board.
 				getMovmentSpeed() * deltaTime.asSeconds());
 		
