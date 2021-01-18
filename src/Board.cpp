@@ -74,6 +74,10 @@ vector<MovingObject*> Board::loadNewLevel() {
 				movingsVec.push_back((MovingObject*)row[x].get());
 				this->m_playerIndex.x = x;
 				this->m_playerIndex.y = y;
+				//door location:
+				this->m_doorIndex.x = x;
+				this->m_doorIndex.y = y;
+				row.push_back(std::make_unique <Door>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
 			}
 			case ENEMY: {
@@ -124,13 +128,6 @@ vector<MovingObject*> Board::loadNewLevel() {
 					break;
 				}
 				int rand_obj = rand() % NUM_OF_GIFT_TYPES;
-				break;
-			}
-			case DOOR: {
-				this->m_doorIndex.x = x;
-				this->m_doorIndex.y = y;
-				row.push_back(std::make_unique <Door>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-
 				break;
 			}
 			default: {
