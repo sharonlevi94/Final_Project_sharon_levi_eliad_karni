@@ -31,6 +31,3 @@ void SmartEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 			this->moveRight(deltaTime, board);
 	}
 }
-//============================ private section ===============================
-//============================== gets section ================================
-//============================ methods section ===============================
