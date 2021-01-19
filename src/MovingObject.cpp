@@ -203,6 +203,10 @@ void MovingObject::getUntrapped() {
 //============================================================================
 bool MovingObject::getTrapState()const { return this->m_isTrapped; }
 //============================================================================
+/*
+* this function check if the character is in a middle of falling down.
+* it checks all the cases of fallings.
+*/
 bool MovingObject::isFalling(const Board& board){
 	if (this->getState() != CLIMBING && this->getState() != RODDING) {
 		if (dynamic_cast <const Ladder*> (board.getContent
@@ -230,6 +234,9 @@ bool MovingObject::isFalling(const Board& board){
 	return false;
 }
 //============================================================================
+/*
+* this function return the character to his initial state.
+*/
 void MovingObject::reset(){
 	this->GameObject::reset();
 	this->setLocation(sf::Vector2f(this->m_initialLoc.x - 
@@ -238,13 +245,18 @@ void MovingObject::reset(){
 	if(this->m_isTrapped)
 		this->getUntrapped();
 }
-
 //============================ private section ===============================
 //============================== sets section ================================
+/*
+* this function get a new location and set this location in hte object location
+*/
 void MovingObject::setLocation(const sf::Vector2f& movement){
 	this->GameObject::setLocation(movement);
 }
 //============================================================================
+/*
+* the function change the direction that the character looking to.
+*/
 void MovingObject::setLookState(int state) {
 	if (state % 3 == LOOK_STRAIGHT)
 		this->m_lookingState = LOOK_STRAIGHT;
