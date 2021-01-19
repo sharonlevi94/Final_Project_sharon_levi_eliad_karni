@@ -17,6 +17,17 @@ public:
 	Controller();
 
 	void run();
+
+private:
+	sf::RenderWindow m_window;
+	Board m_board;
+	Menu m_menu;
+	GameState m_gameState;
+	vector <MovingObject*> m_enemies;
+	std::vector<std::unique_ptr<RandEnemy>> m_giftEnemies;
+	Player* m_player;
+	sf::Clock m_gameClock;
+
 	void runGame();
 	char runMenu();
 
@@ -34,13 +45,4 @@ public:
 	void levelup();
 	void resetLvl();
 	void gameOver();
-private:
-	sf::RenderWindow m_window;
-	Board m_board;
-	Menu m_menu;
-	GameState m_gameState;
-	vector <MovingObject*> m_enemies;
-	std::vector<std::unique_ptr<RandEnemy>> m_giftEnemies;
-	Player* m_player;
-	sf::Clock m_gameClock;
 };

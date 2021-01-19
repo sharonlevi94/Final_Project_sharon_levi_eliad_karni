@@ -10,7 +10,7 @@
 //games parameters
 constexpr auto MOVEMENT_SPEED = 250;
 constexpr auto MUSIC_VOLUME = 50;
-constexpr auto RAND_ENEMY_TIME = 4;
+constexpr auto RAND_ENEMY_TIME = 1;
 
 // game objects symbols
 constexpr auto PLAYER = '@';
