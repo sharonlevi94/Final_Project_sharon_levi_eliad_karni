@@ -1,6 +1,7 @@
 /*
    This file conatains all methods of the class Board.
 */
+//============================= include section ==========================
 #include "Board.h"
 #include <SFML/Graphics.hpp>
 #include "MovingObject.h"
@@ -22,7 +23,7 @@
 #include "BadGift.h"
 #include "Door.h"
 using std::vector;
-//==================== Constructors & distruors section ====================
+//==================== Constructors & distructors section ================
 Board::Board(const sf::Vector2f& location,
              const sf::Vector2f& size)
 	: m_levelReader(DataReader()),
@@ -38,7 +39,52 @@ Board::Board(const sf::Vector2f& location,
 Board::~Board() {
 	this->releaseMap();
 }
+
+//============================== gets section ============================
+sf::Vector2f Board::getlevelSize()const {
+	return this->m_background.getSize();
+}
 //========================================================================
+const sf::Vector2f& Board::getLocation() const {
+	return this->m_location;
+}
+//========================================================================
+int Board::getLevelTime()const {
+	return this->m_levelReader.getLevelTime();
+}
+//========================================================================
+const sf::Vector2f& Board::getDoorLocation()const {
+	return this->m_door->getLocation();
+}
+//========================================================================
+const sf::Vector2f& Board::getPlayerLoc()const {
+	return this->m_player->getLocation();
+}
+//========================================================================
+/* this method is not const because it gives its user ability to change
+ * game objects statuses.
+ */
+GameObject* Board::getContent(const sf::Vector2f& location) {
+	if (!this->m_background.getGlobalBounds().contains(location))
+		return nullptr;
+	int x = (int)((location.x - this->m_location.x) /
+		(this->getlevelSize().x / this->m_map[0].size())),
+		y = (int)((location.y - this->m_location.y) /
+			(this->getlevelSize().y / this->m_map.size()));
+	return this->m_map[y][x].get();
+}
+//========================================================================
+const GameObject* Board::getContent(const sf::Vector2f& location) const {
+	if (!this->m_background.getGlobalBounds().contains(location))
+		return nullptr;
+	int x = (int)((location.x - this->m_location.x) /
+		(this->getlevelSize().x / this->m_map[0].size())),
+		y = (int)((location.y - this->m_location.y) /
+			(this->getlevelSize().y / this->m_map.size()));
+	return this->m_map[y][x].get();
+}
+
+//============================ methods section ===========================
 void Board::draw(sf::RenderWindow& window, 
 	const sf::Time& deltaTime){
 	window.draw(m_background);
@@ -66,7 +112,6 @@ vector<MovingObject*> Board::loadNewLevel() {
 		std::vector<std::unique_ptr<GameObject>> row;
 		row.resize(0);
 		for (int x = 0; x < map[y].size(); x++) {
-			srand((unsigned int)time(NULL));
 			switch (map[y][x])
 			{
 			case PLAYER: {
@@ -137,45 +182,6 @@ bool Board::is_next_lvl_exist() const{
 	return m_levelReader.isThereNextLevel();
 }
 //========================================================================
-int Board::getLevelTime()const {
-	return this->m_levelReader.getLevelTime();
-}
-//========================================================================
-sf::Vector2f Board::getlevelSize()const {
-	return this->m_background.getSize();
-}
-//========================================================================
-const sf::Vector2f& Board::getLocation() const { 
-	return this->m_location;
-}
-//========================================================================
-void Board::releaseMap() {
-	this->m_map.clear();
-}
-//========================================================================
-/* this method is not const because it gives its user ability to change
- * game objects statuses.
- */
-GameObject* Board::getContent(const sf::Vector2f& location) {
-	if (!this->m_background.getGlobalBounds().contains(location))
-		return nullptr;
-	int x = (int)((location.x - this->m_location.x) /
-		(this->getlevelSize().x / this->m_map[0].size())),
-		y = (int)((location.y - this->m_location.y) /
-			(this->getlevelSize().y / this->m_map.size()));
-	return this->m_map[y][x].get();
-}
-//========================================================================
-const GameObject* Board::getContent(const sf::Vector2f& location) const {
-	if (!this->m_background.getGlobalBounds().contains(location))
-		return nullptr;
-	int x = (int)((location.x - this->m_location.x) /
-		(this->getlevelSize().x / this->m_map[0].size())),
-		y = (int)((location.y - this->m_location.y) /
-			(this->getlevelSize().y / this->m_map.size()));
-	return this->m_map[y][x].get();
-}
-//========================================================================
 bool Board::isMovePossible(const sf::Vector2f& location) const {
 	if (this->m_background.getGlobalBounds().contains(location)) {
 		if (dynamic_cast <const Wall*> (this->getContent(location))) {
@@ -204,18 +210,16 @@ void Board::gameOver() {
 	this->m_player = nullptr;
 }
 //========================================================================
-const sf::Vector2f& Board::getDoorLocation()const {
-	return this->m_door->getLocation();
-}
-//========================================================================
-const sf::Vector2f& Board::getPlayerLoc()const {
-	return this->m_player->getLocation();
-}
-//========================================================================
 void Board::loadLevelEffects(int level) {
 	this->m_background.setTexture(&EffectsHolder::instance()
 		.getBackground(level));
 	EffectsHolder::instance().playMusic(level);
+}
+//========================================================================
+
+//============================ private section ===========================
+void Board::releaseMap() {
+	this->m_map.clear();
 }
 //========================================================================
 void Board::clearParameters() {
@@ -224,21 +228,21 @@ void Board::clearParameters() {
 	this->m_player = nullptr;
 }
 //========================================================================
-Gift* Board::raffleGift(const sf::Vector2f& boxSize, 
+Gift* Board::raffleGift(const sf::Vector2f& boxSize,
 	const sf::Vector2i& index) {
 	//srand was declared in the controller
 	switch (rand() % NUM_OF_GIFT_TYPES)
 	{
-	case 0: 
-		return new TimeGift(sf::Vector2f(boxSize.x * 
+	case 0:
+		return new TimeGift(sf::Vector2f(boxSize.x *
 			index.x, boxSize.y * index.y) + this->m_location, boxSize);
-	case 1: 
-		return new BadGift(sf::Vector2f(boxSize.x * 
+	case 1:
+		return new BadGift(sf::Vector2f(boxSize.x *
 			index.x, boxSize.y * index.y) + this->m_location, boxSize);
-	case 2: 
+	case 2:
 		return new ScoreGift(sf::Vector2f(boxSize.x *
 			index.x, boxSize.y * index.y) + this->m_location, boxSize);
-	default: 
+	default:
 		return new LifeGift(sf::Vector2f(boxSize.x *
 			index.x, boxSize.y * index.y) + this->m_location, boxSize);
 	}

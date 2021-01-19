@@ -1,3 +1,6 @@
+/*
+   This file conatains all methods of the base class MovingObject.
+*/
 //============================= include section ==============================
 #include "MovingObject.h"
 #include "Board.h"

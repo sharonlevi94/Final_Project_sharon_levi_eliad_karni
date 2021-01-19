@@ -1,3 +1,6 @@
+/*
+   This file conatains all methods of the class Controller.
+*/
 //============================= include section ==============================
 #include "Controller.h"
 #include "Menu.h"
@@ -24,6 +27,7 @@ Controller::Controller() :
 	this->m_gameState = GameState(sf::Vector2f(0, 0),
 		sf::Vector2f((float)(this->m_window.getSize().x),
 		this->m_window.getSize().y * 0.08f));
+	srand((unsigned int)time(NULL));
 }
 //============================ methods section ===============================
 /*
