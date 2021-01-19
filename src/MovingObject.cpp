@@ -7,6 +7,7 @@
 #include "Ladder.h"
 #include "Wall.h"
 #include "Rod.h"
+#include "Door.h"
 #include "Macros.h"
 #include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
@@ -19,7 +20,9 @@ MovingObject::MovingObject(const sf::Vector2f location,
 	m_initialLoc(location), m_lookingState(LOOK_STRAIGHT), 
 	m_trappingWall(nullptr){}
 //============================== gets section ================================
-sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
+sf::Vector2f MovingObject::getInitialLoc()const { 
+	return this->m_initialLoc; 
+}
 //============================================================================
 int MovingObject::getLookState()const { return this->m_lookingState; }
 //============================ methods section ===============================
@@ -28,7 +31,7 @@ int MovingObject::getLookState()const { return this->m_lookingState; }
 * falling down & get into traps.
 */
 bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
-	//the character is trapped ? 
+	//handle traping wall communication
 	if (this->m_isTrapped) {
 		if (!this->m_trappingWall->getTrappingState() ||
 			(this->m_trappingWall->getSprite().getGlobalBounds()
@@ -43,18 +46,6 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 		//EffectsHolder::instance().playSound(FALLING_SOUND);
 		moveDown(deltaTime, board);
 		return true;
-	}
-	//if the character pass above a trap, he falling into the trap:
-	if (dynamic_cast <Wall*> (board.getContent(this->getCenter()))) {
-		if (!((Wall*)board.getContent(this->getCenter()))
-			->getTrappingState()) {
-			if (board.getContent(this->getCenter())->getCenter().y >= this
-				->getCenter().y) {
-				this->setLocation({ 0, board.getContent(this->getCenter())
-					->getLocation().y -
-			(this->getLocation().y + this->getSize().y) });
-			}
-		}
 	}
 	return false;
 }
@@ -71,7 +62,7 @@ void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 		if (object != nullptr)
 			object->handleCollision(*this, movement);
 		else if (this->getState() != RODDING){
-			this->setLocation(movement);
+			this->nullMovement(movement);
 			setState(STAND);
 		}
 	}
@@ -90,7 +81,7 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 		if(object != nullptr)
 			object->handleCollision(*this, movement);
 		else {
-			this->setLocation(movement);
+			this->nullMovement(movement);
 			this->setState(STAND);
 		}
 	}
@@ -103,13 +94,21 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 	sf::Vector2f movement = sf::Vector2f(-1, 0)
 		* (MOVEMENT_SPEED * deltaTime.asSeconds());
-	StaticObject* object = board.getContent(this->getLeft() + movement);
-	if (board.isMovePossible(this->getLeft() + movement)) {
+	StaticObject* object = board.getContent(this->getLeft() + movement),
+		*center = board.getContent(this->getCenter()),
+		* bot = board.getContent(this->getLocation() + 
+			sf::Vector2f(0,this->getSize().y));
+
+	if (board.isMovePossible(this->getRight() + movement)) {
 		if (object != nullptr)
 			object->handleCollision(*this, movement);
 		else {
-			this->setLocation(movement);
-			this->setState(STAND);
+			if (dynamic_cast <Wall*> (bot))
+				this->setLocation({ 0, (bot->getLocation() -
+					(this->getLocation() + this->getSize())).y });
+			this->nullMovement(movement);
+			if (center == nullptr || dynamic_cast <Door*> (center))
+				this->setState(STAND);
 		}
 	}
 }
@@ -121,13 +120,19 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 	sf::Vector2f movement = sf::Vector2f(1, 0)
 		* (MOVEMENT_SPEED * deltaTime.asSeconds());
-	StaticObject* object = board.getContent(this->getRight() + movement);
+	StaticObject *object = board.getContent(this->getRight() + movement),
+		*center = board.getContent(this->getCenter()),
+		*bot = board.getContent(this->getLocation() + this->getSize());
 	if (board.isMovePossible(this->getRight() + movement)) {
 		if (object != nullptr)
 			object->handleCollision(*this, movement);
 		else {
-			this->setLocation(movement);
-			this->setState(STAND);
+			if (dynamic_cast <Wall*> (bot))
+				this->setLocation({ 0, (bot->getLocation() -
+					(this->getLocation() + this->getSize())).y });
+			this->nullMovement(movement);
+			if(center == nullptr || dynamic_cast <Door*> (center))
+				this->setState(STAND);
 		}
 	}
 }
@@ -141,6 +146,10 @@ void MovingObject::getTrapped(Wall* trappingWall) {
 void MovingObject::getUntrapped() {
 	this->m_isTrapped = false;
 	this->m_trappingWall->changeTrapMode(false);
+	if (!this->m_trappingWall->isDigged() && this->m_trappingWall
+		->CollidesWith(*this))
+		this->setLocation({ 0, (this->m_trappingWall->getLocation() -
+					(this->getLocation() + this->getSize())).y });
 	this->m_trappingWall = nullptr;
 }
 //============================================================================
@@ -157,16 +166,20 @@ bool MovingObject::isFalling(const Board& board){
 			dynamic_cast <const Ladder*> 
 			(board.getContent(this->getBelow())))
 			return false;
-		if (dynamic_cast <const Rod*> (board.getContent(this->getAbove() + sf::Vector2f(0,2)))) {
-			if (!dynamic_cast <const Rod*> (board.getContent(this->getBelow())))
+		if (dynamic_cast <const Rod*> (board.getContent(this->getAbove()
+			+ sf::Vector2f(0,2)))) {
+			if (!dynamic_cast <const Rod*> (board.getContent(this
+				->getBelow())))
 				return true;
 			return false;
 		}
 		if (dynamic_cast <const Wall*> (board.getContent
 		(this->getBelow()))) {
-			if (((const Wall*)board.getContent(this->getBelow()))->isDigged() &&
+			if (((const Wall*)board.getContent(this->getBelow()))
+				->isDigged() &&
 				(!((const Wall*)board.getContent(this->getBelow()))
-				->getTrappingState())|| board.getContent(this->getBelow()) == this->m_trappingWall)
+				->getTrappingState())|| board.getContent(this->getBelow())
+				== this->m_trappingWall)
 				return true;
 			return false;
 		}
@@ -191,7 +204,8 @@ void MovingObject::reset(){
 //============================ private section ===============================
 //============================== sets section ================================
 /*
-* this function get a new location and set this location in hte object location
+* this function get a new location and set this location in hte object 
+* location
 */
 void MovingObject::setLocation(const sf::Vector2f& movement){
 	this->GameObject::setLocation(movement);
@@ -212,18 +226,21 @@ void MovingObject::setLookState(int state) {
 void MovingObject::handleCollision(const Ladder& obj,
 	const sf::Vector2f& movement) {
 	this->setState(CLIMBING);
-	this->setLocation({ obj.getLocation().x - this->getLocation().x, 
-		movement.y});
+	if (movement.y != 0)
+		this->setLocation({ obj.getLocation().x - this->getLocation().x,
+			movement.y });
+	else
+		this->setLocation(movement);
 }
 //============================================================================
 void MovingObject::handleCollision(Wall& obj,
 	const sf::Vector2f& movement) {
 	if (obj.isDigged()) {
 		this->setLocation(sf::Vector2f(obj.getLocation().x
-			- this->getLocation().x, 0));
+			- this->getLocation().x, movement.y));
 		this->getTrapped(&obj);
 	}
-	else if (movement.y >= 0){
+	else if ((this->getLocation()+this->getSize()).y < obj.getLocation().y){
 		this->setLocation({ movement.x, (obj.getLocation() - 
 			(this->getLocation() + this->getSize())).y });
 	}
@@ -244,5 +261,9 @@ void MovingObject::handleCollision(const Rod& obj,
 //============================================================================
 void MovingObject::handleCollision(const StaticObject& obj,
 	const sf::Vector2f& movement) {
+	this->nullMovement(movement);
+}
+//============================================================================
+void MovingObject::nullMovement(const sf::Vector2f& movement) {
 	this->setLocation(movement);
 }

@@ -21,6 +21,7 @@ public:
 	void moveDown(const sf::Time&, Board&);
 	void moveLeft(const sf::Time&, Board&);
 	void moveRight(const sf::Time&, Board&);
+	virtual void nullMovement(const sf::Vector2f&);
 
 	virtual void handleCollision(const Ladder&, const sf::Vector2f&);
 	virtual void handleCollision(Wall&, const sf::Vector2f&);

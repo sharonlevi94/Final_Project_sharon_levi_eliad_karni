@@ -141,9 +141,9 @@ void Controller::runGame() {
 * on the board.
 */
 void Controller::play_turns(const sf::Time& deltaTime) {
-	//the player is playing:
+	//playing movables turns.
 	this->m_player->playTurn(deltaTime, this->m_board);
-	//this->enemiesTurns(deltaTime);
+	this->enemiesTurns(deltaTime);
 }
 //============================================================================
 /*
