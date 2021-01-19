@@ -25,8 +25,14 @@ Controller::Controller() :
 		sf::Vector2f((float)(this->m_window.getSize().x),
 		this->m_window.getSize().y * 0.08f));
 }
-//============================== gets section ================================
 //============================ methods section ===============================
+/*
+* this function run from the main function.
+* open new window & run the menu screen.
+* the user can click on and execute 2 options:
+* "Play Game" - to start the game.
+* "Quit" - for exit.
+*/
 void Controller::run() {
 	while (true) {
 		this->m_window.clear();
@@ -40,6 +46,10 @@ void Controller::run() {
 	}
 }
 //============================================================================
+/*
+* this function run the menu screen and realize clicks by the user. 
+* this function return the result of the click to the run function.
+*/
 char Controller::runMenu() {
 	EffectsHolder::instance().playMusic(0);
 	while (this->m_window.isOpen())
@@ -83,6 +93,14 @@ char Controller::runMenu() {
 	return QUIT_GAME;
 }
 //============================================================================
+/*
+* this function is the central function that manage the proccess of the game.
+* draw the objects, play their turns, check cilisions and load new levels.
+* load new level if the player collected all the coins,
+* finish the game if the player passed all the levels,
+* reset level if the enemy catch the player,
+* game over if the player is die.
+*/
 void Controller::runGame() {
 	m_gameClock.restart();
 	while (this->m_window.isOpen()){
@@ -113,12 +131,20 @@ void Controller::runGame() {
 	}
 }
 //============================================================================
+/*
+* this function execute the turns of the characters. calculate their movements
+* on the board.
+*/
 void Controller::play_turns(const sf::Time& deltaTime) {
 	//the player is playing:
 	this->m_player->playTurn(deltaTime, this->m_board);
 	this->enemiesTurns(deltaTime);
 }
 //============================================================================
+/*
+* this function execute the turns of the enemies. calculate their movements
+* on the board.
+*/
 void Controller::enemiesTurns(const sf::Time& deltaTime) {
 	for (int i = 0; i < this->m_enemies.size(); i++) {
 		this->m_enemies[i]->playTurn(deltaTime, this->m_board);
@@ -127,6 +153,9 @@ void Controller::enemiesTurns(const sf::Time& deltaTime) {
 		this->m_giftEnemies[i]->playTurn(deltaTime, this->m_board);
 }
 //============================================================================
+/*
+* this function draw all the dynamic objects in the game by the time clock.
+*/
 void Controller::drawObjects() {
 	this->m_player->draw(this->m_window, this->m_gameClock
 		.getElapsedTime());
@@ -138,6 +167,10 @@ void Controller::drawObjects() {
 			.getElapsedTime());
 }
 //============================================================================
+/*
+* this function get a vector of MovingObject & seperate the player from the 
+* enemies. the function save the player as a member and the enemies in vector.
+*/
 void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 	this->m_enemies.clear();
 	for (int i = 0; i < list.size(); ++i) {
@@ -148,6 +181,11 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 	}
 }
 //============================================================================
+/*
+* this function handle in case while the player catched by the enemy.
+* then it reset the level board, update the game state and clear all the 
+* additional enemies.
+*/
 void Controller::playerDied(){
 	//reset Static objects:
 	this->m_board.resetLvl(); 
@@ -155,6 +193,9 @@ void Controller::playerDied(){
 	this->m_gameState.died();
 }
 //============================================================================
+/*
+* this function handle in case while the player is dead. 
+*/
 void Controller::gameOver() {
 	//TODO: Game Over msg
 	EffectsHolder::instance().pauseMusic();
@@ -165,12 +206,19 @@ void Controller::gameOver() {
 	this->m_giftEnemies.clear();
 }
 //============================================================================
+/*
+* this function check coliosion between the characters and the collectable 
+* objects.
+*/
 void Controller::checkColisions() {
 	this->checkCoinsColisions();
 	this->checkGiftsColisions();
 	this->checkEnemiesColisions();
 }
 //============================================================================
+/*
+* this function check coliosion between the enemies to the player.
+*/
 void Controller::checkEnemiesColisions() {
 	for (int i = 0; i < this->m_enemies.size(); i++)
 		if (this->m_player->CollidesWith(*this->m_enemies[i])&&
@@ -184,6 +232,9 @@ void Controller::checkEnemiesColisions() {
 		}
 }
 //============================================================================
+/*
+* this function check coliosion between the player to the gifts.
+*/
 void Controller::checkGiftsColisions() {
 	if (dynamic_cast <Gift*> (this->m_board.getContent(this->m_player->getCenter()))) {
 		if (!((Gift*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
@@ -194,6 +245,9 @@ void Controller::checkGiftsColisions() {
 	}
 }
 //============================================================================
+/*
+* this function check coliosion between the player to the coins.
+*/
 void Controller::checkCoinsColisions() {
 	if (dynamic_cast <Coin*> (this->m_board.getContent(this->m_player->
 		getCenter()))) {
@@ -206,6 +260,10 @@ void Controller::checkCoinsColisions() {
 	}
 }
 //============================================================================
+/*
+* this function handle in case of player finished the current level.
+* hte function load new level, and update all the states, effects & music.
+*/
 void Controller::levelup() {
 	this->m_giftEnemies.clear();
 	EffectsHolder::instance().pauseMusic();
@@ -215,11 +273,13 @@ void Controller::levelup() {
 	this->m_board.loadLevelEffects(this->m_gameState.getLevel());
 }
 //============================================================================
+/*
+* this function handle the case of the player is catched by the enemy, 
+* the function clear all the additional enemies and return the enemies
+* to their initial locations.
+*/
 void Controller::resetLvl() {
 	for (int i = 0; i < this->m_enemies.size(); ++i)
 		this->m_enemies[i]->reset();
 	this->m_giftEnemies.clear();
 }
-//============================ private section ===============================
-//============================== gets section ================================
-//============================ methods section ===============================

@@ -6,7 +6,6 @@
 #include "Rod.h"
 #include "Macros.h"
 #include <SFML/Graphics.hpp>
-
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 MovingObject::MovingObject(const sf::Vector2f location,
@@ -16,12 +15,10 @@ MovingObject::MovingObject(const sf::Vector2f location,
 	m_initialLoc(location), m_lookingState(LOOK_STRAIGHT), 
 	m_trappingWall(nullptr){}
 //============================== gets section ================================
-//============================================================================
 sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
 //============================================================================
 int MovingObject::getLookState()const { return this->m_lookingState; }
 //============================ methods section ===============================
-//============================================================================
 bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 	if (this->m_isTrapped) {
 		if (!this->m_trappingWall->getTrappingState() ||
@@ -217,10 +214,9 @@ void MovingObject::reset(){
 	if(this->m_isTrapped)
 		this->getUntrapped();
 }
+
 //============================ private section ===============================
-//============================== gets section ================================
 //============================== sets section ================================
-//============================================================================
 void MovingObject::setLocation(const sf::Vector2f& movement){
 	this->GameObject::setLocation(movement);
 }
@@ -233,5 +229,3 @@ void MovingObject::setLookState(int state) {
 	else
 		this->m_lookingState = LOOK_LEFT;
 }
-
-//============================ methods section ===============================
