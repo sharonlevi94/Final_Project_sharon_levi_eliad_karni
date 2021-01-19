@@ -1,5 +1,6 @@
 #pragma once
 #include "Enemy.h"
+#include <SFML/Graphics.hpp>
 class RandEnemy: public Enemy
 {
 public:
@@ -9,4 +10,6 @@ public:
 	virtual void playTurn(const sf::Time&, Board&) override;
 
 private:
+	sf::Time m_randTime;
+	int m_rand_move;
 };

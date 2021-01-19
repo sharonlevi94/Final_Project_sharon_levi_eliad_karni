@@ -11,6 +11,7 @@ public:
 		const sf::Vector2f & = sf::Vector2f(0, 0),
 		char objectType = NOTHING);
 
+	virtual void playTurn(const sf::Time&, Board&) = 0;
 	sf::Vector2f getInitialLoc()const;
 	int getLookState()const;
 	

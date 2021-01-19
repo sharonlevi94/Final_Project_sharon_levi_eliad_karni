@@ -9,8 +9,6 @@ Ladder::Ladder(const sf::Vector2f location,
 	: StaticObject(location ,size, LADDER_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-void Ladder::playTurn(const sf::Time& deltaTime, Board& board) {}
-
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

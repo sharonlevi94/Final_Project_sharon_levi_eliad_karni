@@ -10,7 +10,9 @@ configure_file ("Logo.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("game_state.jpg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("gift.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("door.png" ${CMAKE_BINARY_DIR} COPYONLY)
-
+#game sounds
+configure_file ("coinSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+#levels file
 configure_file ("Levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 #menu files
 configure_file ("MenuBackground.jpg" ${CMAKE_BINARY_DIR} COPYONLY)

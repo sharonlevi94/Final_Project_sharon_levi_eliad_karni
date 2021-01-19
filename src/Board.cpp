@@ -28,30 +28,29 @@ Board::Board(const sf::Vector2f& location,
 	: m_levelReader(DataReader()),
 	m_background(sf::RectangleShape()),
 	m_location(location),
- 	m_backgroundSize(size),
 	m_levelSize(size),
-	m_levelTime(0),
-	m_doorIndex({0,0}),
-	m_playerIndex({0,0})
-{}
+	m_door(nullptr),
+	m_player(nullptr){
+	this->m_background.setSize(size);
+	m_background.setPosition(m_location);
+}
 //========================================================================
 Board::~Board() {
 	this->releaseMap();
 }
 //========================================================================
 void Board::draw(sf::RenderWindow& window, 
-	const sf::Time& animationTime){
+	const sf::Time& deltaTime){
 	window.draw(m_background);
+	this->m_door->draw(window, deltaTime);
 	for (int i = 0; i < m_levelSize.x; i++)
 		for (int j = 0; j < m_levelSize.y; j++)
 			if (m_map[i][j].get() != nullptr) {
-				m_map[i][j]->draw(window, animationTime);
+				m_map[i][j]->draw(window, deltaTime);
 			}
 }
 //========================================================================
-vector<MovingObject*> Board::loadNewLevel(int level) {
-	srand((unsigned int)time(NULL)); //for random gifts & enemies
-	int rand_obj = rand()%NUM_OF_GIFT_TYPES;
+vector<MovingObject*> Board::loadNewLevel() {
 	vector<vector<char>> map = m_levelReader.readNextLevel();
 
 	sf::Vector2f boxSize(this->getlevelSize().x / map[0].size(),
@@ -61,6 +60,8 @@ vector<MovingObject*> Board::loadNewLevel(int level) {
 
 	m_levelSize = m_levelReader.getLevelSize();
 	this->releaseMap();
+
+	this->clearParameters();
 	for (int y = 0; y < map.size(); ++y) {
 		std::vector<std::unique_ptr<GameObject>> row;
 		row.resize(0);
@@ -72,31 +73,18 @@ vector<MovingObject*> Board::loadNewLevel(int level) {
 				row.push_back(std::make_unique <Player> (sf::Vector2f
 				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
-				this->m_playerIndex.x = x;
-				this->m_playerIndex.y = y;
+				this->m_player = (Player*)row[x].get();
 				//door location:
-				this->m_doorIndex.x = x;
-				this->m_doorIndex.y = y;
-				row.push_back(std::make_unique <Door>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
+				if (!this->m_door)
+					this->m_door = std::make_unique <Door>(sf::Vector2f
+					(boxSize.x * x, boxSize.y * y) + this->m_location, 
+						boxSize);
 				break;
 			}
 			case ENEMY: {
-				switch (rand_obj)
-				{
-				case 0:
-					row.push_back(std::make_unique <RandEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-					movingsVec.push_back((MovingObject*)row[x].get());
-					break;
-				case 1:
-					row.push_back(std::make_unique <FoolEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-					movingsVec.push_back((MovingObject*)row[x].get());
-					break;
-				default:
-					row.push_back(std::make_unique <SmartEnemy>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-					movingsVec.push_back((MovingObject*)row[x].get());
-					break;
-				}
-				int rand_obj = rand() % NUM_OF_GIFT_TYPES;
+				row.push_back(std::unique_ptr <Enemy>
+					(raffleEnemy(boxSize, { x,y })));
+				movingsVec.push_back((MovingObject*)row[x].get());
 				break;
 			}
 			case COIN: {
@@ -120,18 +108,14 @@ vector<MovingObject*> Board::loadNewLevel(int level) {
 				break;
 			}
 			case GIFT: {
-				switch (rand_obj)
-				{
-				case 0: row.push_back(std::make_unique <TimeGift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-					break;
-				case 1: row.push_back(std::make_unique <ScoreGift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-					break;
-				case 2: row.push_back(std::make_unique <LifeGift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-					break;
-				default: row.push_back(std::make_unique <BadGift>(sf::Vector2f(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
-					break;
-				}
-				int rand_obj = rand() % NUM_OF_GIFT_TYPES;
+				row.push_back(std::unique_ptr <Gift>
+					(raffleGift(boxSize, { x,y })));
+			}
+				break;
+			case DOOR: {
+				this->m_door = std::make_unique <Door>(sf::Vector2f
+				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize);
+				row.push_back(NULL);
 				break;
 			}
 			default: {
@@ -145,16 +129,6 @@ vector<MovingObject*> Board::loadNewLevel(int level) {
 		for (int i = 0; i < row.size(); ++i)
 			this->m_map[y][i] = std::move(row[i]);
 	}
-	//set time level, if exist:
-	this->m_levelTime = m_levelReader.getLevelTime();
-	//set background of the level:
-	m_background.setSize(m_backgroundSize);
-	m_background.setPosition(m_location);
-	m_background.setTexture(&EffectsHolder::instance()
-		.getBackground(level));
-	//load level's music
-	EffectsHolder::instance().playMusic(level);
-
 	return movingsVec;
 }
 //========================================================================
@@ -168,10 +142,12 @@ int Board::getLevelTime()const {
 }
 //========================================================================
 sf::Vector2f Board::getlevelSize()const {
-	return this->m_backgroundSize;
+	return this->m_background.getSize();
 }
 //========================================================================
-const sf::Vector2f& Board::getLocation() const { return this->m_location; }
+const sf::Vector2f& Board::getLocation() const { 
+	return this->m_location;
+}
 //========================================================================
 void Board::releaseMap() {
 	this->m_map.clear();
@@ -184,9 +160,9 @@ GameObject* Board::getContent(const sf::Vector2f& location) {
 	if (!this->m_background.getGlobalBounds().contains(location))
 		return nullptr;
 	int x = (int)((location.x - this->m_location.x) /
-		(this->m_backgroundSize.x / this->m_map[0].size())),
+		(this->getlevelSize().x / this->m_map[0].size())),
 		y = (int)((location.y - this->m_location.y) /
-			(this->m_backgroundSize.y / this->m_map.size()));
+			(this->getlevelSize().y / this->m_map.size()));
 	return this->m_map[y][x].get();
 }
 //========================================================================
@@ -194,9 +170,9 @@ const GameObject* Board::getContent(const sf::Vector2f& location) const {
 	if (!this->m_background.getGlobalBounds().contains(location))
 		return nullptr;
 	int x = (int)((location.x - this->m_location.x) /
-		(this->m_backgroundSize.x / this->m_map[0].size())),
+		(this->getlevelSize().x / this->m_map[0].size())),
 		y = (int)((location.y - this->m_location.y) /
-			(this->m_backgroundSize.y / this->m_map.size()));
+			(this->getlevelSize().y / this->m_map.size()));
 	return this->m_map[y][x].get();
 }
 //========================================================================
@@ -224,14 +200,63 @@ void Board::resetLvl(){
 void Board::gameOver() {
 	this->m_levelReader.resetRead();
 	this->releaseMap();
+	this->m_door.release();
+	this->m_player = nullptr;
 }
 //========================================================================
 const sf::Vector2f& Board::getDoorLocation()const {
-	return this->m_map[this->m_doorIndex.y][this->m_doorIndex.x]
-		->getLocation();
+	return this->m_door->getLocation();
 }
 //========================================================================
 const sf::Vector2f& Board::getPlayerLoc()const {
-	return this->m_map[this->m_playerIndex.y][this->m_playerIndex.x]
-		->getLocation();
+	return this->m_player->getLocation();
+}
+//========================================================================
+void Board::loadLevelEffects(int level) {
+	this->m_background.setTexture(&EffectsHolder::instance()
+		.getBackground(level));
+	EffectsHolder::instance().playMusic(level);
+}
+//========================================================================
+void Board::clearParameters() {
+	this->releaseMap();
+	this->m_door.release();
+	this->m_player = nullptr;
+}
+//========================================================================
+Gift* Board::raffleGift(const sf::Vector2f& boxSize, 
+	const sf::Vector2i& index) {
+	//srand was declared in the controller
+	switch (rand() % NUM_OF_GIFT_TYPES)
+	{
+	case 0: 
+		return new TimeGift(sf::Vector2f(boxSize.x * 
+			index.x, boxSize.y * index.y) + this->m_location, boxSize);
+	case 1: 
+		return new BadGift(sf::Vector2f(boxSize.x * 
+			index.x, boxSize.y * index.y) + this->m_location, boxSize);
+	case 2: 
+		return new ScoreGift(sf::Vector2f(boxSize.x *
+			index.x, boxSize.y * index.y) + this->m_location, boxSize);
+	default: 
+		return new LifeGift(sf::Vector2f(boxSize.x *
+			index.x, boxSize.y * index.y) + this->m_location, boxSize);
+	}
+}
+//========================================================================
+Enemy* Board::raffleEnemy(const sf::Vector2f& boxSize,
+	const sf::Vector2i& index) {
+	//srand was declared in the controller
+	switch (rand() % NUM_OF_ENEMIES_TYPES)
+	{
+	case 0:
+		return new RandEnemy(sf::Vector2f(boxSize.x *
+			index.x, boxSize.y * index.y) + this->m_location, boxSize);
+	case 1:
+		return new FoolEnemy(sf::Vector2f(boxSize.x *
+			index.x, boxSize.y * index.y) + this->m_location, boxSize);
+	default:
+		return new SmartEnemy(sf::Vector2f(boxSize.x *
+			index.x, boxSize.y * index.y) + this->m_location, boxSize);
+	}
 }

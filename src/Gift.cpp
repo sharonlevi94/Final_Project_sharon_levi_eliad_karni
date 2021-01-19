@@ -15,5 +15,3 @@ void Gift::reset() {
 void Gift::collect() {
 	CollectableObject::collect();
 }
-//============================================================================
-void Gift::playTurn(const sf::Time& deltatime, Board& board) {}

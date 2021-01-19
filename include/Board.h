@@ -3,10 +3,13 @@
 #include <vector>
 #include "DataReader.h"
 #include <SFML/Graphics.hpp>
-#include "Door.h"
 //========================== forward declarations ============================
 class MovingObject;
 class GameObject;
+class Enemy;
+class Gift;
+class Door;
+class Player;
 
 using std::vector;
 class Board
@@ -17,7 +20,7 @@ public:
 	~Board();
 
 	void draw(sf::RenderWindow& window, const sf::Time&);
-	vector<MovingObject*>loadNewLevel(int);
+	vector<MovingObject*>loadNewLevel();
 	bool is_next_lvl_exist()const;
 	int getLevelTime()const;
 	sf::Vector2f getlevelSize()const;
@@ -30,15 +33,19 @@ public:
 	const sf::Vector2f& getDoorLocation()const;
 	bool isMovePossible(const sf::Vector2f&)const;
 	const sf::Vector2f& getPlayerLoc()const;
+	void loadLevelEffects(int);
 private:
 	vector<vector<std::unique_ptr<GameObject>>> m_map;
-	sf::Vector2f m_backgroundSize;
 	sf::Vector2f m_levelSize;
 	sf::Vector2f m_location;
 	DataReader m_levelReader;
-	int m_levelTime;
 	sf::RectangleShape m_background;
-	sf::Vector2i m_doorIndex;
-	sf::Vector2i m_playerIndex;
+	std::unique_ptr <Door> m_door;
+	Player* m_player;
+
 	void releaseMap();
+	void clearParameters();
+	Gift* raffleGift(const sf::Vector2f& boxSize,
+		const sf::Vector2i& index);
+	Enemy* raffleEnemy(const sf::Vector2f&, const sf::Vector2i&);
 };

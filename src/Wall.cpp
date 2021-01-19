@@ -6,7 +6,8 @@
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Wall::Wall(const sf::Vector2f location, const sf::Vector2f& size )
-	: StaticObject(location, size, WALL_T), m_isDigged(false) {}
+	: StaticObject(location, size, WALL_T), m_isDigged(false), 
+	m_isTrapping(false) {}
 //============================== gets section ================================
 bool Wall::isDigged() const { return this->m_isDigged; }
 //============================ methods section ===============================
@@ -31,8 +32,6 @@ bool Wall::getTrappingState()const { return this->m_isTrapping; }
 //============================================================================
 void Wall::changeTrapMode(bool mode) { this->m_isTrapping = mode; }
 //============================================================================
-void Wall::playTurn(const sf::Time& deltaTime, Board& board) {}
-//============================================================================
 void Wall::draw(sf::RenderWindow& window, const sf::Time& animationTime) {
 	if (!this->m_isDigged)
 		GameObject::draw(window, animationTime);
@@ -41,6 +40,8 @@ void Wall::draw(sf::RenderWindow& window, const sf::Time& animationTime) {
 void Wall::reset() {
 	StaticObject::reset();
 	this->m_isDigged = false;
+	this->m_isTrapping = false;
+	this->m_diggedTime.Zero;
 }
 //============================ private section ===============================
 //============================== gets section ================================
