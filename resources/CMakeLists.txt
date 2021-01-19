@@ -28,4 +28,5 @@ configure_file ("level3Music.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("level3.jpeg" ${CMAKE_BINARY_DIR} COPYONLY)
 #level1 files
 #configure_file ("level4Music.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("level4Music.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("level4.jpeg" ${CMAKE_BINARY_DIR} COPYONLY)

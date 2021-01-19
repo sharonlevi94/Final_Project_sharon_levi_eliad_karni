@@ -149,9 +149,13 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 			this->setLocation({ 0, (object->getLocation() - (this->getLocation() + this->getSize())).y });
 	}
 	else if (dynamic_cast <Rod*>
-		(board.getContent(this->getCenter()))) {
-		GameObject* object = board.getContent(this->getCenter());
-		this->setLocation({ 0, ((this->getLocation() - object->getLocation())).y });
+		(board.getContent(this->getLeft() + sf::Vector2f(1,0))) ||
+		dynamic_cast <Rod*> (board.getContent(this->getRight()))) {
+		GameObject* object = board.getContent(this->getLeft());
+		if (object != nullptr) {
+			this->setLocation({ 0, ((object->getLocation())).y - this->getLocation().y });
+			this->setState(RODDING);
+		}
 	}
 	else
 		this->setState(STAND);
@@ -178,10 +182,13 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 			this->setLocation({ 0, (object->getLocation() - (this->getLocation() + this->getSize())).y });
 	}
 	else if (dynamic_cast <Rod*>
-		(board.getContent(this->getCenter()))) {
-		GameObject* object = board.getContent(this->getCenter());
-		this->setLocation({ 0, (this->getLocation() - object->getLocation()).y });
-		this->setState(RODDING);
+		(board.getContent(this->getLeft())) ||
+		dynamic_cast <Rod*> (board.getContent(this->getRight()))) {
+		GameObject* object = board.getContent(this->getRight());
+		if (object != nullptr) {
+			this->setLocation({ 0, (this->getLocation() - object->getLocation()).y });
+			this->setState(RODDING);
+		}
 	}
 	else
 		this->setState(STAND);
@@ -217,7 +224,7 @@ bool MovingObject::isFalling(const Board& board){
 			dynamic_cast <const Ladder*> 
 			(board.getContent(this->getBelow())))
 			return false;
-		if (dynamic_cast <const Rod*> (board.getContent(this->getAbove()))) {
+		if (dynamic_cast <const Rod*> (board.getContent(this->getAbove() + sf::Vector2f(0,2)))) {
 			if (!dynamic_cast <const Rod*> (board.getContent(this->getBelow())))
 				return true;
 			return false;
