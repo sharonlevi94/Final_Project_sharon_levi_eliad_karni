@@ -39,7 +39,11 @@ include CMakeFiles\rules.ninja
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+<<<<<<< HEAD
   COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+=======
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -322,7 +326,11 @@ build Final_Project_sharon_levi_eliad_karni.exe: CXX_EXECUTABLE_LINKER__Final_Pr
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< HEAD
   COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni" -B"D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
+=======
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni -B"C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -331,7 +339,11 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+<<<<<<< HEAD
 # D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/CMakeLists.txt
+=======
+# C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/CMakeLists.txt
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
 # =============================================================================
 
 
@@ -339,7 +351,11 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 # Utility command for edit_cache
 
 build include\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+<<<<<<< HEAD
   COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\include" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+=======
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\include" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -350,7 +366,11 @@ build include\edit_cache: phony include\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build include\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< HEAD
   COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\include" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni" -B"D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
+=======
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\include" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni -B"C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -359,7 +379,11 @@ build include\rebuild_cache: phony include\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+<<<<<<< HEAD
 # D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/CMakeLists.txt
+=======
+# C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/CMakeLists.txt
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
 # =============================================================================
 
 
@@ -367,7 +391,11 @@ build include\rebuild_cache: phony include\CMakeFiles\rebuild_cache.util
 # Utility command for edit_cache
 
 build src\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+<<<<<<< HEAD
   COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\src" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+=======
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\src" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -378,7 +406,11 @@ build src\edit_cache: phony src\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build src\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< HEAD
   COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\src" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni" -B"D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
+=======
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\src" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni -B"C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -387,7 +419,11 @@ build src\rebuild_cache: phony src\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+<<<<<<< HEAD
 # D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/CMakeLists.txt
+=======
+# C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/CMakeLists.txt
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
 # =============================================================================
 
 
@@ -395,7 +431,11 @@ build src\rebuild_cache: phony src\CMakeFiles\rebuild_cache.util
 # Utility command for edit_cache
 
 build resources\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+<<<<<<< HEAD
   COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\resources" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+=======
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\resources" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -406,7 +446,11 @@ build resources\edit_cache: phony resources\CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build resources\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+<<<<<<< HEAD
   COMMAND = cmd.exe /C "cd /D "D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\resources" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -S"D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni" -B"D:\Projects\Visual Studio Projects\gitHub\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
+=======
+  COMMAND = cmd.exe /C "cd /D "C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)\resources" && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni -B"C:\Users\sharonlevi\source\repos\Final_Project_sharon_levi_eliad_karni\out\build\x64-Debug (default)""
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -424,28 +468,44 @@ build Final_Project_sharon_levi_eliad_karni: phony Final_Project_sharon_levi_eli
 # =============================================================================
 
 #############################################
+<<<<<<< HEAD
 # Folder: D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)
+=======
+# Folder: C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
 
 build all: phony Final_Project_sharon_levi_eliad_karni.exe include\all src\all resources\all
 
 # =============================================================================
 
 #############################################
+<<<<<<< HEAD
 # Folder: D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/include
+=======
+# Folder: C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/include
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
 
 build include\all: phony
 
 # =============================================================================
 
 #############################################
+<<<<<<< HEAD
 # Folder: D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/resources
+=======
+# Folder: C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/resources
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
 
 build resources\all: phony
 
 # =============================================================================
 
 #############################################
+<<<<<<< HEAD
 # Folder: D:/Projects/Visual Studio Projects/gitHub/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/src
+=======
+# Folder: C:/Users/sharonlevi/source/repos/Final_Project_sharon_levi_eliad_karni/out/build/x64-Debug (default)/src
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
 
 build src\all: phony
 
@@ -456,14 +516,22 @@ build src\all: phony
 #############################################
 # Re-run CMake if any of its inputs changed.
 
+<<<<<<< HEAD
 build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\include\CMakeLists.txt ..\..\..\resources\ARIALBD.TTF ..\..\..\resources\CMakeLists.txt ..\..\..\resources\Levels.txt ..\..\..\resources\Logo.png ..\..\..\resources\MenuBackground.jpg ..\..\..\resources\coin.png ..\..\..\resources\coinSound.wav ..\..\..\resources\door.png ..\..\..\resources\enemy.png ..\..\..\resources\game_state.jpg ..\..\..\resources\gift.png ..\..\..\resources\ladder.png ..\..\..\resources\level1.jpeg ..\..\..\resources\level1Music.ogg ..\..\..\resources\level2.png ..\..\..\resources\level2Music.ogg ..\..\..\resources\level3.jpeg ..\..\..\resources\level3Music.ogg ..\..\..\resources\level4.jpeg ..\..\..\resources\level4Music.ogg ..\..\..\resources\menuMusic.ogg ..\..\..\resources\player.png ..\..\..\resources\rod.png ..\..\..\resources\wall.png ..\..\..\src\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake C$:\SFML\SFML-2.5.1\bin\openal32.dll C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfig.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfigDependencies.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfigVersion.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets-debug.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets-release.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets.cmake CMakeCache.txt CMakeFiles\3.18.20081302-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeSystem.cmake
+=======
+build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\include\CMakeLists.txt ..\..\..\resources\ARIALBD.TTF ..\..\..\resources\CMakeLists.txt ..\..\..\resources\DoorSound.wav ..\..\..\resources\Levels.txt ..\..\..\resources\Logo.png ..\..\..\resources\MenuBackground.jpg ..\..\..\resources\coin.png ..\..\..\resources\coinSound.wav ..\..\..\resources\diggingSound.wav ..\..\..\resources\door.png ..\..\..\resources\enemy.png ..\..\..\resources\enemySound.wav ..\..\..\resources\fallingSound.wav ..\..\..\resources\game_state.jpg ..\..\..\resources\gift.png ..\..\..\resources\ladder.png ..\..\..\resources\level1.jpeg ..\..\..\resources\level1Music.ogg ..\..\..\resources\level2.png ..\..\..\resources\level2Music.ogg ..\..\..\resources\level3.jpeg ..\..\..\resources\level3Music.ogg ..\..\..\resources\level4.jpeg ..\..\..\resources\menuMusic.ogg ..\..\..\resources\player.png ..\..\..\resources\rod.png ..\..\..\resources\stepSound.wav ..\..\..\resources\wall.png ..\..\..\src\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake C$:\SFML\SFML-2.5.1\bin\openal32.dll C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfig.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfigDependencies.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfigVersion.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets-debug.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets-release.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets.cmake CMakeCache.txt CMakeFiles\3.18.20081302-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeSystem.cmake
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
+<<<<<<< HEAD
 build ..\..\..\CMakeLists.txt ..\..\..\include\CMakeLists.txt ..\..\..\resources\ARIALBD.TTF ..\..\..\resources\CMakeLists.txt ..\..\..\resources\Levels.txt ..\..\..\resources\Logo.png ..\..\..\resources\MenuBackground.jpg ..\..\..\resources\coin.png ..\..\..\resources\coinSound.wav ..\..\..\resources\door.png ..\..\..\resources\enemy.png ..\..\..\resources\game_state.jpg ..\..\..\resources\gift.png ..\..\..\resources\ladder.png ..\..\..\resources\level1.jpeg ..\..\..\resources\level1Music.ogg ..\..\..\resources\level2.png ..\..\..\resources\level2Music.ogg ..\..\..\resources\level3.jpeg ..\..\..\resources\level3Music.ogg ..\..\..\resources\level4.jpeg ..\..\..\resources\level4Music.ogg ..\..\..\resources\menuMusic.ogg ..\..\..\resources\player.png ..\..\..\resources\rod.png ..\..\..\resources\wall.png ..\..\..\src\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake C$:\SFML\SFML-2.5.1\bin\openal32.dll C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfig.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfigDependencies.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfigVersion.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets-debug.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets-release.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets.cmake CMakeCache.txt CMakeFiles\3.18.20081302-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeSystem.cmake: phony
+=======
+build ..\..\..\CMakeLists.txt ..\..\..\include\CMakeLists.txt ..\..\..\resources\ARIALBD.TTF ..\..\..\resources\CMakeLists.txt ..\..\..\resources\DoorSound.wav ..\..\..\resources\Levels.txt ..\..\..\resources\Logo.png ..\..\..\resources\MenuBackground.jpg ..\..\..\resources\coin.png ..\..\..\resources\coinSound.wav ..\..\..\resources\diggingSound.wav ..\..\..\resources\door.png ..\..\..\resources\enemy.png ..\..\..\resources\enemySound.wav ..\..\..\resources\fallingSound.wav ..\..\..\resources\game_state.jpg ..\..\..\resources\gift.png ..\..\..\resources\ladder.png ..\..\..\resources\level1.jpeg ..\..\..\resources\level1Music.ogg ..\..\..\resources\level2.png ..\..\..\resources\level2Music.ogg ..\..\..\resources\level3.jpeg ..\..\..\resources\level3Music.ogg ..\..\..\resources\level4.jpeg ..\..\..\resources\menuMusic.ogg ..\..\..\resources\player.png ..\..\..\resources\rod.png ..\..\..\resources\stepSound.wav ..\..\..\resources\wall.png ..\..\..\src\CMakeLists.txt C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake C$:\SFML\SFML-2.5.1\bin\openal32.dll C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfig.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfigDependencies.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLConfigVersion.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets-debug.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets-release.cmake C$:\SFML\SFML-2.5.1\lib\cmake\SFML\SFMLStaticTargets.cmake CMakeCache.txt CMakeFiles\3.18.20081302-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.18.20081302-MSVC_2\CMakeSystem.cmake: phony
+>>>>>>> 1d959ef48beac07cf666c7dbd64d6045dfddedb4
 
 
 #############################################

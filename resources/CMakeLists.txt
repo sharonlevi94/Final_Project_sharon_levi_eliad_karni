@@ -12,6 +12,11 @@ configure_file ("gift.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("door.png" ${CMAKE_BINARY_DIR} COPYONLY)
 #game sounds
 configure_file ("coinSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("DiggingSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("fallingSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("DoorSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("stepSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("enemySound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 #levels file
 configure_file ("Levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 #menu files

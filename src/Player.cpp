@@ -1,5 +1,5 @@
 //============================= include section ==============================
-#include "Player.h"
+#include "Player.h" 
 #include "SFML/Graphics.hpp"
 #include "Utilities.h"
 #include "Board.h"
@@ -27,20 +27,19 @@ void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			this->moveRight(deltaTime, board);
 	}
+	//EffectsHolder::instance().playSound(STEP_SOUND);
 	updateDiggedWalls(deltaTime);
 }
-
-
 //============================================================================
 void Player::dig(Board& board, const sf::Vector2f& location, 
 	const sf::Time& deltatime) {
+	EffectsHolder::instance().playSound(DIGGING_SOUND);
 	if (board.getContent(location) == board.getContent(this->getBelow()))
 		return;
 	if (dynamic_cast <Wall*> (board.getContent(location))) {
 		if(!((Wall*)(board.getContent(location)))->isDigged())
 			this->m_diggedWalls.push_back((Wall*)board.getContent(location));
 			((Wall*)(board.getContent(location)))->dig(deltatime);
-			EffectsHolder::instance().playSound(DIGGING_SOUND);
 	}
 }
 //============================================================================
