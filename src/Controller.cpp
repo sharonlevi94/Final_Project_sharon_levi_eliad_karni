@@ -193,6 +193,7 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 */
 void Controller::playerDied(){
 	//reset Static objects:
+	EffectsHolder::instance().playSound(ENEMY_SOUND);
 	this->m_board.resetLvl(); 
 	this->m_giftEnemies.clear();
 	this->m_gameState.died();

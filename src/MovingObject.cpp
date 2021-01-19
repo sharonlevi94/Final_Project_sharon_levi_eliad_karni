@@ -8,6 +8,7 @@
 #include "Wall.h"
 #include "Rod.h"
 #include "Macros.h"
+#include "EffectsHolder.h"
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
@@ -39,6 +40,7 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 	}
 	//the character is falling ?
 	if (this->isFalling(board)) {
+		//EffectsHolder::instance().playSound(FALLING_SOUND);
 		moveDown(deltaTime, board);
 		return true;
 	}

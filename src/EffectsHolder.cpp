@@ -181,6 +181,27 @@ void EffectsHolder::setSounds() {
 	this->m_soundBuffers.insert(std::pair<int, std::unique_ptr <sf::SoundBuffer>>
 		(COIN_COLLECT_SOUND, std::move(soundsCreator)));
 	this->m_soundBuffers[COIN_COLLECT_SOUND]->loadFromFile(COINS_SOUND_PATH);
+
+	soundsCreator = std::make_unique<sf::SoundBuffer>();
+	this->m_soundBuffers.insert(std::pair<int, std::unique_ptr <sf::SoundBuffer>>
+		(FALLING_SOUND, std::move(soundsCreator)));
+	this->m_soundBuffers[FALLING_SOUND]->loadFromFile(FALLING_SOUND_PATH);
+
+	soundsCreator = std::make_unique<sf::SoundBuffer>();
+	this->m_soundBuffers.insert(std::pair<int, std::unique_ptr <sf::SoundBuffer>>
+		(DOOR_SOUND, std::move(soundsCreator)));
+	this->m_soundBuffers[DOOR_SOUND]->loadFromFile(DOOR_SOUND_PATH);
+
+	soundsCreator = std::make_unique<sf::SoundBuffer>();
+	this->m_soundBuffers.insert(std::pair<int, std::unique_ptr <sf::SoundBuffer>>
+		(STEP_SOUND, std::move(soundsCreator)));
+	this->m_soundBuffers[STEP_SOUND]->loadFromFile(STEP_SOUND_PATH);
+
+	soundsCreator = std::make_unique<sf::SoundBuffer>();
+	this->m_soundBuffers.insert(std::pair<int, std::unique_ptr <sf::SoundBuffer>>
+		(ENEMY_SOUND, std::move(soundsCreator)));
+	this->m_soundBuffers[ENEMY_SOUND]->loadFromFile(ENEMY_SOUND_PATH);
+
 }
 //============================ methods section ===============================
 void EffectsHolder::playSound(int key) {
