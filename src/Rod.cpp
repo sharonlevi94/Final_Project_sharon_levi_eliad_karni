@@ -9,7 +9,6 @@ Rod::Rod(const sf::Vector2f location,
 	: StaticObject(location, size, ROD_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
-void Rod::playTurn(const sf::Time& deltaTime, Board& board){}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

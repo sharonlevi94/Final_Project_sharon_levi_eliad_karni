@@ -191,6 +191,9 @@
 			"path" : "resources/door.png"
 		},
 		{
+			"path" : "resources/coinSound.wav"
+		},
+		{
 			"path" : "resources/Levels.txt"
 		},
 		{

@@ -15,7 +15,6 @@ public:
 
 	virtual void reset()override;
 	virtual void collect()override;
-	virtual void playTurn(const sf::Time&, Board&)override;
 	virtual void handleColision(vector<std::unique_ptr<RandEnemy>>&,
 		sf::Vector2f,GameState&)=0;
 private:

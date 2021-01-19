@@ -10,6 +10,7 @@
 //games parameters
 constexpr auto MOVEMENT_SPEED = 250;
 constexpr auto MUSIC_VOLUME = 50;
+constexpr auto RAND_ENEMY_TIME = 4;
 
 // game objects symbols
 constexpr auto PLAYER = '@';
@@ -62,6 +63,7 @@ constexpr auto ADD_ENEMY = 3;
 constexpr auto NUM_OF_LIFE = 3;
 constexpr auto NO_LEVEL_TIME = -1;
 constexpr auto NUM_OF_GIFT_TYPES = 4;
+constexpr auto NUM_OF_ENEMIES_TYPES = 3;
 constexpr auto BONUS = 20;
 
 //============================  map's file path ==============================
@@ -87,6 +89,16 @@ constexpr auto ROD_PATH = "rod.png";
 constexpr auto GIFT_PATH = "gift.png";
 constexpr auto DOOR_PATH = "door.png";
 constexpr auto GAME_STATE_PATH = "game_state.jpg";
+//--------------------------------- musics -----------------------------------
+constexpr auto MENU_MUSIC_PATH = "menuMusic.ogg";
+constexpr auto LEVEL1_MUSIC_PATH = "level1Music.ogg";
+constexpr auto LEVEL2_MUSIC_PATH = "level2Music.ogg";
+constexpr auto LEVEL3_MUSIC_PATH = "level3Music.ogg";
+constexpr auto LEVEL4_MUSIC_PATH = "level4Music.ogg";
+
+//--------------------------------- sounds -----------------------------------
+constexpr auto COINS_SOUND_PATH = "coinSound.wav";
+constexpr auto DIG_SOUND_PATH = "DiggingSound.wav";
 
 //---------------------------------- logos -----------------------------------
 constexpr auto GAME_LOGO_PATH = "Logo.png";
@@ -107,13 +119,11 @@ constexpr auto ROD_T = 15;
 constexpr auto GIFT_T = 16;
 constexpr auto DOOR_T = 17;
 
+//--------------------------------- sounds -----------------------------------
+constexpr auto DIGGING_SOUND = 0;
+constexpr auto COIN_COLLECT_SOUND = 1;
 //--------------------------------- logos ------------------------------------
 constexpr auto GAME_LOGO = 26;
-//--------------------------------- sounds -----------------------------------
-constexpr auto MENU_MUSIC_PATH = "menuMusic.ogg";
-constexpr auto LEVEL1_MUSIC_PATH = "level1Music.ogg";
-constexpr auto LEVEL2_MUSIC_PATH = "level2Music.ogg";
-constexpr auto LEVEL3_MUSIC_PATH = "level3Music.ogg";
-constexpr auto LEVEL4_MUSIC_PATH = "level4Music.ogg";
+
 //---------------------------------- fonts -----------------------------------
 constexpr auto ARIEL_FONT = 1;

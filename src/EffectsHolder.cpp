@@ -9,7 +9,7 @@
 EffectsHolder::EffectsHolder():
 m_music(){
 	this->m_texture.clear();
-	this->m_sound.clear();
+	this->m_soundBuffers.clear();
 	this->m_font.clear();
 	this->m_music.setVolume(MUSIC_VOLUME);
 
@@ -54,8 +54,8 @@ const sf::Texture& EffectsHolder::getTexture(int textureKey)const{
 	return (*this->m_texture.find(textureKey)->second);
 }
 //============================================================================
-const sf::Sound& EffectsHolder::getSound(int soundKey) const{
-	return(*this->m_sound.find(soundKey)->second);
+const sf::SoundBuffer& EffectsHolder::getSound(int soundKey) const{
+	return(*this->m_soundBuffers.find(soundKey)->second);
 }
 //============================================================================
 const sf::Font& EffectsHolder::getFont(int fontKey) const{
@@ -169,3 +169,16 @@ void EffectsHolder::setObjects() {
 		(DOOR_T, std::move(texturesCreator)));
 	this->m_texture[DOOR_T]->loadFromFile(DOOR_PATH);
 }
+//============================================================================
+void EffectsHolder::setSounds() {
+	std::unique_ptr<sf::SoundBuffer> soundsCreator;
+	//------------------------------------------------------------------------
+	soundsCreator = std::make_unique<sf::SoundBuffer>();
+	this->m_soundBuffers.insert(std::pair<int, std::unique_ptr <sf::SoundBuffer>>
+		(DIGGING_SOUND, std::move(soundsCreator)));
+	this->m_soundBuffers[DIGGING_SOUND]->loadFromFile(DIG_SOUND_PATH);
+}
+//============================================================================
+/*void EffectsHolder::playSound(int key) {
+	if (this->m_soundBuffers.find(key));
+}*/

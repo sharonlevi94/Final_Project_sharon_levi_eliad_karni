@@ -22,8 +22,8 @@ DataReader::~DataReader() {
 void DataReader::receiveLevelParameters(){
 	m_boardReader >> m_levelSize.x >> m_levelSize.y;
 	m_boardReader >> m_levelTime;
-	char eat_space;
-	m_boardReader.get(eat_space);
+	//eat white space
+	m_boardReader.get();
 }
 //========================================================================
 /*

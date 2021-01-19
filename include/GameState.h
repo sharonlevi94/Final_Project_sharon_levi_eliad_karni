@@ -16,9 +16,9 @@ public:
 		const sf::Vector2f& size = sf::Vector2f(0, 0));
 	//=========================== method section =============================
 
-	void draw(sf::RenderWindow& window);
-	void levelup       (int);
-	void collectedCoin ();
+	void draw(sf::RenderWindow&);
+	void levelup(int);
+	void collectedCoin();
 	void died ();
 	void gameOver();
 	bool isTimeUp();

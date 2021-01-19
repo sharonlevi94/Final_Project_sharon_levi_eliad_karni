@@ -151,7 +151,7 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 void Controller::playerDied(){
 	//reset Static objects:
 	this->m_board.resetLvl(); 
-	this->m_giftEnemies.resize(0);
+	this->m_giftEnemies.clear();
 	this->m_gameState.died();
 }
 //============================================================================
@@ -207,16 +207,18 @@ void Controller::checkCoinsColisions() {
 }
 //============================================================================
 void Controller::levelup() {
-	EffectsHolder::instance().pauseMusic();
-	this->m_gameState.levelup(this->m_board.getLevelTime());
 	this->m_giftEnemies.clear();
-	this->seperateGameObjects(this->m_board.loadNewLevel(this->m_gameState.getLevel()));
+	EffectsHolder::instance().pauseMusic();
+	srand((unsigned int)time(NULL));
+	this->seperateGameObjects(this->m_board.loadNewLevel());
+	this->m_gameState.levelup(this->m_board.getLevelTime());
+	this->m_board.loadLevelEffects(this->m_gameState.getLevel());
 }
 //============================================================================
 void Controller::resetLvl() {
 	for (int i = 0; i < this->m_enemies.size(); ++i)
 		this->m_enemies[i]->reset();
-	this->m_giftEnemies.resize(0);
+	this->m_giftEnemies.clear();
 }
 //============================ private section ===============================
 //============================== gets section ================================

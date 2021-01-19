@@ -19,6 +19,7 @@ GameState::GameState(const sf::Vector2f& location,
 //============================ methods section ===============================
 //============================================================================
 void GameState::draw (sf::RenderWindow& window){
+
 	window.draw(this->m_background);       
 	this->m_stateText.setPosition(this->getLocation());
 	//clac output:

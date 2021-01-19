@@ -17,10 +17,9 @@ public:
 		const sf::Vector2f = sf::Vector2f(0,0),
 		const sf::Vector2f& = sf::Vector2f(0,0),
 		char objectType = NOTHING);
-	virtual ~GameObject();
+	virtual ~GameObject() = 0;
 
 	virtual void draw(sf::RenderWindow&, const sf::Time&);
-	virtual void playTurn(const sf::Time&, Board&) = 0;
 	virtual void reset();
 
 	bool CollidesWith(const GameObject&)const;
