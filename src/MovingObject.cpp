@@ -67,21 +67,23 @@ void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 			sf::Vector2f(0, -2));
 		GameObject* above = board.getContent(this->getAbove() +
 			sf::Vector2f(0, 1));
-		if (dynamic_cast <Ladder*> (below) || 
+		if (dynamic_cast <Ladder*> (below) ||
 			dynamic_cast <Ladder*> (above)) {
 			if (!dynamic_cast <Ladder*> (below))
 				below = above;
-			if(board.isMovePossible(this->getLocation() + sf::Vector2f(0, -1)
+			if (board.isMovePossible(this->getLocation() + sf::Vector2f(0, -1)
 				* (MOVEMENT_SPEED * deltaTime.asSeconds())))
 				this->setLocation(sf::Vector2f(0, -1) * (MOVEMENT_SPEED
 					* deltaTime.asSeconds()));
 			this->setState(CLIMBING);
-			if(board.isMovePossible(this->getLocation() +
-				sf::Vector2f(below->getLocation().x - 
+			if (board.isMovePossible(this->getLocation() +
+				sf::Vector2f(below->getLocation().x -
 					this->getLocation().x, 0)))
-				this->setLocation(sf::Vector2f(below->getLocation().x - 
+				this->setLocation(sf::Vector2f(below->getLocation().x -
 					this->getLocation().x, 0));
 		}
+		else if (dynamic_cast <Rod*> (board.getContent(this->getCenter())))
+			return;
 		else
 			this->setState(STAND);
 	}
