@@ -19,7 +19,12 @@ sf::Vector2f MovingObject::getInitialLoc()const { return this->m_initialLoc; }
 //============================================================================
 int MovingObject::getLookState()const { return this->m_lookingState; }
 //============================ methods section ===============================
+/*
+* this function handle in spacial moves cases of each character:
+* falling down & get into traps.
+*/
 bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
+	//the character is trapped ? 
 	if (this->m_isTrapped) {
 		if (!this->m_trappingWall->getTrappingState() ||
 			(this->m_trappingWall->getSprite().getGlobalBounds()
@@ -29,10 +34,12 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 			this->getUntrapped();
 		}
 	}
+	//the character is falling ?
 	if (this->isFalling(board)) {
 		moveDown(deltaTime, board);
 		return true;
 	}
+	//if the character pass above a trap, he falling into the trap:
 	if (dynamic_cast <Wall*> (board.getContent(this->getCenter()))) {
 		if (!((Wall*)board.getContent(this->getCenter()))
 			->getTrappingState()) {
@@ -47,6 +54,10 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 	return false;
 }
 //============================================================================
+/*
+* this function handle the case of user pressed on up button. 
+* the function set the new location only if the wanted move is possible.
+*/
 void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 	if (board.isMovePossible(this->getAbove())){
 		GameObject* below = board.getContent(this->getBelow() + 
@@ -73,6 +84,11 @@ void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 	}
 }
 //============================================================================
+/*
+* this function handle the case of user pressed on down button or if the 
+* character is falling down.
+* the function set the new location only if the wanted move is possible.
+*/
 void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 	if (board.isMovePossible(this->getBelow())) {
 		GameObject* object = board.getContent(this->getBelow());
@@ -113,6 +129,10 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 	
 }
 //============================================================================
+/*
+* this function handle the case of user pressed on left button.
+* the function set the new location only if the wanted move is possible.
+*/
 void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 	if (!this->m_isTrapped && dynamic_cast <Wall*>
 		(board.getContent(this->getLocation() + 
@@ -139,6 +159,10 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 			(MOVEMENT_SPEED * deltaTime.asSeconds()));
 }
 //============================================================================
+/*
+* this function handle the case of user pressed on right button.
+* the function set the new location only if the wanted move is possible.
+*/
 void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 	if (!this->m_isTrapped && dynamic_cast <Wall*>
 		(board.getContent(this->getLocation() + this->getSize()))) {
