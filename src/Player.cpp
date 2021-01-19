@@ -33,13 +33,14 @@ void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 //============================================================================
 void Player::dig(Board& board, const sf::Vector2f& location, 
 	const sf::Time& deltatime) {
-	EffectsHolder::instance().playSound(DIGGING_SOUND);
 	if (board.getContent(location) == board.getContent(this->getBelow()))
 		return;
 	if (dynamic_cast <Wall*> (board.getContent(location))) {
-		if(!((Wall*)(board.getContent(location)))->isDigged())
+		if (!((Wall*)(board.getContent(location)))->isDigged()) {
 			this->m_diggedWalls.push_back((Wall*)board.getContent(location));
 			((Wall*)(board.getContent(location)))->dig(deltatime);
+			EffectsHolder::instance().playSound(DIGGING_SOUND);
+		}
 	}
 }
 //============================================================================

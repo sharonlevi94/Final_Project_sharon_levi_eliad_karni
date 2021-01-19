@@ -190,7 +190,7 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 		dynamic_cast <Rod*> (board.getContent(this->getRight()))) {
 		GameObject* object = board.getContent(this->getRight());
 		if (object != nullptr) {
-			this->setLocation({ 0, (this->getLocation() - object->getLocation()).y });
+			this->setLocation({ 0, ((object->getLocation())).y - this->getLocation().y });
 			this->setState(RODDING);
 		}
 	}
