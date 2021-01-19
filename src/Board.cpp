@@ -95,7 +95,7 @@ void Board::draw(sf::RenderWindow& window,
 				m_map[i][j]->draw(window, deltaTime);
 			}
 }
-//========================================================================
+//============================================================================
 vector<MovingObject*> Board::loadNewLevel() {
 	vector<vector<char>> map = m_levelReader.readNextLevel();
 
@@ -114,7 +114,7 @@ vector<MovingObject*> Board::loadNewLevel() {
 		for (int x = 0; x < map[y].size(); x++) {
 			switch (map[y][x])
 			{
-			case PLAYER: {
+			case PLAYER: 
 				row.push_back(std::make_unique <Player> (sf::Vector2f
 				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				movingsVec.push_back((MovingObject*)row[x].get());
@@ -125,48 +125,39 @@ vector<MovingObject*> Board::loadNewLevel() {
 					(boxSize.x * x, boxSize.y * y) + this->m_location, 
 						boxSize);
 				break;
-			}
-			case ENEMY: {
+			case ENEMY:
 				row.push_back(std::unique_ptr <Enemy>
 					(raffleEnemy(boxSize, { x,y })));
 				movingsVec.push_back((MovingObject*)row[x].get());
 				break;
-			}
-			case COIN: {
+			case COIN:
 				row.push_back(std::make_unique <Coin>(sf::Vector2f
 				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
-			}
-			case WALL: {
+			case WALL:
 				row.push_back(std::make_unique <Wall>(sf::Vector2f
 				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
-			}
-			case LADDER: {
+			case LADDER:
 				row.push_back(std::make_unique <Ladder>(sf::Vector2f
 				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
-			}
-			case ROD: {
+			case ROD:
 				row.push_back(std::make_unique <Rod>(sf::Vector2f
 				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize));
 				break;
-			}
-			case GIFT: {
+			case GIFT:
 				row.push_back(std::unique_ptr <Gift>
 					(raffleGift(boxSize, { x,y })));
-			}
 				break;
-			case DOOR: {
+			case DOOR:
 				this->m_door = std::make_unique <Door>(sf::Vector2f
 				(boxSize.x * x, boxSize.y * y) + this->m_location, boxSize);
 				row.push_back(NULL);
 				break;
-			}
-			default: {
+			default:
 				row.push_back(NULL); // inputed ' '
 				break;
-			}
 			}
 		}
 		this->m_map.resize(m_map.size() + 1);
