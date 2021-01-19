@@ -6,6 +6,7 @@
 //========================== forward declarations ============================
 class MovingObject;
 class GameObject;
+class StaticObject;
 class Enemy;
 class Gift;
 class Door;
@@ -25,8 +26,8 @@ public:
 	int getLevelTime()const;
 	sf::Vector2f getlevelSize()const;
 	const sf::Vector2f& getLocation() const;
-	GameObject* getContent(const sf::Vector2f& location);
-	const GameObject* getContent(const sf::Vector2f&) const;
+	StaticObject* getContent(const sf::Vector2f& location);
+	const StaticObject* getContent(const sf::Vector2f&) const;
 	void resetLvl();
 	void gameOver();
 	

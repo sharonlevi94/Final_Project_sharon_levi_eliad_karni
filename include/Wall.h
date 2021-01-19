@@ -12,6 +12,7 @@ public:
 
 	virtual void draw(sf::RenderWindow&, const sf::Time&);
 	virtual void reset()override;
+	virtual void handleCollision(MovingObject&, const sf::Vector2f&)override;
 	void dig(const sf::Time&);
 	void unDigg(const sf::Time&);
 	void changeTrapMode(bool);

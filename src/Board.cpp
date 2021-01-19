@@ -63,24 +63,28 @@ const sf::Vector2f& Board::getPlayerLoc()const {
 /* this method is not const because it gives its user ability to change
  * game objects statuses.
  */
-GameObject* Board::getContent(const sf::Vector2f& location) {
+StaticObject* Board::getContent(const sf::Vector2f& location) {
 	if (!this->m_background.getGlobalBounds().contains(location))
 		return nullptr;
 	int x = (int)((location.x - this->m_location.x) /
 		(this->getlevelSize().x / this->m_map[0].size())),
 		y = (int)((location.y - this->m_location.y) /
 			(this->getlevelSize().y / this->m_map.size()));
-	return this->m_map[y][x].get();
+	if(dynamic_cast <StaticObject*> (this->m_map[y][x].get()))
+		return ((StaticObject*)this->m_map[y][x].get());
+	return nullptr;
 }
 //========================================================================
-const GameObject* Board::getContent(const sf::Vector2f& location) const {
+const StaticObject* Board::getContent(const sf::Vector2f& location) const {
 	if (!this->m_background.getGlobalBounds().contains(location))
 		return nullptr;
 	int x = (int)((location.x - this->m_location.x) /
 		(this->getlevelSize().x / this->m_map[0].size())),
 		y = (int)((location.y - this->m_location.y) /
 			(this->getlevelSize().y / this->m_map.size()));
-	return this->m_map[y][x].get();
+	if (dynamic_cast <StaticObject*> (this->m_map[y][x].get()))
+		return ((StaticObject*)this->m_map[y][x].get());
+	return nullptr;
 }
 
 //============================ methods section ===========================
@@ -174,14 +178,8 @@ bool Board::is_next_lvl_exist() const{
 //========================================================================
 bool Board::isMovePossible(const sf::Vector2f& location) const {
 	if (this->m_background.getGlobalBounds().contains(location)) {
-		if (dynamic_cast <const Wall*> (this->getContent(location))) {
-			if (((Wall*)this->getContent(location))->isDigged())
-				return true;
-			return false;
-		}
 		return true;
 	}
-
 	return false;
 }
 //========================================================================

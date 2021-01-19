@@ -13,3 +13,6 @@ void TimeGift::handleColision(vector<std::unique_ptr<RandEnemy>>& giftEnenmy,
 	 gameState.addTimeBonus(sf::seconds(BONUS));
 }
 //============================================================================
+void TimeGift::handleCollision(MovingObject& obj, const sf::Vector2f& movement) {
+	obj.handleCollision(*this, movement);
+}

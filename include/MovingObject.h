@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include <SFML/Graphics.hpp>
 class Board;
+class StaticObject;
 
 class MovingObject : public GameObject
 {
@@ -20,6 +21,11 @@ public:
 	void moveDown(const sf::Time&, Board&);
 	void moveLeft(const sf::Time&, Board&);
 	void moveRight(const sf::Time&, Board&);
+
+	virtual void handleCollision(const Ladder&, const sf::Vector2f&);
+	virtual void handleCollision(Wall&, const sf::Vector2f&);
+	virtual void handleCollision(const Rod&, const sf::Vector2f&);
+	virtual void handleCollision(const StaticObject&, const sf::Vector2f&);
 
 	void getTrapped(Wall*);
 	void getUntrapped();

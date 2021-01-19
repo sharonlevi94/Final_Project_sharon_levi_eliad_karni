@@ -1,7 +1,8 @@
 //============================= include section ==============================
 #include "Ladder.h"
 #include "Utilities.h"
-#include "Board.h"
+#include "MovingObject.h"
+#include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Ladder::Ladder(const sf::Vector2f location,
@@ -9,6 +10,9 @@ Ladder::Ladder(const sf::Vector2f location,
 	: StaticObject(location ,size, LADDER_T) {}
 //============================== gets section ================================
 //============================ methods section ===============================
+void Ladder::handleCollision(MovingObject& obj, const sf::Vector2f& movement) {
+	obj.handleCollision(*this, movement);
+}
 //============================ private section ===============================
 //============================== gets section ================================
 //============================ methods section ===============================

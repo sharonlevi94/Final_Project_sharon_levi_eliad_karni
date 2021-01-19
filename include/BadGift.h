@@ -8,5 +8,6 @@ public:
 
 	virtual void handleColision(vector<std::unique_ptr<RandEnemy>>&,
 		sf::Vector2f, GameState&) override;
+	virtual void handleCollision(MovingObject&, const sf::Vector2f&)override;
 private:
 };

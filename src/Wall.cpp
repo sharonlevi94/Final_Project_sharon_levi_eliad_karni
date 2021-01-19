@@ -2,6 +2,7 @@
 #include "Wall.h"
 #include "Utilities.h"
 #include "Board.h"
+#include "MovingObject.h"
 #include <iostream>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
@@ -42,6 +43,10 @@ void Wall::reset() {
 	this->m_isDigged = false;
 	this->m_isTrapping = false;
 	this->m_diggedTime.Zero;
+}
+//============================================================================
+void Wall::handleCollision(MovingObject& obj, const sf::Vector2f& movement) {
+	obj.handleCollision(*this, movement);
 }
 //============================ private section ===============================
 //============================== gets section ================================

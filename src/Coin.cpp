@@ -1,6 +1,7 @@
 //============================= include section ==============================
 #include "Coin.h"
 #include "Macros.h"
+#include "MovingObject.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Coin::Coin(const sf::Vector2f location,
@@ -27,4 +28,8 @@ void Coin::reset() {
 void Coin::collect() {
 	CollectableObject::collect();
 	--m_coinsCounter;
+}
+//============================================================================
+void Coin::handleCollision(MovingObject& obj, const sf::Vector2f& movement) {
+	obj.handleCollision(*this, movement);
 }

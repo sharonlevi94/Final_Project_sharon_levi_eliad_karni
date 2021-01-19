@@ -10,6 +10,7 @@ public:
 		const sf::Vector2f& = sf::Vector2f(0,0));
 	virtual ~Coin()override;
 	
+	virtual void handleCollision(MovingObject&, const sf::Vector2f&)override;
 	static unsigned int getCoinsCounter();
 	virtual void reset()override;
 	virtual void collect()override;
