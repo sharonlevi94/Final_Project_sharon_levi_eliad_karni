@@ -10,7 +10,7 @@ public:
 	static EffectsHolder& instance();
 
 	const sf::SoundBuffer& getSound(int) const;
-	//void playSound(int key);
+	void playSound(int key);
 	const sf::Texture& getBackground(int);
 	const sf::Texture& getTexture(int)const;
 	const sf::Font& getFont(int)const;

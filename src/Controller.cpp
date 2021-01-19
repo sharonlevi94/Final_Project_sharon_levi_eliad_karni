@@ -11,6 +11,7 @@
 #include "EffectsHolder.h"
 #include "Player.h"
 #include <SFML/Graphics.hpp>
+#include "EffectsHolder.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Controller::Controller() :
@@ -257,6 +258,7 @@ void Controller::checkCoinsColisions() {
 		getCenter()))) {
 		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
 			is_collected()) {
+			EffectsHolder::instance().playSound(COIN_COLLECT_SOUND);
 			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
 				collect();
 			this->m_gameState.collectedCoin();

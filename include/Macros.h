@@ -99,7 +99,9 @@ constexpr auto LEVEL4_MUSIC_PATH = "level4Music.ogg";
 //--------------------------------- sounds -----------------------------------
 constexpr auto COINS_SOUND_PATH = "coinSound.wav";
 constexpr auto DIG_SOUND_PATH = "DiggingSound.wav";
-
+constexpr auto FALLUNG_SOUND_PATH = "fallingSound.wav";
+constexpr auto DOOR_SOUND_PATH = "DoorSound.wav";
+constexpr auto STEP_SOUND_PATH = "stepSound.wav";
 //---------------------------------- logos -----------------------------------
 constexpr auto GAME_LOGO_PATH = "Logo.png";
 

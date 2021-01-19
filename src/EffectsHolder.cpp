@@ -17,6 +17,7 @@ m_music(){
 	this->setLogos();
 	this->setFonts();
 	this->setObjects();
+	this->setSounds();
 }
 //============================================================================
 EffectsHolder& EffectsHolder::instance() {
@@ -89,8 +90,6 @@ void EffectsHolder::pauseMusic() { this->m_music.pause(); }
 //============================ methods section ===============================
 //============================ private section ===============================
 //============================== sets section ================================
-//============================ methods section ===============================
-//============================================================================
 void EffectsHolder::setBackgrounds(){
 	std::unique_ptr<sf::Texture> texturesCreator;
 	//adding game's backgrounds path
@@ -177,8 +176,14 @@ void EffectsHolder::setSounds() {
 	this->m_soundBuffers.insert(std::pair<int, std::unique_ptr <sf::SoundBuffer>>
 		(DIGGING_SOUND, std::move(soundsCreator)));
 	this->m_soundBuffers[DIGGING_SOUND]->loadFromFile(DIG_SOUND_PATH);
+
+	soundsCreator = std::make_unique<sf::SoundBuffer>();
+	this->m_soundBuffers.insert(std::pair<int, std::unique_ptr <sf::SoundBuffer>>
+		(COIN_COLLECT_SOUND, std::move(soundsCreator)));
+	this->m_soundBuffers[COIN_COLLECT_SOUND]->loadFromFile(COINS_SOUND_PATH);
 }
-//============================================================================
-/*void EffectsHolder::playSound(int key) {
-	if (this->m_soundBuffers.find(key));
-}*/
+//============================ methods section ===============================
+void EffectsHolder::playSound(int key) {
+	m_sound.setBuffer(this->getSound(key));
+	m_sound.play();
+}

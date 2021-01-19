@@ -39,7 +39,6 @@ Board::Board(const sf::Vector2f& location,
 Board::~Board() {
 	this->releaseMap();
 }
-
 //============================== gets section ============================
 sf::Vector2f Board::getlevelSize()const {
 	return this->m_background.getSize();
