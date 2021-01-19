@@ -38,7 +38,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 24,
+				"line" : 25,
 				"parent" : 0
 			},
 			{
@@ -152,19 +152,16 @@
 			},
 			{
 				"backtrace" : 2,
+				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\sfml-audio-s-d.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
 				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\sfml-main-d.lib",
 				"role" : "libraries"
 			},
 			{
 				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\sfml-window-s-d.lib",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\sfml-system-s-d.lib",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "winmm.lib",
 				"role" : "libraries"
 			},
 			{
@@ -177,6 +174,38 @@
 			},
 			{
 				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\freetype.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\openal32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\sfml-system-s-d.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "winmm.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\vorbisfile.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\vorbisenc.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\vorbis.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\ogg.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\SFML\\SFML-2.5.1\\lib\\flac.lib",
 				"role" : "libraries"
 			},
 			{

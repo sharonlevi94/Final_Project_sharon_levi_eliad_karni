@@ -65,6 +65,7 @@ vector<MovingObject*> Board::loadNewLevel(int level) {
 		std::vector<std::unique_ptr<GameObject>> row;
 		row.resize(0);
 		for (int x = 0; x < map[y].size(); x++) {
+			srand((unsigned int)time(NULL));
 			switch (map[y][x])
 			{
 			case PLAYER: {
