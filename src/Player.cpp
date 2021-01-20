@@ -13,7 +13,7 @@ Player::Player(const sf::Vector2f& location,
 	: MovingObject(location, size, PLAYER_T), m_diggedWalls({}) {}
 //============================ methods section ===============================
 void Player::playTurn(const sf::Time& deltaTime, Board& board) {
-	if (!this->MovingObject::physicsTurn(deltaTime, board)) {
+	if (!this->physicsTurn(deltaTime, board)) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			this->moveDown(deltaTime, board);
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))

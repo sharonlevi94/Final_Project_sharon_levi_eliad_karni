@@ -17,7 +17,7 @@ public:
 	sf::Vector2f getInitialLoc()const;
 	int getLookState()const;
 	
-	bool physicsTurn(const sf::Time&, Board&);
+	virtual bool physicsTurn(const sf::Time&, Board&);
 	void moveUp(const sf::Time&, Board&);
 	void moveDown(const sf::Time&, Board&);
 	void moveLeft(const sf::Time&, Board&);
@@ -33,7 +33,7 @@ public:
 	void getUntrapped();
 	bool getTrapState()const;
 
-	virtual bool isFalling(const Board&);
+	bool isFalling(const Board&);
 	virtual void setLocation(const sf::Vector2f&);
 	void setLookState(int);
 	virtual void reset()override;
