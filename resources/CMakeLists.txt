@@ -1,5 +1,7 @@
 ﻿#game texturs
 configure_file ("player.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("runPlayerRun.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("fall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("coin.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("enemy.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("ladder.png" ${CMAKE_BINARY_DIR} COPYONLY)

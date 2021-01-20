@@ -10,7 +10,6 @@
 FoolEnemy::FoolEnemy(const sf::Vector2f& location,
 	const sf::Vector2f& size)
 	:Enemy(location, size, ENEMY_T) {}
-//============================== gets section ================================
 //============================ methods section ===============================
 void FoolEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 	if (!this->physicsTurn(deltaTime, board)) {
@@ -29,6 +28,3 @@ void FoolEnemy::handleCollision(Wall& obj, const sf::Vector2f& movement) {
 	else
 		this->setLookState(LOOK_LEFT);
 }
-//============================ private section ===============================
-//============================== gets section ================================
-//============================ methods section ===============================
