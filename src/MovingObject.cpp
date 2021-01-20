@@ -62,7 +62,7 @@ void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 		if (object != nullptr)
 			object->handleCollision(*this, movement);
 		else if (this->getState() != RODDING){
-			if(dynamic_cast <Ladder*> (board.getContent(this->getBelow())))
+			if(dynamic_cast <Ladder*> (board.getContent(this->getBelow() - sf::Vector2f(-1, 0))))
 				this->nullMovement(movement);
 			setState(STAND);
 		}
