@@ -44,7 +44,6 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 	}
 	//the character is falling ?
 	if (this->isFalling(board)) {
-		//EffectsHolder::instance().playSound(FALLING_SOUND);
 		moveDown(deltaTime, board);
 		return true;
 	}
@@ -63,7 +62,8 @@ void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 		if (object != nullptr)
 			object->handleCollision(*this, movement);
 		else if (this->getState() != RODDING){
-			this->nullMovement(movement);
+			if(dynamic_cast <Ladder*> (board.getContent(this->getBelow())))
+				this->nullMovement(movement);
 			setState(STAND);
 		}
 	}

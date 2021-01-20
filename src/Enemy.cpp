@@ -5,11 +5,11 @@
 //==================== Constructors & distructors section ====================
 //============================== gets section ================================
 //============================ methods section ===============================
-bool Enemy::isFalling(const Board& board){
-	if(this->getTrapState())
-		if (this->getTrappingWall().getLocation().y < this->getLocation().y)
-			return false;
-	return this->MovingObject::isFalling(board);
+bool Enemy::physicsTurn(const sf::Time& deltaTime, Board& board) {
+	if (this->getTrapState() && this->getTrappingWall().isDigged())
+		if (this->getLocation().y >= this->getTrappingWall().getLocation().y)
+			return true;
+	return this->MovingObject::physicsTurn(deltaTime, board);
 }
 //============================ private section ===============================
 //============================== gets section ================================

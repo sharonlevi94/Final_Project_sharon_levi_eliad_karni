@@ -13,7 +13,7 @@ SmartEnemy::SmartEnemy(const sf::Vector2f& location,
 //============================ methods section ===============================
 //============================================================================
 void SmartEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
-	if (!this->MovingObject::physicsTurn(deltaTime, board)) {
+	if (!this->physicsTurn(deltaTime, board)) {
 		//the enemy is above player:	
 		if ((this->getCenter().y < board.getPlayerLoc().y &&
 			(dynamic_cast <Ladder*> (board.getContent(this->getBelow()))) &&

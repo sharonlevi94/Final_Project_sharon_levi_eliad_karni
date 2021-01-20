@@ -10,7 +10,7 @@ RandEnemy::RandEnemy(const sf::Vector2f& location,
 //============================== gets section ================================
 //============================ methods section ===============================
 void RandEnemy::playTurn(const sf::Time& deltaTime, Board& board){
-	if (!this->MovingObject::physicsTurn(deltaTime, board)) {
+	if (!this->physicsTurn(deltaTime, board)) {
 		//every level has its own rands at the controller
 		this->m_randTime += deltaTime;
 		if (m_randTime.asSeconds() >= RAND_ENEMY_TIME) {
