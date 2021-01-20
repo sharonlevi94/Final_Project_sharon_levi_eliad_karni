@@ -34,6 +34,9 @@ bool DataReader::isThereNextLevel()const {
 	return (!this->m_boardReader.eof());
 }
 //========================================================================
+/*
+* this function read the parameters from the level
+*/
 vector<vector<char>> DataReader::readNextLevel(){
 	//1. allocate 2D vector of chars
 	vector<vector<char>> newLevel = {};
@@ -101,6 +104,9 @@ sf::Vector2f DataReader::getLevelSize()const { return this->m_levelSize; }
 //========================================================================
 int DataReader::getLevelTime()const { return this->m_levelTime; }
 //========================================================================
+/*this function return the file descriptor to the beginning of the file
+* and clear the current vector of the map.
+ */
 void DataReader::resetRead() {
 	this->m_boardReader.clear();
 	this->m_boardReader.seekg(0);

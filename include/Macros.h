@@ -24,10 +24,6 @@ constexpr auto PLAYER_ON_LADDER = 'S';
 constexpr auto GIFT = '+';
 constexpr auto DOOR = 'D';
 
-//obj size:
-constexpr auto OBJ_HEIGHT = 30; //y
-constexpr auto OBJ_WIDTH = 30; //x
-
 //menu answers
 constexpr auto QUIT_GAME = 'Q';
 constexpr auto PLAY_GAME = 'P';
@@ -64,7 +60,11 @@ constexpr auto NUM_OF_LIFE = 3;
 constexpr auto NO_LEVEL_TIME = -1;
 constexpr auto NUM_OF_GIFT_TYPES = 4;
 constexpr auto NUM_OF_ENEMIES_TYPES = 3;
-constexpr auto BONUS = 20;
+
+//============================== gift bonuses ================================
+constexpr auto BONUS_TIME = 20;
+constexpr auto BONUS_SCORE = 20;
+constexpr auto BONUS_LIFE = 1;
 
 //============================  map's file path ==============================
 //-------------------------- data files section ------------------------------

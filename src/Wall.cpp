@@ -6,7 +6,7 @@
 #include <iostream>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-Wall::Wall(const sf::Vector2f location, const sf::Vector2f& size )
+Wall::Wall(const sf::Vector2f& location, const sf::Vector2f& size )
 	: StaticObject(location, size, WALL_T), m_isDigged(false), 
 	m_isTrapping(false) {}
 //============================== gets section ================================

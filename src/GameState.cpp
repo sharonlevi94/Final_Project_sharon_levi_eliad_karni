@@ -106,12 +106,12 @@ std::string GameState::getRemindSec() {
 	return (std::to_string(time));
 }
 //============================================================================
-void GameState::addTimeBonus(const sf::Time& timeBonus){
-	this->m_levelTime += timeBonus;
+void GameState::addTimeBonus(){
+	this->m_levelTime += sf::seconds(BONUS_TIME);
 }
 //============================================================================
-void GameState::addLife() { this->m_lifes++; }
+void GameState::addLife() { this->m_lifes += BONUS_LIFE; }
 //============================================================================
-void GameState::addScore(int scoreBonus){
-	this->m_score += scoreBonus;
+void GameState::addScore(){
+	this->m_score += BONUS_SCORE;
 }

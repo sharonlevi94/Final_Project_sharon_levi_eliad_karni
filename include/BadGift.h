@@ -1,13 +1,25 @@
 #pragma once
+//============================= include section ==============================
 #include "Gift.h"
+#include <sfml\Graphics.hpp>
+//========================== forward declarations ============================
+class Controller;
+/*============================================================================
+ * Bad gift:
+ * when bad gifts objects collid with the player it's add new enemy to the
+ * level in the location of the door on the map.
+ */
 class BadGift : public Gift
 {
 public:
-	BadGift(const sf::Vector2f = sf::Vector2f(0, 0),
-		const sf::Vector2f & = sf::Vector2f(0, 0));
+//=================== constractors and destractors section ===================
 
-	virtual void handleColision(vector<std::unique_ptr<RandEnemy>>&,
-		sf::Vector2f, GameState&) override;
+	BadGift(const sf::Vector2f& = sf::Vector2f(0, 0),
+		const sf::Vector2f & = sf::Vector2f(0, 0));
+	virtual ~BadGift() = default;
+	//=========================== method section =============================
+
+	virtual void handleColision(Controller&) override;
 	virtual void handleCollision(MovingObject&, const sf::Vector2f&)override;
 private:
 };

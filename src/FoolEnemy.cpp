@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-FoolEnemy::FoolEnemy(const sf::Vector2f location,
+FoolEnemy::FoolEnemy(const sf::Vector2f& location,
 	const sf::Vector2f& size)
 	:Enemy(location, size, ENEMY_T) {}
 //============================== gets section ================================

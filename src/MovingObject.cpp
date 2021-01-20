@@ -13,7 +13,7 @@
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-MovingObject::MovingObject(const sf::Vector2f location,
+MovingObject::MovingObject(const sf::Vector2f& location,
 	const sf::Vector2f& size,
 	char objectType)
 	: GameObject(location, size, objectType), m_isTrapped(false),
@@ -25,6 +25,10 @@ sf::Vector2f MovingObject::getInitialLoc()const {
 }
 //============================================================================
 int MovingObject::getLookState()const { return this->m_lookingState; }
+//============================================================================
+const Wall& MovingObject::getTrappingWall()const { 
+	return *this->m_trappingWall;
+}
 //============================ methods section ===============================
 /*
 * this function handle in spacial moves cases of each character:
@@ -34,10 +38,7 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 	//handle traping wall communication
 	if (this->m_isTrapped) {
 		if (!this->m_trappingWall->getTrappingState() ||
-			(this->m_trappingWall->getSprite().getGlobalBounds()
-				.contains(this->getCenter()) &&
-				this->m_trappingWall->getSprite().getGlobalBounds()
-				.contains(this->getAbove() - sf::Vector2f(0, 1)))) {
+			!(this->m_trappingWall->CollidesWith(*this))) {
 			this->getUntrapped();
 		}
 	}
@@ -204,7 +205,7 @@ void MovingObject::reset(){
 //============================ private section ===============================
 //============================== sets section ================================
 /*
-* this function get a new location and set this location in hte object 
+* this function get a new location and set this location in the object 
 * location
 */
 void MovingObject::setLocation(const sf::Vector2f& movement){
@@ -223,6 +224,10 @@ void MovingObject::setLookState(int state) {
 		this->m_lookingState = LOOK_LEFT;
 }
 //============================================================================
+/*
+* This function using in double dispatch method to handle colision
+* between a moving object to a ladder object.
+*/
 void MovingObject::handleCollision(const Ladder& obj,
 	const sf::Vector2f& movement) {
 	this->setState(CLIMBING);
@@ -233,6 +238,10 @@ void MovingObject::handleCollision(const Ladder& obj,
 		this->setLocation(movement);
 }
 //============================================================================
+/*
+* This function using in double dispatch method to handle colision
+* between a moving object to a wall object.
+*/
 void MovingObject::handleCollision(Wall& obj,
 	const sf::Vector2f& movement) {
 	if (obj.isDigged()) {
@@ -246,6 +255,10 @@ void MovingObject::handleCollision(Wall& obj,
 	}
 }
 //============================================================================
+/*
+* This function using in double dispatch method to handle colision
+* between a moving object to a rod object.
+*/
 void MovingObject::handleCollision(const Rod& obj,
 	const sf::Vector2f& movement) {
 	if (RODDING && movement.y < 0)
@@ -259,11 +272,18 @@ void MovingObject::handleCollision(const Rod& obj,
 	
 }
 //============================================================================
+/*
+* This is a generic function using in double dispatch method to handle colision 
+* between a moving object to static object on the board.
+*/
 void MovingObject::handleCollision(const StaticObject& obj,
 	const sf::Vector2f& movement) {
 	this->nullMovement(movement);
 }
 //============================================================================
+/*
+* This function set a new location to the moving object 
+*/
 void MovingObject::nullMovement(const sf::Vector2f& movement) {
 	this->setLocation(movement);
 }

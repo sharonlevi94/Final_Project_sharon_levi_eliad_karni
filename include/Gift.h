@@ -3,20 +3,23 @@
 #include <vector>
 #include "RandEnemy.h"
 #include "GameState.h"
+
+
 using std::vector;
-class GameState;
+
+class Controller;
+
 class Gift :public CollectableObject
 {
 public:
 public:
-	Gift(const sf::Vector2f = sf::Vector2f(0, 0),
+	Gift(const sf::Vector2f & = sf::Vector2f(0, 0),
 		const sf::Vector2f & = sf::Vector2f(0, 0));
 	
 
 	virtual void reset()override;
 	virtual void collect()override;
-	virtual void handleColision(vector<std::unique_ptr<RandEnemy>>&,
-		sf::Vector2f,GameState&)=0;
+	virtual void handleColision(Controller&)=0;
 private:
 
 };

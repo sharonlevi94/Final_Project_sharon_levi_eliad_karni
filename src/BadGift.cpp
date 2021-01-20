@@ -3,18 +3,18 @@
 #include "Macros.h"
 #include "MovingObject.h"
 #include "EffectsHolder.h"
+#include "Utilities.h"
+#include "Controller.h"
+class Controller;
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-BadGift::BadGift(const sf::Vector2f location,
+BadGift::BadGift(const sf::Vector2f& location,
 	const sf::Vector2f& size)
 	:Gift(location, size) {
 }
 //============================ methods section ===============================
-//============================================================================
-void BadGift::handleColision(vector<std::unique_ptr<RandEnemy>>& giftEnenmy,
-	sf::Vector2f doorLoc, GameState& gameState) {
-	EffectsHolder::instance().playSound(DOOR_SOUND);
-	giftEnenmy.push_back(std::make_unique<RandEnemy>(doorLoc, this->getSize()));
+void BadGift::handleColision(Controller& controller) {
+	controller.handleColision(*this);
 }
 //============================================================================
 void BadGift::handleCollision(MovingObject& obj, const sf::Vector2f& movement) {

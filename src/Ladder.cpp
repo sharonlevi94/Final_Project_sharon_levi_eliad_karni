@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-Ladder::Ladder(const sf::Vector2f location,
+Ladder::Ladder(const sf::Vector2f& location,
 		const sf::Vector2f& size)
 	: StaticObject(location ,size, LADDER_T) {}
 //============================== gets section ================================

@@ -8,7 +8,7 @@
 #include "EffectsHolder.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-Player::Player(const sf::Vector2f location,
+Player::Player(const sf::Vector2f& location,
 		const sf::Vector2f& size)
 	: MovingObject(location, size, PLAYER_T), m_diggedWalls({}) {}
 //============================ methods section ===============================

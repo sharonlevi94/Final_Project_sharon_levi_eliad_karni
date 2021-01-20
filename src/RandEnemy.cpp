@@ -3,7 +3,7 @@
 #include "Board.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-RandEnemy::RandEnemy(const sf::Vector2f location,
+RandEnemy::RandEnemy(const sf::Vector2f& location,
 	const sf::Vector2f& size)
 	:Enemy(location, size, ENEMY_T), m_rand_move(rand() % 4),
 	m_randTime(sf::seconds(0)){}

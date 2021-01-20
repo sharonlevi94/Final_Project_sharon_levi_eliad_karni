@@ -4,7 +4,7 @@
 #include "MovingObject.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-Coin::Coin(const sf::Vector2f location,
+Coin::Coin(const sf::Vector2f& location,
 		const sf::Vector2f& size)
 	:CollectableObject(location, size, COIN_T) {
 	++m_coinsCounter;

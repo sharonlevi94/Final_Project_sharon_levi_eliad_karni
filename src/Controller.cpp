@@ -12,6 +12,7 @@
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 #include "EffectsHolder.h"
+#include "Utilities.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Controller::Controller() :
@@ -30,8 +31,8 @@ Controller::Controller() :
 		this->m_window.getSize().y * 0.08f));
 	srand((unsigned int)time(NULL));
 }
-//============================ methods section ===============================
-/*
+/*============================ methods section ===============================
+*
 * this function run from the main function.
 * open new window & run the menu screen.
 * the user can click on and execute 2 options:
@@ -50,8 +51,35 @@ void Controller::run() {
 			break;
 	}
 }
-//============================================================================
-/*
+/*============================ methods section ===============================
+* the method handling bad gift collection case.
+*/
+void Controller::handleColision(const BadGift& obj){
+	EffectsHolder::instance().playSound(DOOR_SOUND);
+	this->m_giftEnemies.push_back(std::unique_ptr <Enemy>
+					(raffleEnemy(this->m_board.getObjectSize(), 
+					this->m_board.getDoorLocation())));
+}
+/*============================ methods section ===============================
+* the method handling score gift collection case.
+*/
+void Controller::handleColision(const ScoreGift& obj) {
+	this->m_gameState.addScore();
+}
+/*============================ methods section ===============================
+* the method handling time gift collection case.
+*/
+void Controller::handleColision(const TimeGift& obj) {
+	this->m_gameState.addTimeBonus();
+}
+/*============================ methods section ===============================
+* the method handling life gift collection case.
+*/
+void Controller::handleColision(const LifeGift& obj) {
+		this->m_gameState.addLife();
+}
+/*============================================================================
+*
 * this function run the menu screen and realize clicks by the user. 
 * this function return the result of the click to the run function.
 */
@@ -97,8 +125,8 @@ char Controller::runMenu() {
 	EffectsHolder::instance().pauseMusic();
 	return QUIT_GAME;
 }
-//============================================================================
-/*
+/*============================================================================
+*
 * this function is the central function that manage the proccess of the game.
 * draw the objects, play their turns, check cilisions and load new levels.
 * load new level if the player collected all the coins,
@@ -195,7 +223,7 @@ void Controller::playerDied(){
 	//reset Static objects:
 	EffectsHolder::instance().playSound(ENEMY_SOUND);
 	this->m_board.resetLvl(); 
-	this->m_giftEnemies.clear();
+	//this->m_giftEnemies.clear();
 	this->m_gameState.died();
 }
 //============================================================================
@@ -245,8 +273,7 @@ void Controller::checkGiftsColisions() {
 	if (dynamic_cast <Gift*> (this->m_board.getContent(this->m_player->getCenter()))) {
 		if (!((Gift*)this->m_board.getContent(this->m_player->getCenter()))->is_collected()) {
 			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->collect();
-			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->handleColision
-			(this->m_giftEnemies, this->m_board.getDoorLocation(), this->m_gameState);
+			((Gift*)this->m_board.getContent(this->m_player->getCenter()))->handleColision(*this);
 		}
 	}
 }

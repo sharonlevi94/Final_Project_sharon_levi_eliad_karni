@@ -6,7 +6,7 @@
 #include "Rod.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-SmartEnemy::SmartEnemy(const sf::Vector2f location,
+SmartEnemy::SmartEnemy(const sf::Vector2f& location,
 		const sf::Vector2f& size )
 	:Enemy(location,size,ENEMY_T) {}
 //============================== gets section ================================

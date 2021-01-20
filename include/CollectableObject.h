@@ -8,6 +8,7 @@ public:
 	CollectableObject(const sf::Vector2f& = sf::Vector2f(0,0),
 		const sf::Vector2f& = sf::Vector2f(0,0),
 		char objectType = NOTHING);
+	virtual ~CollectableObject() = default;
 
 	virtual bool is_collected()const;
 	virtual void draw(sf::RenderWindow&, const sf::Time&)override;
@@ -16,6 +17,4 @@ public:
 
 private:
 	bool m_is_collected;
-
-	
 };

@@ -7,7 +7,7 @@ class MovingObject;
 class Wall : public StaticObject
 {
 public:
-	Wall(const sf::Vector2f = sf::Vector2f(0,0),
+	Wall(const sf::Vector2f & = sf::Vector2f(0,0),
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
 	virtual void draw(sf::RenderWindow&, const sf::Time&);

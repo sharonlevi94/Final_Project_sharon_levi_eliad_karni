@@ -8,11 +8,12 @@ class StaticObject;
 class MovingObject : public GameObject
 {
 public:
-	MovingObject(const sf::Vector2f = sf::Vector2f(0, 0),
+	MovingObject(const sf::Vector2f & = sf::Vector2f(0, 0),
 		const sf::Vector2f & = sf::Vector2f(0, 0),
 		char objectType = NOTHING);
 
 	virtual void playTurn(const sf::Time&, Board&) = 0;
+	const Wall& getTrappingWall()const;
 	sf::Vector2f getInitialLoc()const;
 	int getLookState()const;
 	
@@ -32,7 +33,7 @@ public:
 	void getUntrapped();
 	bool getTrapState()const;
 
-	bool isFalling(const Board&);
+	virtual bool isFalling(const Board&);
 	virtual void setLocation(const sf::Vector2f&);
 	void setLookState(int);
 	virtual void reset()override;

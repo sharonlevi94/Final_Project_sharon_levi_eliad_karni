@@ -14,7 +14,7 @@ class Board;
 class GameObject{
 public:
 	GameObject(
-		const sf::Vector2f = sf::Vector2f(0,0),
+		const sf::Vector2f& = sf::Vector2f(0,0),
 		const sf::Vector2f& = sf::Vector2f(0,0),
 		char objectType = NOTHING);
 	virtual ~GameObject() = 0;
@@ -37,8 +37,8 @@ public:
 	int getState ()const;
 	const sf::Sprite& getSprite()const;
 
-	void setState(int);
 protected:
+	void setState(int);
 	virtual void setLocation(const sf::Vector2f&);
 private:
 	sf::Sprite m_objectSprite;

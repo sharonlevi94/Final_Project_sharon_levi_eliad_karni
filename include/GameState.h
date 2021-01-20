@@ -31,9 +31,9 @@ public:
 	sf::Vector2f getLocation()const;
 	int getLevel()const;
 
-	void addTimeBonus(const sf::Time&);
+	void addTimeBonus();
 	void addLife();
-	void addScore(int);
+	void addScore();
 
 
 private:

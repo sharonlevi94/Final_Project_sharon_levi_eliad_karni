@@ -5,7 +5,7 @@
 #include "MovingObject.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-Rod::Rod(const sf::Vector2f location,
+Rod::Rod(const sf::Vector2f& location,
 		const sf::Vector2f& size )
 	: StaticObject(location, size, ROD_T) {}
 //============================== gets section ================================

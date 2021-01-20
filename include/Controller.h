@@ -2,14 +2,17 @@
 //============================ include section ===============================
 #include "Board.h"
 #include "Menu.h"
-#include "RandEnemy.h"
+#include "Enemy.h"
 #include "GameState.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 //========================== forward declarations ============================
 class MovingObject;
 class Player;
-class Enemy;
+class BadGift;
+class ScoreGift;
+class TimeGift;
+class LifeGift;
 
 class Controller
 {
@@ -18,13 +21,18 @@ public:
 
 	void run();
 
+	void handleColision(const BadGift&);
+	void handleColision(const ScoreGift&);
+	void handleColision(const TimeGift&);
+	void handleColision(const LifeGift&);
+
 private:
 	sf::RenderWindow m_window;
 	Board m_board;
 	Menu m_menu;
 	GameState m_gameState;
 	vector <MovingObject*> m_enemies;
-	std::vector<std::unique_ptr<RandEnemy>> m_giftEnemies;
+	std::vector<std::unique_ptr<Enemy>> m_giftEnemies;
 	Player* m_player;
 	sf::Clock m_gameClock;
 

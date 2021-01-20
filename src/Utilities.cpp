@@ -3,9 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include <stdlib.h>
 #include <iostream>
+#include "RandEnemy.h"
+#include "SmartEnemy.h"
+#include "FoolEnemy.h"
+#include "Enemy.h"
 //============================ functions section ==============================
-
-//========================================================================
 /* The function print the received error message and close the program
  * with -1 return value.
  * input: string
@@ -35,4 +37,22 @@ sf::Vector2f calcScreenLocation(const sf::Vector2f& ScreenSize,
 //========================================================================
 sf::Vector2f calcDistance(const sf::Vector2f& from, const sf::Vector2f& to) {
 	return(sf::Vector2f(to.x - from.x, to.y - from.y));
+}
+//============================================================================
+/*
+* This function called in load new level function to raffle the type of the
+* enemy. The function return a ptr to the type of enemy it raffled.
+*/
+Enemy* raffleEnemy(const sf::Vector2f& boxSize,
+const sf::Vector2f& location) {
+	//srand was declared in the controller
+	switch (rand() % NUM_OF_ENEMIES_TYPES)
+	{
+	case 0:
+		return new RandEnemy(location, boxSize);
+	case 1:
+		return new FoolEnemy(location, boxSize);
+	default:
+		return new SmartEnemy(location, boxSize);
+	}
 }

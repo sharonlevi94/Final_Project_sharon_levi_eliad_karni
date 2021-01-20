@@ -7,7 +7,7 @@
 #include <iostream>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-GameObject::GameObject(const sf::Vector2f location, const sf::Vector2f& size,
+GameObject::GameObject(const sf::Vector2f& location, const sf::Vector2f& size,
 	char objectType) : m_state(STAND), m_objectSprite() {
 	this->m_objectSprite.setPosition(location);
 	this->m_objectSprite.setTexture(EffectsHolder::instance().

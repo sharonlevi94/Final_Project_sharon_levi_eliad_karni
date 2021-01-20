@@ -1,23 +1,28 @@
 #pragma once
+//============================= include section ==============================
 #include <fstream>
 #include <vector>
 #include <SFML/Graphics.hpp>
 
 class DataReader{
 public:
-	//------------------------- constractors section -------------------------
+	//========================= constractors section =========================
 	DataReader();
 	~DataReader();
-	//------------------------- method section -------------------------------
-	bool isThereNextLevel()const;
-	std::vector<std::vector<char>> readNextLevel();
+	//============================= gets section =============================
+	
 	sf::Vector2f getLevelSize()const;
 	int getLevelTime()const;
+	//========================== method section ==============================
+
+	bool isThereNextLevel()const;
+	std::vector<std::vector<char>> readNextLevel();
 	void resetRead();
 private:
-	//--------------------- privete methods section --------------------------
+	//====================== privete methods section =========================
+	
 	void receiveLevelParameters();
-	//------------------------ members section -------------------------------
+	//======================== members section ===============================
 
 	std::ifstream m_boardReader;
 	sf::Vector2f m_levelSize;
