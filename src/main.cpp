@@ -11,9 +11,9 @@ int main()
 	sf::Event event;
 
 	sf::Texture texture;
-	texture.loadFromFile("runPlayerRun.png");
+	texture.loadFromFile("player.png");
 	
-	sf::IntRect rect(128, 0, 128, 128);
+	sf::IntRect rect(0, 512, 128, 128);
 	sf::Sprite sprite(texture, rect);
 
 	sf::Clock clock;

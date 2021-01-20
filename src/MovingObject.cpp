@@ -18,7 +18,8 @@ MovingObject::MovingObject(const sf::Vector2f& location,
 	char objectType)
 	: GameObject(location, size, objectType), m_isTrapped(false),
 	m_initialLoc(location), m_lookingState(LOOK_STRAIGHT), 
-	m_trappingWall(nullptr){}
+	m_trappingWall(nullptr),
+	m_animationTime(sf::seconds(0)){}
 //============================== gets section ================================
 sf::Vector2f MovingObject::getInitialLoc()const { 
 	return this->m_initialLoc; 
@@ -44,6 +45,7 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 	}
 	//the character is falling ?
 	if (this->isFalling(board)) {
+		this->setState(FALLING);
 		moveDown(deltaTime, board);
 		return true;
 	}
@@ -282,8 +284,17 @@ void MovingObject::handleCollision(const StaticObject& obj,
 }
 //============================================================================
 /*
-* This function set a new location to the moving object 
+* This method set a new location to the moving object 
 */
 void MovingObject::nullMovement(const sf::Vector2f& movement) {
 	this->setLocation(movement);
+}
+//============================================================================
+/*
+* This method is set state and updating animation clock if needed.
+*/
+void MovingObject::setState(int state) {
+	if (this->getState() != state)
+		this->m_animationTime = sf::seconds(0);
+	this->GameObject::setState(state);
 }

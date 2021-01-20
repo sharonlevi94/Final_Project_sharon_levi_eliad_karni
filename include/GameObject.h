@@ -38,8 +38,8 @@ public:
 	const sf::Sprite& getSprite()const;
 
 protected:
-	void setState(int);
 	virtual void setLocation(const sf::Vector2f&);
+	virtual void setState(int);
 private:
 	sf::Sprite m_objectSprite;
 	int m_state;

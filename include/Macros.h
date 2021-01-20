@@ -37,9 +37,10 @@ constexpr auto WALK_RIGHT = 3;
 constexpr auto CLIMBING = 4;
 constexpr auto DIGGING = 5;
 constexpr auto RODDING = 6;
-constexpr auto LOOK_LEFT = 1;
-constexpr auto LOOK_RIGHT = 2;
-constexpr auto LOOK_STRAIGHT = 1;
+constexpr auto LOOK_LEFT = 7;
+constexpr auto LOOK_RIGHT = 8;
+constexpr auto LOOK_STRAIGHT = 9;
+constexpr auto FALLING = 10;
 //coin
 constexpr auto NOT_COLLECTED = 6;
 constexpr auto COLLECTED = 7;

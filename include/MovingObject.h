@@ -39,8 +39,11 @@ public:
 	virtual void reset()override;
 
 private:
+	sf::Time m_animationTime;
 	sf::Vector2f m_initialLoc;
 	int m_lookingState;
 	bool m_isTrapped;
 	Wall* m_trappingWall;
+
+	virtual void setState(int)override;
 };

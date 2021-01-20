@@ -51,7 +51,9 @@ bool GameObject::CollidesWith(const GameObject& obj)const {
 	(obj.getSprite().getGlobalBounds());
 }
 //============================================================================
-void GameObject::setState(int state) { this->m_state = state; }
+void GameObject::setState(int state) {
+	this->m_state = state; 
+}
 //============================================================================
 sf::Vector2f GameObject::getCenter() const {
 	return sf::Vector2f(this->getLocation().x + (this->getSize().x / 2),
