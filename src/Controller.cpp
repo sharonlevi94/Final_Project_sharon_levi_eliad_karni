@@ -66,13 +66,13 @@ void Controller::handleColision(const BadGift& obj){
 void Controller::handleColision(const ScoreGift& obj) {
 	this->m_gameState.addScore();
 }
-/*============================ methods section ===============================
+/*============================================================================
 * the method handling time gift collection case.
 */
 void Controller::handleColision(const TimeGift& obj) {
 	this->m_gameState.addTimeBonus();
 }
-/*============================ methods section ===============================
+/*============================================================================
 * the method handling life gift collection case.
 */
 void Controller::handleColision(const LifeGift& obj) {

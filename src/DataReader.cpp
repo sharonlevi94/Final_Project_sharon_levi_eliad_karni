@@ -1,12 +1,13 @@
+//============================= include section ==============================
 #include "DataReader.h"
 #include "Macros.h"
 #include "Utilities.h"
 #include <vector>
 #include <iostream>
-
 using std::endl;
 using std::vector;
-//========================================================================
+//============================= public section ===============================
+//==================== Constructors & distructors section ====================
 DataReader::DataReader() 
 	: m_levelSize({}),m_levelTime(NO_LEVEL_TIME){
 	this->m_boardReader.open(BOARD_PATH);
@@ -18,7 +19,10 @@ DataReader::DataReader()
 DataReader::~DataReader() {
 	this->m_boardReader.close();
 }
-//========================================================================
+/*============================ methods section ===============================
+/*
+* this function read the size of the level and the time if exist.
+*/
 void DataReader::receiveLevelParameters(){
 	m_boardReader >> m_levelSize.x >> m_levelSize.y;
 	m_boardReader >> m_levelTime;
@@ -35,7 +39,8 @@ bool DataReader::isThereNextLevel()const {
 }
 //========================================================================
 /*
-* this function read the parameters from the level
+* this function read the parameters from the level and then level itself
+* from the file.
 */
 vector<vector<char>> DataReader::readNextLevel(){
 	//1. allocate 2D vector of chars
