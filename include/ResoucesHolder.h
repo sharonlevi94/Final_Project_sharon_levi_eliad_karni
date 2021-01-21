@@ -4,10 +4,10 @@
 #include <SFML/Audio.hpp>
 
 
-class EffectsHolder
+class ResoucesHolder
 {
 public:
-	static EffectsHolder& instance();
+	static ResoucesHolder& instance();
 
 	const sf::SoundBuffer& getSound(int) const;
 	void playSound(int key);
@@ -26,7 +26,7 @@ private:
 	sf::Music m_music;
 	sf::Sound m_sound;
 
-	EffectsHolder();
+	ResoucesHolder();
 	
 	void setBackgrounds();
 	void setLogos();

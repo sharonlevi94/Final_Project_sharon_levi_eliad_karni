@@ -9,17 +9,16 @@
 #include "Rod.h"
 #include "Door.h"
 #include "Macros.h"
-#include "EffectsHolder.h"
+#include "ResoucesHolder.h"
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 MovingObject::MovingObject(const sf::Vector2f& location,
 	const sf::Vector2f& size,
 	char objectType)
-	: GameObject(location, size, objectType), m_isTrapped(false),
+	: GameObject(location, size, objectType, true), m_isTrapped(false),
 	m_initialLoc(location), m_lookingState(WALK_RIGHT), 
-	m_trappingWall(nullptr),
-	m_animationTime(sf::seconds(0)){}
+	m_trappingWall(nullptr){}
 //============================== gets section ================================
 sf::Vector2f MovingObject::getInitialLoc()const { 
 	return this->m_initialLoc; 
@@ -40,6 +39,7 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 	if (this->m_isTrapped) {
 		if (!this->m_trappingWall->getTrappingState() ||
 			!(this->m_trappingWall->CollidesWith(*this))) {
+			this->setState(FALLING);
 			this->getUntrapped();
 		}
 	}
@@ -64,11 +64,13 @@ void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 		if (object != nullptr)
 			object->handleCollision(*this, movement);
 		else if (this->getState() != RODDING){
-			if(dynamic_cast <Ladder*> (board.getContent(this->getBelow() - sf::Vector2f(-1, 0))))
+			if(dynamic_cast <Ladder*> (board.getContent(this->getBelow() 
+				- sf::Vector2f(-1, 0))))
 				this->nullMovement(movement);
 			setState(STAND);
 		}
 	}
+	this->updateAnimation(deltaTime);
 }
 //============================================================================
 /*
@@ -85,9 +87,10 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 			object->handleCollision(*this, movement);
 		else {
 			this->nullMovement(movement);
-			this->setState(STAND);
+			this->setState(FALLING);
 		}
 	}
+	this->updateAnimation(deltaTime);
 }
 //============================================================================
 /*
@@ -111,9 +114,11 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 					(this->getLocation() + this->getSize())).y });
 			this->nullMovement(movement);
 			if (center == nullptr || dynamic_cast <Door*> (center))
-				this->setState(STAND);
+				this->setState(RUNNING);
 		}
+		this->setLookState(WALK_LEFT);
 	}
+	this->updateAnimation(deltaTime);
 }
 //============================================================================
 /*
@@ -135,9 +140,11 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 					(this->getLocation() + this->getSize())).y });
 			this->nullMovement(movement);
 			if(center == nullptr || dynamic_cast <Door*> (center))
-				this->setState(STAND);
+				this->setState(RUNNING);
 		}
+		this->setLookState(WALK_RIGHT);
 	}
+	this->updateAnimation(deltaTime);
 }
 //============================================================================
 void MovingObject::getTrapped(Wall* trappingWall) {
@@ -218,7 +225,10 @@ void MovingObject::setLocation(const sf::Vector2f& movement){
 * the function change the direction that the character looking to.
 */
 void MovingObject::setLookState(int state) {
-	this->setLookState(state);
+	if (this->m_lookingState != state) {
+		this->m_lookingState = state;
+		this->flipSprite();
+	}
 }
 //============================================================================
 /*
@@ -290,6 +300,6 @@ void MovingObject::nullMovement(const sf::Vector2f& movement) {
 */
 void MovingObject::setState(int state) {
 	if (this->getState() != state)
-		this->m_animationTime = sf::seconds(0);
+		this->resetAnimationTime();
 	this->GameObject::setState(state);
 }

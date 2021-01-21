@@ -23,14 +23,11 @@ using std::vector;
 class Board
 {
 public:
+	//================= constractors and destractors section =================
 	Board(const sf::Vector2f& location = sf::Vector2f(0,0),
 		const sf::Vector2f& size = sf::Vector2f(0,0));
 	~Board() = default;
-
-	void draw(sf::RenderWindow& window, const sf::Time&);
-	vector<MovingObject*>loadNewLevel();
-	bool is_next_lvl_exist()const;
-
+	//============================ gets section ==============================
 	int getLevelTime()const;
 	const sf::Vector2f& getlevelSize()const;
 	const sf::Vector2f& getLocation() const;
@@ -38,14 +35,19 @@ public:
 	StaticObject* getContent(const sf::Vector2f& location);
 	const StaticObject* getContent(const sf::Vector2f&) const;
 	const sf::Vector2f& getPlayerLoc()const;
+	const sf::Vector2f& getDoorLocation()const;
 
+	//=========================== method section =============================
+	void draw(sf::RenderWindow& window, const sf::Time&);
+	vector<MovingObject*>loadNewLevel();
+	bool is_next_lvl_exist()const;
 	void resetLvl();
 	void gameOver();
-	
-	const sf::Vector2f& getDoorLocation()const;
 	bool isMovePossible(const sf::Vector2f&)const;
 	void loadLevelEffects(int);
+
 private:
+	//========================= members section ==============================
 	vector<vector<std::unique_ptr<GameObject>>> m_map;
 	sf::Vector2f m_location;
 	DataReader m_levelReader;
@@ -53,6 +55,7 @@ private:
 	std::unique_ptr <Door> m_door;
 	Player* m_player;
 
+	//====================== privete methods section =========================
 	void releaseMap();
 	void clearParameters();
 	Gift* raffleGift(const sf::Vector2f& boxSize,const sf::Vector2i& index);
@@ -60,7 +63,7 @@ private:
 };
 
 //============================= include section ==============================
-//=================== constractors and destractors section ===================
+//================= constractors and destractors section =================
 //============================ gets section ==============================
 //=========================== method section =============================
 //====================== privete methods section =========================

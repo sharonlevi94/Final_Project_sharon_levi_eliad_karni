@@ -10,7 +10,7 @@ public:
 	Wall(const sf::Vector2f & = sf::Vector2f(0,0),
 		const sf::Vector2f& = sf::Vector2f(0,0));
 
-	virtual void draw(sf::RenderWindow&, const sf::Time&);
+	virtual void draw(sf::RenderWindow&);
 	virtual void reset()override;
 	virtual void handleCollision(MovingObject&, const sf::Vector2f&)override;
 	void dig(const sf::Time&);

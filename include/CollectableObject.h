@@ -11,7 +11,7 @@ public:
 	virtual ~CollectableObject() = default;
 
 	virtual bool is_collected()const;
-	virtual void draw(sf::RenderWindow&, const sf::Time&)override;
+	virtual void draw(sf::RenderWindow&)override;
 	virtual void reset()override;
 	virtual void collect();
 

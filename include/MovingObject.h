@@ -2,6 +2,11 @@
 //============================ include section ===============================
 #include "GameObject.h"
 #include <SFML/Graphics.hpp>
+//========================== forward declarations ============================
+class Wall;
+class Ladder;
+class Coin;
+class Rod;
 class Board;
 class StaticObject;
 
@@ -39,12 +44,10 @@ public:
 	virtual void reset()override;
 
 private:
-	sf::Time m_animationTime;
 	sf::Vector2f m_initialLoc;
 	int m_lookingState;
 	bool m_isTrapped;
 	Wall* m_trappingWall;
-	sf::IntRect m_rectSpriteObj;
 
 	virtual void setState(int)override;
 };

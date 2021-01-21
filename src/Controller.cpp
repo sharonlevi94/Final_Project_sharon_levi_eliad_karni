@@ -8,10 +8,9 @@
 #include "Coin.h"
 #include "Gift.h"
 #include "GameState.h"
-#include "EffectsHolder.h"
+#include "ResoucesHolder.h"
 #include "Player.h"
 #include <SFML/Graphics.hpp>
-#include "EffectsHolder.h"
 #include "Utilities.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
@@ -55,7 +54,7 @@ void Controller::run() {
 * the method handling bad gift collection case.
 */
 void Controller::handleColision(const BadGift& obj){
-	EffectsHolder::instance().playSound(DOOR_SOUND);
+	ResoucesHolder::instance().playSound(DOOR_SOUND);
 	this->m_giftEnemies.push_back(std::unique_ptr <Enemy>
 					(raffleEnemy(this->m_board.getObjectSize(), 
 					this->m_board.getDoorLocation())));
@@ -84,7 +83,7 @@ void Controller::handleColision(const LifeGift& obj) {
 * this function return the result of the click to the run function.
 */
 char Controller::runMenu() {
-	EffectsHolder::instance().playMusic(0);
+	ResoucesHolder::instance().playMusic(0);
 	while (this->m_window.isOpen())
 	{
 		//displaying menu state
@@ -103,10 +102,10 @@ char Controller::runMenu() {
 					(float)event.mouseButton.x, 
 					(float)event.mouseButton.y))) {
 				case PLAY_GAME:
-					EffectsHolder::instance().pauseMusic();
+					ResoucesHolder::instance().pauseMusic();
 					return PLAY_GAME;
 				case QUIT_GAME:
-					EffectsHolder::instance().pauseMusic();
+					ResoucesHolder::instance().pauseMusic();
 					return QUIT_GAME;
 					break;
 				}
@@ -122,7 +121,7 @@ char Controller::runMenu() {
 
 		}
 	}
-	EffectsHolder::instance().pauseMusic();
+	ResoucesHolder::instance().pauseMusic();
 	return QUIT_GAME;
 }
 /*============================================================================
@@ -171,7 +170,7 @@ void Controller::runGame() {
 void Controller::play_turns(const sf::Time& deltaTime) {
 	//playing movables turns.
 	this->m_player->playTurn(deltaTime, this->m_board);
-	this->enemiesTurns(deltaTime);
+	//this->enemiesTurns(deltaTime);
 }
 //============================================================================
 /*
@@ -190,14 +189,11 @@ void Controller::enemiesTurns(const sf::Time& deltaTime) {
 * this function draw all the dynamic objects in the game by the time clock.
 */
 void Controller::drawObjects() {
-	this->m_player->draw(this->m_window, this->m_gameClock
-		.getElapsedTime());
+	this->m_player->draw(this->m_window);
 	for (int i = 0; i < this->m_enemies.size(); ++i)
-		this->m_enemies[i]->draw(this->m_window, this->m_gameClock
-			.getElapsedTime());
+		this->m_enemies[i]->draw(this->m_window);
 	for (int i = 0; i < this->m_giftEnemies.size(); ++i)
-		this->m_giftEnemies[i]->draw(this->m_window, this->m_gameClock
-			.getElapsedTime());
+		this->m_giftEnemies[i]->draw(this->m_window);
 }
 //============================================================================
 /*
@@ -221,7 +217,7 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 */
 void Controller::playerDied(){
 	//reset Static objects:
-	EffectsHolder::instance().playSound(ENEMY_SOUND);
+	ResoucesHolder::instance().playSound(ENEMY_SOUND);
 	this->m_board.resetLvl(); 
 	//this->m_giftEnemies.clear();
 	this->m_gameState.died();
@@ -232,7 +228,7 @@ void Controller::playerDied(){
 */
 void Controller::gameOver() {
 	//TODO: Game Over msg
-	EffectsHolder::instance().pauseMusic();
+	ResoucesHolder::instance().pauseMusic();
 	this->m_player = nullptr;
 	this->m_enemies.clear();
 	this->m_board.gameOver();
@@ -286,7 +282,7 @@ void Controller::checkCoinsColisions() {
 		getCenter()))) {
 		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
 			is_collected()) {
-			EffectsHolder::instance().playSound(COIN_COLLECT_SOUND);
+			ResoucesHolder::instance().playSound(COIN_COLLECT_SOUND);
 			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
 				collect();
 			this->m_gameState.collectedCoin();
@@ -300,7 +296,7 @@ void Controller::checkCoinsColisions() {
 */
 void Controller::levelup() {
 	this->m_giftEnemies.clear();
-	EffectsHolder::instance().pauseMusic();
+	ResoucesHolder::instance().pauseMusic();
 	srand((unsigned int)time(NULL));
 	this->seperateGameObjects(this->m_board.loadNewLevel());
 	this->m_gameState.levelup(this->m_board.getLevelTime());

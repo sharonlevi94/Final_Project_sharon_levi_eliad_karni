@@ -3,24 +3,21 @@
 #include <SFML/Graphics.hpp>
 #include "Macros.h"
 //========================== forward declarations ============================
-class Wall;
-class Ladder;
-class Coin;
-class Player;
-class Enemy;
-class Rod;
 class Board;
 
 class GameObject{
 public:
 	GameObject(
-		const sf::Vector2f& = sf::Vector2f(0,0),
-		const sf::Vector2f& = sf::Vector2f(0,0),
-		char objectType = NOTHING);
+		const sf::Vector2f & = sf::Vector2f(0, 0),
+		const sf::Vector2f & = sf::Vector2f(0, 0),
+		char objectType = NOTHING,
+		bool isAnimated = false);
 	virtual ~GameObject() = 0;
 
-	virtual void draw(sf::RenderWindow&, const sf::Time&);
+	virtual void draw(sf::RenderWindow&);
 	virtual void reset();
+	virtual void resetAnimationTime();
+	void updateAnimation(const sf::Time&);
 
 	bool CollidesWith(const GameObject&)const;
 	
@@ -36,6 +33,7 @@ public:
 	sf::Vector2f getSize()const;
 	int getState ()const;
 	const sf::Sprite& getSprite()const;
+	void flipSprite();
 
 protected:
 	virtual void setLocation(const sf::Vector2f&);
@@ -43,4 +41,9 @@ protected:
 private:
 	sf::Sprite m_objectSprite;
 	int m_state;
+	bool m_isAnimated;
+	//here and not on moving object to give an option to static objects
+	//animation
+	sf::IntRect m_intRect;
+	sf::Time m_animationTime;
 };

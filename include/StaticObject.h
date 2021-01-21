@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include <SFML/Graphics.hpp>
-
+//========================== forward declarations ============================
 class MovingObject;
 
 class StaticObject : public GameObject

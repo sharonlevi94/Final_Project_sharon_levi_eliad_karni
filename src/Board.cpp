@@ -6,7 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "MovingObject.h"
 #include "Macros.h"
-#include "EffectsHolder.h"
+#include "ResoucesHolder.h"
 #include <vector>
 #include "Utilities.h"
 #include "Player.h"
@@ -89,11 +89,11 @@ sf::Vector2f Board::getObjectSize()const{
 void Board::draw(sf::RenderWindow& window, 
 	const sf::Time& deltaTime){
 	window.draw(m_background);
-	this->m_door->draw(window, deltaTime);
+	this->m_door->draw(window);
 	for (int i = 0; i < this->m_map.size(); i++)
 		for (int j = 0; j < this->m_map[i].size(); j++)
 			if (m_map[i][j].get() != nullptr) {
-				m_map[i][j]->draw(window, deltaTime);
+				m_map[i][j]->draw(window);
 			}
 }
 //============================================================================
@@ -202,9 +202,9 @@ void Board::gameOver() {
 * This function load the background and the music of the current level.
 */
 void Board::loadLevelEffects(int level) {
-	this->m_background.setTexture(&EffectsHolder::instance()
+	this->m_background.setTexture(&ResoucesHolder::instance()
 		.getBackground(level));
-	EffectsHolder::instance().playMusic(level);
+	ResoucesHolder::instance().playMusic(level);
 }
 //============================== private section =============================
 void Board::releaseMap() {

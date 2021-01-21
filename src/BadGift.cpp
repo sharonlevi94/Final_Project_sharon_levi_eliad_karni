@@ -2,7 +2,7 @@
 #include "BadGift.h"
 #include "Macros.h"
 #include "MovingObject.h"
-#include "EffectsHolder.h"
+#include "ResoucesHolder.h"
 #include "Utilities.h"
 #include "Controller.h"
 class Controller;

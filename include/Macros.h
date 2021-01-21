@@ -32,15 +32,15 @@ constexpr auto NONE_CHOSEN = 'N';
 //========================== game objects states ============================
 //MovingObject pritesheets consts
 constexpr auto STAND = 0;
-constexpr auto NUM_OF_STAND_SPRITE = 0;
+constexpr auto NUM_OF_STAND_SPRITE = 1;
 constexpr auto CLIMBING = 1;
-constexpr auto NUM_OF_CLIMB_SPRITE = 2;
+constexpr auto NUM_OF_CLIMB_SPRITE = 3;
 constexpr auto RUNNING = 4;
-constexpr auto NUM_OF_RUNNING_SPRITE = 7;
+constexpr auto NUM_OF_RUNNING_SPRITE = 8;
 constexpr auto RODDING = 3;
-constexpr auto NUM_OF_RODDING_SPRITE = 7;
+constexpr auto NUM_OF_RODDING_SPRITE = 8;
 constexpr auto FALLING = 2;
-constexpr auto NUM_OF_FALLING_SPRITE = 4;
+constexpr auto NUM_OF_FALLING_SPRITE = 5;
 
 constexpr auto CHARACTER_HEIGHT = 128;
 constexpr auto CHARACTER_WIDTH = 128;

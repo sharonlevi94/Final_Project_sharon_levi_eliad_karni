@@ -33,9 +33,9 @@ bool Wall::getTrappingState()const { return this->m_isTrapping; }
 //============================================================================
 void Wall::changeTrapMode(bool mode) { this->m_isTrapping = mode; }
 //============================================================================
-void Wall::draw(sf::RenderWindow& window, const sf::Time& animationTime) {
+void Wall::draw(sf::RenderWindow& window) {
 	if (!this->m_isDigged)
-		GameObject::draw(window, animationTime);
+		GameObject::draw(window);
 }
 //============================================================================
 void Wall::reset() {

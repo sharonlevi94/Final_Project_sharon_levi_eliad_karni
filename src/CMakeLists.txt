@@ -7,7 +7,7 @@
                                      "Coin.cpp"
                                      "CollectableObject.cpp"
                                      "Controller.cpp"
-                                     "EffectsHolder.cpp"
+                                     "ResoucesHolder.cpp"
                                      "Enemy.cpp"
                                      "FoolEnemy.cpp"
                                      "RandEnemy.cpp"

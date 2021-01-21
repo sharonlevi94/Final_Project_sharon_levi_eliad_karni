@@ -1,6 +1,5 @@
 //============================= include section ==============================
 #include "Controller.h"
-#include "EffectsHolder.h"
 #include <stdlib.h>
 //============================== main section ================================
 int main(){
