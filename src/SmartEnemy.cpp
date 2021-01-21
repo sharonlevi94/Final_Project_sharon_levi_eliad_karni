@@ -25,10 +25,14 @@ void SmartEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 			board.isMovePossible(this->getAbove()))
 			this->moveUp(deltaTime, board);
 		//enemy is in the same line and right to player:
-		else if (this->getLocation().x > board.getPlayerLoc().x)
+		//(in 1 pixel accuration)
+		else if (this->getLocation().x - 1 > board.getPlayerLoc().x)
 			this->moveLeft(deltaTime, board);
 		//enemy is in the same line and left to player:
-		else
+		//(in 2 pixels accuration)
+		else if (this->getLocation().x + 1 < board.getPlayerLoc().x)
 			this->moveRight(deltaTime, board);
+		else
+			this->setState(STAND);
 	}
 }

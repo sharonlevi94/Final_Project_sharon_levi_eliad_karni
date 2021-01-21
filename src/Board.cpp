@@ -173,9 +173,8 @@ bool Board::is_next_lvl_exist() const{
 }
 //============================================================================
 bool Board::isMovePossible(const sf::Vector2f& location) const {
-	if (this->m_background.getGlobalBounds().contains(location)) {
+	if (this->m_background.getGlobalBounds().contains(location))
 		return true;
-	}
 	return false;
 }
 //============================================================================

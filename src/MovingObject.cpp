@@ -251,7 +251,7 @@ void MovingObject::handleCollision(const Ladder& obj,
 */
 void MovingObject::handleCollision(Wall& obj,
 	const sf::Vector2f& movement) {
-	if (obj.isDigged()) {
+	if (obj.isDigged() && movement.y > 0) {
 		this->setLocation(sf::Vector2f(obj.getLocation().x
 			- this->getLocation().x, movement.y));
 		this->getTrapped(&obj);
@@ -260,6 +260,7 @@ void MovingObject::handleCollision(Wall& obj,
 		this->setLocation({ movement.x, (obj.getLocation() - 
 			(this->getLocation() + this->getSize())).y });
 	}
+	setState(STAND);
 }
 //============================================================================
 /*

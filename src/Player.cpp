@@ -27,7 +27,6 @@ void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			this->moveRight(deltaTime, board);
 	}
-	//EffectsHolder::instance().playSound(STEP_SOUND);
 	updateDiggedWalls(deltaTime);
 }
 //============================================================================

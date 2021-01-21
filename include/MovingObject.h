@@ -42,12 +42,12 @@ public:
 	virtual void setLocation(const sf::Vector2f&);
 	void setLookState(int);
 	virtual void reset()override;
-
+	virtual void setState(int)override;
 private:
 	sf::Vector2f m_initialLoc;
 	int m_lookingState;
 	bool m_isTrapped;
 	Wall* m_trappingWall;
 
-	virtual void setState(int)override;
+	
 };
