@@ -12,12 +12,14 @@ m_music(){
 	this->m_soundBuffers.clear();
 	this->m_font.clear();
 	this->m_music.setVolume(MUSIC_VOLUME);
+	this->m_NumOfSprites.clear();
 
 	this->setBackgrounds();
 	this->setLogos();
 	this->setFonts();
 	this->setObjects();
 	this->setSounds();
+	this->setNumOfSprites();
 }
 //============================================================================
 EffectsHolder& EffectsHolder::instance() {
@@ -61,6 +63,10 @@ const sf::SoundBuffer& EffectsHolder::getSound(int soundKey) const{
 //============================================================================
 const sf::Font& EffectsHolder::getFont(int fontKey) const{
 	return(*this->m_font.find(fontKey)->second);
+}
+//============================================================================
+const int EffectsHolder::getNumOfSprites(int key)const{
+	return (this->m_NumOfSprites.find(key)->second);
 }
 //============================================================================
 void EffectsHolder::playMusic(int levelNumber) {
@@ -207,4 +213,12 @@ void EffectsHolder::setSounds() {
 void EffectsHolder::playSound(int key) {
 	m_sound.setBuffer(this->getSound(key));
 	m_sound.play();
+}
+//============================================================================
+void EffectsHolder::setNumOfSprites(){
+	this->m_NumOfSprites.insert(std::pair<int, int>(STAND, NUM_OF_STAND_SPRITE));
+	this->m_NumOfSprites.insert(std::pair<int, int>(CLIMBING, NUM_OF_CLIMB_SPRITE));
+	this->m_NumOfSprites.insert(std::pair<int, int>(RUNNING, NUM_OF_RUNNING_SPRITE));
+	this->m_NumOfSprites.insert(std::pair<int, int>(RODDING, NUM_OF_RODDING_SPRITE));
+	this->m_NumOfSprites.insert(std::pair<int, int>(FALLING,NUM_OF_FALLING_SPRITE));
 }

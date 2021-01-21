@@ -30,23 +30,30 @@ constexpr auto PLAY_GAME = 'P';
 constexpr auto NONE_CHOSEN = 'N';
 
 //========================== game objects states ============================
-//MovingObject
-constexpr auto STAND = 1;
-constexpr auto WALK_LEFT = 2;
-constexpr auto WALK_RIGHT = 3;
-constexpr auto CLIMBING = 4;
-constexpr auto DIGGING = 5;
-constexpr auto RODDING = 6;
-constexpr auto LOOK_LEFT = 7;
-constexpr auto LOOK_RIGHT = 8;
-constexpr auto LOOK_STRAIGHT = 9;
-constexpr auto FALLING = 10;
+//MovingObject pritesheets consts
+constexpr auto STAND = 0;
+constexpr auto NUM_OF_STAND_SPRITE = 0;
+constexpr auto CLIMBING = 1;
+constexpr auto NUM_OF_CLIMB_SPRITE = 2;
+constexpr auto RUNNING = 4;
+constexpr auto NUM_OF_RUNNING_SPRITE = 7;
+constexpr auto RODDING = 3;
+constexpr auto NUM_OF_RODDING_SPRITE = 7;
+constexpr auto FALLING = 2;
+constexpr auto NUM_OF_FALLING_SPRITE = 4;
+
+constexpr auto CHARACTER_HEIGHT = 128;
+constexpr auto CHARACTER_WIDTH = 128;
+
+constexpr auto ANIMATIONS_RATE = 0.1f;
+constexpr auto WALK_LEFT = 1;
+constexpr auto WALK_RIGHT = 2;
 //coin
 constexpr auto NOT_COLLECTED = 6;
 constexpr auto COLLECTED = 7;
 //wall
-constexpr auto EXIST = 8;
-constexpr auto DIGGED = 9;
+//constexpr auto EXIST = 8;
+//constexpr auto DIGGED = 9;
 //ladder/rod
 constexpr auto CLIMBED = 10;
 constexpr auto NOT_CLIMBED = 11;

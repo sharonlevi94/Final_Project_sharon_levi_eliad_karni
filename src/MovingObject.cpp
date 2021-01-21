@@ -17,7 +17,7 @@ MovingObject::MovingObject(const sf::Vector2f& location,
 	const sf::Vector2f& size,
 	char objectType)
 	: GameObject(location, size, objectType), m_isTrapped(false),
-	m_initialLoc(location), m_lookingState(LOOK_STRAIGHT), 
+	m_initialLoc(location), m_lookingState(WALK_RIGHT), 
 	m_trappingWall(nullptr),
 	m_animationTime(sf::seconds(0)){}
 //============================== gets section ================================
@@ -218,12 +218,7 @@ void MovingObject::setLocation(const sf::Vector2f& movement){
 * the function change the direction that the character looking to.
 */
 void MovingObject::setLookState(int state) {
-	if (state % 3 == LOOK_STRAIGHT)
-		this->m_lookingState = LOOK_STRAIGHT;
-	else if (state % 3 == LOOK_RIGHT)
-		this->m_lookingState = LOOK_RIGHT;
-	else
-		this->m_lookingState = LOOK_LEFT;
+	this->setLookState(state);
 }
 //============================================================================
 /*

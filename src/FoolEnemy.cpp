@@ -13,7 +13,7 @@ FoolEnemy::FoolEnemy(const sf::Vector2f& location,
 //============================ methods section ===============================
 void FoolEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 	if (!this->physicsTurn(deltaTime, board)) {
-		if (this->getLookState() == LOOK_LEFT)
+		if (this->getLookState() == WALK_LEFT)
 			this->moveLeft(deltaTime, board);
 		else
 			this->moveRight(deltaTime, board);
@@ -23,8 +23,8 @@ void FoolEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 void FoolEnemy::handleCollision(Wall& obj, const sf::Vector2f& movement) {
 	if (movement.y > 0)
 		this->MovingObject::handleCollision(obj, movement);
-	if (this->getLookState() == LOOK_LEFT)
-		this->setLookState(LOOK_RIGHT);
+	if (this->getLookState() == WALK_LEFT)
+		this->setLookState(WALK_RIGHT);
 	else
-		this->setLookState(LOOK_LEFT);
+		this->setLookState(WALK_LEFT);
 }

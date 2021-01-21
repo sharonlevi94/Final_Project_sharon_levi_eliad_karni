@@ -44,6 +44,7 @@ private:
 	int m_lookingState;
 	bool m_isTrapped;
 	Wall* m_trappingWall;
+	sf::IntRect m_rectSpriteObj;
 
 	virtual void setState(int)override;
 };
