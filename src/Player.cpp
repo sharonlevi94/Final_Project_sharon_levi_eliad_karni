@@ -29,6 +29,14 @@ void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 			this->moveLeft(deltaTime, board);
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			this->moveRight(deltaTime, board);
+		else {
+			if (this->getState() == RUNNING)
+				this->setState(STAND);
+			else {
+				this->resetAnimationTime();
+				updateAnimation(sf::seconds(0));
+			}
+		}
 	}
 	updateDiggedWalls(deltaTime);
 }

@@ -219,7 +219,7 @@ void Controller::playerDied(){
 	//reset Static objects:
 	ResoucesHolder::instance().playSound(ENEMY_SOUND);
 	this->m_board.resetLvl(); 
-	//this->m_giftEnemies.clear();
+	this->m_giftEnemies.clear();
 	this->m_gameState.died();
 }
 //============================================================================

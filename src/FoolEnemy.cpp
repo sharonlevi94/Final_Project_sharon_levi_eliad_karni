@@ -9,7 +9,7 @@
 //==================== Constructors & distructors section ====================
 FoolEnemy::FoolEnemy(const sf::Vector2f& location,
 	const sf::Vector2f& size)
-	:Enemy(location, size, ENEMY_T) {}
+	:Enemy(location, size, ENEMY_T), m_turn(false) {}
 //============================ methods section ===============================
 /*this method manage the movement of the fool enemy. He can move only to right
 direction or to the left direction.*/
@@ -20,6 +20,13 @@ void FoolEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 		else
 			this->moveRight(deltaTime, board);
 	}
+	if (this->m_turn) {
+		if (this->getLookState() == WALK_LEFT)
+			setLookState(WALK_RIGHT);
+		else
+			setLookState(WALK_LEFT);
+		this->m_turn = false;
+	}
 }
 //============================================================================
 /*this method handle a colision of the fool enemy with wall or floor.
@@ -28,8 +35,5 @@ if the fool enemy collides with a wall from left he start to walk right.*/
 void FoolEnemy::handleCollision(Wall& obj, const sf::Vector2f& movement) {
 	if (movement.y > 0)
 		this->MovingObject::handleCollision(obj, movement);
-	if (this->getLookState() == WALK_LEFT)
-		this->setLookState(WALK_RIGHT);
-	else
-		this->setLookState(WALK_LEFT);
+	this->m_turn = true;
 }
