@@ -13,20 +13,29 @@ class BadGift;
 class ScoreGift;
 class TimeGift;
 class LifeGift;
-
+/*============================================================================
+* Class: Controller. 
+* This class manage the game. handle all the cases that happen in the game.
+* it connect between all the classes in the project.
+* it can load the levels, play the turns,handle colisions
+* and draw the objects of the game.
+ ============================================================================*/
 class Controller
 {
+	//========================== public section ==============================
 public:
+	//================= constractors and destractors section =================
 	Controller();
-
+	//=========================== method section =============================
 	void run();
 
 	void handleColision(const BadGift&);
 	void handleColision(const ScoreGift&);
 	void handleColision(const TimeGift&);
 	void handleColision(const LifeGift&);
-
+	//========================= private section ==============================
 private:
+	//========================= members section ==============================
 	sf::RenderWindow m_window;
 	Board m_board;
 	Menu m_menu;
@@ -35,7 +44,7 @@ private:
 	std::vector<std::unique_ptr<Enemy>> m_giftEnemies;
 	Player* m_player;
 	sf::Clock m_gameClock;
-
+	//====================== privete methods section =========================
 	void runGame();
 	char runMenu();
 

@@ -29,7 +29,6 @@ GameObject::GameObject(const sf::Vector2f& location, const sf::Vector2f& size,
 //============================================================================
 GameObject::~GameObject() {}
 //============================== gets section ================================
-//============================================================================
 const sf::Vector2f& GameObject::getLocation()const { 
 	return this->m_objectSprite.getPosition();
 }
@@ -45,49 +44,6 @@ int GameObject::getState()const {
 //============================================================================
 const sf::Sprite& GameObject::getSprite() const {
 	return (this->m_objectSprite); 
-}
-//============================================================================
-void GameObject::reset() { this->m_state = STAND; }
-//============================================================================
-void GameObject::resetAnimationTime() { 
-	this->m_animationTime = sf::seconds(0); 
-}
-//============================================================================
-void GameObject::updateAnimation(const sf::Time& deltaTime) {
-	this->m_animationTime += deltaTime;
-	int spritesNum = (int)(this->m_animationTime.asSeconds() / ANIMATIONS_RATE);
-	if (ResoucesHolder::instance().getNumOfSprites(this->m_state) <=
-		spritesNum)
-		this->resetAnimationTime();
-	else {
-		this->m_intRect.left = spritesNum * CHARACTER_WIDTH;
-		if (this->m_intRect.width < 0)
-			this->m_intRect.left += CHARACTER_WIDTH;
-	}
-}
-//============================================================================
-void GameObject::flipSprite(){
-	if (this->m_intRect.width > 0)
-		this->m_intRect.left -= CHARACTER_WIDTH;
-	else
-		this->m_intRect.left += CHARACTER_WIDTH;
-	this->m_intRect.width *= -1;
-}
-//============================ methods section ===============================
-void GameObject::draw(sf::RenderWindow& window){
-	this->m_objectSprite.setTextureRect(this->m_intRect);
-	window.draw(this->m_objectSprite);
-}
-//============================================================================
-bool GameObject::CollidesWith(const GameObject& obj)const {
-	return m_objectSprite.getGlobalBounds().intersects
-	(obj.getSprite().getGlobalBounds());
-}
-//============================================================================
-void GameObject::setState(int state) {
-	if (this->m_isAnimated)
-		this->m_intRect.top = state * CHARACTER_HEIGHT;
-	this->m_state = state; 
 }
 //============================================================================
 sf::Vector2f GameObject::getCenter() const {
@@ -121,8 +77,61 @@ sf::Vector2f GameObject::getBotLeft()const {
 sf::Vector2f GameObject::getBotRight()const {
 	return this->getCenter() + this->getSize();
 }
+//============================ methods section ===============================
+/*This method return the state og the object to the initial state.*/
+void GameObject::reset() { this->m_state = STAND; }
+//============================================================================
+void GameObject::resetAnimationTime() { 
+	this->m_animationTime = sf::seconds(0); 
+}
+//============================================================================
+/*This method get a time. by this time the method update the sprites of the 
+object to create the animation. in other words, this method there is a line 
+of sprites this method run on this line.*/
+void GameObject::updateAnimation(const sf::Time& deltaTime) {
+	this->m_animationTime += deltaTime;
+	int spritesNum = (int)(this->m_animationTime.asSeconds() / ANIMATIONS_RATE);
+	if (ResoucesHolder::instance().getNumOfSprites(this->m_state) <=
+		spritesNum)
+		this->resetAnimationTime();
+	else {
+		this->m_intRect.left = spritesNum * CHARACTER_WIDTH;
+		if (this->m_intRect.width < 0)
+			this->m_intRect.left += CHARACTER_WIDTH;
+	}
+}
+//============================================================================
+/*This method change the direction of the sprite.*/
+void GameObject::flipSprite(){
+	if (this->m_intRect.width > 0)
+		this->m_intRect.left -= CHARACTER_WIDTH;
+	else
+		this->m_intRect.left += CHARACTER_WIDTH;
+	this->m_intRect.width *= -1;
+}
+//============================================================================
+void GameObject::draw(sf::RenderWindow& window){
+	this->m_objectSprite.setTextureRect(this->m_intRect);
+	window.draw(this->m_objectSprite);
+}
+//============================================================================
+/*This method get an another game object and return true if the object
+itself collide with the object it got.*/
+bool GameObject::CollidesWith(const GameObject& obj)const {
+	return m_objectSprite.getGlobalBounds().intersects
+	(obj.getSprite().getGlobalBounds());
+}
+//============================================================================
+/*this method update the state of the object according to his action.*/
+void GameObject::setState(int state) {
+	if (this->m_isAnimated)
+		this->m_intRect.top = state * CHARACTER_HEIGHT;
+	this->m_state = state; 
+}
 //=========================== protected section ==============================
 //============================== sets section ================================
+/*this method get the direction movement and set it to the sprite of the 
+object.*/
 void GameObject::setLocation(const sf::Vector2f& movment) {
 	this->m_objectSprite.move(movment);
 }

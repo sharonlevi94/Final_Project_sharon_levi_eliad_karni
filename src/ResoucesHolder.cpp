@@ -68,7 +68,7 @@ const sf::Font& ResoucesHolder::getFont(int fontKey) const{
 const int ResoucesHolder::getNumOfSprites(int key)const{
 	return (this->m_NumOfSprites.find(key)->second);
 }
-//============================================================================
+//============================ methods section ===============================
 void ResoucesHolder::playMusic(int levelNumber) {
 	switch (levelNumber)
 	{
@@ -93,7 +93,7 @@ void ResoucesHolder::playMusic(int levelNumber) {
 }
 //============================================================================
 void ResoucesHolder::pauseMusic() { this->m_music.pause(); }
-//============================ methods section ===============================
+
 //============================ private section ===============================
 //============================== sets section ================================
 void ResoucesHolder::setBackgrounds(){

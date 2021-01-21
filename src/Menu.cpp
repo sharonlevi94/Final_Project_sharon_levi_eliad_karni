@@ -16,7 +16,6 @@ Menu::Menu(const sf::Vector2f& size,
 }
 //============================== gets section ================================
 //============================ methods section ===============================
-//============================================================================
 void Menu::draw(sf::RenderWindow & window){
 	window.draw(this->m_background);
 	window.draw(this->m_GameLogo);
@@ -32,6 +31,8 @@ char Menu::handleClick(const sf::Vector2f& location) const{
 	return(NONE_CHOSEN);
 }
 //============================================================================
+/*This method handle in case of user pass the mouse over the font in the manu.
+then it change the fonts and the colors.*/
 bool Menu::pointingHundle(const sf::Vector2f& location) {
 	bool changed = false;
 	if (this->m_startGameButton.getGlobalBounds().contains(location)) {
@@ -62,9 +63,7 @@ bool Menu::pointingHundle(const sf::Vector2f& location) {
 	return(changed);
 }
 //============================ private section ===============================
-//============================== gets section ================================
 //============================ methods section ===============================
-//============================================================================
 void Menu::calcLogo() {
 	this->m_GameLogo.setTexture(ResoucesHolder::instance().
 		getTexture(GAME_LOGO));

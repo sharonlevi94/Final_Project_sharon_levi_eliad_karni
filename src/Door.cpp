@@ -7,12 +7,8 @@
 Door::Door(const sf::Vector2f& location,
 	const sf::Vector2f& size)
 	: StaticObject(location, size, DOOR_T) {}
-//============================== gets section ================================
 //============================ methods section ===============================
-//============================================================================
+/*this method is for the double dispatch but not use in the project.*/
 void Door::handleCollision(MovingObject& obj, const sf::Vector2f& movement) {
 	obj.handleCollision(*this, movement);
 }
-//============================ private section ===============================
-//============================== gets section ================================
-//============================ methods section ===============================

@@ -5,7 +5,7 @@
 //========================== forward declarations ============================
 class Controller;
 /*============================================================================
- * Bad gift:
+ * Class: Bad gift.
  * when bad gifts objects collid with the player it's add new enemy to the
  * level in the location of the door on the map.
  */

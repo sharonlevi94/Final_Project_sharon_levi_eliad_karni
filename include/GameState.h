@@ -3,19 +3,18 @@
 #include <SFML/graphics.hpp>
 #include <iostream>
 /*============================================================================
-* GameState
+* Clas: GameState.
 * the class handle the game's status parameters and print its stats by
 * the demanded syntax.
 */
 class GameState
 {
+	//========================== public section ==============================
 public:
 	//============== constructors and destructors section ====================
-
 	GameState(const sf::Vector2f& location = sf::Vector2f(0,0),
 		const sf::Vector2f& size = sf::Vector2f(0, 0));
 	//=========================== method section =============================
-
 	void draw(sf::RenderWindow&);
 	void levelup(int);
 	void collectedCoin();
@@ -23,19 +22,16 @@ public:
 	void gameOver();
 	bool isTimeUp();
 	bool isGameOver();
-	
-	std::string getRemindMin();
-	std::string getRemindSec();
-
-	sf::Vector2f getSize()const;
-	sf::Vector2f getLocation()const;
-	int getLevel()const;
-
 	void addTimeBonus();
 	void addLife();
 	void addScore();
-
-
+	//============================ gets section ===============================
+	std::string getRemindMin();
+	std::string getRemindSec();
+	sf::Vector2f getSize()const;
+	sf::Vector2f getLocation()const;
+	int getLevel()const;
+	//========================= private section ===============================
 private:
 	//======================== members section ===============================
 	sf::Clock       m_clock;

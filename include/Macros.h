@@ -45,6 +45,7 @@ constexpr auto NUM_OF_FALLING_SPRITE = 4;
 constexpr auto CHARACTER_HEIGHT = 128;
 constexpr auto CHARACTER_WIDTH = 128;
 
+constexpr auto DIGG_DURATION = 3.f;
 constexpr auto ANIMATIONS_RATE = 0.1f;
 constexpr auto WALK_LEFT = 1;
 constexpr auto WALK_RIGHT = 2;

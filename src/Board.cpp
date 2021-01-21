@@ -210,6 +210,8 @@ void Board::releaseMap() {
 	this->m_map.clear();
 }
 //============================================================================
+/*this function all the details of the current level, release ptrs and 
+unique ptrs.*/
 void Board::clearParameters() {
 	this->releaseMap();
 	this->m_door.release();

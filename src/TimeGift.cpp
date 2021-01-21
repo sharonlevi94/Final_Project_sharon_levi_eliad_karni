@@ -9,10 +9,13 @@ TimeGift::TimeGift(const sf::Vector2f& location,
 	:Gift(location, size) {
 }
 //============================ methods section ===============================
+/*this method return the object itself to the dynamic object that collided with
+this gift for double dispatch.*/
 void TimeGift::handleCollision(MovingObject& obj, const sf::Vector2f& movement) {
 	obj.handleCollision(*this, movement);
 }
 //============================================================================
+/*this method return the object itself to the controller for double dispatch.*/
 void TimeGift::handleColision(Controller& obj){
 	obj.handleColision(*this);
 }

@@ -9,6 +9,8 @@ RandEnemy::RandEnemy(const sf::Vector2f& location,
 	m_randTime(sf::seconds(0)){}
 //============================== gets section ================================
 //============================ methods section ===============================
+/*this method manage the movements of the random enemy. the method raffle a 
+number and set the movement according to this number.*/
 void RandEnemy::playTurn(const sf::Time& deltaTime, Board& board){
 	if (!this->physicsTurn(deltaTime, board)) {
 		//every level has its own rands at the controller
@@ -34,6 +36,3 @@ void RandEnemy::playTurn(const sf::Time& deltaTime, Board& board){
 		}
 	}
 }
-//============================ private section ===============================
-//============================== gets section ================================
-//============================ methods section ===============================

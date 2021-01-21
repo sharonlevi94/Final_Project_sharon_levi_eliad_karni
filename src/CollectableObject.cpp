@@ -11,7 +11,6 @@ CollectableObject::CollectableObject(const sf::Vector2f& location,
 	m_is_collected(false){}
 //============================== gets section ================================
 //============================ methods section ===============================
-//============================================================================
 bool CollectableObject::is_collected()const { return (this->m_is_collected); }
 //============================================================================
 void CollectableObject::draw(sf::RenderWindow& window) {
@@ -24,7 +23,6 @@ void CollectableObject::reset() {
 	this->m_is_collected = false;
 }
 //============================================================================
+/*this method change the state of the coin after the player collected it.*/
 void CollectableObject::collect() { this->m_is_collected = true; }
-//============================ private section ===============================
-//============================== gets section ================================
-//============================ methods section ===============================
+

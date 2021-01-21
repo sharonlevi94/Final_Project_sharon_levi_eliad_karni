@@ -14,7 +14,7 @@ class Player;
 //============================== using section ===============================
 using std::vector;
 /*============================================================================
- * Board:
+ * Class: Board.
  * the board contain and draw the level's objects.
  * alse the board helps the 
  * read the levels from the file by one of its member.
@@ -61,14 +61,3 @@ private:
 	Gift* raffleGift(const sf::Vector2f& boxSize,const sf::Vector2i& index);
 
 };
-
-//============================= include section ==============================
-//========================== forward declarations ============================
-/*============================================================================
- *
- */
-//================= constractors and destractors section =================
-//============================ gets section ==============================
-//=========================== method section =============================
-//====================== privete methods section =========================
-//========================= members section ==============================

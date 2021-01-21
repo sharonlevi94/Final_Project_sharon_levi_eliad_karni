@@ -4,6 +4,7 @@
 #include "CollectableObject.h"
 //========================== forward declarations ============================
 /*============================================================================
+ * Class: Coin.
  * This class represent the coin object and derived from CollectableObject. 
  */
  class Coin: public CollectableObject

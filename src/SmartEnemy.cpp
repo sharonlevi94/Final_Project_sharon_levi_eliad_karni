@@ -12,6 +12,10 @@ SmartEnemy::SmartEnemy(const sf::Vector2f& location,
 //============================== gets section ================================
 //============================ methods section ===============================
 //============================================================================
+/*this method manage the movements of the smart enemy. the method get the 
+delta time of the movment & the board. the method check where is the enemy
+exist in a relate to the location of the player and move to the direction 
+of the player.*/
 void SmartEnemy::playTurn(const sf::Time& deltaTime, Board& board) {
 	if (!this->physicsTurn(deltaTime, board)) {
 		//the enemy is above player:	

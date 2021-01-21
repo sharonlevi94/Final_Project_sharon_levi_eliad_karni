@@ -153,6 +153,8 @@ void MovingObject::getTrapped(Wall* trappingWall) {
 	this->m_trappingWall = trappingWall;
 }
 //============================================================================
+/*This method change the state of the object to untrapped after the wall 
+finish to be digged. The new location of the object is above this wall.*/
 void MovingObject::getUntrapped() {
 	this->m_isTrapped = false;
 	this->m_trappingWall->changeTrapMode(false);

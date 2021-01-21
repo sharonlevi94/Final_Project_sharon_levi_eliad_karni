@@ -44,12 +44,15 @@ void GameState::draw (sf::RenderWindow& window){
 	window.draw(this->m_stateText);
 }
 //============================================================================
+/*This method check if the time of the current level is over.*/
 bool GameState::isTimeUp() {
 	if (this->m_levelTime.asSeconds() == -1)
 		return false;
 	return (this->m_clock.getElapsedTime() > this->m_levelTime);
 }
 //============================================================================
+/*This method handle in case of level up, update the states and reset the
+clock level.*/
 void GameState::levelup(int time) { 
 	this->m_levelTime = sf::seconds((float)time);
 	this->m_score += this->m_level * 50;
@@ -57,25 +60,44 @@ void GameState::levelup(int time) {
 	this->m_clock.restart();
 }
 //============================================================================
+/*This method update the score after player collected a coin.*/
 void GameState::collectedCoin() { this->m_score += this->m_level * 2; }
 //============================================================================
+/*This method handle in case of player is die- update lives and reset the 
+clock level.*/
 void GameState::died() {
 	this->m_lifes--;
 	this->m_clock.restart();
 }
 //============================================================================
+/*This method handle in case of game is over. the method reset all the stats.*/
 void GameState::gameOver() {
 	this->m_level = 0;
 	this->m_lifes = NUM_OF_LIFE;
 	this->m_score = 0;
 }
 //============================================================================
+/*This method checks if there is more lives to the player and return true
+if doesnt.*/
 bool GameState::isGameOver(){
 	if (this->m_lifes <= 0)
 		return true;
 	return false;
 }
 //============================================================================
+/*This method add time if the player collected a gift*/
+void GameState::addTimeBonus() {
+	this->m_levelTime += sf::seconds(BONUS_TIME);
+}
+//============================================================================
+/*This method add lives if the player collected a gift*/
+void GameState::addLife() { this->m_lifes += BONUS_LIFE; }
+//============================================================================
+/*This method add score if the player collected a gift*/
+void GameState::addScore() {
+	this->m_score += BONUS_SCORE;
+}
+//============================== gets section ================================
 sf::Vector2f GameState::getSize()const { 
 	return this->m_background.getSize(); 
 }
@@ -106,12 +128,3 @@ std::string GameState::getRemindSec() {
 	return (std::to_string(time));
 }
 //============================================================================
-void GameState::addTimeBonus(){
-	this->m_levelTime += sf::seconds(BONUS_TIME);
-}
-//============================================================================
-void GameState::addLife() { this->m_lifes += BONUS_LIFE; }
-//============================================================================
-void GameState::addScore(){
-	this->m_score += BONUS_SCORE;
-}

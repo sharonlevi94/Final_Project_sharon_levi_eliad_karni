@@ -12,13 +12,16 @@ Player::Player(const sf::Vector2f& location,
 		const sf::Vector2f& size)
 	: MovingObject(location, size, PLAYER_T), m_diggedWalls({}) {}
 //============================ methods section ===============================
+/*this method manage the movements of the player. the method realize if the 
+user pressed on key and move the player by the key that user pressed if the
+move is possible.*/
 void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 	if (!this->physicsTurn(deltaTime, board)) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			this->moveDown(deltaTime, board);
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 			dig(board, this->getBotRight(), deltaTime);
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 			dig(board, this->getBotLeft(), deltaTime);
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 			this->moveUp(deltaTime, board);
@@ -30,6 +33,8 @@ void Player::playTurn(const sf::Time& deltaTime, Board& board) {
 	updateDiggedWalls(deltaTime);
 }
 //============================================================================
+/*This method execute the digging action that made by the user, it communicate
+with the board and digg the right wall.*/
 void Player::dig(Board& board, const sf::Vector2f& location, 
 	const sf::Time& deltatime) {
 	if (board.getContent(location) == board.getContent(this->getBelow()))
@@ -43,6 +48,7 @@ void Player::dig(Board& board, const sf::Vector2f& location,
 	}
 }
 //============================================================================
+/*This method update the vector of the digged walls by the time passed.*/
 void Player::updateDiggedWalls(const sf::Time& deltaTime) {
 	for (int i = 0; i < this->m_diggedWalls.size(); ++i) {
 		this->m_diggedWalls[i]->unDigg(deltaTime);
