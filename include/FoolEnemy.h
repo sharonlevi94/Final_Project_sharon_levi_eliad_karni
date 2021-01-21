@@ -10,5 +10,5 @@ public:
 	virtual void playTurn(const sf::Time&, Board&)override;
 	virtual void handleCollision(Wall&, const sf::Vector2f&)override;
 private:
-
+	bool m_turn;
 };

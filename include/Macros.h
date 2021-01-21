@@ -40,7 +40,7 @@ constexpr auto NUM_OF_RUNNING_SPRITE = 8;
 constexpr auto RODDING = 3;
 constexpr auto NUM_OF_RODDING_SPRITE = 8;
 constexpr auto FALLING = 2;
-constexpr auto NUM_OF_FALLING_SPRITE = 4;
+constexpr auto NUM_OF_FALLING_SPRITE = 2;
 
 constexpr auto CHARACTER_HEIGHT = 128;
 constexpr auto CHARACTER_WIDTH = 128;

@@ -85,8 +85,12 @@ bool GameObject::CollidesWith(const GameObject& obj)const {
 }
 //============================================================================
 void GameObject::setState(int state) {
-	if (this->m_isAnimated)
+	if (this->m_isAnimated && this->m_state != state) {
 		this->m_intRect.top = state * CHARACTER_HEIGHT;
+		this->m_intRect.left = 0;
+		if(this->m_intRect.width < 0)
+			this->m_intRect.left += CHARACTER_WIDTH;
+	}
 	this->m_state = state; 
 }
 //============================================================================

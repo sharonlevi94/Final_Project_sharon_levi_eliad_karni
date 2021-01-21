@@ -57,17 +57,19 @@ bool MovingObject::physicsTurn(const sf::Time& deltaTime, Board& board) {
 * the function set the new location only if the wanted move is possible.
 */
 void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
-	sf::Vector2f movement = sf::Vector2f(0, -1)
-		* (MOVEMENT_SPEED * deltaTime.asSeconds());
+	sf::Vector2f movement(0, -1);
+	movement *= (MOVEMENT_SPEED * deltaTime.asSeconds());
 	StaticObject* object = board.getContent(this->getAbove() + movement);
+
 	if (board.isMovePossible(this->getAbove() + movement)) {
 		if (object != nullptr)
 			object->handleCollision(*this, movement);
-		else if (this->getState() != RODDING){
-			if(dynamic_cast <Ladder*> (board.getContent(this->getBelow() 
+		else if (this->getState() != RODDING) {
+			if (dynamic_cast <Ladder*> (board.getContent(this->getBelow()
 				- sf::Vector2f(-1, 0))))
 				this->nullMovement(movement);
-			setState(STAND);
+			else
+				setState(STAND);
 		}
 	}
 	this->updateAnimation(deltaTime);
@@ -79,8 +81,8 @@ void MovingObject::moveUp(const sf::Time& deltaTime, Board& board){
 * the function set the new location only if the wanted move is possible.
 */
 void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
-	sf::Vector2f movement = sf::Vector2f(0, 1)
-		* (MOVEMENT_SPEED * deltaTime.asSeconds());
+	sf::Vector2f movement(0, 1);
+	movement *= (MOVEMENT_SPEED * deltaTime.asSeconds());
 	StaticObject* object = board.getContent(this->getBelow() + movement);
 	if (board.isMovePossible(this->getBelow() +  movement)) {
 		if(object != nullptr)
@@ -98,8 +100,8 @@ void MovingObject::moveDown(const sf::Time& deltaTime, Board&  board){
 * the function set the new location only if the wanted move is possible.
 */
 void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
-	sf::Vector2f movement = sf::Vector2f(-1, 0)
-		* (MOVEMENT_SPEED * deltaTime.asSeconds());
+	sf::Vector2f movement(-1, 0);
+	movement *= (MOVEMENT_SPEED * deltaTime.asSeconds());
 	StaticObject* object = board.getContent(this->getLeft() + movement),
 		*center = board.getContent(this->getCenter()),
 		* bot = board.getContent(this->getLocation() + 
@@ -126,8 +128,8 @@ void MovingObject::moveLeft(const sf::Time& deltaTime, Board& board){
 * the function set the new location only if the wanted move is possible.
 */
 void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
-	sf::Vector2f movement = sf::Vector2f(1, 0)
-		* (MOVEMENT_SPEED * deltaTime.asSeconds());
+	sf::Vector2f movement(1, 0);
+	movement *= (MOVEMENT_SPEED * deltaTime.asSeconds());
 	StaticObject *object = board.getContent(this->getRight() + movement),
 		*center = board.getContent(this->getCenter()),
 		*bot = board.getContent(this->getLocation() + this->getSize());
@@ -135,9 +137,10 @@ void MovingObject::moveRight(const sf::Time& deltaTime, Board& board){
 		if (object != nullptr)
 			object->handleCollision(*this, movement);
 		else {
-			if (dynamic_cast <Wall*> (bot))
+			if (dynamic_cast <Wall*> (bot)) {
 				this->setLocation({ 0, (bot->getLocation() -
 					(this->getLocation() + this->getSize())).y });
+			}
 			this->nullMovement(movement);
 			if(center == nullptr || dynamic_cast <Door*> (center))
 				this->setState(RUNNING);
@@ -176,13 +179,6 @@ bool MovingObject::isFalling(const Board& board){
 			dynamic_cast <const Ladder*> 
 			(board.getContent(this->getBelow())))
 			return false;
-		if (dynamic_cast <const Rod*> (board.getContent(this->getAbove()
-			+ sf::Vector2f(0,2)))) {
-			if (!dynamic_cast <const Rod*> (board.getContent(this
-				->getBelow())))
-				return true;
-			return false;
-		}
 		if (dynamic_cast <const Wall*> (board.getContent
 		(this->getBelow()))) {
 			if (((const Wall*)board.getContent(this->getBelow()))
@@ -196,6 +192,9 @@ bool MovingObject::isFalling(const Board& board){
 		if (board.isMovePossible(this->getBelow())) {
 			return true;
 		}
+		if ((this->getState() == FALLING || this->getState() == RUNNING)
+			&& board.getContent(this->getBelow()) == nullptr)
+			return true;
 	}
 	return false;
 }
@@ -260,7 +259,8 @@ void MovingObject::handleCollision(Wall& obj,
 		this->setLocation({ movement.x, (obj.getLocation() - 
 			(this->getLocation() + this->getSize())).y });
 	}
-	setState(STAND);
+	if(this->getState() == RUNNING || this->getState() == FALLING)
+		this->setState(STAND);
 }
 //============================================================================
 /*
@@ -269,15 +269,17 @@ void MovingObject::handleCollision(Wall& obj,
 */
 void MovingObject::handleCollision(const Rod& obj,
 	const sf::Vector2f& movement) {
-	if (RODDING && movement.y < 0)
-		this->setState(STAND);
-	else  {
-		this->setLocation(sf::Vector2f(movement.x, obj.getLocation().y
-			- this->getLocation().y));
+	if (RODDING && movement.y < 0) {
+		this->setState(FALLING);
+	}
+	else{
+		float aaa = movement.x, bbb = obj.getLocation().y
+			- this->getLocation().y;
+			this->setLocation({ movement.x, obj.getLocation().y
+				- this->getLocation().y });
 		this->setState(RODDING);
 		return;
 	}
-	
 }
 //============================================================================
 /*
