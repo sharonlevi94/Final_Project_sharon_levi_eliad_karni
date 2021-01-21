@@ -1,7 +1,7 @@
 //============================= include section ==============================
 #include "GameObject.h"
 #include <SFML/Graphics.hpp>
-#include "ResoucesHolder.h"
+#include "Resources.h"
 #include "Board.h"
 #include "Utilities.h"
 #include <iostream>
@@ -11,7 +11,7 @@
 GameObject::GameObject(const sf::Vector2f& location, const sf::Vector2f& size,
 	char objectType, bool isAnimated) : m_state(STAND),
 	m_intRect(0, 0, CHARACTER_WIDTH, CHARACTER_HEIGHT),
-	m_objectSprite(ResoucesHolder::instance().getTexture(objectType),
+	m_objectSprite(Resources::instance().getTexture(objectType),
 		this->m_intRect),
 	m_isAnimated(isAnimated){
 	this->m_objectSprite.setPosition(location);
@@ -91,7 +91,7 @@ of sprites this method run on this line.*/
 void GameObject::updateAnimation(const sf::Time& deltaTime) {
 	this->m_animationTime += deltaTime;
 	int spritesNum = (int)(this->m_animationTime.asSeconds() / ANIMATIONS_RATE);
-	if (ResoucesHolder::instance().getNumOfSprites(this->m_state) <=
+	if (Resources::instance().getNumOfSprites(this->m_state) <=
 		spritesNum)
 		this->resetAnimationTime();
 	else {

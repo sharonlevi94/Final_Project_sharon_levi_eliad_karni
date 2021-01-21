@@ -2,7 +2,7 @@
 #include "BadGift.h"
 #include "Macros.h"
 #include "MovingObject.h"
-#include "ResoucesHolder.h"
+#include "Resources.h"
 #include "Utilities.h"
 #include "Controller.h"
 //========================== forward declarations ============================

@@ -9,7 +9,7 @@
 #include "Rod.h"
 #include "Door.h"
 #include "Macros.h"
-#include "ResoucesHolder.h"
+#include "Resources.h"
 #include <SFML/Graphics.hpp>
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================

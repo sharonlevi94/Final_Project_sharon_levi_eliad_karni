@@ -18,8 +18,5 @@ public:
 	virtual void handleCollision(Wall&, const sf::Vector2f&)override;
 	//========================= private section ==============================
 private:
-<<<<<<< HEAD
-=======
 	bool m_turn;
->>>>>>> 39bc6ed7fc5c0d63092256c2093a1d97a3755878
 };

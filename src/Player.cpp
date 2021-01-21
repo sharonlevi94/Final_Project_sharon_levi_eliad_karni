@@ -5,7 +5,7 @@
 #include "Board.h"
 #include "Wall.h"
 #include "Macros.h"
-#include "ResoucesHolder.h"
+#include "Resources.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
 Player::Player(const sf::Vector2f& location,
@@ -51,7 +51,7 @@ void Player::dig(Board& board, const sf::Vector2f& location,
 		if (!((Wall*)(board.getContent(location)))->isDigged()) {
 			this->m_diggedWalls.push_back((Wall*)board.getContent(location));
 			((Wall*)(board.getContent(location)))->dig(deltatime);
-			ResoucesHolder::instance().playSound(DIGGING_SOUND);
+			Resources::instance().playSound(DIGGING_SOUND);
 		}
 	}
 }

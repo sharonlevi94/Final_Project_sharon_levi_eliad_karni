@@ -1,12 +1,12 @@
 //============================= include section ==============================
-#include "ResoucesHolder.h"
+#include "Resources.h"
 #include <map>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "Macros.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
-ResoucesHolder::ResoucesHolder():
+Resources::Resources():
 m_music(){
 	this->m_texture.clear();
 	this->m_soundBuffers.clear();
@@ -22,13 +22,13 @@ m_music(){
 	this->setNumOfSprites();
 }
 //============================================================================
-ResoucesHolder& ResoucesHolder::instance() {
-	static ResoucesHolder inst;
+Resources& Resources::instance() {
+	static Resources inst;
 	return(inst);
 }
 //============================== gets section ================================
 //============================================================================
-const sf::Texture& ResoucesHolder::getBackground(int textureKey){
+const sf::Texture& Resources::getBackground(int textureKey){
 if(textureKey != this->m_backgroundLevelState){
 		switch(textureKey){
 		case 1:
@@ -53,23 +53,23 @@ if(textureKey != this->m_backgroundLevelState){
 	return (*this->m_texture.find(LEVEL_BACKGROUND)->second);
 }
 //============================================================================
-const sf::Texture& ResoucesHolder::getTexture(int textureKey)const{
+const sf::Texture& Resources::getTexture(int textureKey)const{
 	return (*this->m_texture.find(textureKey)->second);
 }
 //============================================================================
-const sf::SoundBuffer& ResoucesHolder::getSound(int soundKey) const{
+const sf::SoundBuffer& Resources::getSound(int soundKey) const{
 	return(*this->m_soundBuffers.find(soundKey)->second);
 }
 //============================================================================
-const sf::Font& ResoucesHolder::getFont(int fontKey) const{
+const sf::Font& Resources::getFont(int fontKey) const{
 	return(*this->m_font.find(fontKey)->second);
 }
 //============================================================================
-const int ResoucesHolder::getNumOfSprites(int key)const{
+const int Resources::getNumOfSprites(int key)const{
 	return (this->m_NumOfSprites.find(key)->second);
 }
 //============================ methods section ===============================
-void ResoucesHolder::playMusic(int levelNumber) {
+void Resources::playMusic(int levelNumber) {
 	switch (levelNumber)
 	{
 	case 0:
@@ -92,11 +92,11 @@ void ResoucesHolder::playMusic(int levelNumber) {
 	this->m_music.setLoop(true);
 }
 //============================================================================
-void ResoucesHolder::pauseMusic() { this->m_music.pause(); }
+void Resources::pauseMusic() { this->m_music.pause(); }
 
 //============================ private section ===============================
 //============================== sets section ================================
-void ResoucesHolder::setBackgrounds(){
+void Resources::setBackgrounds(){
 	std::unique_ptr<sf::Texture> texturesCreator;
 	//adding game's backgrounds path
 	texturesCreator = std::make_unique<sf::Texture>();
@@ -115,7 +115,7 @@ void ResoucesHolder::setBackgrounds(){
 	//adding levels background path
 }
 //============================================================================
-void ResoucesHolder::setLogos() {
+void Resources::setLogos() {
 	std::unique_ptr<sf::Texture> texturesCreator;
 	texturesCreator = std::make_unique<sf::Texture>();
 	this->m_texture.insert(std::pair<int, std::unique_ptr <sf::Texture>>
@@ -123,7 +123,7 @@ void ResoucesHolder::setLogos() {
 	this->m_texture[GAME_LOGO]->loadFromFile(GAME_LOGO_PATH);
 }
 //============================================================================
-void ResoucesHolder::setFonts(){
+void Resources::setFonts(){
 	std::unique_ptr<sf::Font> fontsCreator;
 	fontsCreator = std::make_unique<sf::Font>();
 	this->m_font.insert(std::pair<int, std::unique_ptr <sf::Font>>
@@ -131,7 +131,7 @@ void ResoucesHolder::setFonts(){
 	this->m_font[ARIEL_FONT]->loadFromFile(ARIEL_FONT_PATH);
 }
 //============================================================================
-void ResoucesHolder::setObjects() {
+void Resources::setObjects() {
 	std::unique_ptr<sf::Texture> texturesCreator;
 
 	texturesCreator = std::make_unique<sf::Texture>();
@@ -175,7 +175,7 @@ void ResoucesHolder::setObjects() {
 	this->m_texture[DOOR_T]->loadFromFile(DOOR_PATH);
 }
 //============================================================================
-void ResoucesHolder::setSounds() {
+void Resources::setSounds() {
 	std::unique_ptr<sf::SoundBuffer> soundsCreator;
 	//------------------------------------------------------------------------
 	soundsCreator = std::make_unique<sf::SoundBuffer>();
@@ -210,12 +210,12 @@ void ResoucesHolder::setSounds() {
 
 }
 //============================ methods section ===============================
-void ResoucesHolder::playSound(int key) {
+void Resources::playSound(int key) {
 	m_sound.setBuffer(this->getSound(key));
 	m_sound.play();
 }
 //============================================================================
-void ResoucesHolder::setNumOfSprites(){
+void Resources::setNumOfSprites(){
 	this->m_NumOfSprites.insert(std::pair<int, int>(STAND, NUM_OF_STAND_SPRITE));
 	this->m_NumOfSprites.insert(std::pair<int, int>(CLIMBING, NUM_OF_CLIMB_SPRITE));
 	this->m_NumOfSprites.insert(std::pair<int, int>(RUNNING, NUM_OF_RUNNING_SPRITE));

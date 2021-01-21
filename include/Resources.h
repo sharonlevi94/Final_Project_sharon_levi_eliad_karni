@@ -4,11 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 /*============================================================================*/
-class ResoucesHolder
+class Resources
 {
 	//========================== public section ==============================
 public:
-	static ResoucesHolder& instance();
+	static Resources& instance();
 	//============================ gets section ===============================
 	const sf::SoundBuffer& getSound(int) const;
 	const sf::Texture& getBackground(int);
@@ -30,7 +30,7 @@ private:
 	sf::Sound m_sound;
 	int m_backgroundLevelState;
 	//================= constractors and destractors section =================
-	ResoucesHolder();
+	Resources();
 	//============================ sets section ===============================
 	void setBackgrounds();
 	void setLogos();

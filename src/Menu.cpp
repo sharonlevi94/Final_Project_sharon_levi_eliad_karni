@@ -1,7 +1,7 @@
 //============================= include section ==============================
 #include "Menu.h"
 #include <SFML/Graphics.hpp>
-#include "ResoucesHolder.h"
+#include "Resources.h"
 #include "Macros.h"
 //============================= public section ===============================
 //==================== Constructors & distructors section ====================
@@ -65,7 +65,7 @@ bool Menu::pointingHundle(const sf::Vector2f& location) {
 //============================ private section ===============================
 //============================ methods section ===============================
 void Menu::calcLogo() {
-	this->m_GameLogo.setTexture(ResoucesHolder::instance().
+	this->m_GameLogo.setTexture(Resources::instance().
 		getTexture(GAME_LOGO));
 	this->m_GameLogo.setScale((float)(this->m_size.x / 2) /
 		this->m_GameLogo.getTexture()->getSize().x,
@@ -81,7 +81,7 @@ void Menu::calcLogo() {
 //============================================================================
 void Menu::calcStartButton() {
 	this->m_startGameButton.setString("START GAME!");
-	this->m_startGameButton.setFont(ResoucesHolder::instance()
+	this->m_startGameButton.setFont(Resources::instance()
 		.getFont(ARIEL_FONT));
 	this->m_startGameButton.setFillColor(sf::Color::White);
 	this->m_startGameButton.setOutlineColor(sf::Color::Black);
@@ -102,7 +102,7 @@ void Menu::calcStartButton() {
 //============================================================================
 void Menu::calcQuitButton(){
 	this->m_quitGameButton.setString("QUIT GAME");
-	this->m_quitGameButton.setFont(ResoucesHolder::instance()
+	this->m_quitGameButton.setFont(Resources::instance()
 		.getFont(ARIEL_FONT));
 	this->m_quitGameButton.setFillColor(sf::Color::White);
 	this->m_quitGameButton.setOutlineColor(sf::Color::Black);
@@ -124,7 +124,7 @@ void Menu::calcQuitButton(){
 }
 //============================================================================
 void Menu::calcBackground() {
-	this->m_background.setTexture(ResoucesHolder::instance()
+	this->m_background.setTexture(Resources::instance()
 		.getTexture(MENU_BACKGROUND));
 	
 	this->m_background.scale(this->m_size.x / 

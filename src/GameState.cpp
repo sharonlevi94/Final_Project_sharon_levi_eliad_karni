@@ -1,6 +1,6 @@
 //============================= include section ==============================
 #include "GameState.h"
-#include "ResoucesHolder.h"
+#include "Resources.h"
 #include <string>
 #include "Macros.h"
 #include <SFML/Graphics.hpp>
@@ -11,9 +11,9 @@ GameState::GameState(const sf::Vector2f& location,
 	m_clock(), m_stateText(), m_levelTime(), m_level(0), m_score(0),
 	m_lifes(NUM_OF_LIFE), m_background(size){
 	this->m_background.setPosition(location);
-	this->m_background.setTexture(&ResoucesHolder::instance().getTexture(GAME_STATE));
+	this->m_background.setTexture(&Resources::instance().getTexture(GAME_STATE));
 
-	this->m_stateText.setFont(ResoucesHolder::instance().getFont(ARIEL_FONT));
+	this->m_stateText.setFont(Resources::instance().getFont(ARIEL_FONT));
 	this->m_stateText.setFillColor(sf::Color::White);
 }
 //============================ methods section ===============================

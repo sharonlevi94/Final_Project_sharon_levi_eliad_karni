@@ -6,7 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "MovingObject.h"
 #include "Macros.h"
-#include "ResoucesHolder.h"
+#include "Resources.h"
 #include <vector>
 #include "Utilities.h"
 #include "Player.h"
@@ -201,9 +201,9 @@ void Board::gameOver() {
 * This function load the background and the music of the current level.
 */
 void Board::loadLevelEffects(int level) {
-	this->m_background.setTexture(&ResoucesHolder::instance()
+	this->m_background.setTexture(&Resources::instance()
 		.getBackground(level));
-	ResoucesHolder::instance().playMusic(level);
+	Resources::instance().playMusic(level);
 }
 //============================== private section =============================
 void Board::releaseMap() {

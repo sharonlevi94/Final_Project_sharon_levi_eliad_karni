@@ -8,7 +8,7 @@
 #include "Coin.h"
 #include "Gift.h"
 #include "GameState.h"
-#include "ResoucesHolder.h"
+#include "Resources.h"
 #include "Player.h"
 #include <SFML/Graphics.hpp>
 #include "Utilities.h"
@@ -54,7 +54,7 @@ void Controller::run() {
 * the method handling bad gift collection case.
 */
 void Controller::handleColision(const BadGift& obj){
-	ResoucesHolder::instance().playSound(DOOR_SOUND);
+	Resources::instance().playSound(DOOR_SOUND);
 	this->m_giftEnemies.push_back(std::unique_ptr <Enemy>
 					(raffleEnemy(this->m_board.getObjectSize(), 
 					this->m_board.getDoorLocation())));
@@ -83,7 +83,7 @@ void Controller::handleColision(const LifeGift& obj) {
 * this function return the result of the click to the run function.
 */
 char Controller::runMenu() {
-	ResoucesHolder::instance().playMusic(0);
+	Resources::instance().playMusic(0);
 	while (this->m_window.isOpen())
 	{
 		//displaying menu state
@@ -102,10 +102,10 @@ char Controller::runMenu() {
 					(float)event.mouseButton.x, 
 					(float)event.mouseButton.y))) {
 				case PLAY_GAME:
-					ResoucesHolder::instance().pauseMusic();
+					Resources::instance().pauseMusic();
 					return PLAY_GAME;
 				case QUIT_GAME:
-					ResoucesHolder::instance().pauseMusic();
+					Resources::instance().pauseMusic();
 					return QUIT_GAME;
 					break;
 				}
@@ -121,7 +121,7 @@ char Controller::runMenu() {
 
 		}
 	}
-	ResoucesHolder::instance().pauseMusic();
+	Resources::instance().pauseMusic();
 	return QUIT_GAME;
 }
 /*============================================================================
@@ -217,7 +217,7 @@ void Controller::seperateGameObjects(const vector<MovingObject*>& list) {
 */
 void Controller::playerDied(){
 	//reset Static objects:
-	ResoucesHolder::instance().playSound(ENEMY_SOUND);
+	Resources::instance().playSound(ENEMY_SOUND);
 	this->m_board.resetLvl(); 
 	this->m_giftEnemies.clear();
 	this->m_gameState.died();
@@ -228,7 +228,7 @@ void Controller::playerDied(){
 */
 void Controller::gameOver() {
 	//TODO: Game Over msg
-	ResoucesHolder::instance().pauseMusic();
+	Resources::instance().pauseMusic();
 	this->m_player = nullptr;
 	this->m_enemies.clear();
 	this->m_board.gameOver();
@@ -282,7 +282,7 @@ void Controller::checkCoinsColisions() {
 		getCenter()))) {
 		if (!((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
 			is_collected()) {
-			ResoucesHolder::instance().playSound(COIN_COLLECT_SOUND);
+			Resources::instance().playSound(COIN_COLLECT_SOUND);
 			((Coin*)this->m_board.getContent(this->m_player->getCenter()))->
 				collect();
 			this->m_gameState.collectedCoin();
@@ -296,7 +296,7 @@ void Controller::checkCoinsColisions() {
 */
 void Controller::levelup() {
 	this->m_giftEnemies.clear();
-	ResoucesHolder::instance().pauseMusic();
+	Resources::instance().pauseMusic();
 	srand((unsigned int)time(NULL));
 	this->seperateGameObjects(this->m_board.loadNewLevel());
 	this->m_gameState.levelup(this->m_board.getLevelTime());
